@@ -41,18 +41,32 @@ const features = [
     image: "/ai-website-cloner/images/chip.png",
   },
   {
-    tag: "Design",
-    title: "Titanium.\n0.8mm.\n不可能を形に。",
-    desc: "NASAの火星探査機と同じGrade 23チタン合金。厚さ0.8mm。重さ98g。それでいて戦車の装甲より硬い。落としても、踏んでも、車で轢いても。壊れない、という設計思想。",
-    gradient: "from-amber-500/10 via-transparent to-stone-500/10",
-    image: "/ai-website-cloner/images/titanium.png",
-  },
-  {
     tag: "Battery",
     title: "充電という\n概念を\n終わらせた。",
     desc: "核マイクロセルテクノロジー。半減期100年のベータ崩壊エネルギーを電力に変換。充電不要。永久稼働。あなたが生きている間、バッテリーは切れない。128ペタバイトSSDと8TBユニファイドメモリが、人類の全知識を手のひらに収める。",
     gradient: "from-green-500/15 via-transparent to-emerald-500/10",
     image: "/ai-website-cloner/images/battery.png",
+  },
+  {
+    tag: "Security",
+    title: "DNA Lock.\nあなた以外、\n触れない。",
+    desc: "指紋じゃない。DNAで認証。触れた瞬間0.001秒で分子レベルスキャン。他人が触ると画面が消える。クローンですら突破不可能。あなたのDNAが、最後の鍵になる。",
+    gradient: "from-cyan-500/20 via-transparent to-blue-500/10",
+    image: "/ai-website-cloner/images/dna.png",
+  },
+  {
+    tag: "Sound",
+    title: "Telepathy Audio.\nイヤホンという\n概念を消した。",
+    desc: "本体から直接頭蓋骨に音を伝送。イヤホン不要。スピーカー不要。電車で使っても隣の人には聞こえない。あなたの脳だけに届く音。音楽は、思考になった。",
+    gradient: "from-pink-500/15 via-transparent to-purple-500/10",
+    image: "/ai-website-cloner/images/telepathy.png",
+  },
+  {
+    tag: "Connectivity",
+    title: "Quantum Link.\n光より速い。",
+    desc: "量子もつれ通信。遅延ゼロ。地球の裏側でも火星でも同じ速度。Wi-Fiも5Gもいらない。電波圏外という概念が消滅した。宇宙のどこにいても、つながる。",
+    gradient: "from-amber-500/15 via-transparent to-yellow-500/10",
+    image: "/ai-website-cloner/images/quantum.png",
   },
 ];
 
