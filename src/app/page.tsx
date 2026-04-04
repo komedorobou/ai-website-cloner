@@ -17,7 +17,7 @@ const colors = [
 
 const specs = [
   { label: "Display", value: '6.9"', desc: "Super Retina XDR" },
-  { label: "Chip", value: "A20 Pro", desc: "6-core GPU" },
+  { label: "Chip", value: "A24", desc: "8-core GPU" },
   { label: "Camera", value: "108MP", desc: "Quantum Lens" },
   { label: "Battery", value: "36hr", desc: "All-day power" },
   { label: "Storage", value: "2TB", desc: "Maximum capacity" },
@@ -33,8 +33,8 @@ const features = [
   },
   {
     tag: "Performance",
-    title: "A20 Pro.\nPower meets\nintelligence.",
-    desc: "Built on 2nm architecture, the A20 Pro chip delivers 40% faster neural processing. On-device AI that understands context, not just commands.",
+    title: "A24.\nPower meets\nintelligence.",
+    desc: "Built on 2nm architecture, the A24 chip delivers 40% faster neural processing. On-device AI that understands context, not just commands.",
     gradient: "from-orange-500/15 via-transparent to-red-500/10",
     image: "/ai-website-cloner/images/chip.png",
   },
@@ -66,7 +66,7 @@ export default function Home() {
           <svg width="18" height="22" viewBox="0 0 18 22" fill="white" className="opacity-80">
             <path d="M14.94 5.19A4.38 4.38 0 0 0 12 3.7a4.53 4.53 0 0 0-3 1.49A4.38 4.38 0 0 0 12 0a4.53 4.53 0 0 0 2.94 5.19ZM12 7.09c-2.25 0-3.44 1.5-5.12 1.5C5.31 8.59 3.56 7 1.5 7 .35 8.81 0 11 0 13.5c0 4.41 3 8.5 5.31 8.5 1.5 0 2.44-1 4.19-1s2.44 1 4.19 1C16 22 18 17.91 18 13.5c0-2.5-.35-4.69-1.5-6.5-1.31.09-2.81 1.59-4.5.09Z"/>
           </svg>
-          <span className="text-[13px] font-medium tracking-tight opacity-80">iPhone 17 Pro</span>
+          <span className="text-[13px] font-medium tracking-tight opacity-80">iPhone 21 Shirouto</span>
           <a href="#buy" className="text-[13px] bg-blue-500 hover:bg-blue-400 text-white px-4 py-1.5 rounded-full transition-colors font-medium">
             Buy
           </a>
@@ -80,7 +80,7 @@ export default function Home() {
           <ScrollReveal duration={1.5} delay={0.3} direction="none">
             <Image
               src="/ai-website-cloner/images/hero-phone.png"
-              alt="iPhone 17 Pro"
+              alt="iPhone 21 Shirouto"
               width={1024}
               height={1024}
               className="w-[90vw] md:w-[70vw] lg:w-[55vw] max-w-[700px] h-auto drop-shadow-[0_0_120px_rgba(120,120,255,0.2)]"
@@ -99,7 +99,7 @@ export default function Home() {
           </ScrollReveal>
           <ScrollReveal duration={1.2} delay={0.4}>
             <h1 className="text-[64px] md:text-[96px] lg:text-[120px] font-bold tracking-[-0.04em] leading-[0.9] mb-6">
-              iPhone 17 Pro
+              iPhone 21 Shirouto
             </h1>
           </ScrollReveal>
           <ScrollReveal duration={1} delay={0.6}>
@@ -197,7 +197,7 @@ export default function Home() {
             >
               <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[100px] h-[28px] bg-black/40 rounded-b-xl" />
               <div className="absolute inset-3 rounded-[36px] bg-black/30 backdrop-blur-sm flex items-center justify-center">
-                <p className="text-[56px] md:text-[72px] font-thin text-white/30 tracking-tighter">17</p>
+                <p className="text-[56px] md:text-[72px] font-thin text-white/30 tracking-tighter">21</p>
               </div>
             </div>
           </ScrollReveal>
@@ -279,13 +279,13 @@ export default function Home() {
           </ScrollReveal>
           <ScrollReveal delay={0.2}>
             <p className="text-lg text-white/40 mb-10 max-w-md mx-auto">
-              iPhone 17 Pro. Starting from ----
+              iPhone 21 Shirouto. Starting from ----
             </p>
           </ScrollReveal>
           <StaggerContainer stagger={0.1}>
             <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
               <a href="#" className="bg-blue-500 hover:bg-blue-400 text-white px-8 py-3.5 rounded-full text-[15px] font-semibold transition-all hover:scale-105 hover:shadow-[0_0_32px_rgba(59,130,246,0.3)]">
-                Buy iPhone 17 Pro
+                Buy iPhone 21 Shirouto
               </a>
               <a href="#" className="text-blue-400 hover:text-blue-300 px-8 py-3.5 text-[15px] font-semibold transition-colors">
                 Learn more &rarr;
@@ -299,7 +299,7 @@ export default function Home() {
       <footer className="border-t border-white/5 py-8">
         <div className="max-w-[1024px] mx-auto px-6">
           <p className="text-[11px] text-white/20 leading-relaxed">
-            iPhone 17 Pro is a concept design. Features and specifications are fictional and for demonstration purposes only. Apple, iPhone, and the Apple logo are trademarks of Apple Inc. This page was built to demonstrate scroll animation capabilities.
+            iPhone 21 Shirouto is a concept design. Features and specifications are fictional and for demonstration purposes only. Apple, iPhone, and the Apple logo are trademarks of Apple Inc. This page was built to demonstrate scroll animation capabilities.
           </p>
         </div>
       </footer>
