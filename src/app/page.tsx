@@ -74,39 +74,53 @@ export default function Home() {
       </nav>
 
       {/* ===== HERO ===== */}
-      <section className="min-h-[100vh] flex flex-col items-center justify-center pt-12 relative">
-        <div className="absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-black/50" />
-        <div className="relative z-10 text-center px-6">
+      <section className="min-h-[100vh] relative overflow-hidden">
+        {/* 背景にiPhoneをどーんと表示 */}
+        <div className="absolute inset-0 flex items-center justify-center">
+          <ScrollReveal duration={1.5} delay={0.3} direction="none">
+            <Image
+              src="/ai-website-cloner/images/hero-phone.png"
+              alt="iPhone 17 Pro"
+              width={1024}
+              height={1024}
+              className="w-[90vw] md:w-[70vw] lg:w-[55vw] max-w-[700px] h-auto drop-shadow-[0_0_120px_rgba(120,120,255,0.2)]"
+              priority
+            />
+          </ScrollReveal>
+        </div>
+        {/* グラデーションオーバーレイ */}
+        <div className="absolute inset-0 bg-gradient-to-b from-black via-black/40 to-black pointer-events-none" />
+        {/* テキスト（上部） */}
+        <div className="relative z-10 pt-32 md:pt-40 text-center px-6">
           <ScrollReveal duration={1} delay={0.2}>
             <p className="text-[13px] md:text-sm tracking-[0.2em] uppercase text-orange-400 font-medium mb-4">
               Introducing
             </p>
           </ScrollReveal>
           <ScrollReveal duration={1.2} delay={0.4}>
-            <h1 className="text-[56px] md:text-[80px] lg:text-[96px] font-bold tracking-[-0.04em] leading-[0.95] mb-6">
+            <h1 className="text-[64px] md:text-[96px] lg:text-[120px] font-bold tracking-[-0.04em] leading-[0.9] mb-6">
               iPhone 17 Pro
             </h1>
           </ScrollReveal>
           <ScrollReveal duration={1} delay={0.6}>
-            <p className="text-xl md:text-2xl font-medium text-white/60 tracking-tight mb-2">
+            <p className="text-xl md:text-3xl font-medium text-white/70 tracking-tight mb-2">
               The ultimate iPhone.
             </p>
           </ScrollReveal>
-          <ScrollReveal duration={1} delay={0.8}>
-            <p className="text-lg md:text-xl text-white/40 tracking-tight mb-12">
+        </div>
+        {/* テキスト（下部） */}
+        <div className="absolute bottom-16 md:bottom-24 left-0 right-0 z-10 text-center px-6">
+          <ScrollReveal duration={0.8} delay={0.8}>
+            <p className="text-lg md:text-xl text-white/50 tracking-tight mb-6">
               From ----
             </p>
-          </ScrollReveal>
-          <ScrollReveal duration={0.8} delay={1}>
-            <div className="w-[320px] md:w-[400px] lg:w-[480px] mx-auto">
-              <Image
-                src="/ai-website-cloner/images/hero-phone.png"
-                alt="iPhone 17 Pro"
-                width={1024}
-                height={1024}
-                className="w-full h-auto drop-shadow-[0_0_80px_rgba(120,120,255,0.15)]"
-                priority
-              />
+            <div className="flex items-center justify-center gap-4">
+              <a href="#buy" className="bg-blue-500 hover:bg-blue-400 text-white px-8 py-3 rounded-full text-[15px] font-semibold transition-all hover:scale-105">
+                Buy
+              </a>
+              <a href="#features" className="text-blue-400 hover:text-blue-300 text-[15px] font-semibold transition-colors">
+                Learn more &rarr;
+              </a>
             </div>
           </ScrollReveal>
         </div>
