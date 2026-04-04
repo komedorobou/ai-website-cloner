@@ -426,6 +426,16 @@ As builder agents complete their work:
 
 The extract → spec → dispatch → merge cycle continues until all sections are built.
 
+#### Typography Refinement Pass
+
+After all builders have merged and the build passes, run a TypographyRefiner pass:
+
+1. Implement fluid type scaling using `clamp()` for all heading sizes
+2. Fine-tune `letter-spacing` and `line-height` per heading level to match the target
+3. Apply `font-display: swap` to all custom fonts
+4. Add `text-wrap: balance` to headings and `text-wrap: pretty` to body text where appropriate
+5. Verify the build passes after typography changes: `npm run build`
+
 ## Phase 4: Page Assembly
 
 After all sections are built and merged, wire everything together in `src/app/page.tsx`:
