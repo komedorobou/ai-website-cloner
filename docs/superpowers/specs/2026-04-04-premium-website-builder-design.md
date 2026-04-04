@@ -175,7 +175,7 @@ import { useGSAP } from "@gsap/react";
 - `ParallaxLayer.tsx` — 深度のあるパララックス効果
 - `StickySection.tsx` — ピン留めセクション + スクロール連動コンテンツ
 - `StaggerContainer.tsx` — 子要素のスタガーアニメーション
-- `SmoothScroll.tsx` — Lenis provider コンポーネント
+- `SmoothScroll.tsx` — Lenis provider コンポーネント（`"use client"` 必須。`layout.tsx` に直接Lenisを書くのではなく、このコンポーネントをclient boundaryラッパーとして `layout.tsx` 内の `{children}` を囲む形で使用する。`layout.tsx` 自体はServer Componentのまま維持する）
 
 ### 5. AGENTS.md 更新
 
@@ -237,12 +237,12 @@ import { useGSAP } from "@gsap/react";
 **役割:** MotionArchitect の設計図に基づき、全コンポーネントにアニメーションを実装。
 **入力:** `MOTION_SPEC.md` + LayoutEngineer のコンポーネント
 **処理:**
-1. Lenis スムーススクロール初期化（`SmoothScroll.tsx` を `layout.tsx` に追加）
+1. Lenis スムーススクロール初期化（`SmoothScroll.tsx` を `layout.tsx` にclient boundaryラッパーとして追加。`layout.tsx` はServer Componentのまま、`<SmoothScroll>{children}</SmoothScroll>` で囲む）
 2. GSAP ScrollTrigger プラグイン登録
 3. 各コンポーネントに `ScrollReveal`, `ParallaxLayer`, `StickySection` 等を適用
 4. スタガーアニメーションの実装
 5. `prefers-reduced-motion` のフォールバック（アニメーション無効化）
-6. クリーンアップ（useGSAP の cleanup で ScrollTrigger.kill()）
+6. クリーンアップは `useGSAP` が自動で `context.revert()` を実行するため、手動の `ScrollTrigger.kill()` は不要（kill()は全インスタンスを破壊するため禁止）
 7. 全コンポーネントファイルの先頭に `"use client"` を追加（未追加の場合）
 **出力:** アニメーション適用済みコンポーネント群
 
