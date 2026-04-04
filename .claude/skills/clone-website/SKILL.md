@@ -474,21 +474,38 @@ After all sections are built and merged, wire everything together in `src/app/pa
 - Implement page-level behaviors: scroll snap, scroll-driven animations, dark-to-light transitions, intersection observers, smooth scroll (Lenis etc.)
 - Verify: `npm run build` passes clean
 
-## Phase 6: Visual QA Diff
+## Phase 6: QA & Polish
 
-After assembly, do NOT declare the clone complete. Take side-by-side comparison screenshots:
+### Step 1: Performance Optimization
 
-1. Open the original site and your clone side-by-side (or take screenshots at the same viewport widths)
-2. Compare section by section, top to bottom, at desktop (1440px)
-3. Compare again at mobile (390px)
-4. For each discrepancy found:
-   - Check the component spec file — was the value extracted correctly?
-   - If the spec was wrong: re-extract from browser MCP, update the spec, fix the component
-   - If the spec was right but the builder got it wrong: fix the component to match the spec
-5. Test all interactive behaviors: scroll through the page, click every button/tab, hover over interactive elements
-6. Verify smooth scroll feels right, header transitions work, tab switching works, animations play
+Before visual QA, optimize for performance:
+1. Check all `<img>` tags use `next/image` with proper `width`, `height`, and `sizes`
+2. Add `dynamic(() => import(...), { ssr: false })` to below-fold animation-heavy sections
+3. Remove unnecessary `will-change` properties (only keep on elements actively animating)
+4. Verify fonts use `font-display: swap` and appropriate subsets
+5. Run `npm run build` and check the build output for oversized chunks
+6. Target: Lighthouse Performance score 90+
 
-Only after this visual QA pass is the clone complete.
+### Step 2: Responsive QA (6 Breakpoints)
+
+For each of the 6 breakpoints (320px, 390px, 768px, 1024px, 1280px, 1440px):
+1. Take a full-page screenshot of the cloned site at this width
+2. Compare against the original site screenshot from Phase 1
+3. For each discrepancy, classify:
+   - **Critical (auto-fix):** Layout collapse, element overflow, element disappearance, obvious spacing/font mismatch
+   - **Minor (report only):** 1-2px alignment differences, subtle color variations
+4. Fix all critical issues immediately
+5. Document all findings in `docs/research/QA_REPORT.md`
+
+### Step 3: Pixel Polish
+
+Final refinement pass using `docs/research/QA_REPORT.md`:
+1. Fix all remaining minor QA issues
+2. Add micro-details: `backdrop-blur` on nav, `::selection` color, smooth focus rings
+3. Fine-tune animation easing curves by comparing side-by-side with the target
+4. Verify OGP meta tags, favicon, and page title
+5. Final `npm run build` — must pass clean
+6. Final `npx tsc --noEmit` — must pass with zero errors
 
 ## Pre-Dispatch Checklist
 
