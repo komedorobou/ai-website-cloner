@@ -16,39 +16,41 @@ const colors = [
 ];
 
 const specs = [
-  { label: "Display", value: '6.9"', desc: "Super Retina XDR" },
-  { label: "Chip", value: "A24", desc: "8-core GPU" },
-  { label: "Camera", value: "108MP", desc: "Quantum Lens" },
-  { label: "Battery", value: "36hr", desc: "All-day power" },
-  { label: "Storage", value: "2TB", desc: "Maximum capacity" },
+  { label: "Display", value: '8.4"', desc: "Neural Retina 16K" },
+  { label: "Chip", value: "A24 Ultra", desc: "2048-core Neural Engine" },
+  { label: "Camera", value: "1.2GP", desc: "1.2 Gigapixel Quantum Array" },
+  { label: "Battery", value: "∞", desc: "Nuclear Micro Cell" },
+  { label: "Storage", value: "128PB", desc: "Petabyte SSD" },
+  { label: "RAM", value: "8TB", desc: "Unified Memory" },
+  { label: "Speed", value: "900TF", desc: "900 Teraflops" },
 ];
 
 const features = [
   {
     tag: "Camera System",
-    title: "See beyond\nwhat eyes can see.",
-    desc: "The new 108MP Quantum Lens system captures light at the photon level. Computational photography meets quantum optics for images that redefine reality.",
+    title: "1.2 Gigapixel.\nReality is not\nenough.",
+    desc: "1,200,000,000ピクセル。量子光学レンズアレイが光子レベルで光を捕捉。月面のクレーターを地球から撮影可能。暗闇でも昼間のように。もはやカメラではなく、光の再構築エンジン。",
     gradient: "from-purple-500/20 via-transparent to-blue-500/10",
     image: "/ai-website-cloner/images/camera.png",
   },
   {
     tag: "Performance",
-    title: "A24.\nPower meets\nintelligence.",
-    desc: "Built on 2nm architecture, the A24 chip delivers 40% faster neural processing. On-device AI that understands context, not just commands.",
+    title: "A24 Ultra.\nスパコンを\nポケットに。",
+    desc: "900テラフロップス。世界最速のスーパーコンピュータ「富岳」の2倍の演算能力を0.3mmのチップに凝縮。2048コアのニューラルエンジンが、あなたの思考より先に答えを出す。",
     gradient: "from-orange-500/15 via-transparent to-red-500/10",
     image: "/ai-website-cloner/images/chip.png",
   },
   {
     tag: "Design",
-    title: "Titanium.\nRefined to\nperfection.",
-    desc: "Grade 5 titanium with a micro-blasted finish. The lightest, strongest iPhone ever. Ceramic Shield front. Surgical-grade precision in every edge.",
+    title: "Titanium.\n0.8mm.\n不可能を形に。",
+    desc: "NASAの火星探査機と同じGrade 23チタン合金。厚さ0.8mm。重さ98g。それでいて戦車の装甲より硬い。落としても、踏んでも、車で轢いても。壊れない、という設計思想。",
     gradient: "from-amber-500/10 via-transparent to-stone-500/10",
     image: "/ai-website-cloner/images/titanium.png",
   },
   {
     tag: "Battery",
-    title: "All day.\nAll night.\nStill going.",
-    desc: "A new stacked battery design with silicon-carbon cells delivers up to 36 hours of battery life. Fast charge to 50% in just 15 minutes with MagSafe.",
+    title: "充電という\n概念を\n終わらせた。",
+    desc: "核マイクロセルテクノロジー。半減期100年のベータ崩壊エネルギーを電力に変換。充電不要。永久稼働。あなたが生きている間、バッテリーは切れない。128ペタバイトSSDと8TBユニファイドメモリが、人類の全知識を手のひらに収める。",
     gradient: "from-green-500/15 via-transparent to-emerald-500/10",
     image: "/ai-website-cloner/images/battery.png",
   },
@@ -104,7 +106,7 @@ export default function Home() {
           </ScrollReveal>
           <ScrollReveal duration={1} delay={0.6}>
             <p className="text-xl md:text-3xl font-medium text-white/70 tracking-tight mb-2">
-              The ultimate iPhone.
+              Beyond everything. Beyond imagination.
             </p>
           </ScrollReveal>
         </div>
@@ -129,7 +131,7 @@ export default function Home() {
       {/* ===== SPECS STRIP ===== */}
       <section className="py-24 border-t border-white/5 bg-black">
         <div className="max-w-[1024px] mx-auto px-6">
-          <StaggerContainer stagger={0.1} className="grid grid-cols-2 md:grid-cols-5 gap-8 md:gap-4">
+          <StaggerContainer stagger={0.08} className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-7 gap-8 md:gap-4">
             {specs.map((spec) => (
               <div key={spec.label} className="text-center">
                 <p className="text-[10px] tracking-[0.2em] uppercase text-white/30 mb-2 font-medium">{spec.label}</p>
@@ -251,7 +253,7 @@ export default function Home() {
                 transform: `translateY(${Math.max(0, 30 - (stickyProgress - 0.3) * 100)}px)`,
               }}
             >
-              On-device AI that learns your patterns, anticipates your needs, and acts before you ask. Private by design. Powerful by nature.
+              汎用人工超知能を搭載。あなたが考える前に答えを出し、あなたが話す前に相手の感情を読み、あなたが動く前に最適な行動を実行する。もはやツールではない。パートナーだ。
             </p>
             <div className="mt-12 flex justify-center gap-8 flex-wrap"
               style={{
@@ -259,7 +261,7 @@ export default function Home() {
                 transform: `translateY(${Math.max(0, 30 - (stickyProgress - 0.5) * 100)}px)`,
               }}
             >
-              {["Smart Compose", "Visual Search", "Live Translate", "Photo AI"].map((item) => (
+              {["Quantum AI", "Mind Link", "Time Predict", "Reality Render", "DNA Scan", "Teleport Draft"].map((item) => (
                 <div key={item} className="px-5 py-2.5 rounded-full border border-white/10 bg-white/5 text-[13px] font-medium text-white/60">
                   {item}
                 </div>
