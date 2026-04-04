@@ -65,6 +65,64 @@ scripts/            # Asset download scripts
 - After editing `AGENTS.md`, run `bash scripts/sync-agent-rules.sh` to regenerate platform-specific instruction files.
 - After editing `.claude/skills/clone-website/SKILL.md`, run `node scripts/sync-skills.mjs` to regenerate the skill for all platforms.
 
+## Animation Coding Standards
+
+### Libraries
+- **Scroll-linked animations:** GSAP ScrollTrigger via `useGSAP()` from `@gsap/react`
+- **Viewport-triggered animations:** Motion v12 via `motion/react`
+- **Smooth scrolling:** Lenis via `useLenis()` hook
+- **Do NOT use:** framer-motion (incompatible with React 19), manual requestAnimationFrame loops for scroll handling
+
+### Rules
+1. **Every file using GSAP, Motion, or Lenis MUST have `"use client"` at the top.**
+2. **GSAP cleanup:** `useGSAP` automatically calls `context.revert()` on unmount. Do NOT manually call `ScrollTrigger.kill()` — it destroys all instances globally.
+3. **GSAP registration:** Call `gsap.registerPlugin(ScrollTrigger)` once at module scope in each file that uses ScrollTrigger.
+4. **Reduced motion:** All animated components MUST respect `prefers-reduced-motion`. Use `@media (prefers-reduced-motion: reduce)` in CSS or check `window.matchMedia('(prefers-reduced-motion: reduce)').matches` in JS.
+5. **Component modification:** When adding animations to existing components, use targeted edits (add wrappers, imports, props). Never rewrite the entire component.
+
+### Reusable Animation Components
+Located in `src/components/animation/`:
+- `ScrollReveal` — viewport-enter fade/slide (Motion v12)
+- `ParallaxLayer` — depth-based parallax (Motion v12)
+- `StickySection` — GSAP ScrollTrigger pin with progress callback
+- `StaggerContainer` — sequential child reveal (Motion v12)
+- `SmoothScroll` — Lenis provider (wraps children in layout.tsx)
+
+### Reusable Hooks
+Located in `src/hooks/`:
+- `useScrollProgress` — 0-1 scroll progress value
+- `useInViewReveal` — IntersectionObserver-based visibility
+- `useLenis` — Lenis initialization and lifecycle
+
+## Responsive Breakpoints
+
+Six breakpoints for extraction and QA:
+| Name | Width | Device |
+|------|-------|--------|
+| xs | 320px | iPhone SE |
+| sm | 390px | iPhone |
+| md | 768px | iPad portrait |
+| lg | 1024px | iPad landscape |
+| xl | 1280px | Small desktop |
+| 2xl | 1440px | Large desktop |
+
+All screenshots, responsive sweeps, and visual QA diffs use these 6 breakpoints.
+
+## Agent Roles (Extended Pipeline)
+
+| # | Agent | Phase | Role |
+|---|-------|-------|------|
+| 1 | SiteAnalyzer | 1 | Reconnaissance + 6-breakpoint screenshots |
+| 2 | DesignTokenExtractor | 2 | Design tokens (orchestrator-direct) |
+| 3 | MotionArchitect | 2 | Animation analysis → MOTION_SPEC.md (worktree) |
+| 4 | AssetCurator | 2 | Asset download + optimization (worktree) |
+| 5 | LayoutEngineer | 3 | Component build (existing builder dispatch) |
+| 6 | TypographyRefiner | 3 | Typography precision pass |
+| 7 | AnimationImplementer | 4 | Apply animations from MOTION_SPEC.md |
+| 8 | PerformanceOptimizer | 5 | Lighthouse 90+, code splitting, lazy loading |
+| 9 | ResponsiveQA | 5 | 6-breakpoint visual diff + auto-fix |
+| 10 | PixelPolisher | 5 | Final refinement pass |
+
 # Website Inspection Guide
 
 ## How to Reverse-Engineer Any Website
