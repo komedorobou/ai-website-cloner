@@ -122,7 +122,7 @@ Every builder agent must verify `npx tsc --noEmit` passes before finishing. Afte
 Navigate to the target URL with browser MCP.
 
 ### Screenshots
-- Take **full-page screenshots** at desktop (1440px) and mobile (390px) viewports
+- Take **full-page screenshots** at 6 breakpoints: 320px (iPhone SE), 390px (iPhone), 768px (iPad portrait), 1024px (iPad landscape), 1280px (small desktop), 1440px (large desktop)
 - Save to `docs/design-references/` with descriptive names
 - These are your master reference — builders will receive section-specific crops/screenshots later
 
@@ -157,13 +157,29 @@ This is a dedicated pass AFTER screenshots and BEFORE anything else. Its purpose
 - Buttons, cards, links, images, nav items
 - Record what changes: color, scale, shadow, underline, opacity
 
-**Responsive sweep:** Test at 3 viewport widths via browser MCP:
-- Desktop: 1440px
-- Tablet: 768px
-- Mobile: 390px
+**Responsive sweep:** Test at 6 viewport widths via browser MCP:
+- 320px (iPhone SE)
+- 390px (iPhone)
+- 768px (iPad portrait)
+- 1024px (iPad landscape)
+- 1280px (small desktop)
+- 1440px (large desktop)
 - At each width, note which sections change layout (column → stack, sidebar disappears, etc.) and at approximately which breakpoint the change occurs.
 
 Save all findings to `docs/research/BEHAVIORS.md`. This is your behavior bible — reference it when writing every component spec.
+
+#### Animation Parameter Extraction
+
+For every animated element detected during the interaction sweep, record detailed parameters using the template in `docs/research/ANIMATION_EXTRACTION.md`:
+- Trigger mechanism (scroll position, IntersectionObserver threshold, hover, click, time)
+- Start and end CSS states (exact computed values via getComputedStyle)
+- Transition duration, easing curve, delay
+- Whether the animation is scroll-scrubbed (progress linked to scroll position)
+- Whether the section is pinned during the animation
+- Stagger timing for grouped elements
+- The recommended implementation approach (GSAP ScrollTrigger, Motion v12, or CSS)
+
+Output these findings to `docs/research/MOTION_SPEC.md` alongside the existing `BEHAVIORS.md`.
 
 ### Page Topology
 Map out every distinct section of the page from top to bottom. Give each a working name. Document:
@@ -177,7 +193,9 @@ Save this as `docs/research/PAGE_TOPOLOGY.md` — it becomes your assembly bluep
 
 ## Phase 2: Foundation Build
 
-This is sequential. Do it yourself (not delegated to an agent) since it touches many files:
+This phase builds the foundation. The orchestrator handles design tokens and TypeScript types directly (these touch shared files). Two additional agents can be dispatched in parallel worktrees:
+
+**Orchestrator-direct (sequential):**
 
 1. **Update fonts** in `layout.tsx` to match the target site's actual fonts
 2. **Update globals.css** with the target's color tokens, spacing values, keyframe animations, utility classes, and any **global scroll behaviors** (Lenis, smooth scroll CSS, scroll-snap on body)
@@ -185,6 +203,12 @@ This is sequential. Do it yourself (not delegated to an agent) since it touches 
 4. **Extract SVG icons** — find all inline `<svg>` elements on the page, deduplicate them, and save as named React components in `src/components/icons.tsx`. Name them by visual function (e.g., `SearchIcon`, `ArrowRightIcon`, `LogoIcon`).
 5. **Download global assets** — write and run a Node.js script (`scripts/download-assets.mjs`) that downloads all images, videos, and other binary assets from the page to `public/`. Preserve meaningful directory structure.
 6. Verify: `npm run build` passes
+
+**Parallel worktree dispatch:**
+- **MotionArchitect agent:** Analyze all animations on the target site using browser MCP. Scroll through the entire page, observe every scroll-triggered, hover, and click animation. Record findings using the `docs/research/ANIMATION_EXTRACTION.md` template. Output: `docs/research/MOTION_SPEC.md`. This agent reads only — it does NOT modify any source files.
+- **AssetCurator agent:** Download all binary assets (images, videos, fonts, favicons). Output: `public/images/`, `public/videos/`, `public/seo/`, `scripts/download-assets.mjs`. This agent writes only to `public/` and `scripts/`.
+
+Wait for all three tracks to complete before proceeding to Phase 3.
 
 ### Asset Discovery Script Pattern
 
@@ -402,7 +426,45 @@ As builder agents complete their work:
 
 The extract → spec → dispatch → merge cycle continues until all sections are built.
 
-## Phase 4: Page Assembly
+#### Typography Refinement Pass
+
+After all builders have merged and the build passes, run a TypographyRefiner pass:
+
+1. Implement fluid type scaling using `clamp()` for all heading sizes
+2. Fine-tune `letter-spacing` and `line-height` per heading level to match the target
+3. Apply `font-display: swap` to all custom fonts
+4. Add `text-wrap: balance` to headings and `text-wrap: pretty` to body text where appropriate
+5. Verify the build passes after typography changes: `npm run build`
+
+## Phase 4: Animation Implementation
+
+Using the `docs/research/MOTION_SPEC.md` produced by MotionArchitect in Phase 2, apply animations to all built components.
+
+### Setup
+1. Verify `SmoothScroll` wrapper is in `layout.tsx` (it should already be wired from the template)
+2. Verify GSAP ScrollTrigger is available: `import gsap from "gsap"; import { ScrollTrigger } from "gsap/ScrollTrigger"; gsap.registerPlugin(ScrollTrigger);`
+
+### For Each Animated Element in MOTION_SPEC.md
+
+1. Read the element's spec entry (trigger, states, timing, implementation approach)
+2. Choose the appropriate animation primitive:
+   - **Viewport-enter fade/slide:** Wrap with `<ScrollReveal>` from `src/components/animation/scroll-reveal.tsx`
+   - **Staggered group:** Wrap children with `<StaggerContainer>` from `src/components/animation/stagger-container.tsx`
+   - **Parallax depth:** Wrap with `<ParallaxLayer>` from `src/components/animation/parallax-layer.tsx`
+   - **Pinned section with scroll-scrub:** Use `<StickySection>` from `src/components/animation/sticky-section.tsx`
+   - **Custom/complex:** Write inline `useGSAP` with the exact parameters from the spec
+3. Add `"use client"` to the component file if not already present
+4. Do NOT rewrite the entire component. Add animation wrappers around existing JSX, add imports, add refs where needed.
+
+### Reduced Motion Fallback
+Every animated component must work with `prefers-reduced-motion: reduce`. At minimum, set `opacity: 1` with no transform delay so content is immediately visible.
+
+### Verification
+1. Run `npm run build` — must pass
+2. Run `npx tsc --noEmit` — must pass
+3. Visually verify in browser: scroll through the page and confirm animations trigger correctly
+
+## Phase 5: Page Assembly
 
 After all sections are built and merged, wire everything together in `src/app/page.tsx`:
 
@@ -412,21 +474,38 @@ After all sections are built and merged, wire everything together in `src/app/pa
 - Implement page-level behaviors: scroll snap, scroll-driven animations, dark-to-light transitions, intersection observers, smooth scroll (Lenis etc.)
 - Verify: `npm run build` passes clean
 
-## Phase 5: Visual QA Diff
+## Phase 6: QA & Polish
 
-After assembly, do NOT declare the clone complete. Take side-by-side comparison screenshots:
+### Step 1: Performance Optimization
 
-1. Open the original site and your clone side-by-side (or take screenshots at the same viewport widths)
-2. Compare section by section, top to bottom, at desktop (1440px)
-3. Compare again at mobile (390px)
-4. For each discrepancy found:
-   - Check the component spec file — was the value extracted correctly?
-   - If the spec was wrong: re-extract from browser MCP, update the spec, fix the component
-   - If the spec was right but the builder got it wrong: fix the component to match the spec
-5. Test all interactive behaviors: scroll through the page, click every button/tab, hover over interactive elements
-6. Verify smooth scroll feels right, header transitions work, tab switching works, animations play
+Before visual QA, optimize for performance:
+1. Check all `<img>` tags use `next/image` with proper `width`, `height`, and `sizes`
+2. Add `dynamic(() => import(...), { ssr: false })` to below-fold animation-heavy sections
+3. Remove unnecessary `will-change` properties (only keep on elements actively animating)
+4. Verify fonts use `font-display: swap` and appropriate subsets
+5. Run `npm run build` and check the build output for oversized chunks
+6. Target: Lighthouse Performance score 90+
 
-Only after this visual QA pass is the clone complete.
+### Step 2: Responsive QA (6 Breakpoints)
+
+For each of the 6 breakpoints (320px, 390px, 768px, 1024px, 1280px, 1440px):
+1. Take a full-page screenshot of the cloned site at this width
+2. Compare against the original site screenshot from Phase 1
+3. For each discrepancy, classify:
+   - **Critical (auto-fix):** Layout collapse, element overflow, element disappearance, obvious spacing/font mismatch
+   - **Minor (report only):** 1-2px alignment differences, subtle color variations
+4. Fix all critical issues immediately
+5. Document all findings in `docs/research/QA_REPORT.md`
+
+### Step 3: Pixel Polish
+
+Final refinement pass using `docs/research/QA_REPORT.md`:
+1. Fix all remaining minor QA issues
+2. Add micro-details: `backdrop-blur` on nav, `::selection` color, smooth focus rings
+3. Fine-tune animation easing curves by comparing side-by-side with the target
+4. Verify OGP meta tags, favicon, and page title
+5. Final `npm run build` — must pass clean
+6. Final `npx tsc --noEmit` — must pass with zero errors
 
 ## Pre-Dispatch Checklist
 
