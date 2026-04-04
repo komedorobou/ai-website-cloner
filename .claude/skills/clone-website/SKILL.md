@@ -193,7 +193,9 @@ Save this as `docs/research/PAGE_TOPOLOGY.md` — it becomes your assembly bluep
 
 ## Phase 2: Foundation Build
 
-This is sequential. Do it yourself (not delegated to an agent) since it touches many files:
+This phase builds the foundation. The orchestrator handles design tokens and TypeScript types directly (these touch shared files). Two additional agents can be dispatched in parallel worktrees:
+
+**Orchestrator-direct (sequential):**
 
 1. **Update fonts** in `layout.tsx` to match the target site's actual fonts
 2. **Update globals.css** with the target's color tokens, spacing values, keyframe animations, utility classes, and any **global scroll behaviors** (Lenis, smooth scroll CSS, scroll-snap on body)
@@ -201,6 +203,12 @@ This is sequential. Do it yourself (not delegated to an agent) since it touches 
 4. **Extract SVG icons** — find all inline `<svg>` elements on the page, deduplicate them, and save as named React components in `src/components/icons.tsx`. Name them by visual function (e.g., `SearchIcon`, `ArrowRightIcon`, `LogoIcon`).
 5. **Download global assets** — write and run a Node.js script (`scripts/download-assets.mjs`) that downloads all images, videos, and other binary assets from the page to `public/`. Preserve meaningful directory structure.
 6. Verify: `npm run build` passes
+
+**Parallel worktree dispatch:**
+- **MotionArchitect agent:** Analyze all animations on the target site using browser MCP. Scroll through the entire page, observe every scroll-triggered, hover, and click animation. Record findings using the `docs/research/ANIMATION_EXTRACTION.md` template. Output: `docs/research/MOTION_SPEC.md`. This agent reads only — it does NOT modify any source files.
+- **AssetCurator agent:** Download all binary assets (images, videos, fonts, favicons). Output: `public/images/`, `public/videos/`, `public/seo/`, `scripts/download-assets.mjs`. This agent writes only to `public/` and `scripts/`.
+
+Wait for all three tracks to complete before proceeding to Phase 3.
 
 ### Asset Discovery Script Pattern
 
