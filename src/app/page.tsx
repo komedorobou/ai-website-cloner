@@ -5,6 +5,7 @@ import { ParallaxLayer } from "@/components/animation/parallax-layer";
 import { StaggerContainer } from "@/components/animation/stagger-container";
 import { StickySection } from "@/components/animation/sticky-section";
 import { useState } from "react";
+import Image from "next/image";
 
 const colors = [
   { name: "Midnight Titanium", hex: "#2C2C2E", bg: "bg-[#2C2C2E]" },
@@ -28,24 +29,28 @@ const features = [
     title: "See beyond\nwhat eyes can see.",
     desc: "The new 108MP Quantum Lens system captures light at the photon level. Computational photography meets quantum optics for images that redefine reality.",
     gradient: "from-purple-500/20 via-transparent to-blue-500/10",
+    image: "/ai-website-cloner/images/camera.png",
   },
   {
     tag: "Performance",
     title: "A20 Pro.\nPower meets\nintelligence.",
     desc: "Built on 2nm architecture, the A20 Pro chip delivers 40% faster neural processing. On-device AI that understands context, not just commands.",
     gradient: "from-orange-500/15 via-transparent to-red-500/10",
+    image: "/ai-website-cloner/images/chip.png",
   },
   {
     tag: "Design",
     title: "Titanium.\nRefined to\nperfection.",
     desc: "Grade 5 titanium with a micro-blasted finish. The lightest, strongest iPhone ever. Ceramic Shield front. Surgical-grade precision in every edge.",
     gradient: "from-amber-500/10 via-transparent to-stone-500/10",
+    image: "/ai-website-cloner/images/titanium.png",
   },
   {
     tag: "Battery",
     title: "All day.\nAll night.\nStill going.",
     desc: "A new stacked battery design with silicon-carbon cells delivers up to 36 hours of battery life. Fast charge to 50% in just 15 minutes with MagSafe.",
     gradient: "from-green-500/15 via-transparent to-emerald-500/10",
+    image: "/ai-website-cloner/images/battery.png",
   },
 ];
 
@@ -93,15 +98,15 @@ export default function Home() {
             </p>
           </ScrollReveal>
           <ScrollReveal duration={0.8} delay={1}>
-            <div className="w-[280px] md:w-[340px] h-[560px] md:h-[680px] mx-auto rounded-[48px] bg-gradient-to-b from-zinc-800 to-zinc-900 border border-white/10 shadow-[0_0_120px_rgba(120,120,255,0.08)] relative overflow-hidden">
-              <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[120px] h-[32px] bg-black rounded-b-2xl" />
-              <div className="absolute inset-4 rounded-[36px] bg-gradient-to-br from-zinc-950 via-zinc-900 to-zinc-950 flex items-center justify-center">
-                <div className="text-center">
-                  <p className="text-[72px] md:text-[96px] font-thin tracking-tighter text-white/20">17</p>
-                  <p className="text-[11px] tracking-[0.3em] uppercase text-white/15 mt-2">Pro</p>
-                </div>
-              </div>
-              <div className="absolute bottom-6 left-1/2 -translate-x-1/2 w-[100px] h-[4px] bg-white/20 rounded-full" />
+            <div className="w-[320px] md:w-[400px] lg:w-[480px] mx-auto">
+              <Image
+                src="/ai-website-cloner/images/hero-phone.png"
+                alt="iPhone 17 Pro"
+                width={1024}
+                height={1024}
+                className="w-full h-auto drop-shadow-[0_0_80px_rgba(120,120,255,0.15)]"
+                priority
+              />
             </div>
           </ScrollReveal>
         </div>
@@ -142,10 +147,14 @@ export default function Home() {
               <div className={i % 2 === 1 ? "md:col-start-1" : ""}>
                 <ParallaxLayer speed={0.15}>
                   <ScrollReveal delay={0.2}>
-                    <div className="aspect-square rounded-[32px] bg-gradient-to-br from-white/5 to-white/[0.02] border border-white/5 flex items-center justify-center">
-                      <div className="text-[120px] md:text-[160px] font-thin text-white/[0.04] tracking-tighter select-none">
-                        {i + 1}
-                      </div>
+                    <div className="rounded-[32px] overflow-hidden">
+                      <Image
+                        src={feature.image}
+                        alt={feature.tag}
+                        width={1024}
+                        height={1024}
+                        className="w-full h-auto"
+                      />
                     </div>
                   </ScrollReveal>
                 </ParallaxLayer>
