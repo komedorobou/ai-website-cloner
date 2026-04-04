@@ -436,7 +436,35 @@ After all builders have merged and the build passes, run a TypographyRefiner pas
 4. Add `text-wrap: balance` to headings and `text-wrap: pretty` to body text where appropriate
 5. Verify the build passes after typography changes: `npm run build`
 
-## Phase 4: Page Assembly
+## Phase 4: Animation Implementation
+
+Using the `docs/research/MOTION_SPEC.md` produced by MotionArchitect in Phase 2, apply animations to all built components.
+
+### Setup
+1. Verify `SmoothScroll` wrapper is in `layout.tsx` (it should already be wired from the template)
+2. Verify GSAP ScrollTrigger is available: `import gsap from "gsap"; import { ScrollTrigger } from "gsap/ScrollTrigger"; gsap.registerPlugin(ScrollTrigger);`
+
+### For Each Animated Element in MOTION_SPEC.md
+
+1. Read the element's spec entry (trigger, states, timing, implementation approach)
+2. Choose the appropriate animation primitive:
+   - **Viewport-enter fade/slide:** Wrap with `<ScrollReveal>` from `src/components/animation/scroll-reveal.tsx`
+   - **Staggered group:** Wrap children with `<StaggerContainer>` from `src/components/animation/stagger-container.tsx`
+   - **Parallax depth:** Wrap with `<ParallaxLayer>` from `src/components/animation/parallax-layer.tsx`
+   - **Pinned section with scroll-scrub:** Use `<StickySection>` from `src/components/animation/sticky-section.tsx`
+   - **Custom/complex:** Write inline `useGSAP` with the exact parameters from the spec
+3. Add `"use client"` to the component file if not already present
+4. Do NOT rewrite the entire component. Add animation wrappers around existing JSX, add imports, add refs where needed.
+
+### Reduced Motion Fallback
+Every animated component must work with `prefers-reduced-motion: reduce`. At minimum, set `opacity: 1` with no transform delay so content is immediately visible.
+
+### Verification
+1. Run `npm run build` — must pass
+2. Run `npx tsc --noEmit` — must pass
+3. Visually verify in browser: scroll through the page and confirm animations trigger correctly
+
+## Phase 5: Page Assembly
 
 After all sections are built and merged, wire everything together in `src/app/page.tsx`:
 
@@ -446,7 +474,7 @@ After all sections are built and merged, wire everything together in `src/app/pa
 - Implement page-level behaviors: scroll snap, scroll-driven animations, dark-to-light transitions, intersection observers, smooth scroll (Lenis etc.)
 - Verify: `npm run build` passes clean
 
-## Phase 5: Visual QA Diff
+## Phase 6: Visual QA Diff
 
 After assembly, do NOT declare the clone complete. Take side-by-side comparison screenshots:
 
