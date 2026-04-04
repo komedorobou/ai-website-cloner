@@ -122,7 +122,7 @@ Every builder agent must verify `npx tsc --noEmit` passes before finishing. Afte
 Navigate to the target URL with browser MCP.
 
 ### Screenshots
-- Take **full-page screenshots** at desktop (1440px) and mobile (390px) viewports
+- Take **full-page screenshots** at 6 breakpoints: 320px (iPhone SE), 390px (iPhone), 768px (iPad portrait), 1024px (iPad landscape), 1280px (small desktop), 1440px (large desktop)
 - Save to `docs/design-references/` with descriptive names
 - These are your master reference — builders will receive section-specific crops/screenshots later
 
@@ -157,13 +157,29 @@ This is a dedicated pass AFTER screenshots and BEFORE anything else. Its purpose
 - Buttons, cards, links, images, nav items
 - Record what changes: color, scale, shadow, underline, opacity
 
-**Responsive sweep:** Test at 3 viewport widths via browser MCP:
-- Desktop: 1440px
-- Tablet: 768px
-- Mobile: 390px
+**Responsive sweep:** Test at 6 viewport widths via browser MCP:
+- 320px (iPhone SE)
+- 390px (iPhone)
+- 768px (iPad portrait)
+- 1024px (iPad landscape)
+- 1280px (small desktop)
+- 1440px (large desktop)
 - At each width, note which sections change layout (column → stack, sidebar disappears, etc.) and at approximately which breakpoint the change occurs.
 
 Save all findings to `docs/research/BEHAVIORS.md`. This is your behavior bible — reference it when writing every component spec.
+
+#### Animation Parameter Extraction
+
+For every animated element detected during the interaction sweep, record detailed parameters using the template in `docs/research/ANIMATION_EXTRACTION.md`:
+- Trigger mechanism (scroll position, IntersectionObserver threshold, hover, click, time)
+- Start and end CSS states (exact computed values via getComputedStyle)
+- Transition duration, easing curve, delay
+- Whether the animation is scroll-scrubbed (progress linked to scroll position)
+- Whether the section is pinned during the animation
+- Stagger timing for grouped elements
+- The recommended implementation approach (GSAP ScrollTrigger, Motion v12, or CSS)
+
+Output these findings to `docs/research/MOTION_SPEC.md` alongside the existing `BEHAVIORS.md`.
 
 ### Page Topology
 Map out every distinct section of the page from top to bottom. Give each a working name. Document:
