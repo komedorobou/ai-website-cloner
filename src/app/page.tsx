@@ -25,16 +25,16 @@ export default function Home() {
   ];
 
   return (
-    <main className="bg-[#0A0A08] text-[#F5F0E8] overflow-hidden">
+    <main className="bg-[#FAF7F2] text-[#1A1A1A] overflow-hidden">
       {/* ===== NAV ===== */}
-      <nav className="fixed top-0 left-0 right-0 z-50">
-        <div className="max-w-[1400px] mx-auto px-6 md:px-12 h-20 flex items-center justify-between">
-          <span className={`text-[18px] tracking-[0.2em] uppercase text-[#F5F0E8] ${serif}`}>
+      <nav className="fixed top-0 left-0 right-0 z-50 bg-[#FAF7F2]/80 backdrop-blur-md border-b border-[#1A1A1A]/5">
+        <div className="max-w-[1400px] mx-auto px-6 md:px-12 h-16 md:h-20 flex items-center justify-between">
+          <span className={`text-[16px] md:text-[18px] tracking-[0.15em] ${serif}`}>
             和泉出版印刷
           </span>
           <div className="hidden md:flex items-center gap-10">
             {["Story", "Service", "Process", "Works", "Contact"].map((item) => (
-              <a key={item} href={`#${item.toLowerCase()}`} className="text-[11px] tracking-[0.15em] uppercase text-[#F5F0E8]/40 hover:text-[#F5F0E8] transition-colors duration-500">
+              <a key={item} href={`#${item.toLowerCase()}`} className="text-[11px] tracking-[0.15em] uppercase text-[#1A1A1A]/40 hover:text-[#1A1A1A] transition-colors duration-500">
                 {item}
               </a>
             ))}
@@ -42,7 +42,7 @@ export default function Home() {
         </div>
       </nav>
 
-      {/* ===== HERO — 全画面クラフトマン写真 ===== */}
+      {/* ===== HERO ===== */}
       <section className="h-[100svh] relative">
         <div className="absolute inset-0">
           <Image
@@ -54,9 +54,9 @@ export default function Home() {
             priority
           />
         </div>
-        <div className="absolute inset-0 bg-gradient-to-t from-[#0A0A08] via-[#0A0A08]/40 to-[#0A0A08]/60" />
+        <div className="absolute inset-0 bg-gradient-to-t from-[#0A0A08]/80 via-[#0A0A08]/20 to-[#0A0A08]/40" />
 
-        <div className="absolute inset-0 z-10 flex flex-col justify-end pb-20 md:pb-28 px-6 md:px-12">
+        <div className="absolute inset-0 z-10 flex flex-col justify-end pb-16 md:pb-28 px-6 md:px-12">
           <div className="max-w-[1400px] mx-auto w-full">
             <ScrollReveal duration={1.2} delay={0.2}>
               <p className="text-[11px] md:text-[12px] tracking-[0.4em] uppercase text-[#C8A87C] mb-6">
@@ -64,68 +64,58 @@ export default function Home() {
               </p>
             </ScrollReveal>
             <ScrollReveal duration={1.4} delay={0.4}>
-              <h1 className={`text-[48px] md:text-[80px] lg:text-[110px] leading-[1.05] tracking-[-0.02em] ${serif}`}>
+              <h1 className={`text-[44px] md:text-[72px] lg:text-[100px] leading-[1.1] tracking-[-0.02em] text-white ${serif}`}>
                 想いを、<br />
                 カタチに。
               </h1>
             </ScrollReveal>
             <ScrollReveal duration={1} delay={0.8}>
-              <p className={`text-[14px] md:text-[16px] text-[#F5F0E8]/40 mt-8 max-w-[480px] leading-[2] ${serif}`}>
+              <p className={`text-[14px] md:text-[16px] text-white/50 mt-6 md:mt-8 max-w-[480px] leading-[2] ${serif}`}>
                 半世紀にわたり、一冊一冊に心を込めて。<br />
                 デザインから製本・発送まで、すべてを一貫体制で。
               </p>
             </ScrollReveal>
           </div>
         </div>
-
-        {/* スクロールインジケーター */}
-        <div className="absolute bottom-8 left-1/2 -translate-x-1/2 z-10">
-          <ScrollReveal delay={1.2}>
-            <div className="flex flex-col items-center gap-2">
-              <span className="text-[9px] tracking-[0.3em] uppercase text-[#F5F0E8]/20">Scroll</span>
-              <div className="w-px h-8 bg-gradient-to-b from-[#F5F0E8]/30 to-transparent" />
-            </div>
-          </ScrollReveal>
-        </div>
       </section>
 
       {/* ===== STORY ===== */}
-      <section id="story" className="py-32 md:py-48">
+      <section id="story" className="py-24 md:py-40">
         <div className="max-w-[1400px] mx-auto px-6 md:px-12">
           <ScrollReveal>
-            <p className="text-[11px] tracking-[0.3em] uppercase text-[#C8A87C] mb-4">Our Story</p>
+            <p className="text-[11px] tracking-[0.3em] uppercase text-[#8B7355] mb-4">Our Story</p>
           </ScrollReveal>
-          <div className="grid md:grid-cols-2 gap-16 md:gap-24 items-start">
+          <div className="grid md:grid-cols-2 gap-12 md:gap-24 items-start">
             <ScrollReveal delay={0.1}>
-              <h2 className={`text-[36px] md:text-[52px] lg:text-[64px] leading-[1.15] tracking-[-0.01em] ${serif}`}>
+              <h2 className={`text-[32px] md:text-[48px] lg:text-[60px] leading-[1.2] tracking-[-0.01em] ${serif}`}>
                 50年の<br />
                 手仕事が、<br />
                 ここにある。
               </h2>
             </ScrollReveal>
-            <div className="flex flex-col gap-8">
+            <div className="flex flex-col gap-6">
               <ScrollReveal delay={0.2}>
-                <p className={`text-[15px] md:text-[16px] text-[#F5F0E8]/50 leading-[2.2] ${serif}`}>
+                <p className={`text-[14px] md:text-[15px] text-[#1A1A1A]/55 leading-[2.2] ${serif}`}>
                   1979年、大阪・和泉の地に誕生した和泉出版印刷。以来半世紀、私たちは「冊子づくり」ひとすじに歩んでまいりました。
                 </p>
               </ScrollReveal>
               <ScrollReveal delay={0.3}>
-                <p className={`text-[15px] md:text-[16px] text-[#F5F0E8]/50 leading-[2.2] ${serif}`}>
+                <p className={`text-[14px] md:text-[15px] text-[#1A1A1A]/55 leading-[2.2] ${serif}`}>
                   デザイン・編集から印刷・製本・発送まで、すべての工程を自社で一貫して行う体制。それは、お客様の「想い」を最も正確に「カタチ」にするための、私たちの答えです。
                 </p>
               </ScrollReveal>
               <ScrollReveal delay={0.4}>
-                <div className="flex gap-12 mt-4">
+                <div className="flex gap-10 md:gap-12 mt-4">
                   {[
                     { num: "50", unit: "年", label: "の実績" },
                     { num: "10,000", unit: "+", label: "冊の制作実績" },
                     { num: "6", unit: "", label: "つの一貫工程" },
                   ].map((stat) => (
                     <div key={stat.label}>
-                      <p className="text-[32px] md:text-[40px] font-light tracking-tight">
-                        {stat.num}<span className="text-[#C8A87C]">{stat.unit}</span>
+                      <p className={`text-[28px] md:text-[36px] font-light tracking-tight ${serif}`}>
+                        {stat.num}<span className="text-[#8B7355]">{stat.unit}</span>
                       </p>
-                      <p className={`text-[11px] text-[#F5F0E8]/30 mt-1 ${serif}`}>{stat.label}</p>
+                      <p className={`text-[11px] text-[#1A1A1A]/30 mt-1 ${serif}`}>{stat.label}</p>
                     </div>
                   ))}
                 </div>
@@ -135,7 +125,7 @@ export default function Home() {
         </div>
       </section>
 
-      {/* ===== フルブリード画像 — 印刷物フラットレイ ===== */}
+      {/* ===== フルブリード画像 ===== */}
       <section>
         <ParallaxLayer speed={0.15}>
           <Image
@@ -143,19 +133,19 @@ export default function Home() {
             alt="和泉出版印刷の制作実績"
             width={1024}
             height={1024}
-            className="w-full h-[60vh] md:h-[80vh] object-cover"
+            className="w-full h-[50vh] md:h-[75vh] object-cover"
           />
         </ParallaxLayer>
       </section>
 
       {/* ===== SERVICE ===== */}
-      <section id="service" className="py-32 md:py-48">
+      <section id="service" className="py-24 md:py-40">
         <div className="max-w-[1400px] mx-auto px-6 md:px-12">
           <ScrollReveal>
-            <p className="text-[11px] tracking-[0.3em] uppercase text-[#C8A87C] mb-4">Service</p>
+            <p className="text-[11px] tracking-[0.3em] uppercase text-[#8B7355] mb-4">Service</p>
           </ScrollReveal>
           <ScrollReveal delay={0.1}>
-            <h2 className={`text-[36px] md:text-[52px] lg:text-[64px] leading-[1.15] tracking-[-0.01em] mb-20 md:mb-28 ${serif}`}>
+            <h2 className={`text-[32px] md:text-[48px] lg:text-[60px] leading-[1.2] tracking-[-0.01em] mb-16 md:mb-24 ${serif}`}>
               すべてを、<br />
               ひとつの場所で。
             </h2>
@@ -171,11 +161,11 @@ export default function Home() {
               { icon: "✦", title: "Web制作", desc: "冊子と連動したWebサイト・デジタルカタログの制作にも対応しています。", tag: "WEB" },
             ].map((service, i) => (
               <ScrollReveal key={service.tag} delay={i * 0.06}>
-                <div className="bg-[#16140F] border border-[#F5F0E8]/5 rounded-[4px] p-8 md:p-10 group hover:bg-[#1E1C16] hover:border-[#C8A87C]/15 transition-all duration-500">
-                  <p className="text-[10px] tracking-[0.2em] uppercase text-[#C8A87C]/50 mb-6">{service.tag}</p>
-                  <p className="text-[#C8A87C] text-[20px] mb-4">{service.icon}</p>
-                  <h3 className={`text-[20px] md:text-[22px] mb-4 ${serif}`}>{service.title}</h3>
-                  <p className={`text-[13px] text-[#F5F0E8]/40 leading-[2] ${serif}`}>{service.desc}</p>
+                <div className="bg-white border border-[#1A1A1A]/5 rounded-[6px] p-7 md:p-9 group hover:border-[#8B7355]/30 hover:shadow-lg transition-all duration-500">
+                  <p className="text-[10px] tracking-[0.2em] uppercase text-[#8B7355]/60 mb-5">{service.tag}</p>
+                  <p className="text-[#8B7355] text-[18px] mb-3">{service.icon}</p>
+                  <h3 className={`text-[18px] md:text-[20px] mb-3 ${serif}`}>{service.title}</h3>
+                  <p className={`text-[13px] text-[#1A1A1A]/40 leading-[2] ${serif}`}>{service.desc}</p>
                 </div>
               </ScrollReveal>
             ))}
@@ -184,23 +174,23 @@ export default function Home() {
       </section>
 
       {/* ===== PROCESS — StickySection ===== */}
-      <section id="process" className="py-32 md:py-48">
-        <div className="max-w-[1400px] mx-auto px-6 md:px-12 mb-16">
+      <section id="process" className="py-24 md:py-40">
+        <div className="max-w-[1400px] mx-auto px-6 md:px-12 mb-12 md:mb-16">
           <ScrollReveal>
-            <p className="text-[11px] tracking-[0.3em] uppercase text-[#C8A87C] mb-4">Process</p>
+            <p className="text-[11px] tracking-[0.3em] uppercase text-[#8B7355] mb-4">Process</p>
           </ScrollReveal>
           <ScrollReveal delay={0.1}>
-            <h2 className={`text-[36px] md:text-[52px] lg:text-[64px] leading-[1.15] tracking-[-0.01em] ${serif}`}>
+            <h2 className={`text-[32px] md:text-[48px] lg:text-[60px] leading-[1.2] tracking-[-0.01em] ${serif}`}>
               一冊ができるまで。
             </h2>
           </ScrollReveal>
         </div>
 
-        <StickySection scrollLength={3} onProgress={handleProgress} className="min-h-screen flex items-center bg-[#0A0A08]">
+        <StickySection scrollLength={3} onProgress={handleProgress} className="min-h-screen flex items-center bg-[#FAF7F2]">
           <div className="max-w-[1400px] mx-auto px-6 md:px-12 w-full">
-            <div className="grid md:grid-cols-2 gap-16 items-center">
+            <div className="grid md:grid-cols-2 gap-12 md:gap-16 items-center">
               {/* 左: 印刷機画像 */}
-              <div className="relative aspect-square overflow-hidden rounded-[8px]">
+              <div className="relative aspect-[4/3] md:aspect-square overflow-hidden rounded-[8px]">
                 <Image
                   src="/ai-website-cloner/images/printing-press.png"
                   alt="印刷工程"
@@ -208,28 +198,28 @@ export default function Home() {
                   height={1024}
                   className="w-full h-full object-cover"
                 />
-                <div className="absolute inset-0 bg-[#0A0A08]/30" />
-                <div className="absolute bottom-6 left-6">
-                  <span className={`text-[80px] md:text-[120px] font-light text-[#F5F0E8]/10 leading-none ${serif}`}>
+                <div className="absolute inset-0 bg-black/20" />
+                <div className="absolute bottom-4 left-4 md:bottom-6 md:left-6">
+                  <span className={`text-[60px] md:text-[100px] font-light text-white/15 leading-none ${serif}`}>
                     {processSteps[processStep].num}
                   </span>
                 </div>
               </div>
 
               {/* 右: ステップ */}
-              <div className="flex flex-col gap-8">
+              <div className="flex flex-col gap-6 md:gap-8">
                 {processSteps.map((step, i) => (
                   <div
                     key={step.num}
-                    className={`border-l-[2px] pl-8 py-4 transition-all duration-700 ${
+                    className={`border-l-[2px] pl-6 md:pl-8 py-3 md:py-4 transition-all duration-700 ${
                       processStep === i
-                        ? "border-[#C8A87C] opacity-100"
-                        : "border-[#F5F0E8]/5 opacity-30"
+                        ? "border-[#8B7355] opacity-100"
+                        : "border-[#1A1A1A]/8 opacity-30"
                     }`}
                   >
-                    <p className="text-[10px] tracking-[0.3em] uppercase text-[#C8A87C] mb-2">{step.sub}</p>
-                    <h3 className={`text-[24px] md:text-[28px] mb-3 ${serif}`}>{step.title}</h3>
-                    <p className={`text-[13px] text-[#F5F0E8]/40 leading-[2] ${serif}`}>{step.desc}</p>
+                    <p className="text-[10px] tracking-[0.3em] uppercase text-[#8B7355] mb-2">{step.sub}</p>
+                    <h3 className={`text-[20px] md:text-[26px] mb-2 ${serif}`}>{step.title}</h3>
+                    <p className={`text-[13px] text-[#1A1A1A]/40 leading-[2] ${serif}`}>{step.desc}</p>
                   </div>
                 ))}
               </div>
@@ -238,20 +228,11 @@ export default function Home() {
         </StickySection>
       </section>
 
-      {/* ===== 紙テクスチャ中間セクション ===== */}
-      <section className="relative py-32 md:py-48">
-        <div className="absolute inset-0 opacity-20">
-          <Image
-            src="/ai-website-cloner/images/paper-texture.png"
-            alt=""
-            width={1024}
-            height={1024}
-            className="w-full h-full object-cover"
-          />
-        </div>
-        <div className="relative z-10 max-w-[800px] mx-auto px-6 md:px-12 text-center">
+      {/* ===== 引用セクション ===== */}
+      <section className="py-24 md:py-40 bg-[#F0EBE3]">
+        <div className="max-w-[800px] mx-auto px-6 md:px-12 text-center">
           <ScrollReveal>
-            <p className={`text-[24px] md:text-[36px] lg:text-[44px] leading-[1.8] tracking-[-0.01em] text-[#F5F0E8]/70 ${serif}`}>
+            <p className={`text-[20px] md:text-[30px] lg:text-[38px] leading-[2] tracking-[-0.01em] text-[#1A1A1A]/60 ${serif}`}>
               「紙」には、デジタルにはない<br />
               温もりがあります。<br />
               手に取り、ページをめくる。<br />
@@ -263,18 +244,18 @@ export default function Home() {
       </section>
 
       {/* ===== WORKS ===== */}
-      <section id="works" className="py-32 md:py-48">
+      <section id="works" className="py-24 md:py-40">
         <div className="max-w-[1400px] mx-auto px-6 md:px-12">
           <ScrollReveal>
-            <p className="text-[11px] tracking-[0.3em] uppercase text-[#C8A87C] mb-4">Works</p>
+            <p className="text-[11px] tracking-[0.3em] uppercase text-[#8B7355] mb-4">Works</p>
           </ScrollReveal>
           <ScrollReveal delay={0.1}>
-            <h2 className={`text-[36px] md:text-[52px] lg:text-[64px] leading-[1.15] tracking-[-0.01em] mb-20 ${serif}`}>
+            <h2 className={`text-[32px] md:text-[48px] lg:text-[60px] leading-[1.2] tracking-[-0.01em] mb-16 md:mb-20 ${serif}`}>
               制作実績
             </h2>
           </ScrollReveal>
 
-          <div className="grid md:grid-cols-2 gap-6">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8">
             {[
               { img: "/ai-website-cloner/images/works-flatlay.png", title: "記念誌・社史", desc: "創業50周年記念誌、学校記念誌など、歴史を未来へ繋ぐ一冊を。" },
               { img: "/ai-website-cloner/images/showroom.png", title: "カタログ・パンフレット", desc: "商品の魅力を最大限に伝える、高品質なカタログ制作。" },
@@ -283,7 +264,7 @@ export default function Home() {
             ].map((work, i) => (
               <ScrollReveal key={work.title} delay={i * 0.1}>
                 <div className="group cursor-pointer">
-                  <div className="aspect-[16/10] overflow-hidden rounded-[4px] mb-5">
+                  <div className="aspect-[16/10] overflow-hidden rounded-[6px] mb-5">
                     <Image
                       src={work.img}
                       alt={work.title}
@@ -293,7 +274,7 @@ export default function Home() {
                     />
                   </div>
                   <h3 className={`text-[18px] md:text-[20px] mb-2 ${serif}`}>{work.title}</h3>
-                  <p className={`text-[13px] text-[#F5F0E8]/35 leading-[1.8] ${serif}`}>{work.desc}</p>
+                  <p className={`text-[13px] text-[#1A1A1A]/40 leading-[1.8] ${serif}`}>{work.desc}</p>
                 </div>
               </ScrollReveal>
             ))}
@@ -302,18 +283,18 @@ export default function Home() {
       </section>
 
       {/* ===== STRENGTHS ===== */}
-      <section className="py-32 md:py-48 bg-[#12120F]">
+      <section className="py-24 md:py-40 bg-[#1A1A1A]">
         <div className="max-w-[1400px] mx-auto px-6 md:px-12">
           <ScrollReveal>
             <p className="text-[11px] tracking-[0.3em] uppercase text-[#C8A87C] mb-4">Strengths</p>
           </ScrollReveal>
           <ScrollReveal delay={0.1}>
-            <h2 className={`text-[36px] md:text-[52px] lg:text-[64px] leading-[1.15] tracking-[-0.01em] mb-20 md:mb-28 ${serif}`}>
+            <h2 className={`text-[32px] md:text-[48px] lg:text-[60px] leading-[1.2] tracking-[-0.01em] mb-16 md:mb-24 text-[#FAF7F2] ${serif}`}>
               選ばれる理由。
             </h2>
           </ScrollReveal>
 
-          <div className="grid md:grid-cols-3 gap-16 md:gap-12">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-12 md:gap-10">
             <StaggerContainer stagger={0.1}>
               {[
                 { num: "01", title: "ワンストップ\n一貫体制", desc: "デザインから発送まで、外注なしの完全一貫体制。工程間のロスを排除し、品質とスピードを両立。お客様の窓口はひとつだけ。" },
@@ -321,9 +302,9 @@ export default function Home() {
                 { num: "03", title: "半世紀の\n信頼と実績", desc: "1979年の創業以来、官公庁・教育機関・企業まで幅広いお客様の冊子を手がけてきました。10,000冊を超える制作実績。" },
               ].map((item) => (
                 <div key={item.num}>
-                  <span className="text-[48px] md:text-[56px] font-extralight text-[#C8A87C]/20">{item.num}</span>
-                  <h3 className={`text-[22px] md:text-[26px] mt-4 mb-6 leading-[1.5] whitespace-pre-line ${serif}`}>{item.title}</h3>
-                  <p className={`text-[13px] text-[#F5F0E8]/35 leading-[2.2] ${serif}`}>{item.desc}</p>
+                  <span className="text-[44px] md:text-[52px] font-extralight text-[#C8A87C]/25">{item.num}</span>
+                  <h3 className={`text-[20px] md:text-[24px] mt-3 mb-5 leading-[1.6] whitespace-pre-line text-[#FAF7F2] ${serif}`}>{item.title}</h3>
+                  <p className={`text-[13px] text-[#FAF7F2]/40 leading-[2.2] ${serif}`}>{item.desc}</p>
                 </div>
               ))}
             </StaggerContainer>
@@ -339,19 +320,19 @@ export default function Home() {
             alt="和泉出版印刷ショールーム"
             width={1024}
             height={1024}
-            className="w-full h-[50vh] md:h-[70vh] object-cover"
+            className="w-full h-[45vh] md:h-[65vh] object-cover"
           />
         </ParallaxLayer>
       </section>
 
       {/* ===== COMPANY ===== */}
-      <section className="py-32 md:py-48">
+      <section className="py-24 md:py-40">
         <div className="max-w-[1400px] mx-auto px-6 md:px-12">
           <ScrollReveal>
-            <p className="text-[11px] tracking-[0.3em] uppercase text-[#C8A87C] mb-4">Company</p>
+            <p className="text-[11px] tracking-[0.3em] uppercase text-[#8B7355] mb-4">Company</p>
           </ScrollReveal>
           <ScrollReveal delay={0.1}>
-            <h2 className={`text-[36px] md:text-[52px] leading-[1.15] tracking-[-0.01em] mb-16 ${serif}`}>
+            <h2 className={`text-[32px] md:text-[48px] leading-[1.2] tracking-[-0.01em] mb-12 md:mb-16 ${serif}`}>
               会社概要
             </h2>
           </ScrollReveal>
@@ -365,9 +346,9 @@ export default function Home() {
                 { label: "事業内容", value: "冊子の企画・デザイン・編集・印刷・製本・発送" },
                 { label: "対応エリア", value: "全国対応（発送代行含む）" },
               ].map((row) => (
-                <div key={row.label} className="flex flex-col md:flex-row md:items-baseline py-5 border-b border-[#F5F0E8]/5">
-                  <span className={`text-[11px] tracking-[0.15em] uppercase text-[#F5F0E8]/25 md:w-[200px] mb-1 md:mb-0 ${serif}`}>{row.label}</span>
-                  <span className={`text-[15px] text-[#F5F0E8]/70 ${serif}`}>{row.value}</span>
+                <div key={row.label} className="flex flex-col md:flex-row md:items-baseline py-4 md:py-5 border-b border-[#1A1A1A]/8">
+                  <span className={`text-[11px] tracking-[0.15em] uppercase text-[#1A1A1A]/30 md:w-[200px] mb-1 md:mb-0`}>{row.label}</span>
+                  <span className={`text-[15px] text-[#1A1A1A]/70 ${serif}`}>{row.value}</span>
                 </div>
               ))}
             </StaggerContainer>
@@ -376,28 +357,28 @@ export default function Home() {
       </section>
 
       {/* ===== CTA / CONTACT ===== */}
-      <section id="contact" className="py-32 md:py-48 bg-[#C8A87C]">
+      <section id="contact" className="py-24 md:py-40 bg-[#8B7355]">
         <div className="max-w-[1400px] mx-auto px-6 md:px-12 text-center">
           <ScrollReveal>
-            <p className="text-[11px] tracking-[0.3em] uppercase text-[#0A0A08]/40 mb-6">Contact</p>
+            <p className="text-[11px] tracking-[0.3em] uppercase text-white/50 mb-6">Contact</p>
           </ScrollReveal>
           <ScrollReveal delay={0.1}>
-            <h2 className={`text-[36px] md:text-[52px] lg:text-[64px] leading-[1.15] tracking-[-0.01em] text-[#0A0A08] mb-8 ${serif}`}>
+            <h2 className={`text-[32px] md:text-[48px] lg:text-[60px] leading-[1.2] tracking-[-0.01em] text-white mb-6 md:mb-8 ${serif}`}>
               まずは、ご相談ください。
             </h2>
           </ScrollReveal>
           <ScrollReveal delay={0.2}>
-            <p className={`text-[15px] text-[#0A0A08]/50 leading-[2] mb-12 ${serif}`}>
+            <p className={`text-[14px] md:text-[15px] text-white/60 leading-[2] mb-10 md:mb-12 ${serif}`}>
               冊子づくりのこと、なんでもお気軽にお問い合わせください。<br />
               お見積り・ご相談は無料です。
             </p>
           </ScrollReveal>
           <ScrollReveal delay={0.3}>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <a href="tel:0725-00-0000" className={`inline-block text-[14px] tracking-[0.1em] border-2 border-[#0A0A08] text-[#0A0A08] px-10 py-4 hover:bg-[#0A0A08] hover:text-[#C8A87C] transition-all duration-500 ${serif}`}>
+              <a href="tel:0725-00-0000" className={`inline-block text-[14px] tracking-[0.1em] border-2 border-white text-white px-10 py-4 hover:bg-white hover:text-[#8B7355] transition-all duration-500 ${serif}`}>
                 0725-00-0000
               </a>
-              <a href="#" className={`inline-block text-[14px] tracking-[0.1em] bg-[#0A0A08] text-[#C8A87C] px-10 py-4 hover:bg-[#1A1A18] transition-all duration-500 ${serif}`}>
+              <a href="#" className={`inline-block text-[14px] tracking-[0.1em] bg-white text-[#8B7355] px-10 py-4 hover:bg-[#FAF7F2] transition-all duration-500 ${serif}`}>
                 お問い合わせフォーム
               </a>
             </div>
@@ -406,20 +387,20 @@ export default function Home() {
       </section>
 
       {/* ===== FOOTER ===== */}
-      <footer className="py-16 px-6 md:px-12 border-t border-[#F5F0E8]/5">
+      <footer className="py-12 md:py-16 px-6 md:px-12 bg-[#1A1A1A]">
         <div className="max-w-[1400px] mx-auto flex flex-col md:flex-row items-center justify-between gap-6">
           <div>
-            <p className={`text-[16px] tracking-[0.15em] uppercase ${serif}`}>和泉出版印刷</p>
-            <p className={`text-[11px] text-[#F5F0E8]/20 mt-2 ${serif}`}>Izumi Publishing & Printing Co., Ltd.</p>
+            <p className={`text-[15px] tracking-[0.15em] text-[#FAF7F2] ${serif}`}>和泉出版印刷</p>
+            <p className={`text-[10px] text-[#FAF7F2]/25 mt-1`}>Izumi Publishing & Printing Co., Ltd.</p>
           </div>
-          <div className="flex gap-8">
+          <div className="flex gap-6 md:gap-8">
             {["Story", "Service", "Process", "Works", "Contact"].map((item) => (
-              <a key={item} href={`#${item.toLowerCase()}`} className="text-[10px] tracking-[0.1em] text-[#F5F0E8]/20 hover:text-[#F5F0E8]/50 transition-colors uppercase">
+              <a key={item} href={`#${item.toLowerCase()}`} className="text-[10px] tracking-[0.1em] text-[#FAF7F2]/25 hover:text-[#FAF7F2]/50 transition-colors uppercase">
                 {item}
               </a>
             ))}
           </div>
-          <p className={`text-[10px] text-[#F5F0E8]/15`}>&copy; 2026 Izumi Publishing & Printing</p>
+          <p className="text-[10px] text-[#FAF7F2]/15">&copy; 2026 Izumi Publishing & Printing</p>
         </div>
       </footer>
     </main>
