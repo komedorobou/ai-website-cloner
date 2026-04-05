@@ -7,316 +7,368 @@ import { StickySection } from "@/components/animation/sticky-section";
 import { useState } from "react";
 import Image from "next/image";
 
-const colors = [
-  { name: "Midnight Titanium", hex: "#2C2C2E", bg: "bg-[#2C2C2E]" },
-  { name: "Natural Titanium", hex: "#B5B0A8", bg: "bg-[#B5B0A8]" },
-  { name: "Desert Titanium", hex: "#C4A882", bg: "bg-[#C4A882]" },
-  { name: "Ocean Titanium", hex: "#4A6B8A", bg: "bg-[#4A6B8A]" },
-  { name: "Rose Titanium", hex: "#C4898A", bg: "bg-[#C4898A]" },
+const drinks = [
+  {
+    name: "抹茶ラテ",
+    nameKo: "말차 라떼",
+    desc: "京都産の石臼挽き抹茶を贅沢に使用。ほんのり甘いオーツミルクと合わせた、海を眺めながら味わう特別な一杯。",
+    price: "¥680",
+  },
+  {
+    name: "ストロベリースムージー",
+    nameKo: "딸기 스무디",
+    desc: "朝摘みいちごをたっぷり使った、ピンクが映えるフォトジェニックスムージー。",
+    price: "¥750",
+  },
+  {
+    name: "アイスアメリカーノ",
+    nameKo: "아이스 아메리카노",
+    desc: "自家焙煎のシングルオリジンを氷でキリッと。韓国カフェの定番を、潮風とともに。",
+    price: "¥550",
+  },
 ];
 
-const specs = [
-  { label: "Display", value: '8.4"', desc: "Neural Retina 16K" },
-  { label: "Chip", value: "A24 Ultra", desc: "2048-core Neural Engine" },
-  { label: "Camera", value: "1.2GP", desc: "1.2 Gigapixel Quantum Array" },
-  { label: "Battery", value: "∞", desc: "Nuclear Micro Cell" },
-  { label: "Storage", value: "128PB", desc: "Petabyte SSD" },
-  { label: "RAM", value: "8TB", desc: "Unified Memory" },
-  { label: "Speed", value: "900TF", desc: "900 Teraflops" },
+const hours = [
+  { day: "月 - 金", time: "10:00 - 20:00" },
+  { day: "土 - 日", time: "9:00 - 21:00" },
+  { day: "祝日", time: "10:00 - 19:00" },
 ];
 
-const features = [
-  {
-    tag: "Camera System",
-    title: "1.2 Gigapixel.\nReality is not\nenough.",
-    desc: "1,200,000,000ピクセル。量子光学レンズアレイが光子レベルで光を捕捉。月面のクレーターを地球から撮影可能。暗闇でも昼間のように。もはやカメラではなく、光の再構築エンジン。",
-    gradient: "from-purple-500/20 via-transparent to-blue-500/10",
-    image: "/ai-website-cloner/images/camera.png",
-  },
-  {
-    tag: "Performance",
-    title: "A24 Ultra.\nスパコンを\nポケットに。",
-    desc: "900テラフロップス。世界最速のスーパーコンピュータ「富岳」の2倍の演算能力を0.3mmのチップに凝縮。2048コアのニューラルエンジンが、あなたの思考より先に答えを出す。",
-    gradient: "from-orange-500/15 via-transparent to-red-500/10",
-    image: "/ai-website-cloner/images/chip.png",
-  },
-  {
-    tag: "Battery",
-    title: "充電という\n概念を\n終わらせた。",
-    desc: "核マイクロセルテクノロジー。半減期100年のベータ崩壊エネルギーを電力に変換。充電不要。永久稼働。あなたが生きている間、バッテリーは切れない。128ペタバイトSSDと8TBユニファイドメモリが、人類の全知識を手のひらに収める。",
-    gradient: "from-green-500/15 via-transparent to-emerald-500/10",
-    image: "/ai-website-cloner/images/battery.png",
-  },
-  {
-    tag: "Security",
-    title: "DNA Lock.\nあなた以外、\n触れない。",
-    desc: "指紋じゃない。DNAで認証。触れた瞬間0.001秒で分子レベルスキャン。他人が触ると画面が消える。クローンですら突破不可能。あなたのDNAが、最後の鍵になる。",
-    gradient: "from-cyan-500/20 via-transparent to-blue-500/10",
-    image: "/ai-website-cloner/images/dna.png",
-  },
-  {
-    tag: "Sound",
-    title: "Telepathy Audio.\nイヤホンという\n概念を消した。",
-    desc: "本体から直接頭蓋骨に音を伝送。イヤホン不要。スピーカー不要。電車で使っても隣の人には聞こえない。あなたの脳だけに届く音。音楽は、思考になった。",
-    gradient: "from-pink-500/15 via-transparent to-purple-500/10",
-    image: "/ai-website-cloner/images/telepathy.png",
-  },
-  {
-    tag: "Connectivity",
-    title: "Quantum Link.\n光より速い。",
-    desc: "量子もつれ通信。遅延ゼロ。地球の裏側でも火星でも同じ速度。Wi-Fiも5Gもいらない。電波圏外という概念が消滅した。宇宙のどこにいても、つながる。",
-    gradient: "from-amber-500/15 via-transparent to-yellow-500/10",
-    image: "/ai-website-cloner/images/quantum.png",
-  },
-];
+const serif = "font-[family-name:var(--font-noto-serif-jp)]";
 
 export default function Home() {
-  const [selectedColor, setSelectedColor] = useState(0);
   const [stickyProgress, setStickyProgress] = useState(0);
 
   return (
-    <main className="bg-black text-white overflow-hidden">
+    <main className="bg-[#F7F3ED] text-[#3D3425] overflow-hidden">
       {/* ===== NAV ===== */}
-      <nav className="fixed top-0 left-0 right-0 z-50 bg-black/80 backdrop-blur-xl border-b border-white/5">
-        <div className="max-w-[1024px] mx-auto px-6 h-12 flex items-center justify-between">
-          <svg width="18" height="22" viewBox="0 0 18 22" fill="white" className="opacity-80">
-            <path d="M14.94 5.19A4.38 4.38 0 0 0 12 3.7a4.53 4.53 0 0 0-3 1.49A4.38 4.38 0 0 0 12 0a4.53 4.53 0 0 0 2.94 5.19ZM12 7.09c-2.25 0-3.44 1.5-5.12 1.5C5.31 8.59 3.56 7 1.5 7 .35 8.81 0 11 0 13.5c0 4.41 3 8.5 5.31 8.5 1.5 0 2.44-1 4.19-1s2.44 1 4.19 1C16 22 18 17.91 18 13.5c0-2.5-.35-4.69-1.5-6.5-1.31.09-2.81 1.59-4.5.09Z"/>
-          </svg>
-          <span className="text-[13px] font-medium tracking-tight opacity-80">iPhone 21 Shirouto</span>
-          <a href="#buy" className="text-[13px] bg-blue-500 hover:bg-blue-400 text-white px-4 py-1.5 rounded-full transition-colors font-medium">
-            Buy
+      <nav className="fixed top-0 left-0 right-0 z-50 bg-[#F7F3ED]/85 backdrop-blur-xl border-b border-[#3D3425]/5">
+        <div className="max-w-[1024px] mx-auto px-6 h-14 flex items-center justify-between">
+          <span className={`text-[17px] font-bold tracking-[0.06em] ${serif}`}>
+            하루<span className="text-[#8EAEBF] ml-1">海</span>
+          </span>
+          <div className="hidden md:flex items-center gap-8">
+            <a href="#concept" className="text-[13px] text-[#3D3425]/40 hover:text-[#3D3425] transition-colors">Concept</a>
+            <a href="#menu" className="text-[13px] text-[#3D3425]/40 hover:text-[#3D3425] transition-colors">Menu</a>
+            <a href="#gallery" className="text-[13px] text-[#3D3425]/40 hover:text-[#3D3425] transition-colors">Gallery</a>
+            <a href="#access" className="text-[13px] text-[#3D3425]/40 hover:text-[#3D3425] transition-colors">Access</a>
+          </div>
+          <a href="#access" className="text-[12px] bg-[#3D3425] hover:bg-[#5A4D3A] text-[#F7F3ED] px-5 py-1.5 rounded-full transition-colors font-medium tracking-wider">
+            VISIT
           </a>
         </div>
       </nav>
 
       {/* ===== HERO ===== */}
       <section className="min-h-[100vh] relative overflow-hidden">
-        {/* 背景にiPhoneをどーんと表示 */}
-        <div className="absolute inset-0 flex items-center justify-center">
-          <ScrollReveal duration={1.5} delay={0.3} direction="none">
+        <div className="absolute inset-0">
+          <ScrollReveal duration={1.5} direction="none" className="w-full h-full">
             <Image
-              src="/ai-website-cloner/images/hero-phone.png"
-              alt="iPhone 21 Shirouto"
+              src="/ai-website-cloner/images/hero-cafe.png"
+              alt="海の見える韓国風カフェ"
               width={1024}
               height={1024}
-              className="w-[90vw] md:w-[70vw] lg:w-[55vw] max-w-[700px] h-auto drop-shadow-[0_0_120px_rgba(120,120,255,0.2)]"
+              className="w-full h-full object-cover scale-105"
               priority
             />
           </ScrollReveal>
         </div>
-        {/* グラデーションオーバーレイ */}
-        <div className="absolute inset-0 bg-gradient-to-b from-black via-black/40 to-black pointer-events-none" />
-        {/* テキスト（上部） */}
-        <div className="relative z-10 pt-32 md:pt-40 text-center px-6">
-          <ScrollReveal duration={1} delay={0.2}>
-            <p className="text-[13px] md:text-sm tracking-[0.2em] uppercase text-orange-400 font-medium mb-4">
-              Introducing
+        <div className="absolute inset-0 bg-gradient-to-b from-[#3D3425]/30 via-transparent to-[#F7F3ED]" />
+        <div className="relative z-10 pt-44 md:pt-56 text-center px-6">
+          <ScrollReveal duration={1} delay={0.3}>
+            <p className={`text-[11px] md:text-[13px] tracking-[0.5em] uppercase text-[#F7F3ED]/80 font-light mb-6`}>
+              Ocean View Korean Café
             </p>
           </ScrollReveal>
-          <ScrollReveal duration={1.2} delay={0.4}>
-            <h1 className="text-[64px] md:text-[96px] lg:text-[120px] font-bold tracking-[-0.04em] leading-[0.9] mb-6">
-              iPhone 21 Shirouto
+          <ScrollReveal duration={1.2} delay={0.5}>
+            <h1 className={`text-[72px] md:text-[104px] lg:text-[130px] font-light tracking-[0.04em] leading-[0.9] mb-6 text-[#F7F3ED] ${serif}`}>
+              하루海
             </h1>
           </ScrollReveal>
-          <ScrollReveal duration={1} delay={0.6}>
-            <p className="text-xl md:text-3xl font-medium text-white/70 tracking-tight mb-2">
-              Beyond everything. Beyond imagination.
+          <ScrollReveal duration={1} delay={0.7}>
+            <p className={`text-[15px] md:text-[18px] font-light text-[#F7F3ED]/70 tracking-[0.15em] ${serif}`}>
+              波の音と、一杯のコーヒーと。
             </p>
           </ScrollReveal>
         </div>
-        {/* テキスト（下部） */}
-        <div className="absolute bottom-16 md:bottom-24 left-0 right-0 z-10 text-center px-6">
-          <ScrollReveal duration={0.8} delay={0.8}>
-            <p className="text-lg md:text-xl text-white/50 tracking-tight mb-6">
-              From ----
-            </p>
-            <div className="flex items-center justify-center gap-4">
-              <a href="#buy" className="bg-blue-500 hover:bg-blue-400 text-white px-8 py-3 rounded-full text-[15px] font-semibold transition-all hover:scale-105">
-                Buy
-              </a>
-              <a href="#features" className="text-blue-400 hover:text-blue-300 text-[15px] font-semibold transition-colors">
-                Learn more &rarr;
-              </a>
-            </div>
+        <div className="absolute bottom-12 md:bottom-20 left-0 right-0 z-10 text-center">
+          <ScrollReveal duration={0.8} delay={1}>
+            <div className="w-px h-20 bg-gradient-to-b from-transparent to-[#3D3425]/15 mx-auto" />
           </ScrollReveal>
         </div>
       </section>
 
-      {/* ===== SPECS STRIP ===== */}
-      <section className="py-24 border-t border-white/5 bg-black">
-        <div className="max-w-[1024px] mx-auto px-6">
-          <StaggerContainer stagger={0.08} className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-7 gap-8 md:gap-4">
-            {specs.map((spec) => (
-              <div key={spec.label} className="text-center">
-                <p className="text-[10px] tracking-[0.2em] uppercase text-white/30 mb-2 font-medium">{spec.label}</p>
-                <p className="text-3xl md:text-4xl font-bold tracking-tight">{spec.value}</p>
-                <p className="text-[13px] text-white/40 mt-1">{spec.desc}</p>
+      {/* ===== CONCEPT ===== */}
+      <section id="concept" className="py-32 md:py-44">
+        <div className="max-w-[900px] mx-auto px-6">
+          <div className="grid md:grid-cols-[1fr_1.2fr] gap-12 md:gap-20 items-center">
+            <div>
+              <ScrollReveal>
+                <p className="text-[10px] tracking-[0.4em] uppercase text-[#8EAEBF] font-medium mb-8">Our Story</p>
+              </ScrollReveal>
+              <ScrollReveal delay={0.15}>
+                <h2 className={`text-[30px] md:text-[40px] lg:text-[48px] font-light tracking-[0.02em] leading-[1.35] mb-8 ${serif}`}>
+                  海と暮らす、<br />
+                  カフェのある日常。
+                </h2>
+              </ScrollReveal>
+              <ScrollReveal delay={0.3}>
+                <div className="w-10 h-px bg-[#8EAEBF]/40 mb-8" />
+              </ScrollReveal>
+              <ScrollReveal delay={0.4}>
+                <p className={`text-[14px] md:text-[15px] text-[#3D3425]/50 leading-[2.1] ${serif}`}>
+                  하루海（ハルうみ）は、韓国のカフェ文化と<br className="hidden lg:block" />
+                  日本の海辺の風景が出会う場所。<br className="hidden lg:block" />
+                  窓の外に広がる水平線を眺めながら、<br className="hidden lg:block" />
+                  丁寧に淹れた一杯と手作りスイーツで<br className="hidden lg:block" />
+                  あなただけの「하루（一日）」をお過ごしください。
+                </p>
+              </ScrollReveal>
+            </div>
+            <div>
+              <ParallaxLayer speed={0.12}>
+                <ScrollReveal direction="right" delay={0.2}>
+                  <div className="rounded-[24px] overflow-hidden shadow-xl shadow-[#3D3425]/8">
+                    <Image
+                      src="/ai-website-cloner/images/concept-cafe.png"
+                      alt="アーチ窓から見える海とコーヒー"
+                      width={1024}
+                      height={1024}
+                      className="w-full h-auto hover:scale-[1.02] transition-transform duration-700"
+                    />
+                  </div>
+                </ScrollReveal>
+              </ParallaxLayer>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* ===== MENU ===== */}
+      <section id="menu" className="bg-[#EDE7DD]">
+        <div className="max-w-[1024px] mx-auto px-6 py-32 md:py-40">
+          <ScrollReveal>
+            <p className="text-[10px] tracking-[0.4em] uppercase text-[#8EAEBF] font-medium mb-4 text-center">Menu</p>
+            <h2 className={`text-[34px] md:text-[46px] font-light tracking-[0.04em] text-center mb-6 ${serif}`}>
+              Signature Drinks
+            </h2>
+          </ScrollReveal>
+          <ScrollReveal delay={0.1}>
+            <p className={`text-[14px] text-[#3D3425]/40 text-center mb-20 ${serif}`}>
+              すべてのドリンクは、海を眺めるあなたのために。
+            </p>
+          </ScrollReveal>
+
+          {/* Drinks Photo */}
+          <ScrollReveal delay={0.15}>
+            <div className="rounded-[28px] overflow-hidden shadow-lg shadow-[#3D3425]/8 mb-24 max-w-[640px] mx-auto">
+              <Image
+                src="/ai-website-cloner/images/drinks-cafe.png"
+                alt="シグネチャードリンク3種"
+                width={1024}
+                height={1024}
+                className="w-full h-auto"
+              />
+            </div>
+          </ScrollReveal>
+
+          {/* Drink List */}
+          <StaggerContainer stagger={0.12} className="max-w-[640px] mx-auto">
+            {drinks.map((item) => (
+              <div key={item.name} className="flex items-start justify-between py-8 border-b border-[#3D3425]/8 last:border-b-0">
+                <div className="flex-1 pr-6">
+                  <div className="flex items-baseline gap-3 mb-2">
+                    <h3 className={`text-[18px] md:text-[22px] font-light tracking-[0.02em] ${serif}`}>{item.name}</h3>
+                    <span className="text-[12px] text-[#8EAEBF] tracking-wider">{item.nameKo}</span>
+                  </div>
+                  <p className={`text-[13px] text-[#3D3425]/40 leading-[1.8] ${serif}`}>{item.desc}</p>
+                </div>
+                <span className={`text-[14px] text-[#8EAEBF] font-medium tracking-wider whitespace-nowrap pt-1`}>{item.price}</span>
               </div>
             ))}
           </StaggerContainer>
-        </div>
-      </section>
 
-      {/* ===== FEATURE SECTIONS ===== */}
-      {features.map((feature, i) => (
-        <section key={feature.tag} className="min-h-screen flex items-center relative overflow-hidden">
-          <div className={`absolute inset-0 bg-gradient-to-br ${feature.gradient}`} />
-          <div className="max-w-[1024px] mx-auto px-6 py-32 relative z-10">
-            <div className={`grid md:grid-cols-2 gap-16 items-center ${i % 2 === 1 ? "md:grid-flow-dense" : ""}`}>
-              <div className={i % 2 === 1 ? "md:col-start-2" : ""}>
-                <ScrollReveal direction={i % 2 === 0 ? "left" : "right"} distance={48}>
-                  <p className="text-[11px] tracking-[0.25em] uppercase text-blue-400 font-semibold mb-6">{feature.tag}</p>
-                  <h2 className="text-[40px] md:text-[56px] lg:text-[64px] font-bold tracking-[-0.03em] leading-[1.05] mb-8 whitespace-pre-line">
-                    {feature.title}
-                  </h2>
-                  <p className="text-[17px] md:text-lg text-white/50 leading-relaxed max-w-md">
-                    {feature.desc}
-                  </p>
+          {/* Dessert */}
+          <div className="mt-28">
+            <ScrollReveal>
+              <h3 className={`text-[28px] md:text-[36px] font-light tracking-[0.04em] text-center mb-6 ${serif}`}>
+                Desserts
+              </h3>
+              <p className={`text-[14px] text-[#3D3425]/40 text-center mb-16 ${serif}`}>
+                パティシエ手作り、毎日焼きたて。
+              </p>
+            </ScrollReveal>
+            <div className="grid md:grid-cols-2 gap-10 md:gap-16 items-center max-w-[800px] mx-auto">
+              <ParallaxLayer speed={0.1}>
+                <ScrollReveal>
+                  <div className="rounded-[20px] overflow-hidden shadow-lg shadow-[#3D3425]/8">
+                    <Image
+                      src="/ai-website-cloner/images/dessert-cafe.png"
+                      alt="クロワッサンとティラミス"
+                      width={1024}
+                      height={1024}
+                      className="w-full h-auto hover:scale-[1.02] transition-transform duration-700"
+                    />
+                  </div>
                 </ScrollReveal>
-              </div>
-              <div className={i % 2 === 1 ? "md:col-start-1" : ""}>
-                <ParallaxLayer speed={0.15}>
-                  <ScrollReveal delay={0.2}>
-                    <div className="rounded-[32px] overflow-hidden">
-                      <Image
-                        src={feature.image}
-                        alt={feature.tag}
-                        width={1024}
-                        height={1024}
-                        className="w-full h-auto"
-                      />
+              </ParallaxLayer>
+              <ScrollReveal direction="right" delay={0.15}>
+                <div className="space-y-6">
+                  {[
+                    { name: "バタークロワッサン", nameKo: "버터 크루아상", price: "¥420" },
+                    { name: "ティラミス", nameKo: "티라미수", price: "¥580" },
+                    { name: "季節のタルト", nameKo: "계절 타르트", price: "¥620" },
+                    { name: "あんバターサンド", nameKo: "앙버터 샌드", price: "¥480" },
+                  ].map((d) => (
+                    <div key={d.name} className="flex items-center justify-between py-3 border-b border-[#3D3425]/6 last:border-b-0">
+                      <div className="flex items-baseline gap-2">
+                        <span className={`text-[15px] ${serif}`}>{d.name}</span>
+                        <span className="text-[11px] text-[#8EAEBF]">{d.nameKo}</span>
+                      </div>
+                      <span className="text-[13px] text-[#8EAEBF]">{d.price}</span>
                     </div>
-                  </ScrollReveal>
-                </ParallaxLayer>
-              </div>
+                  ))}
+                </div>
+              </ScrollReveal>
             </div>
           </div>
-        </section>
-      ))}
-
-      {/* ===== COLOR PICKER ===== */}
-      <section className="py-32 bg-black">
-        <div className="max-w-[1024px] mx-auto px-6 text-center">
-          <ScrollReveal>
-            <p className="text-[11px] tracking-[0.25em] uppercase text-white/30 font-semibold mb-4">Finish</p>
-            <h2 className="text-[40px] md:text-[56px] font-bold tracking-[-0.03em] mb-4">
-              Pick your perfect finish.
-            </h2>
-            <p className="text-lg text-white/40 mb-16 max-w-lg mx-auto">
-              Five new titanium finishes, each with a micro-blasted texture that feels as good as it looks.
-            </p>
-          </ScrollReveal>
-
-          <ScrollReveal delay={0.2}>
-            <div className="w-[240px] md:w-[300px] h-[480px] md:h-[600px] mx-auto rounded-[44px] border border-white/10 mb-12 transition-colors duration-700 relative overflow-hidden"
-              style={{ backgroundColor: colors[selectedColor].hex }}
-            >
-              <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[100px] h-[28px] bg-black/40 rounded-b-xl" />
-              <div className="absolute inset-3 rounded-[36px] bg-black/30 backdrop-blur-sm flex items-center justify-center">
-                <p className="text-[56px] md:text-[72px] font-thin text-white/30 tracking-tighter">21</p>
-              </div>
-            </div>
-          </ScrollReveal>
-
-          <StaggerContainer stagger={0.05}>
-            <div className="flex items-center justify-center gap-4 mb-4">
-              {colors.map((color, i) => (
-                <button
-                  key={color.name}
-                  onClick={() => setSelectedColor(i)}
-                  className={`w-8 h-8 rounded-full transition-all duration-300 border-2 ${
-                    selectedColor === i
-                      ? "border-blue-400 scale-125"
-                      : "border-white/20 hover:border-white/40"
-                  }`}
-                  style={{ backgroundColor: color.hex }}
-                  aria-label={color.name}
-                />
-              ))}
-            </div>
-            <p className="text-[15px] text-white/50 font-medium transition-all duration-500">
-              {colors[selectedColor].name}
-            </p>
-          </StaggerContainer>
         </div>
       </section>
 
-      {/* ===== STICKY SCROLL EXPERIENCE ===== */}
-      <section className="border-t border-white/5">
-        <StickySection scrollLength={3} onProgress={setStickyProgress} className="min-h-screen flex items-center justify-center bg-black relative overflow-hidden">
-          <div className="absolute inset-0 bg-gradient-to-br from-blue-500/5 via-transparent to-purple-500/5" />
-          <div className="text-center px-6 relative z-10">
-            <p className="text-[11px] tracking-[0.25em] uppercase text-blue-400 font-semibold mb-6">
-              Apple Intelligence
-            </p>
-            <h2 className="text-[40px] md:text-[56px] lg:text-[72px] font-bold tracking-[-0.03em] leading-[1.05] mb-8 transition-all duration-300"
-              style={{
-                opacity: Math.min(1, stickyProgress * 3),
-                transform: `translateY(${Math.max(0, 40 - stickyProgress * 120)}px) scale(${0.9 + stickyProgress * 0.1})`,
-              }}
-            >
-              Intelligence that<br />
-              understands<br />
-              <span className="bg-gradient-to-r from-blue-400 via-purple-400 to-pink-400 bg-clip-text text-transparent">
-                you.
-              </span>
-            </h2>
-            <p className="text-[17px] md:text-lg text-white/40 max-w-lg mx-auto transition-all duration-300"
-              style={{
-                opacity: Math.max(0, Math.min(1, (stickyProgress - 0.3) * 3)),
-                transform: `translateY(${Math.max(0, 30 - (stickyProgress - 0.3) * 100)}px)`,
-              }}
-            >
-              汎用人工超知能を搭載。あなたが考える前に答えを出し、あなたが話す前に相手の感情を読み、あなたが動く前に最適な行動を実行する。もはやツールではない。パートナーだ。
-            </p>
-            <div className="mt-12 flex justify-center gap-8 flex-wrap"
-              style={{
-                opacity: Math.max(0, Math.min(1, (stickyProgress - 0.5) * 3)),
-                transform: `translateY(${Math.max(0, 30 - (stickyProgress - 0.5) * 100)}px)`,
-              }}
-            >
-              {["Quantum AI", "Mind Link", "Time Predict", "Reality Render", "DNA Scan", "Teleport Draft"].map((item) => (
-                <div key={item} className="px-5 py-2.5 rounded-full border border-white/10 bg-white/5 text-[13px] font-medium text-white/60">
-                  {item}
-                </div>
-              ))}
+      {/* ===== GALLERY (Sticky Scroll) ===== */}
+      <section id="gallery">
+        <StickySection scrollLength={2.5} onProgress={setStickyProgress} className="min-h-screen relative overflow-hidden">
+          <div className="absolute inset-0">
+            <Image
+              src="/ai-website-cloner/images/interior-cafe.png"
+              alt="カフェインテリア"
+              width={1024}
+              height={1024}
+              className="w-full h-full object-cover"
+            />
+            <div className="absolute inset-0 bg-[#3D3425]/40" />
+          </div>
+          <div className="relative z-10 flex items-center justify-center min-h-screen px-6">
+            <div className="text-center max-w-2xl">
+              <p
+                className="text-[10px] tracking-[0.4em] uppercase text-[#D4C8B0] font-medium mb-10 transition-all duration-500"
+                style={{
+                  opacity: Math.min(1, stickyProgress * 4),
+                  transform: `translateY(${Math.max(0, 20 - stickyProgress * 80)}px)`,
+                }}
+              >
+                Gallery
+              </p>
+              <h2
+                className={`text-[34px] md:text-[50px] lg:text-[62px] font-light tracking-[0.04em] leading-[1.25] mb-10 text-[#F7F3ED] transition-all duration-500 ${serif}`}
+                style={{
+                  opacity: Math.min(1, stickyProgress * 3),
+                  transform: `translateY(${Math.max(0, 40 - stickyProgress * 120)}px)`,
+                }}
+              >
+                海と、光と、<br />
+                あなたの席。
+              </h2>
+              <p
+                className={`text-[14px] md:text-[16px] text-[#F7F3ED]/60 leading-[2] max-w-md mx-auto transition-all duration-500 ${serif}`}
+                style={{
+                  opacity: Math.max(0, Math.min(1, (stickyProgress - 0.3) * 3)),
+                  transform: `translateY(${Math.max(0, 30 - (stickyProgress - 0.3) * 100)}px)`,
+                }}
+              >
+                アーチ窓から注ぐ陽光、<br />
+                ラタンチェアのやわらかさ、<br />
+                天井から垂れるグリーンの息吹。<br />
+                ここは、海辺のあなたのリビング。
+              </p>
+              <div
+                className="mt-14 flex justify-center gap-4 flex-wrap transition-all duration-500"
+                style={{
+                  opacity: Math.max(0, Math.min(1, (stickyProgress - 0.5) * 3)),
+                  transform: `translateY(${Math.max(0, 30 - (stickyProgress - 0.5) * 100)}px)`,
+                }}
+              >
+                {["Ocean View", "Free Wi-Fi", "テラス席", "ペット可", "韓国インテリア"].map((tag) => (
+                  <span key={tag} className={`px-5 py-2.5 rounded-full border border-[#F7F3ED]/15 bg-[#F7F3ED]/5 text-[11px] md:text-[12px] tracking-[0.1em] text-[#F7F3ED]/60 ${serif}`}>
+                    {tag}
+                  </span>
+                ))}
+              </div>
             </div>
           </div>
         </StickySection>
       </section>
 
-      {/* ===== CTA ===== */}
-      <section id="buy" className="py-32 bg-black border-t border-white/5">
-        <div className="max-w-[1024px] mx-auto px-6 text-center">
-          <ScrollReveal>
-            <h2 className="text-[40px] md:text-[56px] lg:text-[64px] font-bold tracking-[-0.03em] leading-tight mb-6">
-              The future is in<br />your hands.
-            </h2>
-          </ScrollReveal>
-          <ScrollReveal delay={0.2}>
-            <p className="text-lg text-white/40 mb-10 max-w-md mx-auto">
-              iPhone 21 Shirouto. Starting from ----
-            </p>
-          </ScrollReveal>
-          <StaggerContainer stagger={0.1}>
-            <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
-              <a href="#" className="bg-blue-500 hover:bg-blue-400 text-white px-8 py-3.5 rounded-full text-[15px] font-semibold transition-all hover:scale-105 hover:shadow-[0_0_32px_rgba(59,130,246,0.3)]">
-                Buy iPhone 21 Shirouto
-              </a>
-              <a href="#" className="text-blue-400 hover:text-blue-300 px-8 py-3.5 text-[15px] font-semibold transition-colors">
-                Learn more &rarr;
-              </a>
+      {/* ===== ACCESS ===== */}
+      <section id="access" className="py-32 md:py-40 bg-[#F7F3ED]">
+        <div className="max-w-[1024px] mx-auto px-6">
+          <div className="grid md:grid-cols-2 gap-16 md:gap-24 items-start">
+            <div>
+              <ScrollReveal>
+                <p className="text-[10px] tracking-[0.4em] uppercase text-[#8EAEBF] font-medium mb-4">Access</p>
+                <h2 className={`text-[34px] md:text-[46px] font-light tracking-[0.02em] mb-12 leading-[1.3] ${serif}`}>
+                  会いに来て。
+                </h2>
+              </ScrollReveal>
+              <ScrollReveal delay={0.15}>
+                <div className="space-y-8">
+                  <div>
+                    <p className="text-[10px] tracking-[0.3em] uppercase text-[#8EAEBF]/60 mb-2">Address</p>
+                    <p className={`text-[#3D3425]/70 text-[15px] ${serif}`}>神奈川県鎌倉市七里ガ浜 1-2-3</p>
+                  </div>
+                  <div>
+                    <p className="text-[10px] tracking-[0.3em] uppercase text-[#8EAEBF]/60 mb-2">Tel</p>
+                    <p className={`text-[#3D3425]/70 text-[15px] ${serif}`}>0467-12-3456</p>
+                  </div>
+                  <div>
+                    <p className="text-[10px] tracking-[0.3em] uppercase text-[#8EAEBF]/60 mb-2">Access</p>
+                    <p className={`text-[#3D3425]/70 text-[15px] ${serif}`}>江ノ電 七里ヶ浜駅 徒歩5分</p>
+                  </div>
+                  <div>
+                    <p className="text-[10px] tracking-[0.3em] uppercase text-[#8EAEBF]/60 mb-2">Parking</p>
+                    <p className={`text-[#3D3425]/70 text-[15px] ${serif}`}>専用駐車場 8台</p>
+                  </div>
+                </div>
+              </ScrollReveal>
             </div>
-          </StaggerContainer>
+            <div>
+              <ScrollReveal delay={0.2}>
+                <p className="text-[10px] tracking-[0.3em] uppercase text-[#8EAEBF]/60 mb-8">Hours</p>
+                <StaggerContainer stagger={0.1} className="space-y-0">
+                  {hours.map((h) => (
+                    <div key={h.day} className="flex items-center justify-between py-6 border-b border-[#3D3425]/8">
+                      <span className={`text-[#3D3425]/40 text-[14px] ${serif}`}>{h.day}</span>
+                      <span className={`text-[22px] md:text-[26px] font-light tracking-[0.05em] ${serif}`}>{h.time}</span>
+                    </div>
+                  ))}
+                </StaggerContainer>
+              </ScrollReveal>
+              <ScrollReveal delay={0.4}>
+                <div className="mt-12 p-6 rounded-[16px] bg-[#8EAEBF]/8 border border-[#8EAEBF]/15">
+                  <p className={`text-[13px] text-[#3D3425]/50 leading-[1.9] ${serif}`}>
+                    🌊 テラス席は予約優先です。<br />
+                    お電話またはInstagram DMにて<br />
+                    ご予約を承っております。
+                  </p>
+                </div>
+              </ScrollReveal>
+            </div>
+          </div>
         </div>
       </section>
 
       {/* ===== FOOTER ===== */}
-      <footer className="border-t border-white/5 py-8">
-        <div className="max-w-[1024px] mx-auto px-6">
-          <p className="text-[11px] text-white/20 leading-relaxed">
-            iPhone 21 Shirouto is a concept design. Features and specifications are fictional and for demonstration purposes only. Apple, iPhone, and the Apple logo are trademarks of Apple Inc. This page was built to demonstrate scroll animation capabilities.
-          </p>
+      <footer className="border-t border-[#3D3425]/5 py-12 bg-[#F7F3ED]">
+        <div className="max-w-[1024px] mx-auto px-6 flex flex-col md:flex-row items-center justify-between gap-6">
+          <span className={`text-[15px] tracking-[0.06em] text-[#3D3425]/25 ${serif}`}>
+            하루海
+          </span>
+          <div className="flex items-center gap-8">
+            <a href="#" className="text-[12px] tracking-[0.15em] text-[#3D3425]/25 hover:text-[#3D3425]/50 transition-colors">Instagram</a>
+            <a href="#" className="text-[12px] tracking-[0.15em] text-[#3D3425]/25 hover:text-[#3D3425]/50 transition-colors">X</a>
+            <a href="#" className="text-[12px] tracking-[0.15em] text-[#3D3425]/25 hover:text-[#3D3425]/50 transition-colors">LINE</a>
+          </div>
+          <p className="text-[10px] text-[#3D3425]/15 tracking-wider">&copy; 2026 하루海 Café. All rights reserved.</p>
         </div>
       </footer>
     </main>
