@@ -9,390 +9,357 @@ const serif = "font-[family-name:var(--font-noto-serif-jp)]";
 
 export default function Home() {
   return (
-    <main className="bg-[#F7F3ED] text-[#3D3425] overflow-hidden">
-      {/* ===== NAV — 左ロゴのみ、ミニマル ===== */}
-      <nav className="fixed top-0 left-0 right-0 z-50 mix-blend-difference">
-        <div className="max-w-[1400px] mx-auto px-6 md:px-10 h-16 flex items-center justify-between">
-          <span className={`text-[15px] font-bold tracking-[0.08em] text-white ${serif}`}>
+    <main className="bg-white text-[#1A1A1A] overflow-hidden">
+      {/* ===== NAV — Kinfolk式：左ロゴ + 右ハンバーガー ===== */}
+      <nav className="fixed top-0 left-0 right-0 z-50 bg-white/90 backdrop-blur-md">
+        <div className="max-w-[1400px] mx-auto px-8 md:px-12 h-16 flex items-center justify-between">
+          <span className={`text-[20px] tracking-[0.15em] uppercase ${serif}`}>
             하루海
           </span>
-          <a href="#access" className="text-[11px] text-white/60 hover:text-white tracking-[0.2em] uppercase transition-colors">
-            Visit Us
-          </a>
+          <div className="hidden md:flex items-center gap-10">
+            <a href="#story" className="text-[12px] tracking-[0.12em] uppercase text-[#1A1A1A]/40 hover:text-[#1A1A1A] transition-colors">Story</a>
+            <a href="#menu" className="text-[12px] tracking-[0.12em] uppercase text-[#1A1A1A]/40 hover:text-[#1A1A1A] transition-colors">Menu</a>
+            <a href="#space" className="text-[12px] tracking-[0.12em] uppercase text-[#1A1A1A]/40 hover:text-[#1A1A1A] transition-colors">Space</a>
+            <a href="#access" className="text-[12px] tracking-[0.12em] uppercase text-[#1A1A1A]/40 hover:text-[#1A1A1A] transition-colors">Access</a>
+          </div>
         </div>
       </nav>
 
-      {/* ===== 01 — HERO：左寄せテキスト + 右に写真がはみ出し ===== */}
-      <section className="min-h-[100svh] relative flex items-end pb-16 md:pb-0 md:items-center">
-        {/* 右側にオフセットした大写真 */}
-        <div className="absolute top-0 right-0 w-[75%] md:w-[58%] h-full">
-          <ScrollReveal duration={1.6} direction="none" className="w-full h-full">
+      {/* ===== HERO — Kinfolk式：大セリフ見出し中央 + 写真中央配置 ===== */}
+      <section className="pt-32 md:pt-40 pb-6">
+        <div className="text-center px-8 md:px-12">
+          <ScrollReveal duration={1} delay={0.2}>
+            <h1 className={`text-[42px] md:text-[64px] lg:text-[80px] tracking-[0.08em] uppercase leading-[1.15] ${serif}`}>
+              Ocean View<br />Korean Café
+            </h1>
+          </ScrollReveal>
+        </div>
+        <div className="max-w-[420px] mx-auto mt-12 mb-8 px-8">
+          <ScrollReveal delay={0.4}>
+            <div className="aspect-[3/4] relative overflow-hidden">
+              <Image
+                src="/ai-website-cloner/images/concept-cafe.png"
+                alt="하루海"
+                width={1024}
+                height={1024}
+                className="w-full h-full object-cover"
+                priority
+              />
+              <div className="absolute bottom-0 left-0 right-0 p-5 bg-gradient-to-t from-black/40 to-transparent">
+                <p className={`text-white/90 text-[11px] tracking-[0.2em] uppercase`}>하루海 — Haru Umi</p>
+                <p className={`text-white/60 text-[10px] mt-1 ${serif}`}>波の音と、一杯のコーヒーと。</p>
+              </div>
+            </div>
+          </ScrollReveal>
+        </div>
+        <ScrollReveal delay={0.6}>
+          <div className="flex justify-center gap-6 text-[12px] tracking-[0.1em]">
+            <a href="#menu" className="text-[#1A1A1A]/50 hover:text-[#1A1A1A] transition-colors">Menu</a>
+            <span className="text-[#1A1A1A]/20">|</span>
+            <a href="#access" className="text-[#1A1A1A]/50 hover:text-[#1A1A1A] transition-colors">Visit</a>
+          </div>
+        </ScrollReveal>
+      </section>
+
+      {/* ===== FULL-BLEED PHOTO — テキスト左下オーバーレイ ===== */}
+      <section className="mt-12">
+        <div className="relative">
+          <ParallaxLayer speed={0.08}>
             <Image
               src="/ai-website-cloner/images/hero-cafe.png"
-              alt="海の見える韓国風カフェ"
+              alt="海の見えるカフェ全景"
               width={1024}
               height={1024}
-              className="w-full h-full object-cover"
-              priority
-            />
-          </ScrollReveal>
-          <div className="absolute inset-0 bg-gradient-to-r from-[#F7F3ED] via-[#F7F3ED]/30 to-transparent" />
-          <div className="absolute inset-0 bg-gradient-to-t from-[#F7F3ED] via-transparent to-transparent md:bg-none" />
-        </div>
-        {/* 左寄せテキスト */}
-        <div className="relative z-10 px-6 md:px-10 max-w-[1400px] mx-auto w-full">
-          <div className="max-w-[480px]">
-            <ScrollReveal delay={0.3}>
-              <p className="text-[10px] tracking-[0.5em] uppercase text-[#8EAEBF] mb-5">
-                Ocean View Korean Café
-              </p>
-            </ScrollReveal>
-            <ScrollReveal delay={0.5}>
-              <h1 className={`text-[64px] md:text-[96px] lg:text-[128px] font-extralight tracking-[-0.02em] leading-[0.85] mb-6 ${serif}`}>
-                하루<br />海
-              </h1>
-            </ScrollReveal>
-            <ScrollReveal delay={0.7}>
-              <p className={`text-[13px] md:text-[15px] text-[#3D3425]/45 leading-[2] max-w-[320px] ${serif}`}>
-                波の音と、一杯のコーヒーと。<br />
-                海辺の韓国カフェで過ごす、<br />
-                あなただけの하루（一日）。
-              </p>
-            </ScrollReveal>
-            <ScrollReveal delay={0.9}>
-              <div className="mt-10 flex items-center gap-4">
-                <div className="w-12 h-px bg-[#3D3425]/20" />
-                <span className="text-[10px] tracking-[0.3em] text-[#3D3425]/30 uppercase">Scroll</span>
-              </div>
-            </ScrollReveal>
-          </div>
-        </div>
-        {/* 右下に小さく番号 */}
-        <div className="absolute bottom-8 right-8 md:bottom-12 md:right-12 z-10">
-          <span className={`text-[120px] md:text-[200px] font-extralight leading-none text-[#3D3425]/[0.03] ${serif}`}>01</span>
-        </div>
-      </section>
-
-      {/* ===== 02 — STORY：ナローテキスト + オフセット画像（重なり） ===== */}
-      <section id="story" className="relative py-20 md:py-0 md:min-h-screen flex items-center">
-        {/* 背景に薄く番号 */}
-        <div className="absolute top-10 left-6 md:left-10">
-          <span className={`text-[140px] md:text-[220px] font-extralight leading-none text-[#3D3425]/[0.03] ${serif}`}>02</span>
-        </div>
-
-        <div className="max-w-[1400px] mx-auto px-6 md:px-10 w-full">
-          <div className="grid md:grid-cols-12 items-center">
-            {/* テキスト：4カラム分、左に寄せる */}
-            <div className="md:col-span-4 md:col-start-1 relative z-10">
-              <ScrollReveal>
-                <div className="flex items-center gap-4 mb-8">
-                  <div className="w-8 h-px bg-[#8EAEBF]" />
-                  <p className="text-[10px] tracking-[0.4em] uppercase text-[#8EAEBF]">Our Story</p>
-                </div>
-              </ScrollReveal>
-              <ScrollReveal delay={0.1}>
-                <h2 className={`text-[28px] md:text-[36px] font-light leading-[1.5] mb-8 ${serif}`}>
-                  海と暮らす、<br />
-                  カフェのある<br />
-                  日常。
-                </h2>
-              </ScrollReveal>
-              <ScrollReveal delay={0.2}>
-                <p className={`text-[13px] text-[#3D3425]/40 leading-[2.3] ${serif}`}>
-                  하루海（ハルうみ）は、韓国のカフェ文化と日本の海辺の風景が出会う場所。窓の外に広がる水平線を眺めながら、丁寧に淹れた一杯と手作りスイーツで、あなただけの「하루（一日）」をお過ごしください。
-                </p>
-              </ScrollReveal>
-            </div>
-            {/* 画像：7カラム分、右に大きく。テキストと少し重なる */}
-            <div className="md:col-span-7 md:col-start-5 mt-10 md:mt-0 md:-ml-10">
-              <ParallaxLayer speed={0.1}>
-                <ScrollReveal direction="right" delay={0.15}>
-                  <div className="rounded-[12px] overflow-hidden">
-                    <Image
-                      src="/ai-website-cloner/images/concept-cafe.png"
-                      alt="アーチ窓から見える海とコーヒー"
-                      width={1024}
-                      height={1024}
-                      className="w-full h-auto"
-                    />
-                  </div>
-                </ScrollReveal>
-              </ParallaxLayer>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* ===== 引用（ナロー幅、左寄せ） ===== */}
-      <section className="py-20 md:py-32">
-        <div className="max-w-[1400px] mx-auto px-6 md:px-10">
-          <ScrollReveal>
-            <div className="max-w-[600px] md:ml-[8%]">
-              <div className="w-8 h-px bg-[#8EAEBF]/40 mb-8" />
-              <p className={`text-[20px] md:text-[28px] lg:text-[34px] font-light text-[#3D3425]/70 leading-[1.8] tracking-[0.01em] ${serif}`}>
-                海が見える席で飲む<br />
-                アメリカーノは、<br />
-                いつもより少しだけ、<br />
-                特別な味がする。
-              </p>
-            </div>
-          </ScrollReveal>
-        </div>
-      </section>
-
-      {/* ===== 03 — MENU：マソンリー風ドリンク + デザート ===== */}
-      <section id="menu" className="relative pb-20 md:pb-40">
-        <div className="absolute top-0 right-6 md:right-10">
-          <span className={`text-[140px] md:text-[220px] font-extralight leading-none text-[#3D3425]/[0.03] ${serif}`}>03</span>
-        </div>
-
-        <div className="max-w-[1400px] mx-auto px-6 md:px-10">
-          <ScrollReveal>
-            <div className="flex items-center gap-4 mb-16">
-              <div className="w-8 h-px bg-[#8EAEBF]" />
-              <p className="text-[10px] tracking-[0.4em] uppercase text-[#8EAEBF]">Menu</p>
-            </div>
-          </ScrollReveal>
-
-          {/* マソンリー風：大写真+メニューが不規則に配置 */}
-          <div className="grid md:grid-cols-12 gap-6 md:gap-8">
-            {/* 左：ドリンク写真（大） */}
-            <div className="md:col-span-6">
-              <ParallaxLayer speed={0.05}>
-                <ScrollReveal>
-                  <div className="rounded-[12px] overflow-hidden">
-                    <Image
-                      src="/ai-website-cloner/images/drinks-cafe.png"
-                      alt="シグネチャードリンク"
-                      width={1024}
-                      height={1024}
-                      className="w-full h-auto"
-                    />
-                  </div>
-                </ScrollReveal>
-              </ParallaxLayer>
-            </div>
-
-            {/* 右上：ドリンクメニュー（上にオフセット） */}
-            <div className="md:col-span-5 md:col-start-8 md:-mt-0 flex flex-col justify-center">
-              <ScrollReveal delay={0.15}>
-                <h3 className={`text-[24px] md:text-[30px] font-light mb-2 ${serif}`}>Drinks</h3>
-                <p className={`text-[12px] text-[#3D3425]/30 tracking-[0.15em] mb-8 ${serif}`}>ドリンク</p>
-              </ScrollReveal>
-              <StaggerContainer stagger={0.06}>
-                {[
-                  { name: "抹茶ラテ", ko: "말차 라떼", price: "¥680" },
-                  { name: "ストロベリースムージー", ko: "딸기 스무디", price: "¥750" },
-                  { name: "アイスアメリカーノ", ko: "아이스 아메리카노", price: "¥550" },
-                  { name: "ハニーバニララテ", ko: "허니 바닐라 라떼", price: "¥700" },
-                  { name: "柚子エイド", ko: "유자 에이드", price: "¥620" },
-                ].map((d) => (
-                  <div key={d.name} className="flex items-baseline justify-between py-3 border-b border-[#3D3425]/5">
-                    <div className="flex items-baseline gap-2">
-                      <span className={`text-[14px] ${serif}`}>{d.name}</span>
-                      <span className="text-[10px] text-[#8EAEBF]/80">{d.ko}</span>
-                    </div>
-                    <span className="text-[12px] text-[#8EAEBF]">{d.price}</span>
-                  </div>
-                ))}
-              </StaggerContainer>
-            </div>
-
-            {/* 下段：デザート（左にオフセット、右に写真） */}
-            <div className="md:col-span-4 md:col-start-2 mt-8 md:mt-16 flex flex-col justify-center">
-              <ScrollReveal delay={0.1}>
-                <h3 className={`text-[24px] md:text-[30px] font-light mb-2 ${serif}`}>Desserts</h3>
-                <p className={`text-[12px] text-[#3D3425]/30 tracking-[0.15em] mb-8 ${serif}`}>デザート</p>
-              </ScrollReveal>
-              <StaggerContainer stagger={0.06}>
-                {[
-                  { name: "バタークロワッサン", ko: "버터 크루아상", price: "¥420" },
-                  { name: "ティラミス", ko: "티라미수", price: "¥580" },
-                  { name: "季節のタルト", ko: "계절 타르트", price: "¥620" },
-                  { name: "あんバターサンド", ko: "앙버터 샌드", price: "¥480" },
-                ].map((d) => (
-                  <div key={d.name} className="flex items-baseline justify-between py-3 border-b border-[#3D3425]/5">
-                    <div className="flex items-baseline gap-2">
-                      <span className={`text-[14px] ${serif}`}>{d.name}</span>
-                      <span className="text-[10px] text-[#8EAEBF]/80">{d.ko}</span>
-                    </div>
-                    <span className="text-[12px] text-[#8EAEBF]">{d.price}</span>
-                  </div>
-                ))}
-              </StaggerContainer>
-            </div>
-
-            <div className="md:col-span-6 md:col-start-7 mt-4 md:mt-8">
-              <ParallaxLayer speed={0.08}>
-                <ScrollReveal direction="right" delay={0.2}>
-                  <div className="rounded-[12px] overflow-hidden">
-                    <Image
-                      src="/ai-website-cloner/images/dessert-cafe.png"
-                      alt="クロワッサンとティラミス"
-                      width={1024}
-                      height={1024}
-                      className="w-full h-auto"
-                    />
-                  </div>
-                </ScrollReveal>
-              </ParallaxLayer>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* ===== 04 — SPACE：全幅写真、テキストは写真の上に重ねて左下 ===== */}
-      <section id="space" className="relative">
-        <div className="absolute top-6 left-6 md:top-10 md:left-10 z-20">
-          <span className={`text-[140px] md:text-[220px] font-extralight leading-none text-white/[0.05] ${serif}`}>04</span>
-        </div>
-
-        {/* フルブリード写真 — パディングなし */}
-        <div className="relative">
-          <ParallaxLayer speed={0.12}>
-            <Image
-              src="/ai-website-cloner/images/interior-cafe.png"
-              alt="カフェインテリア"
-              width={1024}
-              height={1024}
-              className="w-full h-[70vh] md:h-[85vh] object-cover"
+              className="w-full h-[60vh] md:h-[80vh] object-cover"
             />
           </ParallaxLayer>
-          <div className="absolute inset-0 bg-gradient-to-t from-[#2A1F14]/70 via-[#2A1F14]/15 to-transparent" />
-
-          {/* テキストは写真内の左下に */}
-          <div className="absolute bottom-0 left-0 right-0 z-10 px-6 md:px-10 pb-10 md:pb-16">
+          <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent" />
+          <div className="absolute bottom-0 left-0 right-0 px-8 md:px-12 pb-10 md:pb-14">
             <div className="max-w-[1400px] mx-auto">
-              <div className="max-w-[500px]">
-                <ScrollReveal>
-                  <div className="flex items-center gap-4 mb-6">
-                    <div className="w-8 h-px bg-[#D4C8B0]/60" />
-                    <p className="text-[10px] tracking-[0.4em] uppercase text-[#D4C8B0]">Space</p>
-                  </div>
-                </ScrollReveal>
-                <ScrollReveal delay={0.15}>
-                  <h2 className={`text-[28px] md:text-[40px] lg:text-[50px] font-light leading-[1.35] mb-6 text-[#F7F3ED] ${serif}`}>
-                    海と、光と、<br />
-                    あなたの席。
-                  </h2>
-                </ScrollReveal>
-                <ScrollReveal delay={0.3}>
-                  <p className={`text-[13px] text-[#F7F3ED]/50 leading-[2.1] ${serif}`}>
-                    アーチ窓から注ぐ陽光、ラタンチェアのやわらかさ、天井から垂れるグリーンの息吹。ここは、海辺のあなたのリビング。
-                  </p>
-                </ScrollReveal>
-                <ScrollReveal delay={0.4}>
-                  <div className="mt-8 flex gap-3 flex-wrap">
-                    {["Ocean View", "Free Wi-Fi", "テラス席", "ペット可"].map((tag) => (
-                      <span key={tag} className="px-4 py-1.5 rounded-full border border-[#F7F3ED]/15 text-[10px] tracking-[0.08em] text-[#F7F3ED]/50">
-                        {tag}
-                      </span>
-                    ))}
-                  </div>
-                </ScrollReveal>
-              </div>
+              <ScrollReveal>
+                <p className="text-white/60 text-[11px] tracking-[0.2em] uppercase mb-3">Kamakura, Shichirigahama</p>
+                <h2 className={`text-white text-[32px] md:text-[48px] lg:text-[64px] tracking-[0.04em] leading-[1.15] ${serif}`}>
+                  海と暮らす、<br />カフェのある日常。
+                </h2>
+              </ScrollReveal>
             </div>
           </div>
         </div>
       </section>
 
-      {/* ===== 05 — ACCESS：超大見出し + 情報散らし ===== */}
-      <section id="access" className="relative py-24 md:py-40">
-        <div className="absolute top-10 right-6 md:right-10">
-          <span className={`text-[140px] md:text-[220px] font-extralight leading-none text-[#3D3425]/[0.03] ${serif}`}>05</span>
+      {/* ===== STORY — セパレーター + テキスト中央 ===== */}
+      <section id="story" className="py-24 md:py-36">
+        <div className="max-w-[1400px] mx-auto px-8 md:px-12">
+          {/* 黒線セパレーター + セクションタイトル */}
+          <ScrollReveal>
+            <div className="flex items-center justify-between mb-16">
+              <h3 className={`text-[22px] md:text-[28px] tracking-[0.02em] ${serif}`}>Our Story</h3>
+              <div className="hidden md:block flex-1 h-px bg-[#1A1A1A] ml-8" />
+            </div>
+          </ScrollReveal>
+
+          <div className="max-w-[640px] mx-auto text-center">
+            <ScrollReveal delay={0.1}>
+              <p className={`text-[15px] md:text-[17px] text-[#1A1A1A]/60 leading-[2.2] ${serif}`}>
+                하루海（ハルうみ）は、韓国のカフェ文化と日本の海辺の風景が出会う場所。窓の外に広がる水平線を眺めながら、丁寧に淹れた一杯と手作りスイーツで、あなただけの「하루（一日）」をお過ごしください。
+              </p>
+            </ScrollReveal>
+            <ScrollReveal delay={0.2}>
+              <div className="w-12 h-px bg-[#1A1A1A]/15 mx-auto mt-12" />
+            </ScrollReveal>
+          </div>
+        </div>
+      </section>
+
+      {/* ===== MENU GRID — Kinfolk式：横スクロールカード ===== */}
+      <section id="menu">
+        <div className="max-w-[1400px] mx-auto px-8 md:px-12">
+          <ScrollReveal>
+            <div className="flex items-center justify-between mb-12">
+              <h3 className={`text-[22px] md:text-[28px] tracking-[0.02em] ${serif}`}>Menu</h3>
+              <div className="hidden md:block flex-1 h-px bg-[#1A1A1A] ml-8" />
+            </div>
+          </ScrollReveal>
         </div>
 
-        <div className="max-w-[1400px] mx-auto px-6 md:px-10">
-          {/* 超大見出し */}
+        {/* 4カラムグリッド — Kinfolk "Inside Issue" 風 */}
+        <div className="max-w-[1400px] mx-auto px-8 md:px-12">
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-5 md:gap-6">
+            {[
+              {
+                img: "/ai-website-cloner/images/drinks-cafe.png",
+                cat: "Drinks",
+                title: "SIGNATURE DRINKS",
+                desc: "抹茶ラテ、ストロベリースムージー、アイスアメリカーノ。海を眺めながらの一杯。",
+              },
+              {
+                img: "/ai-website-cloner/images/dessert-cafe.png",
+                cat: "Desserts",
+                title: "PATISSERIE",
+                desc: "毎朝パティシエが焼き上げるクロワッサンとティラミス。",
+              },
+              {
+                img: "/ai-website-cloner/images/concept-cafe.png",
+                cat: "Specials",
+                title: "SEASONAL",
+                desc: "季節のタルトとフルーツエイド。旬の素材を贅沢に。",
+              },
+              {
+                img: "/ai-website-cloner/images/interior-cafe.png",
+                cat: "Experience",
+                title: "OCEAN SEAT",
+                desc: "テラス席で潮風を感じながら。予約優先でご案内。",
+              },
+            ].map((item, i) => (
+              <ScrollReveal key={item.title} delay={i * 0.08}>
+                <div className="group cursor-pointer">
+                  <div className="aspect-[4/5] overflow-hidden mb-4">
+                    <Image
+                      src={item.img}
+                      alt={item.title}
+                      width={512}
+                      height={640}
+                      className="w-full h-full object-cover group-hover:scale-[1.03] transition-transform duration-700"
+                    />
+                  </div>
+                  <p className="text-[11px] tracking-[0.08em] text-[#1A1A1A]/35 mb-2">{item.cat}</p>
+                  <h4 className={`text-[13px] md:text-[14px] tracking-[0.04em] uppercase mb-2 ${serif}`}>{item.title}</h4>
+                  <p className={`text-[12px] text-[#1A1A1A]/40 leading-[1.8] ${serif}`}>{item.desc}</p>
+                </div>
+              </ScrollReveal>
+            ))}
+          </div>
+        </div>
+
+        {/* メニュー詳細 — 中央配置 */}
+        <div className="max-w-[600px] mx-auto px-8 md:px-12 mt-20 md:mt-28">
           <ScrollReveal>
-            <div className="flex items-center gap-4 mb-6">
-              <div className="w-8 h-px bg-[#8EAEBF]" />
-              <p className="text-[10px] tracking-[0.4em] uppercase text-[#8EAEBF]">Access</p>
+            <div className="text-center mb-10">
+              <p className="text-[11px] tracking-[0.2em] uppercase text-[#1A1A1A]/35 mb-3">Price List</p>
             </div>
           </ScrollReveal>
-          <ScrollReveal delay={0.1}>
-            <h2 className={`text-[48px] md:text-[80px] lg:text-[110px] font-extralight tracking-[-0.02em] leading-[1] mb-16 md:mb-24 ${serif}`}>
-              会いに来て。
-            </h2>
+          <div className="grid grid-cols-2 gap-x-12 gap-y-0">
+            <div>
+              <ScrollReveal delay={0.05}>
+                <p className={`text-[11px] tracking-[0.15em] uppercase text-[#1A1A1A]/30 mb-5 ${serif}`}>Drinks</p>
+              </ScrollReveal>
+              <StaggerContainer stagger={0.04}>
+                {[
+                  { name: "抹茶ラテ", price: "¥680" },
+                  { name: "ストロベリースムージー", price: "¥750" },
+                  { name: "アイスアメリカーノ", price: "¥550" },
+                  { name: "ハニーバニララテ", price: "¥700" },
+                  { name: "柚子エイド", price: "¥620" },
+                ].map((d) => (
+                  <div key={d.name} className="flex justify-between py-2.5 border-b border-[#1A1A1A]/5">
+                    <span className={`text-[13px] ${serif}`}>{d.name}</span>
+                    <span className="text-[12px] text-[#1A1A1A]/35">{d.price}</span>
+                  </div>
+                ))}
+              </StaggerContainer>
+            </div>
+            <div>
+              <ScrollReveal delay={0.1}>
+                <p className={`text-[11px] tracking-[0.15em] uppercase text-[#1A1A1A]/30 mb-5 ${serif}`}>Desserts</p>
+              </ScrollReveal>
+              <StaggerContainer stagger={0.04}>
+                {[
+                  { name: "バタークロワッサン", price: "¥420" },
+                  { name: "ティラミス", price: "¥580" },
+                  { name: "季節のタルト", price: "¥620" },
+                  { name: "あんバターサンド", price: "¥480" },
+                ].map((d) => (
+                  <div key={d.name} className="flex justify-between py-2.5 border-b border-[#1A1A1A]/5">
+                    <span className={`text-[13px] ${serif}`}>{d.name}</span>
+                    <span className="text-[12px] text-[#1A1A1A]/35">{d.price}</span>
+                  </div>
+                ))}
+              </StaggerContainer>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* ===== 巨大余白 ===== */}
+      <div className="h-24 md:h-36" />
+
+      {/* ===== SPACE — Kinfolk式フルブリード + 巨大セリフオーバーレイ ===== */}
+      <section id="space" className="relative">
+        <ParallaxLayer speed={0.1}>
+          <Image
+            src="/ai-website-cloner/images/interior-cafe.png"
+            alt="カフェインテリア"
+            width={1024}
+            height={1024}
+            className="w-full h-[50vh] md:h-[70vh] object-cover"
+          />
+        </ParallaxLayer>
+        <div className="absolute inset-0 flex items-end">
+          <div className="w-full px-4 md:px-0">
+            <ScrollReveal>
+              <h2 className={`text-white text-[48px] md:text-[80px] lg:text-[120px] tracking-[0.06em] uppercase leading-[0.95] text-center md:text-left md:pl-12 pb-6 md:pb-10 drop-shadow-[0_2px_20px_rgba(0,0,0,0.3)] ${serif}`}>
+                Ocean<br className="md:hidden" /> Seat
+              </h2>
+            </ScrollReveal>
+          </div>
+        </div>
+      </section>
+
+      {/* ===== SPACE 詳細 — Kinfolk式 3カラムカード ===== */}
+      <section className="py-20 md:py-32">
+        <div className="max-w-[1400px] mx-auto px-8 md:px-12">
+          <ScrollReveal>
+            <div className="flex items-center justify-between mb-12">
+              <h3 className={`text-[22px] md:text-[28px] tracking-[0.02em] ${serif}`}>The Space</h3>
+              <div className="hidden md:block flex-1 h-px bg-[#1A1A1A] ml-8" />
+            </div>
           </ScrollReveal>
 
-          {/* 情報を不規則に散らす */}
-          <div className="grid md:grid-cols-12 gap-y-12 md:gap-y-16">
-            {/* 住所 — 左寄り */}
-            <div className="md:col-span-4 md:col-start-1">
-              <ScrollReveal>
-                <p className="text-[10px] tracking-[0.3em] uppercase text-[#8EAEBF]/50 mb-3">Address</p>
-                <p className={`text-[15px] text-[#3D3425]/60 leading-[2] ${serif}`}>
+          <div className="grid md:grid-cols-3 gap-8 md:gap-12">
+            {[
+              { title: "ARCHED WINDOWS", desc: "アーチ窓から注ぐ陽光が、店内を温かく包みます。朝と夕で全く異なる表情を見せる光の空間。" },
+              { title: "RATTAN & GREEN", desc: "ラタンチェアのやわらかさ、天井から垂れるグリーン。韓国カフェの美意識を七里ヶ浜の風に乗せて。" },
+              { title: "TERRACE", desc: "テラス席では潮風を感じながらお過ごしいただけます。サンセットタイムは予約がおすすめ。" },
+            ].map((item, i) => (
+              <ScrollReveal key={item.title} delay={i * 0.1}>
+                <div>
+                  <h4 className={`text-[13px] tracking-[0.08em] uppercase mb-4 ${serif}`}>{item.title}</h4>
+                  <p className={`text-[13px] text-[#1A1A1A]/45 leading-[2] ${serif}`}>{item.desc}</p>
+                </div>
+              </ScrollReveal>
+            ))}
+          </div>
+
+          <ScrollReveal delay={0.2}>
+            <div className="flex gap-3 flex-wrap mt-12 justify-center md:justify-start">
+              {["Ocean View", "Free Wi-Fi", "テラス席", "ペット可", "駐車場8台"].map((tag) => (
+                <span key={tag} className="px-4 py-1.5 rounded-full border border-[#1A1A1A]/10 text-[10px] tracking-[0.08em] text-[#1A1A1A]/40">
+                  {tag}
+                </span>
+              ))}
+            </div>
+          </ScrollReveal>
+        </div>
+      </section>
+
+      {/* ===== ACCESS — Kinfolk式セパレーター + 情報 ===== */}
+      <section id="access" className="pb-24 md:pb-36">
+        <div className="max-w-[1400px] mx-auto px-8 md:px-12">
+          <ScrollReveal>
+            <div className="flex items-center justify-between mb-16">
+              <h3 className={`text-[22px] md:text-[28px] tracking-[0.02em] ${serif}`}>Access</h3>
+              <div className="hidden md:block flex-1 h-px bg-[#1A1A1A] ml-8" />
+            </div>
+          </ScrollReveal>
+
+          <div className="grid md:grid-cols-3 gap-12 md:gap-16">
+            <ScrollReveal>
+              <div>
+                <p className="text-[11px] tracking-[0.15em] uppercase text-[#1A1A1A]/30 mb-4">Location</p>
+                <p className={`text-[15px] leading-[2] ${serif}`}>
                   神奈川県鎌倉市<br />七里ガ浜 1-2-3
                 </p>
-              </ScrollReveal>
-            </div>
-
-            {/* アクセス — 中央 */}
-            <div className="md:col-span-3 md:col-start-6">
-              <ScrollReveal delay={0.1}>
-                <p className="text-[10px] tracking-[0.3em] uppercase text-[#8EAEBF]/50 mb-3">Station</p>
-                <p className={`text-[15px] text-[#3D3425]/60 leading-[2] ${serif}`}>
-                  江ノ電<br />七里ヶ浜駅 徒歩5分
+                <p className={`text-[13px] text-[#1A1A1A]/40 mt-3 ${serif}`}>
+                  江ノ電 七里ヶ浜駅 徒歩5分
                 </p>
-              </ScrollReveal>
-            </div>
+              </div>
+            </ScrollReveal>
 
-            {/* 電話 — 右寄り */}
-            <div className="md:col-span-3 md:col-start-10">
-              <ScrollReveal delay={0.2}>
-                <p className="text-[10px] tracking-[0.3em] uppercase text-[#8EAEBF]/50 mb-3">Tel</p>
-                <p className={`text-[15px] text-[#3D3425]/60 ${serif}`}>0467-12-3456</p>
-                <p className="text-[10px] tracking-[0.3em] uppercase text-[#8EAEBF]/50 mt-6 mb-3">Parking</p>
-                <p className={`text-[15px] text-[#3D3425]/60 ${serif}`}>専用駐車場 8台</p>
-              </ScrollReveal>
-            </div>
-
-            {/* 営業時間 — 中央やや左、幅広 */}
-            <div className="md:col-span-6 md:col-start-1 mt-4">
-              <ScrollReveal delay={0.15}>
-                <p className="text-[10px] tracking-[0.3em] uppercase text-[#8EAEBF]/50 mb-6">Hours</p>
-                <StaggerContainer stagger={0.08}>
+            <ScrollReveal delay={0.1}>
+              <div>
+                <p className="text-[11px] tracking-[0.15em] uppercase text-[#1A1A1A]/30 mb-4">Hours</p>
+                <StaggerContainer stagger={0.06}>
                   {[
-                    { day: "月 - 金", time: "10:00 - 20:00" },
-                    { day: "土 - 日", time: "9:00 - 21:00" },
-                    { day: "祝日", time: "10:00 - 19:00" },
+                    { day: "Mon — Fri", time: "10:00 — 20:00" },
+                    { day: "Sat — Sun", time: "9:00 — 21:00" },
+                    { day: "Holidays", time: "10:00 — 19:00" },
                   ].map((h) => (
-                    <div key={h.day} className="flex items-baseline justify-between py-5 border-b border-[#3D3425]/6">
-                      <span className={`text-[12px] text-[#3D3425]/35 ${serif}`}>{h.day}</span>
-                      <span className={`text-[20px] md:text-[26px] font-extralight tracking-[0.05em] ${serif}`}>{h.time}</span>
+                    <div key={h.day} className="flex justify-between py-3 border-b border-[#1A1A1A]/5">
+                      <span className={`text-[13px] text-[#1A1A1A]/40 ${serif}`}>{h.day}</span>
+                      <span className={`text-[13px] ${serif}`}>{h.time}</span>
                     </div>
                   ))}
                 </StaggerContainer>
-              </ScrollReveal>
-            </div>
+              </div>
+            </ScrollReveal>
 
-            {/* 予約情報 — 右寄り */}
-            <div className="md:col-span-4 md:col-start-8 mt-4 flex items-end">
-              <ScrollReveal delay={0.3}>
-                <div className="p-6 rounded-[12px] bg-[#8EAEBF]/6 border border-[#8EAEBF]/10">
-                  <p className={`text-[12px] text-[#3D3425]/40 leading-[2.2] ${serif}`}>
-                    テラス席は予約優先です。<br />
-                    お電話またはInstagram DMにて<br />
-                    ご予約を承っております。
-                  </p>
-                </div>
-              </ScrollReveal>
-            </div>
+            <ScrollReveal delay={0.2}>
+              <div>
+                <p className="text-[11px] tracking-[0.15em] uppercase text-[#1A1A1A]/30 mb-4">Contact</p>
+                <p className={`text-[15px] ${serif}`}>0467-12-3456</p>
+                <p className={`text-[13px] text-[#1A1A1A]/40 mt-3 leading-[2] ${serif}`}>
+                  テラス席は予約優先です。<br />
+                  お電話またはInstagram DMにて<br />
+                  ご予約を承っております。
+                </p>
+              </div>
+            </ScrollReveal>
           </div>
         </div>
       </section>
 
-      {/* ===== FOOTER — ミニマル ===== */}
-      <footer className="border-t border-[#3D3425]/5 py-10">
-        <div className="max-w-[1400px] mx-auto px-6 md:px-10 flex flex-col md:flex-row items-center justify-between gap-4">
-          <span className={`text-[14px] tracking-[0.06em] text-[#3D3425]/20 ${serif}`}>하루海</span>
-          <div className="flex items-center gap-6">
-            <a href="#" className="text-[11px] tracking-[0.15em] text-[#3D3425]/20 hover:text-[#3D3425]/40 transition-colors">Instagram</a>
-            <a href="#" className="text-[11px] tracking-[0.15em] text-[#3D3425]/20 hover:text-[#3D3425]/40 transition-colors">X</a>
-            <a href="#" className="text-[11px] tracking-[0.15em] text-[#3D3425]/20 hover:text-[#3D3425]/40 transition-colors">LINE</a>
+      {/* ===== SUBSCRIBE BANNER — Kinfolk式 ===== */}
+      <section className="bg-[#F5F0EA] py-16 md:py-24">
+        <div className="max-w-[1400px] mx-auto px-8 md:px-12 text-center">
+          <ScrollReveal>
+            <h3 className={`text-[28px] md:text-[40px] tracking-[0.06em] uppercase mb-4 ${serif}`}>Follow</h3>
+            <p className={`text-[13px] text-[#1A1A1A]/40 ${serif}`}>하루海の日常をInstagramでお届けしています</p>
+            <a href="#" className="inline-block mt-8 text-[12px] tracking-[0.12em] uppercase border border-[#1A1A1A] px-8 py-3 hover:bg-[#1A1A1A] hover:text-white transition-all">
+              @haru_umi_cafe
+            </a>
+          </ScrollReveal>
+        </div>
+      </section>
+
+      {/* ===== FOOTER — Kinfolk式ミニマル ===== */}
+      <footer className="py-10 px-8 md:px-12">
+        <div className="max-w-[1400px] mx-auto flex flex-col md:flex-row items-center justify-between gap-4">
+          <p className={`text-[11px] text-[#1A1A1A]/25 tracking-wider ${serif}`}>&copy; 하루海 2026</p>
+          <div className="flex gap-8">
+            <a href="#" className="text-[11px] tracking-[0.1em] text-[#1A1A1A]/25 hover:text-[#1A1A1A]/50 transition-colors uppercase">Instagram</a>
+            <a href="#" className="text-[11px] tracking-[0.1em] text-[#1A1A1A]/25 hover:text-[#1A1A1A]/50 transition-colors uppercase">Line</a>
           </div>
-          <p className="text-[10px] text-[#3D3425]/12 tracking-wider">&copy; 2026 하루海 Café</p>
+          <p className={`text-[10px] text-[#1A1A1A]/15 tracking-wider`}>Kamakura, Japan</p>
         </div>
       </footer>
     </main>
