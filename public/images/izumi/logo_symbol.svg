@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="18.327" height="57.554" viewBox="0 0 18.327 57.554">
+  <defs>
+    <radialGradient id="radial-gradient" cx="1.43" cy="-0.034" r="0.948" gradientTransform="translate(-5.243 0) scale(3.14 1.021)" gradientUnits="objectBoundingBox">
+      <stop offset="0" stop-color="#ffc500"/>
+      <stop offset="0.482" stop-color="#f28109"/>
+      <stop offset="1" stop-color="#d23700"/>
+    </radialGradient>
+  </defs>
+  <path id="パス_1" data-name="パス 1" d="M246.762,482.977l9.135-9.326V425.423l-18.327,18.71h9.192Z" transform="translate(-237.57 -425.423)" fill="url(#radial-gradient)"/>
+</svg>

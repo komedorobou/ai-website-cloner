@@ -109,6 +109,7 @@ All screenshots, responsive sweeps, and visual QA diffs use these 6 breakpoints.
 
 | # | Agent | Phase | Role |
 |---|-------|-------|------|
+| 0 | AIDesigner | 0 | デザインカンプ生成・リファイン（AIDesigner MCP、build-premium時のみ） |
 | 1 | SiteAnalyzer | 1 | Reconnaissance + 6-breakpoint screenshots |
 | 2 | DesignTokenExtractor | 2 | Design tokens (orchestrator-direct) |
 | 3 | MotionArchitect | 2 | Animation analysis → MOTION_SPEC.md (worktree) |

@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="229.387" height="55.281" viewBox="0 0 229.387 55.281">
+  <defs>
+    <radialGradient id="radial-gradient" cx="1.43" cy="-0.034" r="0.948" gradientTransform="translate(-5.243 0) scale(3.14 1.021)" gradientUnits="objectBoundingBox">
+      <stop offset="0" stop-color="#ffc500"/>
+      <stop offset="0.482" stop-color="#f28109"/>
+      <stop offset="1" stop-color="#d23700"/>
+    </radialGradient>
+  </defs>
+  <g id="グループ_19" data-name="グループ 19" transform="translate(-77.481 -6878.68)">
+    <g id="グループ_1" data-name="グループ 1" transform="translate(103.868 6895.996)">
+      <text id="和泉出版印刷株式会社" transform="translate(101 20)" fill="#474645" font-size="19" font-family="YuGothicUI-Regular, Yu Gothic UI" letter-spacing="0.075em"><tspan x="-101.413" y="0">和泉出版印刷株式会社</tspan></text>
+    </g>
+    <path id="パス_1" data-name="パス 1" d="M246.4,480.7l8.774-8.958V425.423l-17.6,17.971H246.4Z" transform="translate(-160.089 6453.257)" fill="url(#radial-gradient)"/>
+  </g>
+</svg>

@@ -29,9 +29,7 @@ export default function Home() {
       {/* ===== NAV ===== */}
       <nav className="fixed top-0 left-0 right-0 z-50 mix-blend-difference">
         <div className="max-w-[1400px] mx-auto px-6 md:px-12 h-20 flex items-center justify-between">
-          <span className={`text-[16px] md:text-[18px] tracking-[0.12em] text-white ${serif}`}>
-            和泉出版印刷
-          </span>
+          <Image src="/ai-website-cloner/images/izumi/logo.svg" alt="和泉出版印刷" width={180} height={44} className="h-8 md:h-10 w-auto brightness-0 invert" />
           <div className="hidden md:flex items-center gap-10">
             {["Story", "Service", "Process", "Works", "Contact"].map((item) => (
               <a key={item} href={`#${item.toLowerCase()}`} className="text-[11px] tracking-[0.15em] uppercase text-white/50 hover:text-white transition-colors duration-500">
@@ -167,16 +165,17 @@ export default function Home() {
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
             {[
-              { title: "デザイン制作", desc: "コンセプト設計からレイアウトまで。読者の心に届くビジュアルをデザインします。", tag: "DESIGN" },
-              { title: "編集・組版", desc: "文字組み、校正、DTPオペレーション。読みやすさと美しさを両立する組版技術。", tag: "EDITORIAL" },
-              { title: "印刷", desc: "最新オフセット印刷機による高精細印刷。色校正から本刷りまで、色彩を忠実に再現。", tag: "PRINTING" },
-              { title: "製本", desc: "無線綴じ・中綴じ・上製本。冊子の用途と予算に合わせた最適な製本方法をご提案。", tag: "BINDING" },
-              { title: "発送代行", desc: "全国への発送を一括代行。個別封入から大量発送まで、確実にお届けします。", tag: "SHIPPING" },
-              { title: "Web制作", desc: "冊子と連動したWebサイト・デジタルカタログの制作にも対応しています。", tag: "WEB" },
+              { title: "デザイン制作", desc: "コンセプト設計からレイアウトまで。読者の心に届くビジュアルをデザインします。", tag: "DESIGN", icon: "/ai-website-cloner/images/izumi/service_icon01.png" },
+              { title: "編集・組版", desc: "文字組み、校正、DTPオペレーション。読みやすさと美しさを両立する組版技術。", tag: "EDITORIAL", icon: "/ai-website-cloner/images/izumi/service_icon02.png" },
+              { title: "印刷", desc: "最新オフセット印刷機による高精細印刷。色校正から本刷りまで、色彩を忠実に再現。", tag: "PRINTING", icon: "/ai-website-cloner/images/izumi/service_icon03.png" },
+              { title: "製本", desc: "無線綴じ・中綴じ・上製本。冊子の用途と予算に合わせた最適な製本方法をご提案。", tag: "BINDING", icon: "/ai-website-cloner/images/izumi/service_icon04.png" },
+              { title: "発送代行", desc: "全国への発送を一括代行。個別封入から大量発送まで、確実にお届けします。", tag: "SHIPPING", icon: "/ai-website-cloner/images/izumi/service_icon05.png" },
+              { title: "Web制作", desc: "冊子と連動したWebサイト・デジタルカタログの制作にも対応しています。", tag: "WEB", icon: "/ai-website-cloner/images/izumi/service_icon06.png" },
             ].map((service, i) => (
               <ScrollReveal key={service.tag} delay={i * 0.06}>
                 <div className="bg-white/70 backdrop-blur-sm border border-[#1A1715]/[0.04] p-8 md:p-10 group hover:bg-white hover:shadow-[0_8px_40px_rgba(0,0,0,0.04)] transition-all duration-700">
-                  <p className="text-[10px] tracking-[0.25em] uppercase text-[#9C8B6E] mb-8">{service.tag}</p>
+                  <p className="text-[10px] tracking-[0.25em] uppercase text-[#9C8B6E] mb-6">{service.tag}</p>
+                  <Image src={service.icon} alt={service.title} width={48} height={48} className="w-10 h-10 mb-5 opacity-70" />
                   <h3 className={`text-[20px] md:text-[22px] mb-4 leading-tight ${serif}`}>{service.title}</h3>
                   <p className={`text-[13px] text-[#1A1715]/40 leading-[2.1] ${serif}`}>{service.desc}</p>
                 </div>
@@ -217,7 +216,7 @@ export default function Home() {
             <div className="grid md:grid-cols-2 gap-12 md:gap-20 items-center">
               <div className="relative aspect-[4/3] md:aspect-square overflow-hidden">
                 <Image
-                  src="/ai-website-cloner/images/printing-press.png"
+                  src="/ai-website-cloner/images/izumi/point03.jpg"
                   alt="印刷工程"
                   width={1024}
                   height={1024}
@@ -302,10 +301,10 @@ export default function Home() {
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8">
             {[
-              { img: "/ai-website-cloner/images/works-flatlay.png", title: "記念誌・社史", desc: "創業周年記念誌、学校記念誌など、歴史を未来へ繋ぐ一冊を。" },
-              { img: "/ai-website-cloner/images/book-pages.png", title: "カタログ・パンフレット", desc: "商品の魅力を最大限に伝える、高品質なカタログ制作。" },
-              { img: "/ai-website-cloner/images/paper-folding.png", title: "学術誌・論文集", desc: "正確な組版と校正で、学術的な信頼性を支えます。" },
-              { img: "/ai-website-cloner/images/bookshelf.png", title: "自費出版", desc: "あなたの物語を一冊の本に。企画から販売サポートまで。" },
+              { img: "/ai-website-cloner/images/izumi/strength01.jpg", title: "記念誌・社史", desc: "創業周年記念誌、学校記念誌など、歴史を未来へ繋ぐ一冊を。" },
+              { img: "/ai-website-cloner/images/izumi/point02.jpg", title: "カタログ・パンフレット", desc: "商品の魅力を最大限に伝える、高品質なカタログ制作。" },
+              { img: "/ai-website-cloner/images/works-flatlay.png", title: "学術誌・論文集", desc: "正確な組版と校正で、学術的な信頼性を支えます。" },
+              { img: "/ai-website-cloner/images/book-pages.png", title: "自費出版", desc: "あなたの物語を一冊の本に。企画から販売サポートまで。" },
             ].map((work, i) => (
               <ScrollReveal key={work.title} delay={i * 0.1}>
                 <div className="group cursor-pointer">
@@ -332,9 +331,9 @@ export default function Home() {
 
       {/* ===== STRENGTHS — ダーク + 右に写真どーん ===== */}
       {[
-        { num: "01", title: "ワンストップ\n一貫体制", desc: "デザインから発送まで、外注なしの完全一貫体制。工程間のロスを排除し、品質とスピードを両立。お客様の窓口はひとつだけ。", img: "/ai-website-cloner/images/paper-folding.png", imgAlt: "紙を丁寧に折る手" },
-        { num: "02", title: "職人品質の\n印刷技術", desc: "最新鋭のオフセット印刷機と、50年で培った熟練の技術。色の再現性、紙との相性、インクの乗り。すべてに妥協しません。", img: "/ai-website-cloner/images/printing-press.png", imgAlt: "印刷機のインクローラー" },
-        { num: "03", title: "半世紀の\n信頼と実績", desc: "1979年の創業以来、官公庁・教育機関・企業まで幅広いお客様の冊子を手がけてきました。10,000冊を超える制作実績。", img: "/ai-website-cloner/images/book-pages.png", imgAlt: "ページが開いた本" },
+        { num: "01", title: "ワンストップ\n一貫体制", desc: "デザインから発送まで、外注なしの完全一貫体制。工程間のロスを排除し、品質とスピードを両立。お客様の窓口はひとつだけ。", img: "/ai-website-cloner/images/izumi/point01.png", imgAlt: "一貫体制の印刷工程" },
+        { num: "02", title: "職人品質の\n印刷技術", desc: "最新鋭のオフセット印刷機と、50年で培った熟練の技術。色の再現性、紙との相性、インクの乗り。すべてに妥協しません。", img: "/ai-website-cloner/images/izumi/point02.jpg", imgAlt: "色校正チェック" },
+        { num: "03", title: "半世紀の\n信頼と実績", desc: "1979年の創業以来、官公庁・教育機関・企業まで幅広いお客様の冊子を手がけてきました。10,000冊を超える制作実績。", img: "/ai-website-cloner/images/izumi/strength01.jpg", imgAlt: "積まれた印刷物" },
       ].map((item, i) => (
         <section key={item.num} className="min-h-screen bg-[#1A1715] flex items-center">
           <div className="max-w-[1400px] mx-auto px-6 md:px-12 w-full py-20 md:py-0">
@@ -458,8 +457,7 @@ export default function Home() {
       <footer className="py-14 px-6 md:px-12 bg-[#1A1715]">
         <div className="max-w-[1400px] mx-auto flex flex-col md:flex-row items-center justify-between gap-6">
           <div>
-            <p className={`text-[15px] tracking-[0.12em] text-[#F4F2ED] ${serif}`}>和泉出版印刷</p>
-            <p className="text-[10px] text-[#F4F2ED]/20 mt-1">Izumi Publishing & Printing Co., Ltd.</p>
+            <Image src="/ai-website-cloner/images/izumi/logo.svg" alt="和泉出版印刷" width={180} height={44} className="h-8 w-auto brightness-0 invert" />
           </div>
           <div className="flex gap-6 md:gap-8">
             {["Story", "Service", "Process", "Works", "Contact"].map((item) => (
