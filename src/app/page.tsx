@@ -3,86 +3,107 @@
 import { ScrollReveal } from "@/components/animation/scroll-reveal";
 import { ParallaxLayer } from "@/components/animation/parallax-layer";
 import { StaggerContainer } from "@/components/animation/stagger-container";
+import { useState, useEffect, useCallback } from "react";
 import Image from "next/image";
 
 const serif = "font-[family-name:var(--font-noto-serif-jp)]";
 
+const heroImages = [
+  { src: "/ai-website-cloner/images/hero-cafe.png", alt: "海の見えるカフェ店内" },
+  { src: "/ai-website-cloner/images/hero-exterior.png", alt: "崖の上の白いカフェ外観" },
+  { src: "/ai-website-cloner/images/hero-barista.png", alt: "バリスタのラテアート" },
+];
+
 export default function Home() {
+  const [currentSlide, setCurrentSlide] = useState(0);
+
+  const nextSlide = useCallback(() => {
+    setCurrentSlide((prev) => (prev + 1) % heroImages.length);
+  }, []);
+
+  useEffect(() => {
+    const timer = setInterval(nextSlide, 5000);
+    return () => clearInterval(timer);
+  }, [nextSlide]);
+
   return (
     <main className="bg-white text-[#1A1A1A] overflow-hidden">
       {/* ===== NAV — Kinfolk式：左ロゴ + 右ハンバーガー ===== */}
-      <nav className="fixed top-0 left-0 right-0 z-50 bg-white/90 backdrop-blur-md">
+      <nav className="fixed top-0 left-0 right-0 z-50 mix-blend-difference">
         <div className="max-w-[1400px] mx-auto px-8 md:px-12 h-16 flex items-center justify-between">
-          <span className={`text-[20px] tracking-[0.15em] uppercase ${serif}`}>
+          <span className={`text-[20px] tracking-[0.15em] uppercase text-white ${serif}`}>
             하루海
           </span>
           <div className="hidden md:flex items-center gap-10">
-            <a href="#story" className="text-[12px] tracking-[0.12em] uppercase text-[#1A1A1A]/40 hover:text-[#1A1A1A] transition-colors">Story</a>
-            <a href="#menu" className="text-[12px] tracking-[0.12em] uppercase text-[#1A1A1A]/40 hover:text-[#1A1A1A] transition-colors">Menu</a>
-            <a href="#space" className="text-[12px] tracking-[0.12em] uppercase text-[#1A1A1A]/40 hover:text-[#1A1A1A] transition-colors">Space</a>
-            <a href="#access" className="text-[12px] tracking-[0.12em] uppercase text-[#1A1A1A]/40 hover:text-[#1A1A1A] transition-colors">Access</a>
+            <a href="#story" className="text-[12px] tracking-[0.12em] uppercase text-white/60 hover:text-white transition-colors">Story</a>
+            <a href="#menu" className="text-[12px] tracking-[0.12em] uppercase text-white/60 hover:text-white transition-colors">Menu</a>
+            <a href="#space" className="text-[12px] tracking-[0.12em] uppercase text-white/60 hover:text-white transition-colors">Space</a>
+            <a href="#access" className="text-[12px] tracking-[0.12em] uppercase text-white/60 hover:text-white transition-colors">Access</a>
           </div>
         </div>
       </nav>
 
-      {/* ===== HERO — Kinfolk式：大セリフ見出し中央 + 写真中央配置 ===== */}
-      <section className="pt-32 md:pt-40 pb-6">
-        <div className="text-center px-8 md:px-12">
-          <ScrollReveal duration={1} delay={0.2}>
-            <h1 className={`text-[42px] md:text-[64px] lg:text-[80px] tracking-[0.08em] uppercase leading-[1.15] ${serif}`}>
-              Ocean View<br />Korean Café
-            </h1>
-          </ScrollReveal>
-        </div>
-        <div className="max-w-[420px] mx-auto mt-12 mb-8 px-8">
-          <ScrollReveal delay={0.4}>
-            <div className="aspect-[3/4] relative overflow-hidden">
-              <Image
-                src="/ai-website-cloner/images/concept-cafe.png"
-                alt="하루海"
-                width={1024}
-                height={1024}
-                className="w-full h-full object-cover"
-                priority
-              />
-              <div className="absolute bottom-0 left-0 right-0 p-5 bg-gradient-to-t from-black/40 to-transparent">
-                <p className={`text-white/90 text-[11px] tracking-[0.2em] uppercase`}>하루海 — Haru Umi</p>
-                <p className={`text-white/60 text-[10px] mt-1 ${serif}`}>波の音と、一杯のコーヒーと。</p>
-              </div>
-            </div>
-          </ScrollReveal>
-        </div>
-        <ScrollReveal delay={0.6}>
-          <div className="flex justify-center gap-6 text-[12px] tracking-[0.1em]">
-            <a href="#menu" className="text-[#1A1A1A]/50 hover:text-[#1A1A1A] transition-colors">Menu</a>
-            <span className="text-[#1A1A1A]/20">|</span>
-            <a href="#access" className="text-[#1A1A1A]/50 hover:text-[#1A1A1A] transition-colors">Visit</a>
-          </div>
-        </ScrollReveal>
-      </section>
-
-      {/* ===== FULL-BLEED PHOTO — テキスト左下オーバーレイ ===== */}
-      <section className="mt-12">
-        <div className="relative">
-          <ParallaxLayer speed={0.08}>
+      {/* ===== HERO — 爆でか全画面スライドショー ===== */}
+      <section className="h-[100svh] relative">
+        {/* スライドショー背景 */}
+        {heroImages.map((img, i) => (
+          <div
+            key={img.src}
+            className="absolute inset-0 transition-opacity duration-[2000ms] ease-in-out"
+            style={{ opacity: currentSlide === i ? 1 : 0 }}
+          >
             <Image
-              src="/ai-website-cloner/images/hero-cafe.png"
-              alt="海の見えるカフェ全景"
+              src={img.src}
+              alt={img.alt}
               width={1024}
               height={1024}
-              className="w-full h-[60vh] md:h-[80vh] object-cover"
+              className="w-full h-full object-cover scale-[1.02]"
+              priority={i === 0}
             />
-          </ParallaxLayer>
-          <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent" />
-          <div className="absolute bottom-0 left-0 right-0 px-8 md:px-12 pb-10 md:pb-14">
-            <div className="max-w-[1400px] mx-auto">
-              <ScrollReveal>
-                <p className="text-white/60 text-[11px] tracking-[0.2em] uppercase mb-3">Kamakura, Shichirigahama</p>
-                <h2 className={`text-white text-[32px] md:text-[48px] lg:text-[64px] tracking-[0.04em] leading-[1.15] ${serif}`}>
-                  海と暮らす、<br />カフェのある日常。
-                </h2>
-              </ScrollReveal>
-            </div>
+          </div>
+        ))}
+        <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/10 to-black/20" />
+
+        {/* 中央テキスト */}
+        <div className="absolute inset-0 z-10 flex flex-col items-center justify-center px-8">
+          <ScrollReveal duration={1.2} delay={0.3}>
+            <h1 className={`text-[52px] md:text-[80px] lg:text-[110px] tracking-[0.08em] uppercase leading-[1.05] text-white text-center ${serif}`}>
+              하루海
+            </h1>
+          </ScrollReveal>
+          <ScrollReveal duration={1} delay={0.6}>
+            <p className={`text-[13px] md:text-[15px] tracking-[0.3em] uppercase text-white/60 mt-6 text-center`}>
+              Ocean View Korean Café
+            </p>
+          </ScrollReveal>
+          <ScrollReveal duration={1} delay={0.8}>
+            <p className={`text-[13px] text-white/40 mt-4 tracking-[0.1em] ${serif}`}>
+              波の音と、一杯のコーヒーと。
+            </p>
+          </ScrollReveal>
+        </div>
+
+        {/* スライドインジケーター */}
+        <div className="absolute bottom-8 left-0 right-0 z-10 flex justify-center gap-2">
+          {heroImages.map((_, i) => (
+            <button
+              key={i}
+              onClick={() => setCurrentSlide(i)}
+              className={`h-px transition-all duration-500 ${
+                currentSlide === i ? "w-10 bg-white/80" : "w-6 bg-white/25"
+              }`}
+            />
+          ))}
+        </div>
+
+        {/* 下部テキスト */}
+        <div className="absolute bottom-8 left-8 md:left-12 z-10">
+          <p className="text-[10px] tracking-[0.2em] uppercase text-white/30">Kamakura, Shichirigahama</p>
+        </div>
+        <div className="absolute bottom-8 right-8 md:right-12 z-10">
+          <div className="flex gap-6 text-[11px] tracking-[0.1em]">
+            <a href="#menu" className="text-white/40 hover:text-white/80 transition-colors">Menu</a>
+            <a href="#access" className="text-white/40 hover:text-white/80 transition-colors">Visit</a>
           </div>
         </div>
       </section>
