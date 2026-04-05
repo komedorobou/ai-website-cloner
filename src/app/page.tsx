@@ -330,35 +330,55 @@ export default function Home() {
         </div>
       </section>
 
-      {/* ===== STRENGTHS — ダークセクション ===== */}
-      <section className="py-28 md:py-44 bg-[#1A1715]">
-        <div className="max-w-[1400px] mx-auto px-6 md:px-12">
-          <ScrollReveal>
-            <p className="text-[11px] tracking-[0.3em] uppercase text-[#D4C4A8] mb-4">Strengths</p>
-          </ScrollReveal>
-          <ScrollReveal delay={0.1}>
-            <h2 className={`text-[36px] md:text-[56px] lg:text-[72px] leading-[1.15] tracking-[-0.02em] mb-20 md:mb-28 text-[#F4F2ED] ${serif}`}>
-              選ばれる理由。
-            </h2>
-          </ScrollReveal>
-
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-16 md:gap-12">
-            <StaggerContainer stagger={0.12}>
-              {[
-                { num: "01", title: "ワンストップ\n一貫体制", desc: "デザインから発送まで、外注なしの完全一貫体制。工程間のロスを排除し、品質とスピードを両立。お客様の窓口はひとつだけ。" },
-                { num: "02", title: "職人品質の\n印刷技術", desc: "最新鋭のオフセット印刷機と、50年で培った熟練の技術。色の再現性、紙との相性、インクの乗り。すべてに妥協しません。" },
-                { num: "03", title: "半世紀の\n信頼と実績", desc: "1979年の創業以来、官公庁・教育機関・企業まで幅広いお客様の冊子を手がけてきました。10,000冊を超える制作実績。" },
-              ].map((item) => (
-                <div key={item.num}>
-                  <span className={`text-[48px] md:text-[56px] font-extralight text-[#D4C4A8]/20 ${serif}`}>{item.num}</span>
-                  <h3 className={`text-[22px] md:text-[26px] mt-4 mb-6 leading-[1.6] whitespace-pre-line text-[#F4F2ED] ${serif}`}>{item.title}</h3>
-                  <p className={`text-[13px] text-[#F4F2ED]/35 leading-[2.2] ${serif}`}>{item.desc}</p>
-                </div>
-              ))}
-            </StaggerContainer>
+      {/* ===== STRENGTHS — ダーク + 右に写真どーん ===== */}
+      {[
+        { num: "01", title: "ワンストップ\n一貫体制", desc: "デザインから発送まで、外注なしの完全一貫体制。工程間のロスを排除し、品質とスピードを両立。お客様の窓口はひとつだけ。", img: "/ai-website-cloner/images/paper-folding.png", imgAlt: "紙を丁寧に折る手" },
+        { num: "02", title: "職人品質の\n印刷技術", desc: "最新鋭のオフセット印刷機と、50年で培った熟練の技術。色の再現性、紙との相性、インクの乗り。すべてに妥協しません。", img: "/ai-website-cloner/images/printing-press.png", imgAlt: "印刷機のインクローラー" },
+        { num: "03", title: "半世紀の\n信頼と実績", desc: "1979年の創業以来、官公庁・教育機関・企業まで幅広いお客様の冊子を手がけてきました。10,000冊を超える制作実績。", img: "/ai-website-cloner/images/book-pages.png", imgAlt: "ページが開いた本" },
+      ].map((item, i) => (
+        <section key={item.num} className="min-h-screen bg-[#1A1715] flex items-center">
+          <div className="max-w-[1400px] mx-auto px-6 md:px-12 w-full py-20 md:py-0">
+            <div className={`grid md:grid-cols-2 gap-12 md:gap-16 items-center ${i % 2 === 1 ? "md:direction-rtl" : ""}`}>
+              <div className={i % 2 === 1 ? "md:order-2" : ""}>
+                {i === 0 && (
+                  <>
+                    <ScrollReveal>
+                      <p className="text-[11px] tracking-[0.3em] uppercase text-[#D4C4A8] mb-4">Strengths</p>
+                    </ScrollReveal>
+                    <ScrollReveal delay={0.05}>
+                      <h2 className={`text-[36px] md:text-[56px] lg:text-[72px] leading-[1.15] tracking-[-0.02em] mb-12 md:mb-16 text-[#F4F2ED] ${serif}`}>
+                        選ばれる理由。
+                      </h2>
+                    </ScrollReveal>
+                  </>
+                )}
+                <ScrollReveal delay={0.1}>
+                  <span className={`text-[56px] md:text-[72px] font-extralight text-[#D4C4A8]/15 ${serif}`}>{item.num}</span>
+                </ScrollReveal>
+                <ScrollReveal delay={0.15}>
+                  <h3 className={`text-[28px] md:text-[36px] mt-2 mb-6 leading-[1.5] whitespace-pre-line text-[#F4F2ED] ${serif}`}>{item.title}</h3>
+                </ScrollReveal>
+                <ScrollReveal delay={0.2}>
+                  <p className={`text-[14px] text-[#F4F2ED]/40 leading-[2.2] max-w-[400px] ${serif}`}>{item.desc}</p>
+                </ScrollReveal>
+              </div>
+              <div className={i % 2 === 1 ? "md:order-1" : ""}>
+                <ScrollReveal delay={0.1} direction={i % 2 === 0 ? "right" : "left"}>
+                  <div className="aspect-[4/5] overflow-hidden">
+                    <Image
+                      src={item.img}
+                      alt={item.imgAlt}
+                      width={1024}
+                      height={1280}
+                      className="w-full h-full object-cover"
+                    />
+                  </div>
+                </ScrollReveal>
+              </div>
+            </div>
           </div>
-        </div>
-      </section>
+        </section>
+      ))}
 
       {/* ===== フルスクリーン — ショールーム ===== */}
       <section className="h-[60vh] md:h-[80vh] relative">
