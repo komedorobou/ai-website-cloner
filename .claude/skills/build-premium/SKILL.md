@@ -146,69 +146,206 @@ user-invocable: true
 
 ---
 
-### Phase C: クローン分析（Playwrightでリファレンスサイトを解析）
+### Phase C: クローン分析（clone-websiteレベルの本格解析）
 
-**Phase Rでユーザーが「これ！」と選んだリファレンスサイト（1〜2サイト）を、Playwrightブラウザで実際に見に行き、デザインを徹底分析する。**
+**Phase Rでユーザーが「これ！」と選んだリファレンスサイト（1〜2サイト）を、ブラウザMCPで実際に見に行き、clone-websiteパイプラインの解析手法でデザインをデータレベルで徹底的に盗む。**
 
-見るだけじゃない。盗む。
+感覚じゃない。データで盗む。
 
-#### 手順
+#### 前提
+- ブラウザMCPツール（Playwright MCP, Chrome MCP等）が必要。使えない場合はWebFetch + WebSearchで代替。
+- 出力先: `docs/research/references/` にサイトごとのフォルダを作成
 
-1. **Playwrightでリファレンスサイトにアクセス**
-   - `browser_navigate` でURLを開く
-   - Cookie同意バナー等は `browser_evaluate` で除去
+#### Step 1: 6ブレークポイントスクリーンショット
 
-2. **全体キャプチャ**
-   - `browser_take_screenshot` で viewport + fullPage の両方を取得
-   - スクロールしながら各セクションのスクリーンショットも取る（3〜5箇所）
+ブラウザMCPでリファレンスサイトにアクセスし、以下の6幅でフルページスクショを取得：
 
-3. **以下のデザイン要素を抽出・メモする**
+| Name | Width | Device |
+|------|-------|--------|
+| xs | 320px | iPhone SE |
+| sm | 390px | iPhone |
+| md | 768px | iPad portrait |
+| lg | 1024px | iPad landscape |
+| xl | 1280px | Small desktop |
+| 2xl | 1440px | Large desktop |
 
-   | 分析項目 | 見るべきポイント |
-   |---------|----------------|
-   | **レイアウト構成** | セクションの並び、グリッドの列数、余白の取り方、要素の配置パターン |
-   | **タイポグラフィ** | フォント（セリフ/サンセリフ）、サイズ感の緩急、letter-spacing、uppercase使い |
-   | **配色** | 背景色、テキスト色、アクセント色、写真のトーン |
-   | **写真の使い方** | フルブリード/グリッド内配置、アスペクト比、オーバーレイの有無 |
-   | **セパレーター・装飾** | 線、余白、番号、ラベルの使い方 |
-   | **ナビゲーション** | 固定/非固定、透過、mix-blend-difference等 |
-   | **アニメーション** | スクロール連動、フェード、パララックス、トランジション |
-   | **全体のリズム** | 密→疎の切り替え、フルブリード→ナロー幅の交互 |
+- Cookie同意バナー等は `browser_evaluate` で除去
+- セクションごとのビューポートスクショも3〜5箇所取得
+- 保存先: `docs/design-references/ref-<hostname>/`
 
-4. **クローン分析レポートを作成**
+#### Step 2: デザイントークン抽出（getComputedStyleで正確に）
 
-   ```
-   📋 クローン分析レポート: [サイト名]
+ブラウザMCPで以下のスクリプトを実行し、デザイントークンを **数値で** 抽出する：
 
-   【レイアウト】
-   - ヒーロー: ○○式（全画面写真 / 中央テキスト / 左寄せ等）
-   - セクション構成: ...
-   - グリッド: ○カラム、余白は○○
+```javascript
+JSON.stringify({
+  colors: (() => {
+    const els = document.querySelectorAll('h1,h2,h3,h4,p,a,button,nav,header,footer,section');
+    const colors = new Map();
+    els.forEach(el => {
+      const cs = getComputedStyle(el);
+      ['color','backgroundColor','borderColor'].forEach(prop => {
+        const v = cs[prop];
+        if (v && v !== 'rgba(0, 0, 0, 0)') colors.set(v, (colors.get(v)||0)+1);
+      });
+    });
+    return [...colors.entries()].sort((a,b) => b[1]-a[1]).slice(0,20);
+  })(),
+  typography: [...document.querySelectorAll('h1,h2,h3,h4,h5,h6,p,a,button,span,li')]
+    .slice(0,50).map(el => {
+      const cs = getComputedStyle(el);
+      return {
+        tag: el.tagName, text: el.textContent?.trim().slice(0,30),
+        fontFamily: cs.fontFamily, fontSize: cs.fontSize, fontWeight: cs.fontWeight,
+        lineHeight: cs.lineHeight, letterSpacing: cs.letterSpacing, textTransform: cs.textTransform
+      };
+    }),
+  spacing: [...document.querySelectorAll('section,div,header,main')]
+    .slice(0,30).map(el => {
+      const cs = getComputedStyle(el);
+      return {
+        tag: el.tagName, classes: el.className?.toString().slice(0,50),
+        padding: cs.padding, margin: cs.margin, gap: cs.gap, maxWidth: cs.maxWidth
+      };
+    }),
+  fonts: [...new Set([...document.querySelectorAll('*')].slice(0,200).map(el => getComputedStyle(el).fontFamily))],
+  borderRadius: [...new Set([...document.querySelectorAll('button,img,div,section,a')]
+    .slice(0,50).map(el => getComputedStyle(el).borderRadius).filter(v => v !== '0px'))]
+});
+```
 
-   【タイポグラフィ】
-   - 見出し: セリフ / ○○px / uppercase / tracking ○○
-   - 本文: ...
+#### Step 3: インタラクション・アニメーション分析
 
-   【配色】
-   - 背景: #○○○ / テキスト: #○○○ / アクセント: ...
+clone-websiteのMandatory Interaction Sweepと同じ手法で分析する：
 
-   【写真】
-   - フルブリード ○箇所、グリッド内 ○箇所、アスペクト比 ...
+**スクロールスイープ:**
+- ページ上部から下部までゆっくりスクロール
+- ヘッダーの変化（縮小、背景変化、影追加）→ トリガーのスクロール位置を記録
+- ビューポート進入アニメーション → 種類と方向を記録
+- スクロールスナップの有無
+- スムーススクロールライブラリ（Lenis, Locomotive等）の検出
 
-   【盗むべき要素TOP3】
-   1. ○○（具体的な要素と、うちのサイトでどう使うか）
-   2. ○○
-   3. ○○
-   ```
+**ホバースイープ:**
+- ボタン、カード、リンク、画像のホバー状態を確認
+- 変化するプロパティ（color, scale, shadow, opacity等）と transition を記録
 
-5. **ユーザーに確認**
-   - 「この要素を取り入れて作るで！」と提示
-   - OKが出たらPhase 0（またはPhase 1）へ
+**レスポンシブスイープ:**
+- 6ブレークポイントで確認
+- レイアウトが切り替わるポイントを特定（カラム→スタック等）
+
+**アニメーション詳細パラメータ:**
+各アニメーション要素について以下を記録：
+- トリガー（スクロール位置、IntersectionObserver閾値、hover、click）
+- 開始・終了のCSSステート（getComputedStyleの実値）
+- duration, easing, delay
+- スクロール連動（スクラブ）かどうか
+- ピン留めの有無
+- スタガータイミング
+
+#### Step 4: アセット発見（画像・動画・SVG）
+
+```javascript
+JSON.stringify({
+  images: [...document.querySelectorAll('img')].map(img => ({
+    src: img.src || img.currentSrc, alt: img.alt,
+    width: img.naturalWidth, height: img.naturalHeight,
+    position: getComputedStyle(img).position,
+    zIndex: getComputedStyle(img).zIndex
+  })),
+  videos: [...document.querySelectorAll('video')].map(v => ({
+    src: v.src || v.querySelector('source')?.src,
+    poster: v.poster, autoplay: v.autoplay, loop: v.loop
+  })),
+  backgroundImages: [...document.querySelectorAll('*')].filter(el => {
+    const bg = getComputedStyle(el).backgroundImage;
+    return bg && bg !== 'none';
+  }).map(el => ({
+    url: getComputedStyle(el).backgroundImage,
+    element: el.tagName + '.' + el.className?.toString().split(' ')[0]
+  })),
+  svgCount: document.querySelectorAll('svg').length
+});
+```
+
+- **参考素材として使いたい画像はDL** → `docs/design-references/ref-<hostname>/assets/` に保存
+- build-premiumでは最終的にnano-banana MCPでオリジナル画像を生成するが、参考画像があると生成プロンプトの精度が上がる
+
+#### Step 5: クローン分析レポート作成
+
+抽出データを以下のフォーマットで整理し、`docs/research/references/<hostname>/CLONE_ANALYSIS.md` に保存：
+
+```markdown
+# クローン分析レポート: [サイト名]
+
+## デザイントークン
+### カラーパレット
+- Primary: #○○○○○○ (rgb値)
+- Secondary: #○○○○○○
+- Background: #○○○○○○
+- Text Primary: #○○○○○○
+- Text Muted: #○○○○○○
+- Accent: #○○○○○○
+
+### タイポグラフィ
+- 見出しフォント: ○○○, weight: ○○○
+- 本文フォント: ○○○, weight: ○○○
+- H1: ○○px / line-height: ○○ / letter-spacing: ○○
+- H2: ○○px / line-height: ○○ / letter-spacing: ○○
+- Body: ○○px / line-height: ○○
+
+### スペーシングスケール
+- セクション間: ○○px
+- コンテンツ内余白: ○○px
+- max-width: ○○px
+- border-radius: ○○px（ボタン）, ○○px（カード）
+
+## レイアウト構成
+- ヒーロー: ○○式（全画面写真 / 中央テキスト / 左寄せ等）
+- セクション数: ○○
+- グリッド: ○カラム / gap: ○○px
+- ナビ: 固定/非固定, 背景: ○○
+
+## アニメーション仕様
+### ヒーロー
+- 種類: ○○ / duration: ○○s / easing: ○○
+
+### セクション進入
+- 種類: fade-up / slide-in / etc.
+- duration: ○○s / delay: ○○s / stagger: ○○s
+
+### ホバー
+- ボタン: ○○ → ○○ / transition: ○○
+- カード: ○○ → ○○ / transition: ○○
+
+### スクロール連動
+- パララックス: あり/なし / speed: ○○
+- ピン留め: あり/なし
+- スムーススクロール: Lenis / なし
+
+## レスポンシブ
+- ブレークポイント: ○○px でカラム変更
+- モバイルナビ: ハンバーガー / ドロワー / etc.
+
+## 盗むべき要素TOP5
+1. ○○（具体的な要素と、うちのサイトでどう活かすか）
+2. ○○
+3. ○○
+4. ○○
+5. ○○
+```
+
+#### Step 6: ユーザーに確認
+
+レポートのサマリーをユーザーに提示：
+- 盗むべき要素TOP5を見せる
+- 「これらを取り入れて作るで！」
+- OKが出たらPhase 0（またはPhase 1）へ
 
 #### 注意
 - **2サイトまで** — 3サイト以上分析するとデザインがブレる。最大2サイト。
-- **要素の取捨選択** — 全部コピーするのではなく、うちのサイトの業種・ターゲットに合う要素だけを選んで取り入れる
-- **Playwrightが使えない場合** — WebFetchでHTML取得、またはWebSearchでスクリーンショットを探す代替手段で対応
+- **コピーじゃない、参考** — 抽出したトークンは「そのまま使う」のではなく「方向性の指針」として使う。業種・ターゲットに合わせてアレンジする。
+- **数値は正確に** — 「なんかでかい」ではなく「96px, weight 700, letter-spacing -0.04em」まで出す。
+- **ブラウザMCPが使えない場合** — WebFetchでHTML取得 + WebSearchでスクリーンショット探索で代替。精度は落ちるがやらないよりマシ。
 
 ---
 
@@ -249,12 +386,13 @@ user-invocable: true
 
 **重要:** AIDesignerの出力はあくまで「設計図」として使う。HTML をそのまま貼り付けるのではなく、デザインの方向性（レイアウト、配色、タイポグラフィ、セクション構成）を参照しながら、Phase 3 で本プロジェクトのアニメーションコンポーネント（ScrollReveal, ParallaxLayer, StickySection等）を使って実装する。
 
-### Phase 1: 設計（ヒアリング + リファレンス + デザインカンプをもとに）
+### Phase 1: 設計（ヒアリング + クローン分析 + デザインカンプをもとに）
 
-1. **Phase H のヒアリングサマリー** + **Phase R のリファレンス選定結果** + **Phase 0 のデザインカンプ（あれば）** を総合して、セクション構成を決める（ヒーロー、フィーチャー×3-5、CTA、フッター等）
-2. リファレンスから取り入れるデザイン要素を明確化（配色、レイアウトパターン、アニメーション手法）
-3. Phase 0 を実施した場合はデザインカンプとの差分を確認（アニメーション、インタラクション等はこちらで追加）
-4. 画像が必要な箇所をリストアップ
+1. **Phase H のヒアリングサマリー** + **Phase R のリファレンス選定結果** + **Phase C のクローン分析レポート** + **Phase 0 のデザインカンプ（あれば）** を総合して、セクション構成を決める（ヒーロー、フィーチャー×3-5、CTA、フッター等）
+2. **Phase Cの抽出データを活用** — 配色はカラーパレットを参考にアレンジ、タイポグラフィはサイズ感・ウェイトの緩急を参考に、スペーシングはスケール感を参考にする
+3. **Phase Cのアニメーション仕様を参考** — どのセクションにどのアニメーション（ScrollReveal, ParallaxLayer, StickySection等）を適用するかを決める
+4. Phase 0 を実施した場合はデザインカンプとの差分を確認（アニメーション、インタラクション等はこちらで追加）
+5. 画像が必要な箇所をリストアップ（Phase Cの参考画像を元にnano-banana MCPで生成するプロンプトも検討）
 
 ### Phase 2: 画像生成
 
