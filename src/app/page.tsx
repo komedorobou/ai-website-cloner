@@ -161,24 +161,24 @@ export default function Home() {
             </h2>
           </ScrollReveal>
 
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-px bg-[#F5F0E8]/5">
-            <StaggerContainer stagger={0.06} className="contents">
-              {[
-                { icon: "✦", title: "デザイン制作", desc: "コンセプト設計からレイアウトまで。読者の心に届くビジュアルをデザインします。", tag: "DESIGN" },
-                { icon: "✦", title: "編集・組版", desc: "文字組み、校正、DTPオペレーション。読みやすさと美しさを両立する組版技術。", tag: "EDITORIAL" },
-                { icon: "✦", title: "印刷", desc: "最新オフセット印刷機による高精細印刷。色校正から本刷りまで、色彩を忠実に再現。", tag: "PRINTING" },
-                { icon: "✦", title: "製本", desc: "無線綴じ・中綴じ・上製本。冊子の用途と予算に合わせた最適な製本方法をご提案。", tag: "BINDING" },
-                { icon: "✦", title: "発送代行", desc: "全国への発送を一括代行。個別封入から大量発送まで、確実にお届けします。", tag: "SHIPPING" },
-                { icon: "✦", title: "Web制作", desc: "冊子と連動したWebサイト・デジタルカタログの制作にも対応しています。", tag: "WEB" },
-              ].map((service) => (
-                <div key={service.tag} className="bg-[#0A0A08] p-8 md:p-10 group hover:bg-[#12120F] transition-colors duration-500">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-5">
+            {[
+              { icon: "✦", title: "デザイン制作", desc: "コンセプト設計からレイアウトまで。読者の心に届くビジュアルをデザインします。", tag: "DESIGN" },
+              { icon: "✦", title: "編集・組版", desc: "文字組み、校正、DTPオペレーション。読みやすさと美しさを両立する組版技術。", tag: "EDITORIAL" },
+              { icon: "✦", title: "印刷", desc: "最新オフセット印刷機による高精細印刷。色校正から本刷りまで、色彩を忠実に再現。", tag: "PRINTING" },
+              { icon: "✦", title: "製本", desc: "無線綴じ・中綴じ・上製本。冊子の用途と予算に合わせた最適な製本方法をご提案。", tag: "BINDING" },
+              { icon: "✦", title: "発送代行", desc: "全国への発送を一括代行。個別封入から大量発送まで、確実にお届けします。", tag: "SHIPPING" },
+              { icon: "✦", title: "Web制作", desc: "冊子と連動したWebサイト・デジタルカタログの制作にも対応しています。", tag: "WEB" },
+            ].map((service, i) => (
+              <ScrollReveal key={service.tag} delay={i * 0.06}>
+                <div className="bg-[#16140F] border border-[#F5F0E8]/5 rounded-[4px] p-8 md:p-10 group hover:bg-[#1E1C16] hover:border-[#C8A87C]/15 transition-all duration-500">
                   <p className="text-[10px] tracking-[0.2em] uppercase text-[#C8A87C]/50 mb-6">{service.tag}</p>
                   <p className="text-[#C8A87C] text-[20px] mb-4">{service.icon}</p>
                   <h3 className={`text-[20px] md:text-[22px] mb-4 ${serif}`}>{service.title}</h3>
-                  <p className={`text-[13px] text-[#F5F0E8]/35 leading-[2] ${serif}`}>{service.desc}</p>
+                  <p className={`text-[13px] text-[#F5F0E8]/40 leading-[2] ${serif}`}>{service.desc}</p>
                 </div>
-              ))}
-            </StaggerContainer>
+              </ScrollReveal>
+            ))}
           </div>
         </div>
       </section>
