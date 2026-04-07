@@ -76,6 +76,14 @@ export default function Home() {
   const [workflowStep, setWorkflowStep] = useState(0);
   const [formTab, setFormTab] = useState<"inquiry" | "quote">("inquiry");
   const [formSent, setFormSent] = useState(false);
+  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+
+  useEffect(() => {
+    document.body.style.overflow = mobileMenuOpen ? "hidden" : "";
+    return () => {
+      document.body.style.overflow = "";
+    };
+  }, [mobileMenuOpen]);
 
   const handleContactSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -153,8 +161,84 @@ export default function Home() {
               お問い合わせ
             </a>
           </div>
+
+          {/* ハンバーガーボタン (mobile only) */}
+          <button
+            type="button"
+            aria-label={mobileMenuOpen ? "メニューを閉じる" : "メニューを開く"}
+            aria-expanded={mobileMenuOpen}
+            onClick={() => setMobileMenuOpen((v) => !v)}
+            className="md:hidden relative w-10 h-10 flex items-center justify-center text-white"
+          >
+            <span
+              className={`absolute block h-px w-6 bg-white transition-all duration-300 ${
+                mobileMenuOpen ? "rotate-45" : "-translate-y-[6px]"
+              }`}
+            />
+            <span
+              className={`absolute block h-px w-6 bg-white transition-opacity duration-300 ${
+                mobileMenuOpen ? "opacity-0" : "opacity-100"
+              }`}
+            />
+            <span
+              className={`absolute block h-px w-6 bg-white transition-all duration-300 ${
+                mobileMenuOpen ? "-rotate-45" : "translate-y-[6px]"
+              }`}
+            />
+          </button>
         </div>
       </nav>
+
+      {/* ===== モバイルメニュー オーバーレイ ===== */}
+      <div
+        className={`fixed inset-0 z-40 md:hidden bg-[#061818] transition-all duration-500 ${
+          mobileMenuOpen
+            ? "opacity-100 pointer-events-auto"
+            : "opacity-0 pointer-events-none"
+        }`}
+      >
+        <div className="h-full flex flex-col justify-center px-8">
+          <ul className="flex flex-col gap-7">
+            {[
+              { label: "会社概要", id: "about" },
+              { label: "事業内容", id: "services" },
+              { label: "ご利用の流れ", id: "workflow" },
+              { label: "参考価格", id: "pricing" },
+              { label: "アクセス", id: "access" },
+            ].map((item, i) => (
+              <li
+                key={item.id}
+                className={`transition-all duration-500 ${
+                  mobileMenuOpen
+                    ? "opacity-100 translate-y-0"
+                    : "opacity-0 translate-y-4"
+                }`}
+                style={{ transitionDelay: mobileMenuOpen ? `${i * 60 + 100}ms` : "0ms" }}
+              >
+                <a
+                  href={`#${item.id}`}
+                  onClick={() => setMobileMenuOpen(false)}
+                  className={`block text-[28px] font-bold tracking-[0.02em] text-white ${gothic}`}
+                >
+                  {item.label}
+                </a>
+              </li>
+            ))}
+          </ul>
+          <a
+            href="#contact"
+            onClick={() => setMobileMenuOpen(false)}
+            className={`mt-12 inline-flex items-center justify-center gap-3 text-[13px] font-semibold tracking-[0.06em] bg-[#0A7E7E] text-white px-8 py-5 transition-all duration-500 ${
+              mobileMenuOpen ? "opacity-100 translate-y-0" : "opacity-0 translate-y-4"
+            }`}
+            style={{ transitionDelay: mobileMenuOpen ? "460ms" : "0ms" }}
+          >
+            お問い合わせ
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+          </a>
+          <p className="mt-16 text-[10px] tracking-[0.2em] text-white/30 uppercase">Since 1979 — Osaka, Izumi</p>
+        </div>
+      </div>
 
       {/* ===== HERO ===== */}
       {/* 基本情報Q84: キャッチコピー「想いを整理整頓しませんか」 */}
