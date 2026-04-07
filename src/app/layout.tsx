@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Geist, Geist_Mono, Noto_Serif_JP } from "next/font/google";
+import { Geist, Geist_Mono, Noto_Serif_JP, Noto_Sans_JP } from "next/font/google";
 import { SmoothScroll } from "@/components/animation/smooth-scroll";
 import "./globals.css";
 
@@ -19,9 +19,68 @@ const notoSerifJP = Noto_Serif_JP({
   weight: ["300", "400", "500", "700", "900"],
 });
 
+const notoSansJP = Noto_Sans_JP({
+  variable: "--font-noto-sans-jp",
+  subsets: ["latin"],
+  weight: ["300", "400", "500", "600", "700"],
+});
+
+const siteUrl = "https://ai-website-cloner-flax.vercel.app";
+const siteTitle = "和泉出版印刷株式会社 | 想いを整理整頓しませんか";
+const siteDescription =
+  "大阪府和泉市の印刷会社。冊子制作・自分史・終活整理のための印刷物を、デザインから製本まで一貫対応。1979年創業。";
+const ogImage = `${siteUrl}/images/hero-craftsman.png`;
+
 export const metadata: Metadata = {
-  title: "和泉出版印刷 | 想いをカタチに — 冊子づくり50年",
-  description: "大阪・和泉で1979年創業。デザイン・印刷・製本・発送まで一貫体制の冊子専門印刷会社。",
+  metadataBase: new URL(siteUrl),
+  title: siteTitle,
+  description: siteDescription,
+  keywords: [
+    "和泉出版印刷",
+    "和泉市 印刷",
+    "大阪 印刷会社",
+    "自分史",
+    "終活",
+    "冊子制作",
+    "自費出版",
+    "印刷",
+  ],
+  authors: [{ name: "和泉出版印刷株式会社" }],
+  alternates: {
+    canonical: siteUrl,
+  },
+  openGraph: {
+    type: "website",
+    locale: "ja_JP",
+    url: siteUrl,
+    siteName: "和泉出版印刷株式会社",
+    title: siteTitle,
+    description: siteDescription,
+    images: [
+      {
+        url: ogImage,
+        width: 1024,
+        height: 1024,
+        alt: "和泉出版印刷株式会社 - 想いを整理整頓しませんか",
+      },
+    ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: siteTitle,
+    description: siteDescription,
+    images: [ogImage],
+  },
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      "max-image-preview": "large",
+      "max-snippet": -1,
+    },
+  },
 };
 
 export default function RootLayout({
@@ -32,7 +91,7 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      className={`${geistSans.variable} ${geistMono.variable} ${notoSerifJP.variable} h-full antialiased`}
+      className={`${geistSans.variable} ${geistMono.variable} ${notoSerifJP.variable} ${notoSansJP.variable} h-full antialiased`}
     >
       <body className="min-h-full flex flex-col">
         <SmoothScroll>{children}</SmoothScroll>
