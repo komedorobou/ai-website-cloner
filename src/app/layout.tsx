@@ -29,7 +29,7 @@ const siteUrl = "https://ai-website-cloner-flax.vercel.app";
 const siteTitle = "和泉出版印刷株式会社 | 想いを整理整頓しませんか";
 const siteDescription =
   "大阪府和泉市の印刷会社。冊子制作・自分史・終活整理のための印刷物を、デザインから製本まで一貫対応。1979年創業。";
-const ogImage = `${siteUrl}/images/hero-craftsman.png`;
+const ogImage = `${siteUrl}/images/og-image.png`;
 
 export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),
@@ -59,8 +59,8 @@ export const metadata: Metadata = {
     images: [
       {
         url: ogImage,
-        width: 1024,
-        height: 1024,
+        width: 1290,
+        height: 1711,
         alt: "和泉出版印刷株式会社 - 想いを整理整頓しませんか",
       },
     ],
