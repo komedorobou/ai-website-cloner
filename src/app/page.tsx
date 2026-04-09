@@ -421,27 +421,30 @@ export default function Home() {
             ].map((service, i) => (
               <ScrollReveal key={service.tag} delay={i * 0.06}>
                 <div className="bg-white border border-[#00AEEF]/[0.06] p-8 md:p-10 group hover:border-[#00AEEF]/15 hover:shadow-[0_8px_40px_rgba(0,174,239,0.06)] transition-all duration-700 h-full flex flex-col">
-                  {"img" in service && service.img && (
-                    <div className="-mx-8 md:-mx-10 -mt-8 md:-mt-10 mb-6 overflow-hidden">
+                  {"img" in service && service.img ? (
+                    <div className="-m-8 md:-m-10 overflow-hidden h-full">
                       <Image
                         src={service.img}
                         alt={service.title}
-                        width={600}
-                        height={400}
-                        className="w-full h-48 md:h-56 object-cover group-hover:scale-[1.03] transition-transform duration-700"
+                        width={800}
+                        height={800}
+                        className="w-full h-full min-h-[280px] object-cover group-hover:scale-[1.03] transition-transform duration-700"
                       />
                     </div>
+                  ) : (
+                    <>
+                      <p className="text-[10px] tracking-[0.25em] uppercase text-[#00AEEF] mb-6 font-semibold">{service.tag}</p>
+                      <h3 className={`text-[20px] md:text-[22px] mb-4 leading-tight font-bold ${gothic}`}>{service.title}</h3>
+                      <p className="text-[13px] text-[#5A7070] leading-[2.1] mb-5 font-light">{service.desc}</p>
+                      <div className="flex flex-wrap gap-2">
+                        {service.items.map((item) => (
+                          <span key={item} className="text-[10px] bg-[#E0F4F4] text-[#00AEEF] px-3 py-1 font-medium tracking-[0.02em]">
+                            {item}
+                          </span>
+                        ))}
+                      </div>
+                    </>
                   )}
-                  <p className="text-[10px] tracking-[0.25em] uppercase text-[#00AEEF] mb-6 font-semibold">{service.tag}</p>
-                  <h3 className={`text-[20px] md:text-[22px] mb-4 leading-tight font-bold ${gothic}`}>{service.title}</h3>
-                  <p className="text-[13px] text-[#5A7070] leading-[2.1] mb-5 font-light">{service.desc}</p>
-                  <div className="flex flex-wrap gap-2">
-                    {service.items.map((item) => (
-                      <span key={item} className="text-[10px] bg-[#E0F4F4] text-[#00AEEF] px-3 py-1 font-medium tracking-[0.02em]">
-                        {item}
-                      </span>
-                    ))}
-                  </div>
                 </div>
               </ScrollReveal>
             ))}
