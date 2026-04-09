@@ -598,7 +598,8 @@ export default function Home() {
           </ScrollReveal>
           <ScrollReveal delay={0.1}>
             <h2 className={`text-[32px] md:text-[48px] lg:text-[64px] leading-[1.2] tracking-[-0.02em] font-bold ${gothic}`}>
-              ご利用の流れ。
+              想いが、<br />
+              カタチになるまで。
             </h2>
           </ScrollReveal>
         </div>
