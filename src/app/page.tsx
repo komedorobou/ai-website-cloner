@@ -267,7 +267,7 @@ export default function Home() {
         <div className="absolute inset-0 z-10 flex flex-col justify-end pb-16 md:pb-24 px-6 md:px-12">
           <div className="max-w-[1400px] mx-auto w-full">
             <ScrollReveal duration={1.2} delay={0.3}>
-              <p className="text-[11px] tracking-[0.5em] uppercase text-[#5EE6E6] mb-5 md:mb-6 font-medium">
+              <p className="text-[11px] tracking-[0.5em] uppercase text-white mb-5 md:mb-6 font-medium">
                 Since 1979 &mdash; Osaka, Izumi
               </p>
             </ScrollReveal>
@@ -279,7 +279,7 @@ export default function Home() {
               </h1>
             </ScrollReveal>
             <ScrollReveal duration={1} delay={0.9}>
-              <p className={`text-[13px] md:text-[15px] text-white/45 mt-6 md:mt-8 max-w-[480px] leading-[2.2] font-light`}>
+              <p className={`text-[14px] md:text-[16px] text-white/90 mt-6 md:mt-8 max-w-[520px] leading-[2.1] font-normal drop-shadow-[0_2px_8px_rgba(0,0,0,0.6)]`}>
                 自分史・終活整理から企業の冊子制作まで。<br />
                 デザインから印刷・製本まで一貫対応。<br />
                 あなたの大切な想いを、一冊のカタチに。
