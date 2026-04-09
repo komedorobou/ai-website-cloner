@@ -314,12 +314,7 @@ export default function Home() {
           </ScrollReveal>
 
           <div className="grid md:grid-cols-[1.2fr_1fr] gap-12 md:gap-20 items-start">
-            <ScrollReveal delay={0.1}>
-              <h2 className={`text-[32px] md:text-[48px] lg:text-[64px] leading-[1.2] tracking-[-0.02em] font-bold ${gothic}`}>
-                言葉と想いを、<br />
-                カタチにする会社。
-              </h2>
-            </ScrollReveal>
+            <div />
             <div className="flex flex-col gap-6 md:pt-4">
               <ScrollReveal delay={0.2}>
                 <p className="text-[14px] md:text-[15px] text-[#5A7070] leading-[2.3] font-light">
@@ -377,8 +372,8 @@ export default function Home() {
           </ScrollReveal>
           <ScrollReveal delay={0.1}>
             <h2 className={`text-[32px] md:text-[48px] lg:text-[64px] leading-[1.2] tracking-[-0.02em] mb-6 font-bold ${gothic}`}>
-              5つの事業領域で、<br />
-              想いを支える。
+              想いを支える<br />
+              5つの事業領域で。
             </h2>
           </ScrollReveal>
           <ScrollReveal delay={0.15}>
@@ -490,9 +485,6 @@ export default function Home() {
                 <h2 className={`text-[32px] md:text-[48px] lg:text-[56px] leading-[1.2] tracking-[-0.02em] text-white font-bold mb-2 ${gothic}`}>
                   POCKET
                 </h2>
-                <p className={`text-[18px] md:text-[22px] text-white/50 mb-6 font-light ${gothic}`}>
-                  紙が、アプリにもなる。
-                </p>
               </ScrollReveal>
               <ScrollReveal delay={0.2}>
                 <p className="text-[14px] text-white/45 leading-[2.3] mb-8 max-w-[440px] font-light">
@@ -533,13 +525,6 @@ export default function Home() {
             <div>
               <ScrollReveal>
                 <p className="text-[11px] tracking-[0.3em] uppercase text-[#5EE6E6] mb-4 font-semibold">Featured</p>
-              </ScrollReveal>
-              <ScrollReveal delay={0.1}>
-                <h2 className={`text-[32px] md:text-[48px] lg:text-[56px] leading-[1.2] tracking-[-0.02em] text-white font-bold mb-6 ${gothic}`}>
-                  自分史・終活整理。<br />
-                  あなたの物語を<br />
-                  一冊に。
-                </h2>
               </ScrollReveal>
               <ScrollReveal delay={0.2}>
                 <p className="text-[14px] text-white/45 leading-[2.3] mb-8 max-w-[440px] font-light">
@@ -671,29 +656,6 @@ export default function Home() {
         </StickySection>
       </section>
 
-      {/* ===== 引用セクション ===== */}
-      <section className="min-h-[70vh] md:min-h-[80vh] flex items-center relative bg-[#F6FAFA]">
-        <div className="absolute inset-0 opacity-[0.04]">
-          <Image
-            src="/images/paper-texture.png"
-            alt=""
-            width={1024}
-            height={1024}
-            className="w-full h-full object-cover"
-          />
-        </div>
-        <div className="relative z-10 max-w-[900px] mx-auto px-6 md:px-12 text-center py-28">
-          <ScrollReveal duration={1.2}>
-            <p className={`text-[20px] md:text-[30px] lg:text-[38px] leading-[2] tracking-[-0.01em] text-[#1A2828]/40 font-light ${serif}`}>
-              「紙」には、<br className="md:hidden" />デジタルにはない<br />
-              温もりがあります。<br />
-              手に取り、ページをめくる。<br />
-              その体験そのものが、<br />
-              メッセージになる。
-            </p>
-          </ScrollReveal>
-        </div>
-      </section>
 
       {/* ===== パララックス — 冊子ライフスタイル ===== */}
       <section className="h-[70vh] md:h-[90vh] relative">
