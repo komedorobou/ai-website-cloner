@@ -47,10 +47,10 @@ function CountUpStat({ num, unit, label, desc }: { num: number; unit: string; la
 
   return (
     <div ref={ref} className="text-center group">
-      <p className={`text-[56px] md:text-[80px] lg:text-[96px] font-bold tracking-[-0.04em] text-[#0A7E7E] transition-all duration-700 ${gothic}`}>
-        {count}<span className="text-[#14B8B8] font-light">{unit}</span>
+      <p className={`text-[56px] md:text-[80px] lg:text-[96px] font-bold tracking-[-0.04em] text-[#00AEEF] transition-all duration-700 ${gothic}`}>
+        {count}<span className="text-[#5FD3FF] font-light">{unit}</span>
       </p>
-      <div className="w-12 h-[2px] bg-gradient-to-r from-[#0A7E7E]/0 via-[#0A7E7E]/40 to-[#0A7E7E]/0 mx-auto mt-4 mb-3 group-hover:w-20 transition-all duration-700" />
+      <div className="w-12 h-[2px] bg-gradient-to-r from-[#00AEEF]/0 via-[#00AEEF]/40 to-[#00AEEF]/0 mx-auto mt-4 mb-3 group-hover:w-20 transition-all duration-700" />
       <p className={`text-[14px] md:text-[15px] text-[#1A2828] tracking-[0.04em] font-semibold ${gothic}`}>{label}</p>
       <p className="text-[12px] text-[#5A7070]/50 mt-1 font-light leading-[1.8]">{desc}</p>
     </div>
@@ -62,8 +62,8 @@ const colors = {
   bg: "#F6FAFA",        // 微アクアホワイト
   bgDark: "#061818",    // ダークアクア
   bgMid: "#0B3838",     // ミッドダーク
-  aqua: "#0A7E7E",      // メインアクア
-  aquaLight: "#14B8B8",
+  aqua: "#00AEEF",      // メインアクア
+  aquaLight: "#5FD3FF",
   aquaPale: "#E0F4F4",
   gold: "#C4943A",
   goldLight: "#E8C97A",
@@ -140,7 +140,7 @@ export default function Home() {
     <main className={`bg-[${colors.bg}] text-[${colors.text}] overflow-hidden ${gothic}`}>
 
       {/* ===== NAV ===== */}
-      <nav className="fixed top-0 left-0 right-0 z-50 bg-[#061818]/85 backdrop-blur-md border-b border-white/10 shadow-[0_1px_0_rgba(255,255,255,0.04)]">
+      <nav className="fixed top-0 left-0 right-0 z-50 bg-[#00AEEF] backdrop-blur-md border-b border-white/20 shadow-[0_1px_0_rgba(255,255,255,0.1)]">
         <div className="max-w-[1400px] mx-auto px-6 md:px-12 h-20 flex items-center justify-between">
           <a href="#" className={`text-[13px] md:text-[17px] font-bold tracking-[0.06em] text-white ${gothic}`}>
             和泉出版印刷株式会社
@@ -228,7 +228,7 @@ export default function Home() {
           <a
             href="#contact"
             onClick={() => setMobileMenuOpen(false)}
-            className={`mt-12 inline-flex items-center justify-center gap-3 text-[13px] font-semibold tracking-[0.06em] bg-[#0A7E7E] text-white px-8 py-5 transition-all duration-500 ${
+            className={`mt-12 inline-flex items-center justify-center gap-3 text-[13px] font-semibold tracking-[0.06em] bg-[#00AEEF] text-white px-8 py-5 transition-all duration-500 ${
               mobileMenuOpen ? "opacity-100 translate-y-0" : "opacity-0 translate-y-4"
             }`}
             style={{ transitionDelay: mobileMenuOpen ? "460ms" : "0ms" }}
@@ -259,7 +259,7 @@ export default function Home() {
         <div className="absolute inset-0 z-10 flex flex-col justify-end pb-16 md:pb-24 px-6 md:px-12">
           <div className="max-w-[1400px] mx-auto w-full">
             <ScrollReveal duration={1.2} delay={0.3}>
-              <p className="text-[11px] tracking-[0.5em] uppercase text-[#14B8B8] mb-5 md:mb-6 font-medium">
+              <p className="text-[11px] tracking-[0.5em] uppercase text-[#5FD3FF] mb-5 md:mb-6 font-medium">
                 Since 1979 &mdash; Osaka, Izumi
               </p>
             </ScrollReveal>
@@ -293,7 +293,7 @@ export default function Home() {
 
         <div className="absolute bottom-8 left-1/2 -translate-x-1/2 z-10">
           <ScrollReveal delay={1.5}>
-            <div className="w-px h-12 bg-gradient-to-b from-[#14B8B8]/50 to-transparent" />
+            <div className="w-px h-12 bg-gradient-to-b from-[#5FD3FF]/50 to-transparent" />
           </ScrollReveal>
         </div>
       </section>
@@ -302,7 +302,7 @@ export default function Home() {
       <section id="about" className="py-28 md:py-44 bg-[#F6FAFA]">
         <div className="max-w-[1400px] mx-auto px-6 md:px-12">
           <ScrollReveal>
-            <p className="text-[11px] tracking-[0.3em] uppercase text-[#0A7E7E] mb-12 md:mb-16 font-semibold">About Us</p>
+            <p className="text-[11px] tracking-[0.3em] uppercase text-[#00AEEF] mb-12 md:mb-16 font-semibold">About Us</p>
           </ScrollReveal>
 
           <div className="grid md:grid-cols-[1.2fr_1fr] gap-12 md:gap-20 items-start">
@@ -320,14 +320,14 @@ export default function Home() {
               </ScrollReveal>
               <ScrollReveal delay={0.3}>
                 <p className="text-[14px] md:text-[15px] text-[#5A7070] leading-[2.3] font-light">
-                  近年は<strong className="text-[#0A7E7E] font-semibold">自分史</strong>や<strong className="text-[#0A7E7E] font-semibold">終活整理</strong>のための冊子制作に力を入れ、人生の記憶を美しい一冊にまとめるお手伝いをしています。デザインから印刷・製本まで、プロフェッショナルが一貫体制でお届けします。
+                  近年は<strong className="text-[#00AEEF] font-semibold">自分史</strong>や<strong className="text-[#00AEEF] font-semibold">終活整理</strong>のための冊子制作に力を入れ、人生の記憶を美しい一冊にまとめるお手伝いをしています。デザインから印刷・製本まで、プロフェッショナルが一貫体制でお届けします。
                 </p>
               </ScrollReveal>
             </div>
           </div>
 
           {/* 数字 */}
-          <div className="mt-20 md:mt-28 pt-12 border-t border-[#0A7E7E]/10">
+          <div className="mt-20 md:mt-28 pt-12 border-t border-[#00AEEF]/10">
             <StaggerContainer stagger={0.2} className="grid grid-cols-2 gap-8 md:gap-24 max-w-[800px] mx-auto">
               {[
                 { num: 45, unit: "年+", label: "の実績", desc: "1979年の創業から培った印刷・製本の技術" },
@@ -365,7 +365,7 @@ export default function Home() {
       <section id="services" className="py-28 md:py-44 bg-[#F6FAFA]">
         <div className="max-w-[1400px] mx-auto px-6 md:px-12">
           <ScrollReveal>
-            <p className="text-[11px] tracking-[0.3em] uppercase text-[#0A7E7E] mb-4 font-semibold">Services</p>
+            <p className="text-[11px] tracking-[0.3em] uppercase text-[#00AEEF] mb-4 font-semibold">Services</p>
           </ScrollReveal>
           <ScrollReveal delay={0.1}>
             <h2 className={`text-[32px] md:text-[48px] lg:text-[64px] leading-[1.2] tracking-[-0.02em] mb-6 font-bold ${gothic}`}>
@@ -416,16 +416,28 @@ export default function Home() {
                 tag: "PRINT WORKS",
                 desc: "封筒・はがき・シール・ラベル・ノベルティなど、あらゆる印刷物を高品質にお届けします。箔押し・エンボスも一部対応。",
                 items: ["封筒・はがき", "シール・ラベル", "ノベルティ", "箔押し"],
+                img: "/images/print-works.png",
               },
             ].map((service, i) => (
               <ScrollReveal key={service.tag} delay={i * 0.06}>
-                <div className="bg-white border border-[#0A7E7E]/[0.06] p-8 md:p-10 group hover:border-[#0A7E7E]/15 hover:shadow-[0_8px_40px_rgba(10,126,126,0.06)] transition-all duration-700 h-full">
-                  <p className="text-[10px] tracking-[0.25em] uppercase text-[#0A7E7E] mb-6 font-semibold">{service.tag}</p>
+                <div className="bg-white border border-[#00AEEF]/[0.06] p-8 md:p-10 group hover:border-[#00AEEF]/15 hover:shadow-[0_8px_40px_rgba(0,174,239,0.06)] transition-all duration-700 h-full flex flex-col">
+                  {"img" in service && service.img && (
+                    <div className="-mx-8 md:-mx-10 -mt-8 md:-mt-10 mb-6 overflow-hidden">
+                      <Image
+                        src={service.img}
+                        alt={service.title}
+                        width={600}
+                        height={400}
+                        className="w-full h-48 md:h-56 object-cover group-hover:scale-[1.03] transition-transform duration-700"
+                      />
+                    </div>
+                  )}
+                  <p className="text-[10px] tracking-[0.25em] uppercase text-[#00AEEF] mb-6 font-semibold">{service.tag}</p>
                   <h3 className={`text-[20px] md:text-[22px] mb-4 leading-tight font-bold ${gothic}`}>{service.title}</h3>
                   <p className="text-[13px] text-[#5A7070] leading-[2.1] mb-5 font-light">{service.desc}</p>
                   <div className="flex flex-wrap gap-2">
                     {service.items.map((item) => (
-                      <span key={item} className="text-[10px] bg-[#E0F4F4] text-[#0A7E7E] px-3 py-1 font-medium tracking-[0.02em]">
+                      <span key={item} className="text-[10px] bg-[#E0F4F4] text-[#00AEEF] px-3 py-1 font-medium tracking-[0.02em]">
                         {item}
                       </span>
                     ))}
@@ -459,8 +471,8 @@ export default function Home() {
             <div>
               <ScrollReveal>
                 <div className="flex items-center gap-3 mb-4">
-                  <p className="text-[11px] tracking-[0.3em] uppercase text-[#14B8B8] font-semibold">New Service</p>
-                  <span className="text-[10px] bg-[#0A7E7E] text-white px-3 py-1 font-semibold tracking-[0.1em] uppercase">New</span>
+                  <p className="text-[11px] tracking-[0.3em] uppercase text-[#5FD3FF] font-semibold">New Service</p>
+                  <span className="text-[10px] bg-[#00AEEF] text-white px-3 py-1 font-semibold tracking-[0.1em] uppercase">New</span>
                 </div>
               </ScrollReveal>
               <ScrollReveal delay={0.1}>
@@ -485,14 +497,14 @@ export default function Home() {
                     "再印刷ゼロでコスト削減＆環境にやさしい",
                   ].map((point) => (
                     <div key={point} className="flex items-center gap-3">
-                      <span className="w-1.5 h-1.5 bg-[#14B8B8] rounded-full flex-shrink-0" />
+                      <span className="w-1.5 h-1.5 bg-[#5FD3FF] rounded-full flex-shrink-0" />
                       <span className="text-[13px] text-white/60 font-light">{point}</span>
                     </div>
                   ))}
                 </div>
               </ScrollReveal>
               <ScrollReveal delay={0.4}>
-                <a href="/pocket" className={`inline-flex items-center gap-3 text-[13px] font-semibold tracking-[0.06em] bg-[#0A7E7E] text-white px-8 py-4 mt-10 hover:bg-[#14B8B8] transition-all duration-500`}>
+                <a href="/pocket" className={`inline-flex items-center gap-3 text-[13px] font-semibold tracking-[0.06em] bg-[#00AEEF] text-white px-8 py-4 mt-10 hover:bg-[#5FD3FF] transition-all duration-500`}>
                   POCKETについて詳しく見る
                   <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
                 </a>
@@ -509,7 +521,7 @@ export default function Home() {
           <div className="grid md:grid-cols-2 gap-12 md:gap-20 items-center">
             <div>
               <ScrollReveal>
-                <p className="text-[11px] tracking-[0.3em] uppercase text-[#14B8B8] mb-4 font-semibold">Featured</p>
+                <p className="text-[11px] tracking-[0.3em] uppercase text-[#5FD3FF] mb-4 font-semibold">Featured</p>
               </ScrollReveal>
               <ScrollReveal delay={0.1}>
                 <h2 className={`text-[32px] md:text-[48px] lg:text-[56px] leading-[1.2] tracking-[-0.02em] text-white font-bold mb-6 ${gothic}`}>
@@ -586,7 +598,7 @@ export default function Home() {
       <section id="workflow" className="py-28 md:py-44 bg-[#F6FAFA]">
         <div className="max-w-[1400px] mx-auto px-6 md:px-12 mb-16">
           <ScrollReveal>
-            <p className="text-[11px] tracking-[0.3em] uppercase text-[#0A7E7E] mb-4 font-semibold">Workflow</p>
+            <p className="text-[11px] tracking-[0.3em] uppercase text-[#00AEEF] mb-4 font-semibold">Workflow</p>
           </ScrollReveal>
           <ScrollReveal delay={0.1}>
             <h2 className={`text-[32px] md:text-[48px] lg:text-[64px] leading-[1.2] tracking-[-0.02em] font-bold ${gothic}`}>
@@ -618,7 +630,7 @@ export default function Home() {
                   </span>
                 </div>
                 <div className="absolute bottom-6 left-6">
-                  <span className="text-[10px] tracking-[0.3em] uppercase text-[#14B8B8] font-semibold">
+                  <span className="text-[10px] tracking-[0.3em] uppercase text-[#5FD3FF] font-semibold">
                     {workflowSteps[workflowStep].sub}
                   </span>
                 </div>
@@ -630,12 +642,12 @@ export default function Home() {
                     key={step.num}
                     className={`border-l-[2px] pl-6 md:pl-8 py-3 transition-all duration-700 cursor-pointer ${
                       workflowStep === i
-                        ? "border-[#0A7E7E] opacity-100"
-                        : "border-[#0A7E7E]/10 opacity-25"
+                        ? "border-[#00AEEF] opacity-100"
+                        : "border-[#00AEEF]/10 opacity-25"
                     }`}
                   >
                     <div className="flex items-baseline gap-3 mb-1">
-                      <span className="text-[10px] tracking-[0.15em] text-[#0A7E7E] font-bold">{step.num}</span>
+                      <span className="text-[10px] tracking-[0.15em] text-[#00AEEF] font-bold">{step.num}</span>
                       <span className="text-[10px] tracking-[0.2em] uppercase text-[#5A7070]/50">{step.sub}</span>
                     </div>
                     <h3 className={`text-[20px] md:text-[24px] mb-2 font-bold ${gothic}`}>{step.title}</h3>
@@ -690,7 +702,7 @@ export default function Home() {
       <section id="pricing" className="py-28 md:py-44 bg-[#F6FAFA]">
         <div className="max-w-[1400px] mx-auto px-6 md:px-12">
           <ScrollReveal>
-            <p className="text-[11px] tracking-[0.3em] uppercase text-[#0A7E7E] mb-4 font-semibold">Pricing</p>
+            <p className="text-[11px] tracking-[0.3em] uppercase text-[#00AEEF] mb-4 font-semibold">Pricing</p>
           </ScrollReveal>
           <ScrollReveal delay={0.1}>
             <h2 className={`text-[32px] md:text-[48px] lg:text-[64px] leading-[1.2] tracking-[-0.02em] mb-6 font-bold ${gothic}`}>
@@ -710,9 +722,9 @@ export default function Home() {
               { title: "冊子・自分史", price: "要お見積もり", desc: "ページ数・仕様に応じてお見積もり。1冊からの小ロットも対応可能です。" },
             ].map((item, i) => (
               <ScrollReveal key={item.title} delay={i * 0.08}>
-                <div className="bg-white border border-[#0A7E7E]/[0.06] p-10 text-center hover:border-[#0A7E7E]/15 hover:shadow-[0_8px_40px_rgba(10,126,126,0.06)] transition-all duration-700">
+                <div className="bg-white border border-[#00AEEF]/[0.06] p-10 text-center hover:border-[#00AEEF]/15 hover:shadow-[0_8px_40px_rgba(0,174,239,0.06)] transition-all duration-700">
                   <h3 className={`text-[18px] font-bold mb-3 ${gothic}`}>{item.title}</h3>
-                  <p className="text-[20px] md:text-[24px] font-bold text-[#0A7E7E] mb-4">{item.price}</p>
+                  <p className="text-[20px] md:text-[24px] font-bold text-[#00AEEF] mb-4">{item.price}</p>
                   <p className="text-[13px] text-[#5A7070] leading-[2] font-light">{item.desc}</p>
                 </div>
               </ScrollReveal>
@@ -732,7 +744,7 @@ export default function Home() {
       <section className="py-28 md:py-44 bg-white">
         <div className="max-w-[1400px] mx-auto px-6 md:px-12">
           <ScrollReveal>
-            <p className="text-[11px] tracking-[0.3em] uppercase text-[#0A7E7E] mb-4 font-semibold">Company</p>
+            <p className="text-[11px] tracking-[0.3em] uppercase text-[#00AEEF] mb-4 font-semibold">Company</p>
           </ScrollReveal>
           <ScrollReveal delay={0.1}>
             <h2 className={`text-[32px] md:text-[48px] leading-[1.2] tracking-[-0.02em] mb-16 font-bold ${gothic}`}>
@@ -758,8 +770,8 @@ export default function Home() {
                 { label: "主力サービス", value: "冊子制作（自分史・終活整理・記念誌・カタログ等）" },
                 { label: "Webサイト", value: "https://izumi-syuppan.co.jp" },
               ].map((row) => (
-                <div key={row.label} className="flex flex-col md:flex-row md:items-baseline py-5 border-b border-[#0A7E7E]/6">
-                  <span className="text-[11px] tracking-[0.12em] text-[#0A7E7E] md:w-[160px] mb-1 md:mb-0 font-semibold flex-shrink-0">{row.label}</span>
+                <div key={row.label} className="flex flex-col md:flex-row md:items-baseline py-5 border-b border-[#00AEEF]/6">
+                  <span className="text-[11px] tracking-[0.12em] text-[#00AEEF] md:w-[160px] mb-1 md:mb-0 font-semibold flex-shrink-0">{row.label}</span>
                   <span className="text-[14px] text-[#5A7070] font-light">{row.value}</span>
                 </div>
               ))}
@@ -773,7 +785,7 @@ export default function Home() {
       <section id="access" className="py-28 md:py-44 bg-[#F6FAFA]">
         <div className="max-w-[1400px] mx-auto px-6 md:px-12">
           <ScrollReveal>
-            <p className="text-[11px] tracking-[0.3em] uppercase text-[#0A7E7E] mb-4 font-semibold">Access</p>
+            <p className="text-[11px] tracking-[0.3em] uppercase text-[#00AEEF] mb-4 font-semibold">Access</p>
           </ScrollReveal>
           <ScrollReveal delay={0.1}>
             <h2 className={`text-[32px] md:text-[48px] leading-[1.2] tracking-[-0.02em] mb-16 font-bold ${gothic}`}>
@@ -798,8 +810,8 @@ export default function Home() {
             </ScrollReveal>
             <div className="flex flex-col gap-6">
               <ScrollReveal delay={0.2}>
-                <div className="bg-white border border-[#0A7E7E]/[0.06] p-8">
-                  <p className="text-[11px] tracking-[0.15em] text-[#0A7E7E] mb-3 font-semibold">所在地</p>
+                <div className="bg-white border border-[#00AEEF]/[0.06] p-8">
+                  <p className="text-[11px] tracking-[0.15em] text-[#00AEEF] mb-3 font-semibold">所在地</p>
                   <p className="text-[14px] text-[#5A7070] leading-[2] font-light">
                     〒594-0083<br />
                     大阪府和泉市池上町4丁目2-21
@@ -807,25 +819,25 @@ export default function Home() {
                 </div>
               </ScrollReveal>
               <ScrollReveal delay={0.25}>
-                <div className="bg-white border border-[#0A7E7E]/[0.06] p-8">
-                  <p className="text-[11px] tracking-[0.15em] text-[#0A7E7E] mb-3 font-semibold">お電話でのお問い合わせ</p>
+                <div className="bg-white border border-[#00AEEF]/[0.06] p-8">
+                  <p className="text-[11px] tracking-[0.15em] text-[#00AEEF] mb-3 font-semibold">お電話でのお問い合わせ</p>
                   <p className="text-[14px] text-[#5A7070] leading-[2] font-light">
-                    TEL: <a href="tel:0725452360" className="text-[#0A7E7E] font-semibold hover:underline">0725-45-2360</a><br />
+                    TEL: <a href="tel:0725452360" className="text-[#00AEEF] font-semibold hover:underline">0725-45-2360</a><br />
                     FAX: 0725-45-7684
                   </p>
                 </div>
               </ScrollReveal>
               <ScrollReveal delay={0.3}>
-                <div className="bg-white border border-[#0A7E7E]/[0.06] p-8">
-                  <p className="text-[11px] tracking-[0.15em] text-[#0A7E7E] mb-3 font-semibold">営業時間</p>
+                <div className="bg-white border border-[#00AEEF]/[0.06] p-8">
+                  <p className="text-[11px] tracking-[0.15em] text-[#00AEEF] mb-3 font-semibold">営業時間</p>
                   <p className="text-[14px] text-[#5A7070] leading-[2] font-light">
                     9:00〜17:00（土日祝休）
                   </p>
                 </div>
               </ScrollReveal>
               <ScrollReveal delay={0.35}>
-                <div className="bg-white border border-[#0A7E7E]/[0.06] p-8">
-                  <p className="text-[11px] tracking-[0.15em] text-[#0A7E7E] mb-3 font-semibold">データ入稿</p>
+                <div className="bg-white border border-[#00AEEF]/[0.06] p-8">
+                  <p className="text-[11px] tracking-[0.15em] text-[#00AEEF] mb-3 font-semibold">データ入稿</p>
                   <p className="text-[14px] text-[#5A7070] leading-[2] font-light">
                     印刷データの入稿はメールまたはオンラインで承っております。お気軽にお問い合わせください。
                   </p>
@@ -844,7 +856,7 @@ export default function Home() {
           <div className="grid md:grid-cols-[1fr_1.3fr] gap-12 md:gap-20">
             <div>
               <ScrollReveal>
-                <p className="text-[11px] tracking-[0.3em] uppercase text-[#14B8B8] mb-4 font-semibold">Contact</p>
+                <p className="text-[11px] tracking-[0.3em] uppercase text-[#5FD3FF] mb-4 font-semibold">Contact</p>
               </ScrollReveal>
               <ScrollReveal delay={0.1}>
                 <h2 className={`text-[32px] md:text-[48px] leading-[1.2] tracking-[-0.02em] text-white mb-6 font-bold ${gothic}`}>
@@ -862,26 +874,26 @@ export default function Home() {
               <ScrollReveal delay={0.3}>
                 <div className="flex flex-col gap-6">
                   <div className="flex items-start gap-4">
-                    <div className="w-10 h-10 bg-[#0A7E7E]/20 flex items-center justify-center flex-shrink-0 mt-1">
-                      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#14B8B8" strokeWidth="1.5"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+                    <div className="w-10 h-10 bg-[#00AEEF]/20 flex items-center justify-center flex-shrink-0 mt-1">
+                      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#5FD3FF" strokeWidth="1.5"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
                     </div>
                     <div>
                       <p className="text-[10px] tracking-[0.1em] text-white/30 mb-1 font-semibold uppercase">電話番号</p>
-                      <a href="tel:0725452360" className="text-[15px] text-[#14B8B8] font-medium">0725-45-2360</a>
+                      <a href="tel:0725452360" className="text-[15px] text-[#5FD3FF] font-medium">0725-45-2360</a>
                     </div>
                   </div>
                   <div className="flex items-start gap-4">
-                    <div className="w-10 h-10 bg-[#0A7E7E]/20 flex items-center justify-center flex-shrink-0 mt-1">
-                      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#14B8B8" strokeWidth="1.5"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+                    <div className="w-10 h-10 bg-[#00AEEF]/20 flex items-center justify-center flex-shrink-0 mt-1">
+                      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#5FD3FF" strokeWidth="1.5"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
                     </div>
                     <div>
                       <p className="text-[10px] tracking-[0.1em] text-white/30 mb-1 font-semibold uppercase">メール</p>
-                      <a href="mailto:info@izumi-syuppan.co.jp" className="text-[15px] text-[#14B8B8] font-medium">info@izumi-syuppan.co.jp</a>
+                      <a href="mailto:info@izumi-syuppan.co.jp" className="text-[15px] text-[#5FD3FF] font-medium">info@izumi-syuppan.co.jp</a>
                     </div>
                   </div>
                   <div className="flex items-start gap-4">
-                    <div className="w-10 h-10 bg-[#0A7E7E]/20 flex items-center justify-center flex-shrink-0 mt-1">
-                      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#14B8B8" strokeWidth="1.5"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+                    <div className="w-10 h-10 bg-[#00AEEF]/20 flex items-center justify-center flex-shrink-0 mt-1">
+                      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#5FD3FF" strokeWidth="1.5"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
                     </div>
                     <div>
                       <p className="text-[10px] tracking-[0.1em] text-white/30 mb-1 font-semibold uppercase">営業時間</p>
@@ -906,7 +918,7 @@ export default function Home() {
                       onClick={() => setFormTab(tab.id)}
                       className={`flex-1 py-3 text-[12px] font-semibold tracking-[0.04em] transition-all duration-300 ${
                         formTab === tab.id
-                          ? "bg-[#0A7E7E] text-white"
+                          ? "bg-[#00AEEF] text-white"
                           : "text-white/40 hover:text-white/60"
                       }`}
                     >
@@ -919,17 +931,17 @@ export default function Home() {
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
                     <div>
                       <label className="text-[11px] text-white/50 mb-2 block font-medium">会社名</label>
-                      <input name="company" type="text" placeholder="株式会社○○" className="w-full bg-white/[0.06] border border-white/[0.1] px-4 py-3 text-[14px] text-white placeholder:text-white/20 outline-none focus:border-[#0A7E7E] transition-colors font-light" />
+                      <input name="company" type="text" placeholder="株式会社○○" className="w-full bg-white/[0.06] border border-white/[0.1] px-4 py-3 text-[14px] text-white placeholder:text-white/20 outline-none focus:border-[#00AEEF] transition-colors font-light" />
                     </div>
                     <div>
                       <label className="text-[11px] text-white/50 mb-2 block font-medium">お名前 <span className="text-[#C4943A]">*</span></label>
-                      <input name="name" type="text" placeholder="山田 太郎" required className="w-full bg-white/[0.06] border border-white/[0.1] px-4 py-3 text-[14px] text-white placeholder:text-white/20 outline-none focus:border-[#0A7E7E] transition-colors font-light" />
+                      <input name="name" type="text" placeholder="山田 太郎" required className="w-full bg-white/[0.06] border border-white/[0.1] px-4 py-3 text-[14px] text-white placeholder:text-white/20 outline-none focus:border-[#00AEEF] transition-colors font-light" />
                     </div>
                   </div>
 
                   <div className="mb-4">
                     <label className="text-[11px] text-white/50 mb-2 block font-medium">メールアドレス <span className="text-[#C4943A]">*</span></label>
-                    <input name="email" type="email" placeholder="info@example.com" required className="w-full bg-white/[0.06] border border-white/[0.1] px-4 py-3 text-[14px] text-white placeholder:text-white/20 outline-none focus:border-[#0A7E7E] transition-colors font-light" />
+                    <input name="email" type="email" placeholder="info@example.com" required className="w-full bg-white/[0.06] border border-white/[0.1] px-4 py-3 text-[14px] text-white placeholder:text-white/20 outline-none focus:border-[#00AEEF] transition-colors font-light" />
                   </div>
 
                   {formTab === "quote" && (
@@ -937,7 +949,7 @@ export default function Home() {
                       <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
                         <div>
                           <label className="text-[11px] text-white/50 mb-2 block font-medium">印刷物の種類</label>
-                          <select name="printType" className="w-full bg-white/[0.06] border border-white/[0.1] px-4 py-3 text-[14px] text-white/60 outline-none focus:border-[#0A7E7E] transition-colors appearance-none font-light">
+                          <select name="printType" className="w-full bg-white/[0.06] border border-white/[0.1] px-4 py-3 text-[14px] text-white/60 outline-none focus:border-[#00AEEF] transition-colors appearance-none font-light">
                             <option value="">選択してください</option>
                             <option value="名刺">名刺</option>
                             <option value="チラシ">チラシ・フライヤー</option>
@@ -952,27 +964,27 @@ export default function Home() {
                         </div>
                         <div>
                           <label className="text-[11px] text-white/50 mb-2 block font-medium">数量</label>
-                          <input name="quantity" type="text" placeholder="例：100部" className="w-full bg-white/[0.06] border border-white/[0.1] px-4 py-3 text-[14px] text-white placeholder:text-white/20 outline-none focus:border-[#0A7E7E] transition-colors font-light" />
+                          <input name="quantity" type="text" placeholder="例：100部" className="w-full bg-white/[0.06] border border-white/[0.1] px-4 py-3 text-[14px] text-white placeholder:text-white/20 outline-none focus:border-[#00AEEF] transition-colors font-light" />
                         </div>
                       </div>
                       <div className="mb-4">
                         <label className="text-[11px] text-white/50 mb-2 block font-medium">希望納期</label>
-                        <input name="deadline" type="text" placeholder="例：2週間後、○月○日まで" className="w-full bg-white/[0.06] border border-white/[0.1] px-4 py-3 text-[14px] text-white placeholder:text-white/20 outline-none focus:border-[#0A7E7E] transition-colors font-light" />
+                        <input name="deadline" type="text" placeholder="例：2週間後、○月○日まで" className="w-full bg-white/[0.06] border border-white/[0.1] px-4 py-3 text-[14px] text-white placeholder:text-white/20 outline-none focus:border-[#00AEEF] transition-colors font-light" />
                       </div>
                     </>
                   )}
 
                   <div className="mb-6">
                     <label className="text-[11px] text-white/50 mb-2 block font-medium">お問い合わせ内容 <span className="text-[#C4943A]">*</span></label>
-                    <textarea name="message" placeholder="ご相談内容やご質問をご記入ください" required rows={5} className="w-full bg-white/[0.06] border border-white/[0.1] px-4 py-3 text-[14px] text-white placeholder:text-white/20 outline-none focus:border-[#0A7E7E] transition-colors resize-y font-light" />
+                    <textarea name="message" placeholder="ご相談内容やご質問をご記入ください" required rows={5} className="w-full bg-white/[0.06] border border-white/[0.1] px-4 py-3 text-[14px] text-white placeholder:text-white/20 outline-none focus:border-[#00AEEF] transition-colors resize-y font-light" />
                   </div>
 
-                  <button type="submit" className="w-full bg-[#0A7E7E] text-white py-4 text-[14px] font-semibold tracking-[0.06em] hover:bg-[#14B8B8] transition-all duration-500 flex items-center justify-center gap-3">
+                  <button type="submit" className="w-full bg-[#00AEEF] text-white py-4 text-[14px] font-semibold tracking-[0.06em] hover:bg-[#5FD3FF] transition-all duration-500 flex items-center justify-center gap-3">
                     送信する
                     <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg>
                   </button>
                   {formSent && (
-                    <p className="mt-4 text-center text-[12px] text-[#14B8B8] font-medium">
+                    <p className="mt-4 text-center text-[12px] text-[#5FD3FF] font-medium">
                       ✓ メールアプリを起動しました。そのまま送信してください。
                     </p>
                   )}
