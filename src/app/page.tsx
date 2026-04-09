@@ -145,7 +145,7 @@ export default function Home() {
           <a href="#" className={`text-[13px] md:text-[17px] font-bold tracking-[0.06em] text-white ${gothic}`}>
             和泉出版印刷株式会社
           </a>
-          <div className="hidden md:flex items-center gap-10">
+          <div className="hidden md:flex items-center gap-9">
             {[
               { label: "会社概要", id: "about" },
               { label: "事業内容", id: "services" },
@@ -153,14 +153,21 @@ export default function Home() {
               { label: "参考価格", id: "pricing" },
               { label: "アクセス", id: "access" },
             ].map((item) => (
-              <a key={item.id} href={`#${item.id}`} className="text-[11px] tracking-[0.12em] text-white/50 hover:text-white transition-colors duration-500">
+              <a key={item.id} href={`#${item.id}`} className="text-[12px] font-semibold tracking-[0.1em] text-white hover:text-white/70 transition-colors duration-300">
                 {item.label}
               </a>
             ))}
-            <a href="#contact" className="text-[11px] tracking-[0.08em] bg-white/15 backdrop-blur-sm text-white px-5 py-2.5 hover:bg-white/25 transition-all duration-500">
+            <a href="#contact" className="inline-flex items-center gap-2 text-[12px] font-bold tracking-[0.08em] bg-white text-[#14B8B8] px-5 py-2.5 hover:bg-white/90 hover:scale-[1.03] transition-all duration-300 shadow-[0_2px_8px_rgba(0,0,0,0.12)]">
               お問い合わせ
+              <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
             </a>
           </div>
+
+          {/* モバイル右側: 問い合わせボタン + ハンバーガー */}
+          <div className="flex md:hidden items-center gap-2">
+            <a href="#contact" className="text-[11px] font-bold tracking-[0.04em] bg-white text-[#14B8B8] px-3.5 py-2 shadow-[0_2px_6px_rgba(0,0,0,0.15)]">
+              お問い合わせ
+            </a>
 
           {/* ハンバーガーボタン (mobile only) */}
           <button
@@ -168,7 +175,7 @@ export default function Home() {
             aria-label={mobileMenuOpen ? "メニューを閉じる" : "メニューを開く"}
             aria-expanded={mobileMenuOpen}
             onClick={() => setMobileMenuOpen((v) => !v)}
-            className="md:hidden relative w-10 h-10 flex items-center justify-center text-white"
+            className="relative w-10 h-10 flex items-center justify-center text-white"
           >
             <span
               className={`absolute block h-px w-6 bg-white transition-all duration-300 ${
@@ -186,6 +193,7 @@ export default function Home() {
               }`}
             />
           </button>
+          </div>
         </div>
       </nav>
 
