@@ -733,16 +733,11 @@ export default function Home() {
                 { label: "代表者", value: "鳴瀬 和正" },
                 { label: "設立", value: "1979年" },
                 { label: "資本金", value: "10,000千円" },
-                { label: "従業員数", value: "7名" },
                 { label: "所在地", value: "〒594-0083 大阪府和泉市池上町4丁目2-21" },
                 { label: "電話番号", value: "0725-45-2360" },
                 { label: "FAX", value: "0725-45-7684" },
-                { label: "メール", value: "info@izumi-syuppan.co.jp" },
                 { label: "営業時間", value: "9:00〜17:00" },
                 { label: "定休日", value: "土日祝" },
-                { label: "事業内容", value: "デザイン事業 / 出版事業 / 印刷製本事業 / デジタル化事業 / ソフトウェア販売事業" },
-                { label: "主力サービス", value: "冊子制作（自分史・終活整理・記念誌・カタログ等）" },
-                { label: "Webサイト", value: "https://izumi-syuppan.co.jp" },
               ].map((row) => (
                 <div key={row.label} className="flex flex-col md:flex-row md:items-baseline py-5 border-b border-[#14B8B8]/6">
                   <span className="text-[11px] tracking-[0.12em] text-[#14B8B8] md:w-[160px] mb-1 md:mb-0 font-semibold flex-shrink-0">{row.label}</span>
