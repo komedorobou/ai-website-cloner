@@ -604,7 +604,7 @@ export default function Home() {
           </ScrollReveal>
         </div>
 
-        <StickySection scrollLength={4} onProgress={handleProgress} className="min-h-screen flex items-center bg-[#F6FAFA]">
+        <StickySection scrollLength={2} onProgress={handleProgress} className="min-h-screen flex items-center bg-[#F6FAFA]">
           <div className="max-w-[1400px] mx-auto px-6 md:px-12 w-full">
             <div className="grid md:grid-cols-2 gap-12 md:gap-20 items-center">
               <div className="relative aspect-[4/3] md:aspect-square overflow-hidden bg-[#0B3838]">
