@@ -272,7 +272,7 @@ export default function Home() {
               </p>
             </ScrollReveal>
             <ScrollReveal duration={1.5} delay={0.5}>
-              <h1 className={`text-[42px] md:text-[72px] lg:text-[96px] leading-[1.1] tracking-[-0.02em] text-white font-bold ${gothic}`}>
+              <h1 className={`text-[44px] md:text-[76px] lg:text-[104px] leading-[1.15] tracking-[0.02em] text-white font-medium ${serif}`}>
                 想いを、<br />
                 整理整頓<br className="md:hidden" />
                 しませんか。
