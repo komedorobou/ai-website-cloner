@@ -140,7 +140,7 @@ export default function Home() {
     <main className={`bg-[${colors.bg}] text-[${colors.text}] overflow-hidden ${gothic}`}>
 
       {/* ===== NAV ===== */}
-      <nav className="fixed top-0 left-0 right-0 z-50 mix-blend-difference">
+      <nav className="fixed top-0 left-0 right-0 z-50 bg-[#061818]/85 backdrop-blur-md border-b border-white/10 shadow-[0_1px_0_rgba(255,255,255,0.04)]">
         <div className="max-w-[1400px] mx-auto px-6 md:px-12 h-20 flex items-center justify-between">
           <a href="#" className={`text-[15px] md:text-[17px] font-bold tracking-[0.06em] text-white ${gothic}`}>
             和泉出版印刷
