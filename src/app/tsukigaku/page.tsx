@@ -39,37 +39,29 @@ function Hero() {
         {/* Warm glow */}
         <div className="absolute top-[5%] left-1/2 -translate-x-1/2 w-[65vw] h-[65vw] max-w-[700px] max-h-[700px] rounded-full pointer-events-none" style={{ background: "radial-gradient(ellipse at center, rgba(251,146,60,0.38) 0%, rgba(245,158,11,0.22) 40%, transparent 70%)", filter: "blur(48px)" }} />
 
-        {/* Ramen DOOOON */}
+        {/* Ramen FULL SCREEN */}
         <motion.div
-          className="relative z-10 mt-[2vh] flex items-center justify-center"
+          className="absolute inset-0 z-10 flex items-center justify-center"
           style={{ scale: ramenScale, y: ramenY, rotate: ramenRotate }}
-          initial={{ opacity: 0, scale: 0.88, y: 30 }}
-          animate={{ opacity: 1, scale: 1, y: 0 }}
-          transition={{ duration: 1.1, ease: [0.16, 1, 0.3, 1] }}
+          initial={{ opacity: 0, scale: 1.1 }}
+          animate={{ opacity: 1, scale: 1 }}
+          transition={{ duration: 1.5, ease: [0.16, 1, 0.3, 1] }}
         >
-          <div className="relative" style={{ width: "clamp(320px, 72vw, 640px)", height: "clamp(320px, 72vw, 640px)" }}>
-            <Image src="/images/tsukigaku/ramen2.png" alt="ラーメン" fill priority className="object-contain drop-shadow-2xl" sizes="(max-width: 768px) 90vw, 640px" />
-          </div>
+          <Image src="/images/tsukigaku/ramen2.png" alt="ラーメン" fill priority className="object-cover" sizes="100vw" />
         </motion.div>
 
-        {/* Text */}
-        <div className="absolute bottom-0 left-0 right-0 flex flex-col items-center px-6 pb-16 pt-8 z-20">
-          <motion.p className="text-[#0071e3] text-sm font-medium tracking-wide mb-4" initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.6, duration: 0.8 }}>
-            Apple級のWebサイトを、すべての事業者に
-          </motion.p>
-          <motion.h1 className="text-center font-extrabold leading-tight tracking-tight" style={{ fontSize: "clamp(2.2rem, 6vw, 5rem)", lineHeight: 1.12 }} initial={{ opacity: 0, y: 30 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.8, duration: 0.8 }}>
-            あなたのビジネスを<br />
-            <span className="bg-gradient-to-r from-[#0071e3] to-[#30d158] bg-clip-text text-transparent">月9,800円</span>で変える
+        {/* Gradient overlay */}
+        <div className="absolute inset-0 z-15 bg-gradient-to-b from-white/60 via-transparent to-white/90" />
+
+        {/* Text - minimal, overlaid */}
+        <div className="absolute inset-0 z-20 flex flex-col items-center justify-end pb-20 px-6">
+          <motion.h1 className="text-center font-extrabold tracking-[-0.04em] text-[#1d1d1f]" style={{ fontSize: "clamp(3rem, 9vw, 7rem)", lineHeight: 1 }} initial={{ opacity: 0, y: 40 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.8, duration: 1 }}>
+            <span className="bg-gradient-to-r from-[#0071e3] to-[#30d158] bg-clip-text text-transparent">月9,800円</span>
           </motion.h1>
-          <motion.p className="text-[#6e6e73] text-[clamp(0.95rem,1.8vw,1.15rem)] max-w-[480px] text-center leading-relaxed mt-5 px-6 font-light" initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 1.0, duration: 0.8 }}>
-            初期費用0円。完全オーダーメイド。感動のホームページを。
+          <motion.p className="text-[#1d1d1f]/70 text-[clamp(1rem,2vw,1.3rem)] mt-3 font-medium" initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 1.2, duration: 0.8 }}>
+            Apple級のWebサイトを。
           </motion.p>
-          <motion.div className="flex items-baseline gap-1 mt-8" initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 1.1, duration: 0.8 }}>
-            <span className="text-lg font-semibold">月額</span>
-            <span className="font-black tracking-tight" style={{ fontSize: "clamp(3rem,8vw,5rem)" }}>9,800</span>
-            <span className="text-[#6e6e73]">円（税込）</span>
-          </motion.div>
-          <motion.a href="#pricing" className="mt-6 px-8 py-3.5 bg-[#0071e3] text-white text-[15px] font-semibold rounded-full hover:bg-[#0077ED] transition-all hover:scale-105 shadow-lg shadow-blue-200/50" initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 1.2, duration: 0.8 }}>
+          <motion.a href="#pricing" className="mt-8 px-10 py-4 bg-[#0071e3] text-white text-base font-semibold rounded-full hover:bg-[#0077ED] transition-all hover:scale-105 shadow-xl shadow-blue-300/40" initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 1.4, duration: 0.8 }}>
             まずは相談する
           </motion.a>
         </div>
@@ -87,10 +79,13 @@ function Hero() {
 /* ═══════════════════ PROBLEM ═══════════════════ */
 function Problem() {
   return (
-    <section className="py-32 md:py-40 px-6 max-w-[800px] mx-auto text-center">
-      <ScrollReveal><p className="text-[#0071e3] text-xs font-semibold tracking-[0.15em] uppercase mb-4">The Problem</p></ScrollReveal>
-      <ScrollReveal delay={0.1}><h2 className="text-[clamp(1.8rem,4.5vw,3.2rem)] font-extrabold tracking-tight leading-tight">ホームページ、<br />ちゃんと「売れて」ますか？</h2></ScrollReveal>
-      <ScrollReveal delay={0.2}><p className="text-[#6e6e73] text-lg leading-relaxed mt-6 font-light max-w-[520px] mx-auto">きれいなだけのサイトは意味がない。お客さんが「行きたい」「買いたい」と思わなければ、それはただの名刺です。</p></ScrollReveal>
+    <section className="min-h-[70vh] flex flex-col items-center justify-center px-6 text-center bg-[#fafafa]">
+      <ScrollReveal>
+        <h2 className="text-[clamp(2.5rem,7vw,5rem)] font-extrabold tracking-[-0.04em] leading-[1.05] text-[#1d1d1f]">
+          ホームページ、<br />ちゃんと<span className="text-[#0071e3]">「売れて」</span>ますか？
+        </h2>
+      </ScrollReveal>
+      <ScrollReveal delay={0.2}><p className="text-[#6e6e73] text-xl leading-relaxed mt-8 font-light max-w-[480px]">きれいなだけでは意味がない。</p></ScrollReveal>
     </section>
   );
 }
@@ -163,8 +158,8 @@ function StickyShowcase() {
             {scenes.map((scene, index) => (
               <div key={scene.label} ref={(el) => { imageRefs.current[index] = el; }} className="absolute w-full max-w-[560px]">
                 <div className="absolute inset-0 -z-10 blur-[60px] opacity-20 rounded-[40px]" style={{ backgroundColor: scene.accent }} />
-                <div className="relative w-full overflow-hidden rounded-[32px]" style={{ aspectRatio: "4/3", boxShadow: "0 32px 80px rgba(0,0,0,0.6), 0 0 0 1px rgba(255,255,255,0.06)" }}>
-                  <Image src={scene.image} alt={scene.industry} fill className="object-cover" sizes="(max-width: 768px) 100vw, 560px" priority={index === 0} />
+                <div className="relative w-full overflow-hidden rounded-[32px]" style={{ aspectRatio: "3/4", boxShadow: "0 32px 80px rgba(0,0,0,0.6), 0 0 0 1px rgba(255,255,255,0.06)" }}>
+                  <Image src={scene.image} alt={scene.industry} fill className="object-cover scale-110" sizes="(max-width: 768px) 100vw, 560px" priority={index === 0} />
                   <div className="absolute bottom-5 left-5">
                     <div className="flex items-center gap-2 bg-black/50 backdrop-blur-md px-4 py-2 rounded-full border border-white/10">
                       <div className="w-1.5 h-1.5 rounded-full" style={{ backgroundColor: scene.accent }} />
@@ -219,19 +214,22 @@ function MobileSection() {
 /* ═══════════════════ PHILOSOPHY ═══════════════════ */
 function Philosophy() {
   return (
-    <section className="py-32 md:py-40 px-6 max-w-[1100px] mx-auto bg-white">
-      <div className="grid md:grid-cols-2 gap-16 md:gap-20 items-center">
-        <ScrollReveal direction="left">
-          <p className="text-[#0071e3] text-xs font-semibold tracking-[0.15em] uppercase mb-4">Our Philosophy</p>
-          <h2 className="text-[clamp(2rem,4vw,3rem)] font-extrabold tracking-tight leading-tight">作るためじゃない。<br />売るために作る。</h2>
-          <p className="text-[#6e6e73] text-base leading-relaxed mt-6 font-light">ホームページ会社は「作る」のが目的。でもあなたには「売りたいもの」がある。だから写真どーん。1スクロールごとに感情が動いて、最後に「行きたい」にたどり着く。それが感動の動線です。</p>
-        </ScrollReveal>
-        <ScrollReveal delay={0.2}>
-          <ParallaxLayer speed={0.12}>
-            <div className="rounded-[32px] overflow-hidden" style={{ boxShadow: "0 40px 80px -12px rgba(0,0,0,0.18)" }}>
-              <Image src="/images/tsukigaku/before-after2.png" alt="Philosophy" width={600} height={400} className="w-full h-auto object-cover" />
-            </div>
+    <section className="relative min-h-screen flex items-center bg-white overflow-hidden">
+      {/* Full bleed image */}
+      <div className="absolute inset-0">
+        <ScrollReveal direction="none" duration={1.5}>
+          <ParallaxLayer speed={0.15}>
+            <Image src="/images/tsukigaku/before-after2.png" alt="Philosophy" fill className="object-cover" sizes="100vw" />
           </ParallaxLayer>
+        </ScrollReveal>
+        <div className="absolute inset-0 bg-gradient-to-r from-white via-white/95 to-white/40" />
+      </div>
+      {/* Text overlay */}
+      <div className="relative z-10 px-6 md:px-16 lg:px-24 py-32 max-w-[600px]">
+        <ScrollReveal direction="left">
+          <p className="text-[#0071e3] text-xs font-semibold tracking-[0.15em] uppercase mb-6">Our Philosophy</p>
+          <h2 className="text-[clamp(2.5rem,5vw,4rem)] font-extrabold tracking-[-0.03em] leading-[1.05]">作るためじゃない。<br />売るために作る。</h2>
+          <p className="text-[#6e6e73] text-lg leading-relaxed mt-8 font-light">写真どーん。1スクロールごとに感情が動いて、最後に「行きたい」にたどり着く。それが感動の動線。</p>
         </ScrollReveal>
       </div>
     </section>
@@ -269,19 +267,20 @@ function BeforeAfter() {
 /* ═══════════════════ CAFE ═══════════════════ */
 function CafeSection() {
   return (
-    <section className="py-32 md:py-40 px-6 max-w-[1100px] mx-auto">
-      <div className="grid md:grid-cols-2 gap-16 md:gap-20 items-center">
-        <ScrollReveal delay={0.1} className="order-2 md:order-1">
-          <ParallaxLayer speed={0.12}>
-            <div className="rounded-[32px] overflow-hidden" style={{ boxShadow: "0 40px 80px -12px rgba(0,0,0,0.18)" }}>
-              <Image src="/images/tsukigaku/cafe.png" alt="カフェ" width={600} height={400} className="w-full h-auto object-cover" />
-            </div>
-          </ParallaxLayer>
-        </ScrollReveal>
-        <ScrollReveal direction="right" className="order-1 md:order-2">
-          <p className="text-[#0071e3] text-xs font-semibold tracking-[0.15em] uppercase mb-4">For Cafes</p>
-          <h2 className="text-[clamp(2rem,3.5vw,2.5rem)] font-extrabold tracking-tight leading-tight">あの空気感まで、<br />画面の中に。</h2>
-          <p className="text-[#6e6e73] text-base leading-relaxed mt-6 font-light">木の温もり、コーヒーの香り、焼きたてのパン。写真1枚で「ここに行きたい」と思わせる。それがツキガクサイトの仕事です。</p>
+    <section className="relative min-h-screen flex items-center overflow-hidden">
+      {/* Full bleed cafe image */}
+      <div className="absolute inset-0">
+        <ParallaxLayer speed={0.15}>
+          <Image src="/images/tsukigaku/cafe.png" alt="カフェ" fill className="object-cover" sizes="100vw" />
+        </ParallaxLayer>
+        <div className="absolute inset-0 bg-gradient-to-l from-black/80 via-black/50 to-transparent" />
+      </div>
+      {/* Text overlay - right side */}
+      <div className="relative z-10 ml-auto px-6 md:px-16 lg:px-24 py-32 max-w-[500px]">
+        <ScrollReveal direction="right">
+          <p className="text-blue-400 text-xs font-semibold tracking-[0.15em] uppercase mb-6">For Cafes</p>
+          <h2 className="text-[clamp(2.5rem,5vw,3.5rem)] font-extrabold tracking-[-0.03em] leading-[1.05] text-white">あの空気感まで、<br />画面の中に。</h2>
+          <p className="text-white/60 text-lg leading-relaxed mt-8 font-light">木の温もり、コーヒーの香り、焼きたてのパン。</p>
         </ScrollReveal>
       </div>
     </section>
