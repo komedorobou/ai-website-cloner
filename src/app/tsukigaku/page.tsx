@@ -57,36 +57,42 @@ function Hero() {
         {/* Dark overlay for text readability */}
         <div className="absolute inset-0 bg-black/30 z-[1]" />
 
-        {/* Center text overlay */}
+        {/* Center text overlay — sequential "boom" reveals */}
         <motion.div
           className="relative z-10 text-center px-6"
           style={{ y: textY, opacity: textOpacity }}
         >
+          {/* 1st boom: Apple級のWebサイトを。 */}
           <motion.h1
             className="font-extralight tracking-[-0.04em] text-white leading-[0.95]"
             style={{ fontSize: "clamp(3.5rem, 12vw, 96px)" }}
-            initial={{ opacity: 0, scale: 0.9, filter: "blur(20px)" }}
+            initial={{ opacity: 0, scale: 0.7, filter: "blur(30px)" }}
             animate={{ opacity: 1, scale: 1, filter: "blur(0px)" }}
-            transition={{ duration: 1.5, ease: [0.16, 1, 0.3, 1] }}
+            transition={{ delay: 0.3, duration: 1.2, ease: [0.16, 1, 0.3, 1] }}
           >
             Apple級の
             <br />
             Webサイトを。
           </motion.h1>
+
+          {/* 2nd boom: 月額9,800円で */}
           <motion.p
-            className="text-white/50 text-[clamp(0.9rem,1.8vw,1.2rem)] mt-6 font-light tracking-wide"
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ delay: 0.8, duration: 1 }}
+            className="text-white/60 font-light tracking-wide mt-8"
+            style={{ fontSize: "clamp(1.2rem, 3vw, 2rem)" }}
+            initial={{ opacity: 0, scale: 0.7, filter: "blur(30px)" }}
+            animate={{ opacity: 1, scale: 1, filter: "blur(0px)" }}
+            transition={{ delay: 2.5, duration: 1.2, ease: [0.16, 1, 0.3, 1] }}
           >
-            月額9,800円
+            月額9,800円で
           </motion.p>
+
+          {/* CTA — appears after both booms */}
           <motion.a
             href="#pricing"
             className="inline-block mt-10 px-8 py-3.5 text-[14px] font-medium rounded-full bg-white text-black hover:scale-105 transition-transform"
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 1.2, duration: 0.8 }}
+            transition={{ delay: 4.5, duration: 0.8 }}
           >
             まずは相談する
           </motion.a>
