@@ -27,19 +27,19 @@ function Hero() {
   const videoRef = useRef<HTMLVideoElement>(null);
   const { scrollYProgress } = useScroll({ target: ref, offset: ["start start", "end start"] });
 
-  // Text 1: "Apple級のWebサイトを。" — boom in at 0~0.15, visible until 0.7, fade out 0.7~0.85
-  const text1Opacity = useTransform(scrollYProgress, [0, 0.12, 0.7, 0.85], [0, 1, 1, 0]);
-  const text1Scale = useTransform(scrollYProgress, [0, 0.12], [0.7, 1]);
-  const text1Blur = useTransform(scrollYProgress, [0, 0.12], [30, 0]);
+  // Text 1: "Apple級のWebサイトを。" — boom in, then slowly fade out
+  const text1Opacity = useTransform(scrollYProgress, [0, 0.08, 0.2, 0.35], [0, 1, 1, 0]);
+  const text1Scale = useTransform(scrollYProgress, [0, 0.08], [0.7, 1]);
+  const text1Blur = useTransform(scrollYProgress, [0, 0.08], [30, 0]);
 
-  // Text 2: "月額9,800円で" — boom in at 0.25~0.4, visible until 0.7, fade out 0.7~0.85
-  const text2Opacity = useTransform(scrollYProgress, [0.25, 0.4, 0.7, 0.85], [0, 1, 1, 0]);
-  const text2Scale = useTransform(scrollYProgress, [0.25, 0.4], [0.7, 1]);
-  const text2Blur = useTransform(scrollYProgress, [0.25, 0.4], [30, 0]);
+  // Text 2: "月額9,800円で" — same size, boom in after text 1 fades
+  const text2Opacity = useTransform(scrollYProgress, [0.35, 0.45, 0.65, 0.8], [0, 1, 1, 0]);
+  const text2Scale = useTransform(scrollYProgress, [0.35, 0.45], [0.7, 1]);
+  const text2Blur = useTransform(scrollYProgress, [0.35, 0.45], [30, 0]);
 
-  // CTA: appears at 0.5, fades out 0.7~0.85
-  const ctaOpacity = useTransform(scrollYProgress, [0.45, 0.55, 0.7, 0.85], [0, 1, 1, 0]);
-  const ctaY = useTransform(scrollYProgress, [0.45, 0.55], [30, 0]);
+  // CTA: appears after text 2
+  const ctaOpacity = useTransform(scrollYProgress, [0.55, 0.65, 0.75, 0.85], [0, 1, 1, 0]);
+  const ctaY = useTransform(scrollYProgress, [0.55, 0.65], [30, 0]);
 
   // Scroll indicator: disappears quickly
   const scrollOpacity = useTransform(scrollYProgress, [0, 0.05], [1, 0]);
@@ -63,7 +63,7 @@ function Hero() {
         <div className="absolute inset-0 bg-black/30 z-[1]" />
 
         {/* Center text — scroll-driven sequential booms */}
-        <div className="relative z-10 text-center px-6">
+        <div className="relative z-10 text-center px-6 flex flex-col items-center justify-center">
           {/* 1st boom: Apple級のWebサイトを。 */}
           <motion.h1
             className="font-extralight tracking-[-0.04em] text-white leading-[0.95]"
@@ -79,18 +79,18 @@ function Hero() {
             Webサイトを。
           </motion.h1>
 
-          {/* 2nd boom: 月額9,800円で */}
-          <motion.p
-            className="text-white/60 font-light tracking-wide mt-8"
+          {/* 2nd boom: 月額9,800円で — same size as heading */}
+          <motion.h2
+            className="font-extralight tracking-[-0.04em] text-white leading-[0.95] absolute inset-0 flex items-center justify-center"
             style={{
-              fontSize: "clamp(1.2rem, 3vw, 2rem)",
+              fontSize: "clamp(3.5rem, 12vw, 96px)",
               opacity: text2Opacity,
               scale: text2Scale,
               filter: useTransform(text2Blur, (v) => `blur(${v}px)`),
             }}
           >
             月額9,800円で
-          </motion.p>
+          </motion.h2>
 
           {/* CTA */}
           <motion.a
