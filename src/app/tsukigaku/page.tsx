@@ -6,11 +6,6 @@ import { motion, useScroll, useTransform, AnimatePresence } from "motion/react";
 import { ScrollReveal } from "@/components/animation/scroll-reveal";
 import { ParallaxLayer } from "@/components/animation/parallax-layer";
 import { StaggerContainer } from "@/components/animation/stagger-container";
-import gsap from "gsap";
-import { ScrollTrigger } from "gsap/ScrollTrigger";
-import { useGSAP } from "@gsap/react";
-
-gsap.registerPlugin(ScrollTrigger);
 
 /* ═══════════════════ NAV ═══════════════════ */
 function Nav() {
@@ -28,9 +23,9 @@ function Nav() {
 function Hero() {
   const ref = useRef<HTMLDivElement>(null);
   const { scrollYProgress } = useScroll({ target: ref, offset: ["start start", "end start"] });
-  const ramenScale = useTransform(scrollYProgress, [0, 0.6], [1, 0.55]);
-  const ramenY = useTransform(scrollYProgress, [0, 0.6], ["0%", "-18%"]);
-  const ramenRotate = useTransform(scrollYProgress, [0, 1], [0, 22]);
+  const ramenScale = useTransform(scrollYProgress, [0, 0.6], [1, 0.7]);
+  const ramenY = useTransform(scrollYProgress, [0, 0.6], ["0%", "-10%"]);
+  const ramenOpacity = useTransform(scrollYProgress, [0.3, 0.6], [1, 0]);
   const scrollIndicatorOpacity = useTransform(scrollYProgress, [0, 0.1], [1, 0]);
 
   return (
@@ -42,7 +37,7 @@ function Hero() {
         {/* Ramen FULL SCREEN */}
         <motion.div
           className="absolute inset-0 z-10 flex items-center justify-center"
-          style={{ scale: ramenScale, y: ramenY, rotate: ramenRotate }}
+          style={{ scale: ramenScale, y: ramenY, opacity: ramenOpacity }}
           initial={{ opacity: 0, scale: 1.1 }}
           animate={{ opacity: 1, scale: 1 }}
           transition={{ duration: 1.5, ease: [0.16, 1, 0.3, 1] }}
@@ -98,80 +93,32 @@ const scenes = [
 ];
 
 function StickyShowcase() {
-  const containerRef = useRef<HTMLDivElement>(null);
-  const stickyRef = useRef<HTMLDivElement>(null);
-  const textRefs = useRef<(HTMLDivElement | null)[]>([]);
-  const imageRefs = useRef<(HTMLDivElement | null)[]>([]);
-
-  useGSAP(() => {
-    const container = containerRef.current;
-    const sticky = stickyRef.current;
-    if (!container || !sticky) return;
-
-    ScrollTrigger.create({ trigger: container, start: "top top", end: "bottom bottom", pin: sticky, pinSpacing: false });
-
-    scenes.forEach((_, index) => {
-      if (index === 0) {
-        gsap.set(textRefs.current[0], { opacity: 1, y: 0 });
-        gsap.set(imageRefs.current[0], { opacity: 1, scale: 1 });
-      } else {
-        gsap.set(textRefs.current[index], { opacity: 0, y: 40 });
-        gsap.set(imageRefs.current[index], { opacity: 0, scale: 1.04 });
-      }
-    });
-
-    for (let i = 0; i < scenes.length - 1; i++) {
-      const tl = gsap.timeline({ scrollTrigger: { trigger: container, start: `${(i * 33.33)}% top`, end: `${((i + 1) * 33.33)}% top`, scrub: 1.2 } });
-      tl.to(textRefs.current[i], { opacity: 0, y: -30, duration: 0.4 }, 0)
-        .to(imageRefs.current[i], { opacity: 0, scale: 0.96, duration: 0.4 }, 0)
-        .to(textRefs.current[i + 1], { opacity: 1, y: 0, duration: 0.5 }, 0.35)
-        .to(imageRefs.current[i + 1], { opacity: 1, scale: 1, duration: 0.5 }, 0.35);
-    }
-  }, { scope: containerRef });
-
   return (
-    <div ref={containerRef} className="relative w-full" style={{ height: "300vh" }}>
-      <div className="absolute inset-0 z-0" style={{ background: "radial-gradient(ellipse at 10% 50%, #1c1008 0%, #0a0a0a 60%)" }} />
-      <div ref={stickyRef} className="relative z-10 w-full h-screen overflow-hidden">
-        <div className="relative z-10 flex flex-col md:flex-row items-center justify-center w-full h-full px-6 md:px-16 lg:px-24 gap-10 md:gap-16">
-          {/* Text */}
-          <div className="relative flex-1 flex items-center justify-start order-2 md:order-1">
-            {scenes.map((scene, index) => (
-              <div key={scene.label} ref={(el) => { textRefs.current[index] = el; }} className="absolute w-full max-w-[520px]">
-                <div className="flex items-center gap-3 mb-5">
-                  <div className="w-6 h-px" style={{ backgroundColor: scene.accent }} />
-                  <span className="text-xs font-semibold tracking-[0.2em] uppercase" style={{ color: scene.accent }}>{scene.label}</span>
-                  <span className="text-xs text-white/30">{scene.industry}</span>
-                </div>
-                <h2 className="font-extrabold tracking-tight text-white leading-[1.05] mb-6 whitespace-pre-line" style={{ fontSize: "clamp(2.5rem, 5vw, 3.75rem)" }}>{scene.heading}</h2>
-                <div className="w-12 h-px mb-6 opacity-40" style={{ backgroundColor: scene.accent }} />
-                <p className="text-white/50 text-base md:text-lg leading-[1.8] font-light whitespace-pre-line">{scene.desc}</p>
-                <div className="flex items-center gap-3 mt-10">
-                  {scenes.map((_, i) => (<div key={i} style={{ width: i === index ? "24px" : "6px", height: "3px", borderRadius: "2px", backgroundColor: i === index ? scene.accent : "rgba(255,255,255,0.15)" }} />))}
-                  <span className="text-white/25 text-xs ml-2 font-mono">0{index + 1} / 0{scenes.length}</span>
-                </div>
-              </div>
-            ))}
+    <div className="bg-[#0a0a0a]">
+      {scenes.map((scene, index) => (
+        <section key={scene.label} className="relative min-h-screen flex items-center overflow-hidden">
+          {/* Full bleed image */}
+          <div className="absolute inset-0">
+            <Image src={scene.image} alt={scene.industry} fill className="object-cover" sizes="100vw" priority={index === 0} />
+            <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/40 to-black/20" />
           </div>
-          {/* Images */}
-          <div className="relative flex-1 flex items-center justify-center order-1 md:order-2">
-            {scenes.map((scene, index) => (
-              <div key={scene.label} ref={(el) => { imageRefs.current[index] = el; }} className="absolute w-full max-w-[560px]">
-                <div className="absolute inset-0 -z-10 blur-[60px] opacity-20 rounded-[40px]" style={{ backgroundColor: scene.accent }} />
-                <div className="relative w-full overflow-hidden rounded-[32px]" style={{ aspectRatio: "3/4", boxShadow: "0 32px 80px rgba(0,0,0,0.6), 0 0 0 1px rgba(255,255,255,0.06)" }}>
-                  <Image src={scene.image} alt={scene.industry} fill className="object-cover scale-110" sizes="(max-width: 768px) 100vw, 560px" priority={index === 0} />
-                  <div className="absolute bottom-5 left-5">
-                    <div className="flex items-center gap-2 bg-black/50 backdrop-blur-md px-4 py-2 rounded-full border border-white/10">
-                      <div className="w-1.5 h-1.5 rounded-full" style={{ backgroundColor: scene.accent }} />
-                      <span className="text-white/80 text-xs font-medium">{scene.industry}</span>
-                    </div>
-                  </div>
-                </div>
+          {/* Text overlay at bottom */}
+          <div className="relative z-10 w-full px-6 md:px-16 lg:px-24 py-20 mt-auto">
+            <ScrollReveal>
+              <div className="flex items-center gap-3 mb-4">
+                <div className="w-6 h-px" style={{ backgroundColor: scene.accent }} />
+                <span className="text-xs font-semibold tracking-[0.2em] uppercase" style={{ color: scene.accent }}>{scene.industry}</span>
               </div>
-            ))}
+              <h2 className="font-extrabold tracking-tight text-white leading-[1.05] mb-4 whitespace-pre-line" style={{ fontSize: "clamp(2rem, 6vw, 3.5rem)" }}>
+                {scene.heading}
+              </h2>
+              <p className="text-white/50 text-base leading-relaxed font-light max-w-[400px]">
+                {scene.desc}
+              </p>
+            </ScrollReveal>
           </div>
-        </div>
-      </div>
+        </section>
+      ))}
     </div>
   );
 }
