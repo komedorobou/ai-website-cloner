@@ -31,10 +31,10 @@ function Hero() {
   const text1FadeOut = useTransform(scrollYProgress, [0.15, 0.3], [1, 0]);
   const text1Blur = useTransform(scrollYProgress, [0.15, 0.3], [0, 30]);
 
-  // Text 2: "月額9,800円で" — same size, boom in after text 1 fades
-  const text2Opacity = useTransform(scrollYProgress, [0.35, 0.45, 0.65, 0.8], [0, 1, 1, 0]);
-  const text2Scale = useTransform(scrollYProgress, [0.35, 0.45], [0.7, 1]);
-  const text2Blur = useTransform(scrollYProgress, [0.35, 0.45], [30, 0]);
+  // Text 2: "月額9,800円で" — same size, slower boom in after text 1 fades
+  const text2Opacity = useTransform(scrollYProgress, [0.3, 0.5, 0.65, 0.8], [0, 1, 1, 0]);
+  const text2Scale = useTransform(scrollYProgress, [0.3, 0.5], [0.7, 1]);
+  const text2Blur = useTransform(scrollYProgress, [0.3, 0.5], [30, 0]);
 
   // CTA: appears after text 2
   const ctaOpacity = useTransform(scrollYProgress, [0.55, 0.65, 0.75, 0.85], [0, 1, 1, 0]);
@@ -73,7 +73,7 @@ function Hero() {
             }}
             initial={{ opacity: 0, scale: 0.7, filter: "blur(30px)" }}
             animate={{ opacity: 1, scale: 1, filter: "blur(0px)" }}
-            transition={{ delay: 0.3, duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
+            transition={{ delay: 0.3, duration: 2.0, ease: [0.16, 1, 0.3, 1] }}
           >
             Apple級の
             <br />
