@@ -73,7 +73,7 @@ function Hero() {
             }}
             initial={{ opacity: 0, scale: 0.7, filter: "blur(30px)" }}
             animate={{ opacity: 1, scale: 1, filter: "blur(0px)" }}
-            transition={{ delay: 0.3, duration: 2.0, ease: [0.16, 1, 0.3, 1] }}
+            transition={{ delay: 0.8, duration: 2.0, ease: [0.16, 1, 0.3, 1] }}
           >
             Apple級の
             <br />
