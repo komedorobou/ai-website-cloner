@@ -49,7 +49,6 @@ function Hero() {
           autoPlay
           muted
           playsInline
-          loop
           poster="/images/tsukigaku/hero-dark.png"
         >
           <source src="/videos/hero-laptop.mp4" type="video/mp4" />
