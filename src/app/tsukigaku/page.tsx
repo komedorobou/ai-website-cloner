@@ -51,7 +51,7 @@ function Hero() {
         </motion.div>
 
         {/* Gradient overlay */}
-        <div className="absolute inset-0 z-15 bg-gradient-to-b from-white/60 via-transparent to-white/90" />
+        <div className="absolute inset-0 z-[15] bg-gradient-to-b from-white/60 via-transparent to-white/90" />
 
         {/* Text - minimal, overlaid */}
         <div className="absolute inset-0 z-20 flex flex-col items-center justify-end pb-20 px-6">
@@ -190,7 +190,7 @@ function MobileSection() {
           <ScrollReveal delay={0.1}>
             <ParallaxLayer speed={0.3}>
               <motion.div animate={{ y: [0, -10, 0] }} transition={{ duration: 4.5, repeat: Infinity, ease: "easeInOut" }}>
-                <div className="relative overflow-hidden rounded-[24px] w-[200px] md:w-[240px] h-[400px] md:h-[480px]" style={{ boxShadow: "0 40px 80px -12px rgba(0,0,0,0.25)" }}>
+                <div className="relative overflow-hidden rounded-[24px]" style={{ width: "clamp(180px, 30vw, 240px)", height: "clamp(360px, 60vw, 480px)", boxShadow: "0 40px 80px -12px rgba(0,0,0,0.25)" }}>
                   <Image src="/images/tsukigaku/phone-food.png" alt="スマホ" fill className="object-cover" sizes="240px" />
                 </div>
               </motion.div>
@@ -199,7 +199,7 @@ function MobileSection() {
           <ScrollReveal delay={0.22}>
             <ParallaxLayer speed={0.12}>
               <motion.div animate={{ y: [0, -6, 0] }} transition={{ duration: 5.5, repeat: Infinity, ease: "easeInOut", delay: 0.8 }}>
-                <div className="relative overflow-hidden rounded-[16px] w-[300px] md:w-[420px] h-[200px] md:h-[280px]" style={{ boxShadow: "0 40px 80px -12px rgba(0,0,0,0.22)" }}>
+                <div className="relative overflow-hidden rounded-[16px]" style={{ width: "clamp(260px, 50vw, 420px)", height: "clamp(170px, 33vw, 280px)", boxShadow: "0 40px 80px -12px rgba(0,0,0,0.22)" }}>
                   <Image src="/images/tsukigaku/responsive.png" alt="レスポンシブ" fill className="object-cover" sizes="420px" />
                 </div>
               </motion.div>
@@ -216,12 +216,8 @@ function Philosophy() {
   return (
     <section className="relative min-h-screen flex items-center bg-white overflow-hidden">
       {/* Full bleed image */}
-      <div className="absolute inset-0">
-        <ScrollReveal direction="none" duration={1.5}>
-          <ParallaxLayer speed={0.15}>
-            <Image src="/images/tsukigaku/before-after2.png" alt="Philosophy" fill className="object-cover" sizes="100vw" />
-          </ParallaxLayer>
-        </ScrollReveal>
+      <div className="absolute inset-0 overflow-hidden">
+        <Image src="/images/tsukigaku/before-after2.png" alt="Philosophy" fill className="object-cover" sizes="100vw" />
         <div className="absolute inset-0 bg-gradient-to-r from-white via-white/95 to-white/40" />
       </div>
       {/* Text overlay */}
@@ -269,10 +265,8 @@ function CafeSection() {
   return (
     <section className="relative min-h-screen flex items-center overflow-hidden">
       {/* Full bleed cafe image */}
-      <div className="absolute inset-0">
-        <ParallaxLayer speed={0.15}>
-          <Image src="/images/tsukigaku/cafe.png" alt="カフェ" fill className="object-cover" sizes="100vw" />
-        </ParallaxLayer>
+      <div className="absolute inset-0 overflow-hidden">
+        <Image src="/images/tsukigaku/cafe.png" alt="カフェ" fill className="object-cover" sizes="100vw" />
         <div className="absolute inset-0 bg-gradient-to-l from-black/80 via-black/50 to-transparent" />
       </div>
       {/* Text overlay - right side */}
