@@ -25,22 +25,27 @@ function Nav() {
 function Hero() {
   const ref = useRef<HTMLDivElement>(null);
   const videoRef = useRef<HTMLVideoElement>(null);
-  const [videoEnded, setVideoEnded] = useState(false);
   const { scrollYProgress } = useScroll({ target: ref, offset: ["start start", "end start"] });
-  const textY = useTransform(scrollYProgress, [0, 1], ["0%", "40%"]);
-  const textOpacity = useTransform(scrollYProgress, [0, 0.5], [1, 0]);
-  const scrollOpacity = useTransform(scrollYProgress, [0, 0.08], [1, 0]);
 
-  useEffect(() => {
-    const video = videoRef.current;
-    if (!video) return;
-    const handleEnded = () => setVideoEnded(true);
-    video.addEventListener("ended", handleEnded);
-    return () => video.removeEventListener("ended", handleEnded);
-  }, []);
+  // Text 1: "Apple級のWebサイトを。" — boom in at 0~0.15, visible until 0.7, fade out 0.7~0.85
+  const text1Opacity = useTransform(scrollYProgress, [0, 0.12, 0.7, 0.85], [0, 1, 1, 0]);
+  const text1Scale = useTransform(scrollYProgress, [0, 0.12], [0.7, 1]);
+  const text1Blur = useTransform(scrollYProgress, [0, 0.12], [30, 0]);
+
+  // Text 2: "月額9,800円で" — boom in at 0.25~0.4, visible until 0.7, fade out 0.7~0.85
+  const text2Opacity = useTransform(scrollYProgress, [0.25, 0.4, 0.7, 0.85], [0, 1, 1, 0]);
+  const text2Scale = useTransform(scrollYProgress, [0.25, 0.4], [0.7, 1]);
+  const text2Blur = useTransform(scrollYProgress, [0.25, 0.4], [30, 0]);
+
+  // CTA: appears at 0.5, fades out 0.7~0.85
+  const ctaOpacity = useTransform(scrollYProgress, [0.45, 0.55, 0.7, 0.85], [0, 1, 1, 0]);
+  const ctaY = useTransform(scrollYProgress, [0.45, 0.55], [30, 0]);
+
+  // Scroll indicator: disappears quickly
+  const scrollOpacity = useTransform(scrollYProgress, [0, 0.05], [1, 0]);
 
   return (
-    <section ref={ref} className="relative h-[200vh]">
+    <section ref={ref} className="relative h-[400vh]">
       <div className="sticky top-0 h-screen w-full overflow-hidden flex items-center justify-center bg-black">
         {/* Cinematic background video */}
         <video
@@ -57,18 +62,17 @@ function Hero() {
         {/* Dark overlay for text readability */}
         <div className="absolute inset-0 bg-black/30 z-[1]" />
 
-        {/* Center text overlay — sequential "boom" reveals */}
-        <motion.div
-          className="relative z-10 text-center px-6"
-          style={{ y: textY, opacity: textOpacity }}
-        >
+        {/* Center text — scroll-driven sequential booms */}
+        <div className="relative z-10 text-center px-6">
           {/* 1st boom: Apple級のWebサイトを。 */}
           <motion.h1
             className="font-extralight tracking-[-0.04em] text-white leading-[0.95]"
-            style={{ fontSize: "clamp(3.5rem, 12vw, 96px)" }}
-            initial={{ opacity: 0, scale: 0.7, filter: "blur(30px)" }}
-            animate={{ opacity: 1, scale: 1, filter: "blur(0px)" }}
-            transition={{ delay: 0.3, duration: 1.2, ease: [0.16, 1, 0.3, 1] }}
+            style={{
+              fontSize: "clamp(3.5rem, 12vw, 96px)",
+              opacity: text1Opacity,
+              scale: text1Scale,
+              filter: useTransform(text1Blur, (v) => `blur(${v}px)`),
+            }}
           >
             Apple級の
             <br />
@@ -78,25 +82,25 @@ function Hero() {
           {/* 2nd boom: 月額9,800円で */}
           <motion.p
             className="text-white/60 font-light tracking-wide mt-8"
-            style={{ fontSize: "clamp(1.2rem, 3vw, 2rem)" }}
-            initial={{ opacity: 0, scale: 0.7, filter: "blur(30px)" }}
-            animate={{ opacity: 1, scale: 1, filter: "blur(0px)" }}
-            transition={{ delay: 2.5, duration: 1.2, ease: [0.16, 1, 0.3, 1] }}
+            style={{
+              fontSize: "clamp(1.2rem, 3vw, 2rem)",
+              opacity: text2Opacity,
+              scale: text2Scale,
+              filter: useTransform(text2Blur, (v) => `blur(${v}px)`),
+            }}
           >
             月額9,800円で
           </motion.p>
 
-          {/* CTA — appears after both booms */}
+          {/* CTA */}
           <motion.a
             href="#pricing"
             className="inline-block mt-10 px-8 py-3.5 text-[14px] font-medium rounded-full bg-white text-black hover:scale-105 transition-transform"
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 4.5, duration: 0.8 }}
+            style={{ opacity: ctaOpacity, y: ctaY }}
           >
             まずは相談する
           </motion.a>
-        </motion.div>
+        </div>
 
         {/* Scroll indicator */}
         <motion.div
