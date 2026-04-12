@@ -27,10 +27,9 @@ function Hero() {
   const videoRef = useRef<HTMLVideoElement>(null);
   const { scrollYProgress } = useScroll({ target: ref, offset: ["start start", "end start"] });
 
-  // Text 1: "Apple級のWebサイトを。" — boom in, then slowly fade out
-  const text1Opacity = useTransform(scrollYProgress, [0, 0.08, 0.2, 0.35], [0, 1, 1, 0]);
-  const text1Scale = useTransform(scrollYProgress, [0, 0.08], [0.7, 1]);
-  const text1Blur = useTransform(scrollYProgress, [0, 0.08], [30, 0]);
+  // Text 1: "Apple級のWebサイトを。" — instant boom (0.3s timed), then scroll to fade out
+  const text1FadeOut = useTransform(scrollYProgress, [0.15, 0.3], [1, 0]);
+  const text1Blur = useTransform(scrollYProgress, [0.15, 0.3], [0, 30]);
 
   // Text 2: "月額9,800円で" — same size, boom in after text 1 fades
   const text2Opacity = useTransform(scrollYProgress, [0.35, 0.45, 0.65, 0.8], [0, 1, 1, 0]);
@@ -64,15 +63,17 @@ function Hero() {
 
         {/* Center text — scroll-driven sequential booms */}
         <div className="relative z-10 text-center px-6 flex flex-col items-center justify-center">
-          {/* 1st boom: Apple級のWebサイトを。 */}
+          {/* 1st boom: instant 0.3s appear, scroll to fade out */}
           <motion.h1
             className="font-extralight tracking-[-0.04em] text-white leading-[0.95]"
             style={{
               fontSize: "clamp(3.5rem, 12vw, 96px)",
-              opacity: text1Opacity,
-              scale: text1Scale,
+              opacity: text1FadeOut,
               filter: useTransform(text1Blur, (v) => `blur(${v}px)`),
             }}
+            initial={{ opacity: 0, scale: 0.7, filter: "blur(30px)" }}
+            animate={{ opacity: 1, scale: 1, filter: "blur(0px)" }}
+            transition={{ delay: 0.3, duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
           >
             Apple級の
             <br />
