@@ -27,24 +27,24 @@ function Hero() {
   const videoRef = useRef<HTMLVideoElement>(null);
   const { scrollYProgress } = useScroll({ target: ref, offset: ["start start", "end start"] });
 
-  // Text 1: "Apple級のWebサイトを。" — instant boom (0.3s timed), then scroll to fade out
-  const text1FadeOut = useTransform(scrollYProgress, [0.15, 0.3], [1, 0]);
-  const text1Blur = useTransform(scrollYProgress, [0.15, 0.3], [0, 30]);
+  // Text 1: "Apple級のWebサイトを。" — instant boom, scroll to fade out quickly
+  const text1FadeOut = useTransform(scrollYProgress, [0.05, 0.15], [1, 0]);
+  const text1Blur = useTransform(scrollYProgress, [0.05, 0.15], [0, 30]);
 
-  // Text 2: "月額9,800円で" — same size, slower boom in after text 1 fades
-  const text2Opacity = useTransform(scrollYProgress, [0.3, 0.5, 0.65, 0.8], [0, 1, 1, 0]);
-  const text2Scale = useTransform(scrollYProgress, [0.3, 0.5], [0.7, 1]);
-  const text2Blur = useTransform(scrollYProgress, [0.3, 0.5], [30, 0]);
+  // Text 2: "月額9,800円で" — same size, boom in right after text 1 fades
+  const text2Opacity = useTransform(scrollYProgress, [0.15, 0.3, 0.5, 0.65], [0, 1, 1, 0]);
+  const text2Scale = useTransform(scrollYProgress, [0.15, 0.3], [0.7, 1]);
+  const text2Blur = useTransform(scrollYProgress, [0.15, 0.3], [30, 0]);
 
   // CTA: appears after text 2
-  const ctaOpacity = useTransform(scrollYProgress, [0.55, 0.65, 0.75, 0.85], [0, 1, 1, 0]);
-  const ctaY = useTransform(scrollYProgress, [0.55, 0.65], [30, 0]);
+  const ctaOpacity = useTransform(scrollYProgress, [0.35, 0.45, 0.55, 0.7], [0, 1, 1, 0]);
+  const ctaY = useTransform(scrollYProgress, [0.35, 0.45], [30, 0]);
 
   // Scroll indicator: disappears quickly
   const scrollOpacity = useTransform(scrollYProgress, [0, 0.05], [1, 0]);
 
   return (
-    <section ref={ref} className="relative h-[400vh]">
+    <section ref={ref} className="relative h-[300vh]">
       <div className="sticky top-0 h-screen w-full overflow-hidden flex items-center justify-center bg-black">
         {/* Cinematic background video */}
         <video
