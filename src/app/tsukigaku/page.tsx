@@ -1,6 +1,6 @@
 "use client";
 
-import { useRef, useState } from "react";
+import { useRef, useState, useEffect } from "react";
 import Image from "next/image";
 import { motion, useScroll, useTransform, AnimatePresence } from "motion/react";
 import { ScrollReveal } from "@/components/animation/scroll-reveal";
@@ -21,35 +21,43 @@ function Nav() {
   );
 }
 
-/* ═══════════════════ HERO — Dark + Particles ═══════════════════ */
+/* ═══════════════════ HERO — Laptop Showcase ═══════════════════ */
+const showcaseSites = [
+  { src: "/images/tsukigaku/showcase/ramen.png", alt: "ラーメン店サイト" },
+  { src: "/images/tsukigaku/showcase/salon.png", alt: "サロンサイト" },
+  { src: "/images/tsukigaku/showcase/cafe.png", alt: "カフェサイト" },
+  { src: "/images/tsukigaku/showcase/sushi.png", alt: "寿司店サイト" },
+  { src: "/images/tsukigaku/showcase/clinic.png", alt: "クリニックサイト" },
+];
+
 function Hero() {
   const ref = useRef<HTMLDivElement>(null);
+  const [currentSlide, setCurrentSlide] = useState(0);
   const { scrollYProgress } = useScroll({ target: ref, offset: ["start start", "end start"] });
   const textY = useTransform(scrollYProgress, [0, 1], ["0%", "40%"]);
   const textOpacity = useTransform(scrollYProgress, [0, 0.5], [1, 0]);
   const scrollOpacity = useTransform(scrollYProgress, [0, 0.08], [1, 0]);
 
+  // Auto-cycle slides
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setCurrentSlide((prev) => (prev + 1) % showcaseSites.length);
+    }, 3000);
+    return () => clearInterval(interval);
+  }, []);
+
   return (
     <section ref={ref} className="relative h-[200vh]">
       <div className="sticky top-0 h-screen w-full overflow-hidden flex items-center justify-center bg-black">
-        {/* Particle background */}
-        <Image
-          src="/images/tsukigaku/hero-dark.png"
-          alt=""
-          fill
-          priority
-          className="object-cover opacity-80"
-          sizes="100vw"
-        />
-
-        {/* Center text */}
+        {/* Center content */}
         <motion.div
-          className="relative z-10 text-center px-6"
+          className="relative z-10 flex flex-col items-center px-6"
           style={{ y: textY, opacity: textOpacity }}
         >
+          {/* Heading */}
           <motion.h1
-            className="font-extralight tracking-[-0.04em] text-white leading-[0.95]"
-            style={{ fontSize: "clamp(3.5rem, 12vw, 96px)" }}
+            className="font-extralight tracking-[-0.04em] text-white leading-[0.95] text-center mb-12"
+            style={{ fontSize: "clamp(2.8rem, 10vw, 80px)" }}
             initial={{ opacity: 0, scale: 0.9, filter: "blur(20px)" }}
             animate={{ opacity: 1, scale: 1, filter: "blur(0px)" }}
             transition={{ duration: 1.5, ease: [0.16, 1, 0.3, 1] }}
@@ -58,20 +66,67 @@ function Hero() {
             <br />
             Webサイトを。
           </motion.h1>
+
+          {/* Laptop frame with showcase */}
+          <motion.div
+            className="relative w-[min(90vw,900px)]"
+            initial={{ opacity: 0, y: 60, rotateX: 20 }}
+            animate={{ opacity: 1, y: 0, rotateX: 0 }}
+            transition={{ delay: 0.6, duration: 1.2, ease: [0.16, 1, 0.3, 1] }}
+            style={{ perspective: "1200px" }}
+          >
+            {/* Screen */}
+            <div className="relative bg-[#1a1a1a] rounded-t-[12px] md:rounded-t-[16px] border border-white/10 overflow-hidden aspect-[16/10] shadow-2xl shadow-white/5">
+              {/* Screen bezel top */}
+              <div className="absolute top-0 left-0 right-0 h-[6px] md:h-[8px] bg-[#2a2a2a] z-10 flex items-center justify-center">
+                <div className="w-[4px] h-[4px] rounded-full bg-[#444]" />
+              </div>
+              {/* Slides */}
+              <div className="relative w-full h-full pt-[6px] md:pt-[8px]">
+                <AnimatePresence mode="wait">
+                  <motion.div
+                    key={currentSlide}
+                    initial={{ opacity: 0, scale: 1.05 }}
+                    animate={{ opacity: 1, scale: 1 }}
+                    exit={{ opacity: 0, scale: 0.95 }}
+                    transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
+                    className="absolute inset-0 pt-[6px] md:pt-[8px]"
+                  >
+                    <Image
+                      src={showcaseSites[currentSlide].src}
+                      alt={showcaseSites[currentSlide].alt}
+                      fill
+                      priority={currentSlide === 0}
+                      className="object-cover object-top"
+                      sizes="(max-width: 768px) 90vw, 900px"
+                    />
+                  </motion.div>
+                </AnimatePresence>
+              </div>
+            </div>
+            {/* Laptop base / hinge */}
+            <div className="relative h-[12px] md:h-[18px] bg-gradient-to-b from-[#2a2a2a] to-[#1a1a1a] rounded-b-[4px]">
+              <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[15%] h-[4px] bg-[#333] rounded-b-[4px]" />
+            </div>
+            {/* Laptop bottom edge */}
+            <div className="relative h-[4px] md:h-[6px] bg-[#1a1a1a] rounded-b-[8px] mx-[-4%]" />
+          </motion.div>
+
+          {/* Price + CTA */}
           <motion.p
-            className="text-white/40 text-[clamp(0.9rem,1.8vw,1.2rem)] mt-6 font-light tracking-wide"
+            className="text-white/40 text-[clamp(0.9rem,1.8vw,1.2rem)] mt-10 font-light tracking-wide"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
-            transition={{ delay: 0.8, duration: 1 }}
+            transition={{ delay: 1.2, duration: 1 }}
           >
             月額9,800円
           </motion.p>
           <motion.a
             href="#pricing"
-            className="inline-block mt-10 px-8 py-3.5 text-[14px] font-medium rounded-full bg-white text-black hover:scale-105 transition-transform"
+            className="inline-block mt-6 px-8 py-3.5 text-[14px] font-medium rounded-full bg-white text-black hover:scale-105 transition-transform"
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 1.2, duration: 0.8 }}
+            transition={{ delay: 1.5, duration: 0.8 }}
           >
             まずは相談する
           </motion.a>
