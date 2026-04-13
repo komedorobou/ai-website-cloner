@@ -528,74 +528,55 @@ function FAQ() {
 }
 
 /* ═══════════════════ TECH STACK ═══════════════════ */
-const coreTech = [
-  "Next.js 16（最新版）",
-  "React 19",
-  "TypeScript 5",
-  "Tailwind CSS 4",
-  "GSAP + @gsap/react（スクロールアニメーション）",
-  "Motion（Framer Motion後継、アニメーション）",
-  "Lenis（スムーススクロール）",
-  "shadcn/ui（UIコンポーネント）",
-  "Lucide React（アイコン）",
-  "tw-animate-css（Tailwindアニメーション）",
-];
-
-const infra = [
-  "Vercel（ホスティング・CDN）",
-  "GitHub（ソース管理）",
+const techItems = [
+  { name: "Next.js 16", desc: "最新フレームワーク。圧倒的な表示速度", color: "from-white/20 to-white/5" },
+  { name: "React 19", desc: "世界標準のUI。滑らかなインタラクション", color: "from-blue-500/20 to-blue-500/5" },
+  { name: "TypeScript 5", desc: "型安全。バグのない堅牢な設計", color: "from-blue-400/20 to-blue-400/5" },
+  { name: "Tailwind CSS 4", desc: "ピクセル単位の美しいデザインシステム", color: "from-cyan-400/20 to-cyan-400/5" },
+  { name: "GSAP", desc: "スクロール連動アニメーション", color: "from-green-400/20 to-green-400/5" },
+  { name: "Motion", desc: "60fpsの滑らかなトランジション", color: "from-purple-400/20 to-purple-400/5" },
+  { name: "Lenis", desc: "シルクのようなスムーススクロール", color: "from-orange-400/20 to-orange-400/5" },
+  { name: "shadcn/ui", desc: "洗練されたUIコンポーネント", color: "from-white/15 to-white/5" },
 ];
 
 function TechStack() {
   return (
-    <section className="py-[120px] md:py-[160px] bg-[#0a0a0a] px-6">
-      <div className="mx-auto max-w-[900px]">
+    <section className="py-[140px] md:py-[200px] bg-black px-6 overflow-hidden">
+      <div className="mx-auto max-w-[1100px]">
         <ScrollReveal>
           <p className="text-blue-400 text-[11px] font-semibold tracking-[0.25em] uppercase mb-5 text-center">
             Technology
           </p>
+        </ScrollReveal>
+        <ScrollReveal delay={0.1}>
           <h2
-            className="font-extralight tracking-[-0.03em] text-white leading-[1.05] text-center mb-16"
-            style={{ fontSize: "clamp(2rem, 5vw, 56px)" }}
+            className="font-extralight tracking-[-0.04em] text-white leading-[1.05] text-center"
+            style={{ fontSize: "clamp(2.5rem, 7vw, 72px)" }}
           >
-            標準技術スタック
+            なぜ、この品質が
+            <br />
+            出せるのか。
           </h2>
         </ScrollReveal>
+        <ScrollReveal delay={0.2}>
+          <p className="text-white/30 text-[clamp(0.9rem,1.6vw,1.1rem)] mt-6 font-light text-center max-w-[500px] mx-auto">
+            最先端の技術スタックが、Apple級の体験を可能にする。
+          </p>
+        </ScrollReveal>
 
-        <div className="grid md:grid-cols-2 gap-12 md:gap-16">
-          {/* Core Tech */}
-          <ScrollReveal delay={0}>
-            <div>
-              <h3 className="text-white/90 text-[13px] font-semibold tracking-[0.15em] uppercase mb-6 pb-3 border-b border-white/10">
-                コア技術（実際に使用）
-              </h3>
-              <ul className="space-y-3">
-                {coreTech.map((item) => (
-                  <li key={item} className="text-white/50 text-[14px] font-light leading-relaxed flex items-start gap-2">
-                    <span className="text-blue-400 mt-1 shrink-0">·</span>
-                    {item}
-                  </li>
-                ))}
-              </ul>
-            </div>
-          </ScrollReveal>
-
-          {/* Infra */}
-          <ScrollReveal delay={0.1}>
-            <div>
-              <h3 className="text-white/90 text-[13px] font-semibold tracking-[0.15em] uppercase mb-6 pb-3 border-b border-white/10">
-                インフラ
-              </h3>
-              <ul className="space-y-3">
-                {infra.map((item) => (
-                  <li key={item} className="text-white/50 text-[14px] font-light leading-relaxed flex items-start gap-2">
-                    <span className="text-green-400 mt-1 shrink-0">·</span>
-                    {item}
-                  </li>
-                ))}
-              </ul>
-            </div>
-          </ScrollReveal>
+        <div className="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-5 mt-20">
+          {techItems.map((tech, i) => (
+            <ScrollReveal key={tech.name} delay={i * 0.05}>
+              <div className={`relative group rounded-2xl bg-gradient-to-b ${tech.color} border border-white/[0.06] p-6 md:p-7 hover:border-white/15 transition-all duration-500 hover:scale-[1.02]`}>
+                <h3 className="text-white font-medium text-[15px] md:text-[17px] tracking-[-0.02em]">
+                  {tech.name}
+                </h3>
+                <p className="text-white/35 text-[12px] md:text-[13px] font-light mt-2 leading-relaxed">
+                  {tech.desc}
+                </p>
+              </div>
+            </ScrollReveal>
+          ))}
         </div>
       </div>
     </section>
@@ -656,9 +637,9 @@ export default function TsukigakuPage() {
       <IndustryShowcase />
       <BeforeAfter />
       <Philosophy />
+      <TechStack />
       <Pricing />
       <FAQ />
-      <TechStack />
       <CTAFinal />
       <footer className="text-center py-10 text-[11px] text-white/20 border-t border-white/5 bg-black">
         &copy; 2026 ツキガクサイト
