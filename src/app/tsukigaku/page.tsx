@@ -278,6 +278,11 @@ function MockupReveal() {
             この品質が、月9,800円。
           </h2>
         </ScrollReveal>
+        <ScrollReveal delay={0.15}>
+          <p className="text-white/50 text-[clamp(0.9rem,1.6vw,1.1rem)] mt-6 font-light max-w-[600px] mx-auto leading-relaxed">
+            完全オーダーメイドのデザイン。スマホ対応、アニメーション、ホスティング、SSL、すべて月額に含まれています。テンプレートではありません。
+          </p>
+        </ScrollReveal>
         <motion.div className="mt-16" style={{ scale, opacity }}>
           <div className="relative w-full aspect-[16/10] max-w-[900px] mx-auto rounded-[16px] overflow-hidden shadow-2xl shadow-blue-500/10">
             <Image
@@ -528,6 +533,11 @@ function Comparison() {
             50分の1の値段。
           </h2>
         </ScrollReveal>
+        <ScrollReveal delay={0.15}>
+          <p className="text-white/50 text-[clamp(0.9rem,1.6vw,1.1rem)] mt-6 font-light max-w-[600px] mx-auto leading-relaxed text-center">
+            大手制作会社と同じ技術スタック（Next.js、GSAP、Vercel）を使用。違うのは中間マージンがないこと。だから初期費用0円、月額9,800円で提供できます。
+          </p>
+        </ScrollReveal>
       </div>
 
       {/* Apple-style CSS scroll-snap carousel */}
@@ -562,6 +572,11 @@ function BeforeAfter() {
           >
             放置したHP。<br />売れるHP。
           </h2>
+        </ScrollReveal>
+        <ScrollReveal delay={0.15}>
+          <p className="text-white/40 text-[clamp(0.9rem,1.6vw,1.1rem)] mt-6 mb-16 font-light max-w-[600px] mx-auto leading-relaxed text-center">
+            作って終わりのHPは、誰にも見られません。ツキガクサイトは公開後も月2回の更新対応込み。常に最新の状態を維持します。
+          </p>
         </ScrollReveal>
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-10">
           {/* Before */}
@@ -641,9 +656,9 @@ function Philosophy() {
         </ScrollReveal>
         <ScrollReveal delay={0.2}>
           <p className="text-[#86868b] text-[clamp(0.95rem,1.8vw,1.15rem)] leading-relaxed mt-10 font-light">
-            写真で惹きつけて、予約まで一直線。
+            写真で惹きつけて、予約まで一直線。集客できるサイトだけを作ります。
             <br className="hidden md:block" />
-            集客できるサイトだけを作ります。
+            きれいなだけのHPは作りません。お客さんが「行きたい」「買いたい」と思う導線を設計します。
           </p>
         </ScrollReveal>
       </div>
@@ -761,11 +776,12 @@ function Pricing() {
 
 /* ═══════════════════ FAQ ═══════════════════ */
 const faqItems = [
-  { q: "解約したらどうなりますか？", a: "サイトは非公開になります。" },
-  { q: "本当にApple級？", a: "Apple.comと同じ技術スタック（Next.js、GSAP、スムーススクロール）を使用。" },
-  { q: "完成までどのくらい？", a: "最短1週間、通常2〜3週間で公開。" },
-  { q: "写真素材がなくても？", a: "AI画像生成で対応します。" },
-  { q: "修正回数は？", a: "月2回まで。修正なしの年は翌年10%割引。" },
+  { q: "解約したらどうなりますか？", a: "サイトは非公開になります。データのお渡しは行っておりません。月額サービスのため、契約期間中のみサイトが公開されます。" },
+  { q: "本当に制作会社と同じ品質ですか？", a: "はい。Apple.com、Netflix、Airbnbと同じ技術スタック（Next.js、React、GSAP）を使用しています。テンプレートではなく、完全オーダーメイドで制作します。" },
+  { q: "完成までどのくらいかかりますか？", a: "最短1週間、通常2〜3週間で公開可能です。素材（写真・テキスト）をご用意いただければ、さらに早くなります。" },
+  { q: "写真素材がなくても大丈夫ですか？", a: "はい。AI画像生成やフリー素材で対応可能です。プロカメラマンの手配も別途ご相談いただけます。" },
+  { q: "公開後の修正はできますか？", a: "月2回まで修正対応込みです。修正がない年は翌年10%割引になり、長く使うほどお得になります。" },
+  { q: "初期費用は本当に0円ですか？", a: "はい。デザイン費・開発費・サーバー費・SSL証明書、すべて月額9,800円に含まれています。追加料金は一切ありません。" },
 ];
 
 function FAQ() {
@@ -960,6 +976,11 @@ function TechStack() {
             作ってます。
           </h2>
         </ScrollReveal>
+        <ScrollReveal delay={0.15}>
+          <p className="text-white/50 text-[clamp(0.9rem,1.6vw,1.1rem)] mt-6 font-light max-w-[600px] mx-auto leading-relaxed text-center">
+            Apple、Netflix、Airbnbが採用する技術をそのまま使用。表示速度・SEO・セキュリティすべてが最高水準。だからGoogleに強く、お客さんに選ばれるサイトになります。
+          </p>
+        </ScrollReveal>
       </div>
 
       {/* Apple-style CSS scroll-snap carousel */}
@@ -1013,7 +1034,7 @@ function CTAFinal() {
         </ScrollReveal>
         <ScrollReveal delay={0.15}>
           <p className="text-white/30 text-[clamp(0.9rem,1.6vw,1.1rem)] mt-6 font-light">
-            30分の無料相談で、あなたの業種に合ったサイトをご提案します。
+            30分の無料相談で、あなたの業種に合ったサイトをご提案します。営業電話は一切しません。
           </p>
         </ScrollReveal>
         <ScrollReveal delay={0.25}>
