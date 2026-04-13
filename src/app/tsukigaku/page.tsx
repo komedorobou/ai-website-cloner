@@ -528,17 +528,6 @@ function FAQ() {
 }
 
 /* ═══════════════════ TECH STACK ═══════════════════ */
-const techItems = [
-  { name: "Next.js 16", desc: "最新フレームワーク。圧倒的な表示速度" },
-  { name: "React 19", desc: "世界標準のUI。滑らかなインタラクション" },
-  { name: "TypeScript 5", desc: "型安全。バグのない堅牢な設計" },
-  { name: "Tailwind CSS 4", desc: "ピクセル単位の美しいデザインシステム" },
-  { name: "GSAP", desc: "スクロール連動アニメーション" },
-  { name: "Motion", desc: "60fpsの滑らかなトランジション" },
-  { name: "Lenis", desc: "シルクのようなスムーススクロール" },
-  { name: "shadcn/ui", desc: "洗練されたUIコンポーネント" },
-];
-
 function TechStack() {
   return (
     <section className="relative py-[160px] md:py-[220px] px-6 overflow-hidden">
@@ -551,7 +540,7 @@ function TechStack() {
           className="object-cover"
           sizes="100vw"
         />
-        <div className="absolute inset-0 bg-black/40" />
+        <div className="absolute inset-0 bg-black/50" />
       </div>
 
       <div className="relative z-10 mx-auto max-w-[1100px]">
@@ -572,25 +561,150 @@ function TechStack() {
           </h2>
         </ScrollReveal>
         <ScrollReveal delay={0.2}>
-          <p className="text-white/40 text-[clamp(0.9rem,1.6vw,1.1rem)] mt-6 font-light text-center max-w-[500px] mx-auto">
-            最先端の技術スタックが、Apple級の体験を可能にする。
+          <p className="text-white/40 text-[clamp(0.9rem,1.6vw,1.1rem)] mt-6 font-light text-center max-w-[560px] mx-auto">
+            妥協のない技術選定が、妥協のない体験をつくる。
+            <br />
+            すべてのサイトに、最高峰のスタックを。
           </p>
         </ScrollReveal>
 
-        {/* Bento grid — glassmorphism cards over image */}
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-3 md:gap-4 mt-20">
-          {techItems.map((tech, i) => (
-            <ScrollReveal key={tech.name} delay={i * 0.06}>
-              <div className="group relative rounded-2xl backdrop-blur-xl bg-white/[0.04] border border-white/[0.08] p-6 md:p-7 hover:bg-white/[0.08] hover:border-white/[0.15] transition-all duration-500 hover:scale-[1.03]">
-                <h3 className="text-white font-semibold text-[16px] md:text-[18px] tracking-[-0.02em]">
-                  {tech.name}
-                </h3>
-                <p className="text-white/40 text-[12px] md:text-[13px] font-light mt-2.5 leading-relaxed">
-                  {tech.desc}
-                </p>
+        {/* Bento grid — varied sizes, each card unique */}
+        <div className="grid grid-cols-4 md:grid-cols-12 gap-3 md:gap-4 mt-20">
+
+          {/* Next.js — large card, spans 2 cols */}
+          <ScrollReveal delay={0}>
+            <div className="col-span-4 md:col-span-6 group relative rounded-3xl backdrop-blur-2xl bg-gradient-to-br from-white/[0.07] to-white/[0.02] border border-white/[0.08] p-8 md:p-10 hover:border-white/[0.18] transition-all duration-500">
+              <div className="w-10 h-10 rounded-xl bg-white/10 flex items-center justify-center mb-5">
+                <span className="text-white text-[18px] font-bold">N</span>
               </div>
-            </ScrollReveal>
-          ))}
+              <h3 className="text-white font-semibold text-[22px] md:text-[26px] tracking-[-0.03em]">
+                Next.js 16
+              </h3>
+              <p className="text-white/45 text-[14px] md:text-[15px] font-light mt-3 leading-[1.7] max-w-[380px]">
+                Vercelが開発する最新のReactフレームワーク。サーバーサイドレンダリング、静的生成、エッジ配信を自動最適化。ページ表示速度は0.1秒以内。SEOも完璧に対応。
+              </p>
+            </div>
+          </ScrollReveal>
+
+          {/* React 19 — large card */}
+          <ScrollReveal delay={0.08}>
+            <div className="col-span-4 md:col-span-6 group relative rounded-3xl backdrop-blur-2xl bg-gradient-to-br from-blue-500/[0.08] to-blue-500/[0.02] border border-blue-400/[0.1] p-8 md:p-10 hover:border-blue-400/[0.2] transition-all duration-500">
+              <div className="w-10 h-10 rounded-xl bg-blue-500/15 flex items-center justify-center mb-5">
+                <span className="text-blue-400 text-[18px] font-bold">R</span>
+              </div>
+              <h3 className="text-white font-semibold text-[22px] md:text-[26px] tracking-[-0.03em]">
+                React 19
+              </h3>
+              <p className="text-white/45 text-[14px] md:text-[15px] font-light mt-3 leading-[1.7] max-w-[380px]">
+                Meta社が開発するUI構築ライブラリの最新版。世界中の一流企業が採用するグローバルスタンダード。コンポーネント設計により、一貫した操作感と高速なインタラクションを実現。
+              </p>
+            </div>
+          </ScrollReveal>
+
+          {/* TypeScript — medium card */}
+          <ScrollReveal delay={0.12}>
+            <div className="col-span-4 md:col-span-4 group relative rounded-3xl backdrop-blur-2xl bg-gradient-to-br from-blue-300/[0.07] to-blue-300/[0.01] border border-blue-300/[0.08] p-7 md:p-8 hover:border-blue-300/[0.18] transition-all duration-500">
+              <div className="w-9 h-9 rounded-lg bg-blue-400/10 flex items-center justify-center mb-4">
+                <span className="text-blue-300 text-[16px] font-bold">TS</span>
+              </div>
+              <h3 className="text-white font-semibold text-[18px] md:text-[20px] tracking-[-0.02em]">
+                TypeScript 5
+              </h3>
+              <p className="text-white/40 text-[13px] font-light mt-2.5 leading-[1.7]">
+                型安全な設計で、予期せぬバグを未然に防止。大規模なサイトでも安定して動作する堅牢なコードベースを保証します。
+              </p>
+            </div>
+          </ScrollReveal>
+
+          {/* Tailwind CSS — medium card */}
+          <ScrollReveal delay={0.16}>
+            <div className="col-span-4 md:col-span-4 group relative rounded-3xl backdrop-blur-2xl bg-gradient-to-br from-cyan-400/[0.07] to-cyan-400/[0.01] border border-cyan-400/[0.08] p-7 md:p-8 hover:border-cyan-400/[0.18] transition-all duration-500">
+              <div className="w-9 h-9 rounded-lg bg-cyan-400/10 flex items-center justify-center mb-4">
+                <span className="text-cyan-400 text-[16px] font-bold">Tw</span>
+              </div>
+              <h3 className="text-white font-semibold text-[18px] md:text-[20px] tracking-[-0.02em]">
+                Tailwind CSS 4
+              </h3>
+              <p className="text-white/40 text-[13px] font-light mt-2.5 leading-[1.7]">
+                1px単位で緻密にコントロールされたデザインシステム。レスポンシブ対応も完璧。どのデバイスで見ても美しいレイアウトを実現。
+              </p>
+            </div>
+          </ScrollReveal>
+
+          {/* GSAP — medium card */}
+          <ScrollReveal delay={0.2}>
+            <div className="col-span-4 md:col-span-4 group relative rounded-3xl backdrop-blur-2xl bg-gradient-to-br from-green-400/[0.07] to-green-400/[0.01] border border-green-400/[0.08] p-7 md:p-8 hover:border-green-400/[0.18] transition-all duration-500">
+              <div className="w-9 h-9 rounded-lg bg-green-400/10 flex items-center justify-center mb-4">
+                <span className="text-green-400 text-[16px] font-bold">GS</span>
+              </div>
+              <h3 className="text-white font-semibold text-[18px] md:text-[20px] tracking-[-0.02em]">
+                GSAP
+              </h3>
+              <p className="text-white/40 text-[13px] font-light mt-2.5 leading-[1.7]">
+                Appleも採用するアニメーションエンジン。スクロールに連動した演出や、画面遷移のダイナミックな動きを生み出します。
+              </p>
+            </div>
+          </ScrollReveal>
+
+          {/* Motion — small card */}
+          <ScrollReveal delay={0.24}>
+            <div className="col-span-2 md:col-span-3 group relative rounded-3xl backdrop-blur-2xl bg-gradient-to-br from-purple-400/[0.07] to-purple-400/[0.01] border border-purple-400/[0.08] p-6 md:p-7 hover:border-purple-400/[0.18] transition-all duration-500">
+              <div className="w-8 h-8 rounded-lg bg-purple-400/10 flex items-center justify-center mb-3">
+                <span className="text-purple-400 text-[14px] font-bold">M</span>
+              </div>
+              <h3 className="text-white font-semibold text-[16px] md:text-[18px] tracking-[-0.02em]">
+                Motion
+              </h3>
+              <p className="text-white/40 text-[12px] md:text-[13px] font-light mt-2 leading-[1.7]">
+                60fpsの流れるようなトランジション。ページ遷移やホバーエフェクトを映画のように美しく。
+              </p>
+            </div>
+          </ScrollReveal>
+
+          {/* Lenis — small card */}
+          <ScrollReveal delay={0.28}>
+            <div className="col-span-2 md:col-span-3 group relative rounded-3xl backdrop-blur-2xl bg-gradient-to-br from-orange-400/[0.07] to-orange-400/[0.01] border border-orange-400/[0.08] p-6 md:p-7 hover:border-orange-400/[0.18] transition-all duration-500">
+              <div className="w-8 h-8 rounded-lg bg-orange-400/10 flex items-center justify-center mb-3">
+                <span className="text-orange-400 text-[14px] font-bold">Le</span>
+              </div>
+              <h3 className="text-white font-semibold text-[16px] md:text-[18px] tracking-[-0.02em]">
+                Lenis
+              </h3>
+              <p className="text-white/40 text-[12px] md:text-[13px] font-light mt-2 leading-[1.7]">
+                絹のようになめらかなスクロール体験。指先の動きに吸い付くような操作感を実現。
+              </p>
+            </div>
+          </ScrollReveal>
+
+          {/* shadcn/ui — small card */}
+          <ScrollReveal delay={0.32}>
+            <div className="col-span-2 md:col-span-3 group relative rounded-3xl backdrop-blur-2xl bg-gradient-to-br from-white/[0.06] to-white/[0.01] border border-white/[0.08] p-6 md:p-7 hover:border-white/[0.18] transition-all duration-500">
+              <div className="w-8 h-8 rounded-lg bg-white/10 flex items-center justify-center mb-3">
+                <span className="text-white text-[14px] font-bold">UI</span>
+              </div>
+              <h3 className="text-white font-semibold text-[16px] md:text-[18px] tracking-[-0.02em]">
+                shadcn/ui
+              </h3>
+              <p className="text-white/40 text-[12px] md:text-[13px] font-light mt-2 leading-[1.7]">
+                Radixベースの洗練されたUIコンポーネント群。アクセシビリティとデザインの両立。
+              </p>
+            </div>
+          </ScrollReveal>
+
+          {/* Lucide React — small card */}
+          <ScrollReveal delay={0.36}>
+            <div className="col-span-2 md:col-span-3 group relative rounded-3xl backdrop-blur-2xl bg-gradient-to-br from-rose-400/[0.06] to-rose-400/[0.01] border border-rose-400/[0.08] p-6 md:p-7 hover:border-rose-400/[0.18] transition-all duration-500">
+              <div className="w-8 h-8 rounded-lg bg-rose-400/10 flex items-center justify-center mb-3">
+                <span className="text-rose-400 text-[14px] font-bold">Lc</span>
+              </div>
+              <h3 className="text-white font-semibold text-[16px] md:text-[18px] tracking-[-0.02em]">
+                Lucide React
+              </h3>
+              <p className="text-white/40 text-[12px] md:text-[13px] font-light mt-2 leading-[1.7]">
+                1,000以上の美しいアイコン。軽量でカスタマイズ自在。細部の表現力を高める。
+              </p>
+            </div>
+          </ScrollReveal>
         </div>
       </div>
     </section>
