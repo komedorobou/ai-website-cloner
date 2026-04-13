@@ -527,6 +527,105 @@ function FAQ() {
   );
 }
 
+/* ═══════════════════ TECH STACK ═══════════════════ */
+const coreTech = [
+  "Next.js 16（最新版）",
+  "React 19",
+  "TypeScript 5",
+  "Tailwind CSS 4",
+  "GSAP + @gsap/react（スクロールアニメーション）",
+  "Motion（Framer Motion後継、アニメーション）",
+  "Lenis（スムーススクロール）",
+  "shadcn/ui（UIコンポーネント）",
+  "Lucide React（アイコン）",
+  "tw-animate-css（Tailwindアニメーション）",
+];
+
+const aiTools = [
+  "Claude Code + 銀河系軍団（MCP統合マルチエージェント）",
+  "Kling AI（静止画→動画変換、36分割グリッド用）",
+  "nano-banana MCP（Gemini画像生成）",
+  "build-premium スキル（/build-premium）",
+];
+
+const infra = [
+  "Vercel（ホスティング・CDN）",
+  "GitHub（ソース管理）",
+];
+
+function TechStack() {
+  return (
+    <section className="py-[120px] md:py-[160px] bg-[#0a0a0a] px-6">
+      <div className="mx-auto max-w-[900px]">
+        <ScrollReveal>
+          <p className="text-blue-400 text-[11px] font-semibold tracking-[0.25em] uppercase mb-5 text-center">
+            Technology
+          </p>
+          <h2
+            className="font-extralight tracking-[-0.03em] text-white leading-[1.05] text-center mb-16"
+            style={{ fontSize: "clamp(2rem, 5vw, 56px)" }}
+          >
+            標準技術スタック
+          </h2>
+        </ScrollReveal>
+
+        <div className="grid md:grid-cols-3 gap-12 md:gap-8">
+          {/* Core Tech */}
+          <ScrollReveal delay={0}>
+            <div>
+              <h3 className="text-white/90 text-[13px] font-semibold tracking-[0.15em] uppercase mb-6 pb-3 border-b border-white/10">
+                コア技術（実際に使用）
+              </h3>
+              <ul className="space-y-3">
+                {coreTech.map((item) => (
+                  <li key={item} className="text-white/50 text-[14px] font-light leading-relaxed flex items-start gap-2">
+                    <span className="text-blue-400 mt-1 shrink-0">·</span>
+                    {item}
+                  </li>
+                ))}
+              </ul>
+            </div>
+          </ScrollReveal>
+
+          {/* AI Tools */}
+          <ScrollReveal delay={0.1}>
+            <div>
+              <h3 className="text-white/90 text-[13px] font-semibold tracking-[0.15em] uppercase mb-6 pb-3 border-b border-white/10">
+                AI制作ツール
+              </h3>
+              <ul className="space-y-3">
+                {aiTools.map((item) => (
+                  <li key={item} className="text-white/50 text-[14px] font-light leading-relaxed flex items-start gap-2">
+                    <span className="text-purple-400 mt-1 shrink-0">·</span>
+                    {item}
+                  </li>
+                ))}
+              </ul>
+            </div>
+          </ScrollReveal>
+
+          {/* Infra */}
+          <ScrollReveal delay={0.2}>
+            <div>
+              <h3 className="text-white/90 text-[13px] font-semibold tracking-[0.15em] uppercase mb-6 pb-3 border-b border-white/10">
+                インフラ
+              </h3>
+              <ul className="space-y-3">
+                {infra.map((item) => (
+                  <li key={item} className="text-white/50 text-[14px] font-light leading-relaxed flex items-start gap-2">
+                    <span className="text-green-400 mt-1 shrink-0">·</span>
+                    {item}
+                  </li>
+                ))}
+              </ul>
+            </div>
+          </ScrollReveal>
+        </div>
+      </div>
+    </section>
+  );
+}
+
 /* ═══════════════════ CTA FINAL ═══════════════════ */
 function CTAFinal() {
   return (
@@ -583,6 +682,7 @@ export default function TsukigakuPage() {
       <Philosophy />
       <Pricing />
       <FAQ />
+      <TechStack />
       <CTAFinal />
       <footer className="text-center py-10 text-[11px] text-white/20 border-t border-white/5 bg-black">
         &copy; 2026 ツキガクサイト
