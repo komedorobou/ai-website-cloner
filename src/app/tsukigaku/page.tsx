@@ -541,13 +541,6 @@ const coreTech = [
   "tw-animate-css（Tailwindアニメーション）",
 ];
 
-const aiTools = [
-  "Claude Code + 銀河系軍団（MCP統合マルチエージェント）",
-  "Kling AI（静止画→動画変換、36分割グリッド用）",
-  "nano-banana MCP（Gemini画像生成）",
-  "build-premium スキル（/build-premium）",
-];
-
 const infra = [
   "Vercel（ホスティング・CDN）",
   "GitHub（ソース管理）",
@@ -569,7 +562,7 @@ function TechStack() {
           </h2>
         </ScrollReveal>
 
-        <div className="grid md:grid-cols-3 gap-12 md:gap-8">
+        <div className="grid md:grid-cols-2 gap-12 md:gap-16">
           {/* Core Tech */}
           <ScrollReveal delay={0}>
             <div>
@@ -587,25 +580,8 @@ function TechStack() {
             </div>
           </ScrollReveal>
 
-          {/* AI Tools */}
-          <ScrollReveal delay={0.1}>
-            <div>
-              <h3 className="text-white/90 text-[13px] font-semibold tracking-[0.15em] uppercase mb-6 pb-3 border-b border-white/10">
-                AI制作ツール
-              </h3>
-              <ul className="space-y-3">
-                {aiTools.map((item) => (
-                  <li key={item} className="text-white/50 text-[14px] font-light leading-relaxed flex items-start gap-2">
-                    <span className="text-purple-400 mt-1 shrink-0">·</span>
-                    {item}
-                  </li>
-                ))}
-              </ul>
-            </div>
-          </ScrollReveal>
-
           {/* Infra */}
-          <ScrollReveal delay={0.2}>
+          <ScrollReveal delay={0.1}>
             <div>
               <h3 className="text-white/90 text-[13px] font-semibold tracking-[0.15em] uppercase mb-6 pb-3 border-b border-white/10">
                 インフラ
