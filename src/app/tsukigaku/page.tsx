@@ -128,17 +128,56 @@ const cocktailFrames = Array.from({ length: COCKTAIL_FRAMES }, (_, i) =>
 
 function Cocktail360() {
   const sectionRef = useRef<HTMLDivElement>(null);
-  const [frameIndex, setFrameIndex] = useState(0);
+  const canvasRef = useRef<HTMLCanvasElement>(null);
+  const imagesRef = useRef<HTMLImageElement[]>([]);
+  const [loaded, setLoaded] = useState(false);
   const { scrollYProgress } = useScroll({ target: sectionRef, offset: ["start start", "end start"] });
 
-  // Map scroll progress to frame index
+  // Preload all frames into memory
   useEffect(() => {
+    let mounted = true;
+    const images: HTMLImageElement[] = [];
+    let count = 0;
+    cocktailFrames.forEach((src, i) => {
+      const img = new window.Image();
+      img.src = src;
+      img.onload = () => {
+        count++;
+        if (count === COCKTAIL_FRAMES && mounted) {
+          imagesRef.current = images;
+          setLoaded(true);
+          // Draw first frame
+          const canvas = canvasRef.current;
+          if (canvas && images[0]) {
+            canvas.width = images[0].naturalWidth;
+            canvas.height = images[0].naturalHeight;
+            const ctx = canvas.getContext("2d");
+            ctx?.drawImage(images[0], 0, 0);
+          }
+        }
+      };
+      images[i] = img;
+    });
+    return () => { mounted = false; };
+  }, []);
+
+  // Draw frame on scroll
+  useEffect(() => {
+    if (!loaded) return;
     const unsubscribe = scrollYProgress.on("change", (v) => {
       const idx = Math.min(COCKTAIL_FRAMES - 1, Math.floor(v * COCKTAIL_FRAMES));
-      setFrameIndex(idx);
+      const canvas = canvasRef.current;
+      const img = imagesRef.current[idx];
+      if (canvas && img) {
+        const ctx = canvas.getContext("2d");
+        if (ctx) {
+          ctx.clearRect(0, 0, canvas.width, canvas.height);
+          ctx.drawImage(img, 0, 0);
+        }
+      }
     });
     return unsubscribe;
-  }, [scrollYProgress]);
+  }, [loaded, scrollYProgress]);
 
   // Text animations tied to scroll
   const headingOpacity = useTransform(scrollYProgress, [0, 0.08, 0.4, 0.55], [0, 1, 1, 0]);
@@ -149,20 +188,12 @@ function Cocktail360() {
   return (
     <section ref={sectionRef} className="relative h-[400vh]">
       <div className="sticky top-0 h-screen w-full overflow-hidden bg-black flex items-center justify-center">
-        {/* Frame image */}
-        <div className="absolute inset-0">
-          {cocktailFrames.map((src, i) => (
-            <Image
-              key={src}
-              src={src}
-              alt=""
-              fill
-              className={`object-contain transition-opacity duration-100 ${i === frameIndex ? "opacity-100" : "opacity-0"}`}
-              sizes="100vw"
-              priority={i < 3}
-            />
-          ))}
-        </div>
+        {/* Canvas for flicker-free frame rendering */}
+        <canvas
+          ref={canvasRef}
+          className="absolute inset-0 w-full h-full object-contain"
+          style={{ objectFit: "contain" }}
+        />
 
         {/* Overlay gradient for text */}
         <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-black/30 z-[1]" />
