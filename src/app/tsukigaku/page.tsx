@@ -588,6 +588,10 @@ const techCards = [
 ];
 
 function TechStack() {
+  const [currentIndex, setCurrentIndex] = useState(0);
+  const canPrev = currentIndex > 0;
+  const canNext = currentIndex < techCards.length - 1;
+
   return (
     <section className="relative py-[120px] md:py-[180px] overflow-hidden bg-black">
       <div className="px-6 mb-14 md:mb-20">
@@ -608,45 +612,68 @@ function TechStack() {
         </ScrollReveal>
       </div>
 
-      {/* Horizontal scroll carousel with snap */}
-      <div className="overflow-x-auto scrollbar-hide snap-x snap-mandatory" style={{ WebkitOverflowScrolling: "touch" }}>
-        <div className="flex gap-4 px-6 pb-4" style={{ width: "max-content" }}>
-          {techCards.map((tech, i) => (
-            <ScrollReveal key={tech.name} delay={i * 0.05}>
-              <div className={`relative w-[85vw] max-w-[400px] rounded-3xl bg-gradient-to-b ${tech.gradient} border border-white/[0.08] overflow-hidden flex flex-col shrink-0 snap-center`}>
-                {/* Image — dominant, fills most of card */}
-                <div className="relative w-full aspect-[3/4] overflow-hidden">
-                  <Image
-                    src={tech.image}
-                    alt={tech.name}
-                    fill
-                    className="object-cover"
-                    sizes="400px"
-                  />
-                  {/* Gradient fade at bottom for text readability */}
-                  <div className="absolute inset-x-0 bottom-0 h-1/3 bg-gradient-to-t from-black/80 to-transparent" />
-                  {/* Tech name overlay on image */}
-                  <div className="absolute bottom-4 left-6 right-6">
-                    <p className={`${tech.accent} text-[11px] font-semibold tracking-[0.15em] uppercase`}>
-                      {tech.name}
-                    </p>
-                    <h3 className="text-white font-semibold text-[24px] md:text-[28px] tracking-[-0.03em] leading-tight mt-1">
-                      {tech.headline}
-                    </h3>
-                  </div>
-                </div>
-                {/* Short description below */}
-                <div className="px-6 py-5">
-                  <p className="text-white/40 text-[13px] font-light leading-[1.7]">
-                    {tech.desc}
+      {/* Apple-style controlled carousel */}
+      <div className="relative px-6 max-w-[500px] mx-auto">
+        {/* Card */}
+        <AnimatePresence mode="wait">
+          <motion.div
+            key={currentIndex}
+            initial={{ opacity: 0, x: 60 }}
+            animate={{ opacity: 1, x: 0 }}
+            exit={{ opacity: 0, x: -60 }}
+            transition={{ duration: 0.4, ease: [0.16, 1, 0.3, 1] }}
+          >
+            <div className={`relative w-full rounded-3xl bg-gradient-to-b ${techCards[currentIndex].gradient} border border-white/[0.08] overflow-hidden`}>
+              {/* Image */}
+              <div className="relative w-full aspect-[3/4] overflow-hidden">
+                <Image
+                  src={techCards[currentIndex].image}
+                  alt={techCards[currentIndex].name}
+                  fill
+                  className="object-cover"
+                  sizes="500px"
+                />
+                <div className="absolute inset-x-0 bottom-0 h-1/3 bg-gradient-to-t from-black/80 to-transparent" />
+                <div className="absolute bottom-5 left-6 right-6">
+                  <p className={`${techCards[currentIndex].accent} text-[11px] font-semibold tracking-[0.15em] uppercase`}>
+                    {techCards[currentIndex].name}
                   </p>
+                  <h3 className="text-white font-semibold text-[24px] md:text-[28px] tracking-[-0.03em] leading-tight mt-1">
+                    {techCards[currentIndex].headline}
+                  </h3>
                 </div>
               </div>
-            </ScrollReveal>
-          ))}
+              {/* Description */}
+              <div className="px-6 py-5">
+                <p className="text-white/40 text-[13px] font-light leading-[1.7]">
+                  {techCards[currentIndex].desc}
+                </p>
+              </div>
+            </div>
+          </motion.div>
+        </AnimatePresence>
+
+        {/* Navigation arrows */}
+        <div className="flex items-center justify-center gap-4 mt-6">
+          <button
+            onClick={() => canPrev && setCurrentIndex((i) => i - 1)}
+            className={`w-10 h-10 rounded-full border border-white/20 flex items-center justify-center transition-opacity ${canPrev ? "opacity-100 hover:bg-white/10" : "opacity-20 cursor-default"}`}
+            aria-label="前へ"
+          >
+            <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M10 3L5 8L10 13" stroke="white" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/></svg>
+          </button>
+          <span className="text-white/30 text-[12px] tabular-nums">
+            {currentIndex + 1} / {techCards.length}
+          </span>
+          <button
+            onClick={() => canNext && setCurrentIndex((i) => i + 1)}
+            className={`w-10 h-10 rounded-full border border-white/20 flex items-center justify-center transition-opacity ${canNext ? "opacity-100 hover:bg-white/10" : "opacity-20 cursor-default"}`}
+            aria-label="次へ"
+          >
+            <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M6 3L11 8L6 13" stroke="white" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/></svg>
+          </button>
         </div>
       </div>
-
     </section>
   );
 }
