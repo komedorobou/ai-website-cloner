@@ -147,6 +147,39 @@ function Cocktail360() {
   const [loaded, setLoaded] = useState(false);
   const { scrollYProgress } = useScroll({ target: sectionRef, offset: ["start start", "end start"] });
 
+  // Draw image to canvas with "cover" behavior
+  const drawCover = (canvas: HTMLCanvasElement, img: HTMLImageElement) => {
+    const ctx = canvas.getContext("2d");
+    if (!ctx) return;
+    const cw = canvas.width;
+    const ch = canvas.height;
+    const iw = img.naturalWidth;
+    const ih = img.naturalHeight;
+    const scale = Math.max(cw / iw, ch / ih);
+    const sw = iw * scale;
+    const sh = ih * scale;
+    const sx = (cw - sw) / 2;
+    const sy = (ch - sh) / 2;
+    ctx.clearRect(0, 0, cw, ch);
+    ctx.drawImage(img, sx, sy, sw, sh);
+  };
+
+  // Resize canvas to match viewport
+  useEffect(() => {
+    const resize = () => {
+      const canvas = canvasRef.current;
+      if (!canvas) return;
+      canvas.width = window.innerWidth;
+      canvas.height = window.innerHeight;
+      if (loaded && imagesRef.current[0]) {
+        drawCover(canvas, imagesRef.current[0]);
+      }
+    };
+    resize();
+    window.addEventListener("resize", resize);
+    return () => window.removeEventListener("resize", resize);
+  }, [loaded]);
+
   // Preload all frames into memory
   useEffect(() => {
     let mounted = true;
@@ -160,13 +193,11 @@ function Cocktail360() {
         if (count === COCKTAIL_FRAMES && mounted) {
           imagesRef.current = images;
           setLoaded(true);
-          // Draw first frame
           const canvas = canvasRef.current;
           if (canvas && images[0]) {
-            canvas.width = images[0].naturalWidth;
-            canvas.height = images[0].naturalHeight;
-            const ctx = canvas.getContext("2d");
-            ctx?.drawImage(images[0], 0, 0);
+            canvas.width = window.innerWidth;
+            canvas.height = window.innerHeight;
+            drawCover(canvas, images[0]);
           }
         }
       };
@@ -183,11 +214,7 @@ function Cocktail360() {
       const canvas = canvasRef.current;
       const img = imagesRef.current[idx];
       if (canvas && img) {
-        const ctx = canvas.getContext("2d");
-        if (ctx) {
-          ctx.clearRect(0, 0, canvas.width, canvas.height);
-          ctx.drawImage(img, 0, 0);
-        }
+        drawCover(canvas, img);
       }
     });
     return unsubscribe;
@@ -206,8 +233,7 @@ function Cocktail360() {
       <div className="sticky top-0 h-screen w-full overflow-hidden bg-black flex items-center justify-center">
         <canvas
           ref={canvasRef}
-          className="absolute inset-0 w-full h-full object-contain"
-          style={{ objectFit: "contain" }}
+          className="absolute inset-0 w-full h-full"
         />
         <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-black/30 z-[1]" />
         <div className="relative z-10 text-center px-6">
