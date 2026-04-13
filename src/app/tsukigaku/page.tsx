@@ -535,6 +535,7 @@ const techCards = [
     desc: "Vercel製の最新フレームワーク。サーバー・エッジ・静的生成を自動で最適化し、圧倒的な表示速度を実現。",
     gradient: "from-[#111] to-[#000]",
     accent: "text-white",
+    image: "/images/tsukigaku/tech/nextjs.png",
   },
   {
     name: "React 19",
@@ -542,6 +543,7 @@ const techCards = [
     desc: "Meta社開発。Apple、Netflix、Airbnbも採用するグローバルスタンダード。滑らかで一貫した操作体験。",
     gradient: "from-[#0a1628] to-[#000]",
     accent: "text-blue-400",
+    image: "/images/tsukigaku/tech/react.png",
   },
   {
     name: "TypeScript 5",
@@ -549,6 +551,7 @@ const techCards = [
     desc: "型安全な設計思想。コードの品質を根本から保証し、どんな規模でも安定動作するサイトを構築。",
     gradient: "from-[#0a1420] to-[#000]",
     accent: "text-blue-300",
+    image: "/images/tsukigaku/tech/typescript.png",
   },
   {
     name: "Tailwind CSS 4",
@@ -556,6 +559,7 @@ const techCards = [
     desc: "ピクセル単位の緻密なデザインシステム。レスポンシブ対応も完璧。すべてのデバイスで美しく。",
     gradient: "from-[#061418] to-[#000]",
     accent: "text-cyan-400",
+    image: "/images/tsukigaku/tech/tailwind.png",
   },
   {
     name: "GSAP + Motion",
@@ -563,6 +567,7 @@ const techCards = [
     desc: "Appleも採用するGSAPと、60fpsのMotionを組み合わせ。スクロール連動の没入感あるアニメーション体験。",
     gradient: "from-[#0a1a0a] to-[#000]",
     accent: "text-green-400",
+    image: "/images/tsukigaku/tech/gsap.png",
   },
   {
     name: "Lenis",
@@ -570,6 +575,7 @@ const techCards = [
     desc: "指先に吸い付くようなスムーススクロール。微細な慣性計算で、心地よさが格段に違う。",
     gradient: "from-[#1a120a] to-[#000]",
     accent: "text-orange-300",
+    image: "/images/tsukigaku/tech/lenis.png",
   },
   {
     name: "shadcn/ui",
@@ -577,6 +583,7 @@ const techCards = [
     desc: "Radixベースの洗練されたコンポーネント群。アクセシビリティ完全準拠。デザインと使いやすさを同時に。",
     gradient: "from-[#111] to-[#000]",
     accent: "text-white/80",
+    image: "/images/tsukigaku/tech/shadcn.png",
   },
 ];
 
@@ -606,16 +613,29 @@ function TechStack() {
         <div className="flex gap-4 px-6 pb-4" style={{ width: "max-content" }}>
           {techCards.map((tech, i) => (
             <ScrollReveal key={tech.name} delay={i * 0.05}>
-              <div className={`relative w-[280px] md:w-[340px] rounded-3xl bg-gradient-to-b ${tech.gradient} border border-white/[0.08] p-7 md:p-9 flex flex-col shrink-0`}>
-                <p className={`${tech.accent} text-[12px] font-semibold tracking-[0.1em] uppercase mb-4`}>
-                  {tech.name}
-                </p>
-                <h3 className="text-white font-semibold text-[22px] md:text-[26px] tracking-[-0.03em] leading-tight">
-                  {tech.headline}
-                </h3>
-                <p className="text-white/35 text-[13px] md:text-[14px] font-light mt-4 leading-[1.8]">
-                  {tech.desc}
-                </p>
+              <div className={`relative w-[300px] md:w-[360px] rounded-3xl bg-gradient-to-b ${tech.gradient} border border-white/[0.08] overflow-hidden flex flex-col shrink-0`}>
+                {/* Image */}
+                <div className="relative w-full aspect-[4/3] overflow-hidden">
+                  <Image
+                    src={tech.image}
+                    alt={tech.name}
+                    fill
+                    className="object-cover"
+                    sizes="360px"
+                  />
+                </div>
+                {/* Text */}
+                <div className="p-7 md:p-8">
+                  <p className={`${tech.accent} text-[12px] font-semibold tracking-[0.1em] uppercase mb-3`}>
+                    {tech.name}
+                  </p>
+                  <h3 className="text-white font-semibold text-[22px] md:text-[26px] tracking-[-0.03em] leading-tight">
+                    {tech.headline}
+                  </h3>
+                  <p className="text-white/35 text-[13px] md:text-[14px] font-light mt-3 leading-[1.8]">
+                    {tech.desc}
+                  </p>
+                </div>
               </div>
             </ScrollReveal>
           ))}
