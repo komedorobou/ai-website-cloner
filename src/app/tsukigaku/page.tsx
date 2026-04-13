@@ -587,6 +587,69 @@ const techCards = [
   },
 ];
 
+function TechCard({ tech }: { tech: typeof techCards[number] }) {
+  const cardRef = useRef<HTMLDivElement>(null);
+  const [isVisible, setIsVisible] = useState(false);
+
+  useEffect(() => {
+    const el = cardRef.current;
+    if (!el) return;
+    const observer = new IntersectionObserver(
+      ([entry]) => setIsVisible(entry.isIntersecting && entry.intersectionRatio > 0.5),
+      { threshold: 0.5 }
+    );
+    observer.observe(el);
+    return () => observer.disconnect();
+  }, []);
+
+  return (
+    <div
+      ref={cardRef}
+      className={`relative w-[78vw] max-w-[380px] shrink-0 rounded-3xl bg-gradient-to-b ${tech.gradient} border border-white/[0.08] overflow-hidden`}
+      style={{ scrollSnapAlign: "center" }}
+    >
+      {/* Image */}
+      <div className="relative w-full aspect-[3/4] overflow-hidden">
+        <Image
+          src={tech.image}
+          alt={tech.name}
+          fill
+          className="object-cover"
+          sizes="380px"
+        />
+        <div className="absolute inset-x-0 bottom-0 h-2/5 bg-gradient-to-t from-black/90 to-transparent" />
+        {/* Text with Apple-style reveal */}
+        <div className="absolute bottom-5 left-6 right-6">
+          <p
+            className={`${tech.accent} text-[11px] font-semibold tracking-[0.15em] uppercase transition-all duration-700 ease-out ${
+              isVisible ? "opacity-100 translate-y-0 blur-0" : "opacity-0 translate-y-4 blur-sm"
+            }`}
+          >
+            {tech.name}
+          </p>
+          <h3
+            className={`text-white font-semibold text-[24px] md:text-[28px] tracking-[-0.03em] leading-tight mt-1 transition-all duration-700 ease-out delay-150 ${
+              isVisible ? "opacity-100 translate-y-0 blur-0" : "opacity-0 translate-y-6 blur-sm"
+            }`}
+          >
+            {tech.headline}
+          </h3>
+        </div>
+      </div>
+      {/* Description */}
+      <div className="px-6 py-5">
+        <p
+          className={`text-white/40 text-[13px] font-light leading-[1.7] transition-all duration-700 ease-out delay-300 ${
+            isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-4"
+          }`}
+        >
+          {tech.desc}
+        </p>
+      </div>
+    </div>
+  );
+}
+
 function TechStack() {
   return (
     <section className="relative py-[120px] md:py-[180px] overflow-hidden bg-black">
@@ -619,37 +682,7 @@ function TechStack() {
         }}
       >
         {techCards.map((tech) => (
-          <div
-            key={tech.name}
-            className={`relative w-[78vw] max-w-[380px] shrink-0 rounded-3xl bg-gradient-to-b ${tech.gradient} border border-white/[0.08] overflow-hidden`}
-            style={{ scrollSnapAlign: "center" }}
-          >
-            {/* Image — large, dominant */}
-            <div className="relative w-full aspect-[3/4] overflow-hidden">
-              <Image
-                src={tech.image}
-                alt={tech.name}
-                fill
-                className="object-cover"
-                sizes="380px"
-              />
-              <div className="absolute inset-x-0 bottom-0 h-2/5 bg-gradient-to-t from-black/90 to-transparent" />
-              <div className="absolute bottom-5 left-6 right-6">
-                <p className={`${tech.accent} text-[11px] font-semibold tracking-[0.15em] uppercase`}>
-                  {tech.name}
-                </p>
-                <h3 className="text-white font-semibold text-[24px] md:text-[28px] tracking-[-0.03em] leading-tight mt-1">
-                  {tech.headline}
-                </h3>
-              </div>
-            </div>
-            {/* Description */}
-            <div className="px-6 py-5">
-              <p className="text-white/40 text-[13px] font-light leading-[1.7]">
-                {tech.desc}
-              </p>
-            </div>
-          </div>
+          <TechCard key={tech.name} tech={tech} />
         ))}
         {/* End spacer */}
         <div className="shrink-0 w-[8vw]" />
