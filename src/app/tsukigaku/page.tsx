@@ -608,12 +608,12 @@ function TechStack() {
         </ScrollReveal>
       </div>
 
-      {/* Horizontal scroll carousel */}
-      <div className="overflow-x-auto scrollbar-hide">
+      {/* Horizontal scroll carousel with snap */}
+      <div className="overflow-x-auto scrollbar-hide snap-x snap-mandatory" style={{ WebkitOverflowScrolling: "touch" }}>
         <div className="flex gap-4 px-6 pb-4" style={{ width: "max-content" }}>
           {techCards.map((tech, i) => (
             <ScrollReveal key={tech.name} delay={i * 0.05}>
-              <div className={`relative w-[85vw] max-w-[400px] rounded-3xl bg-gradient-to-b ${tech.gradient} border border-white/[0.08] overflow-hidden flex flex-col shrink-0`}>
+              <div className={`relative w-[85vw] max-w-[400px] rounded-3xl bg-gradient-to-b ${tech.gradient} border border-white/[0.08] overflow-hidden flex flex-col shrink-0 snap-center`}>
                 {/* Image — dominant, fills most of card */}
                 <div className="relative w-full aspect-[3/4] overflow-hidden">
                   <Image
@@ -647,10 +647,6 @@ function TechStack() {
         </div>
       </div>
 
-      {/* Scroll hint */}
-      <div className="flex justify-center mt-8 gap-2">
-        <span className="text-white/20 text-[11px] tracking-[0.15em]">← スワイプ →</span>
-      </div>
     </section>
   );
 }
