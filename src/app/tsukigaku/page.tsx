@@ -25,22 +25,26 @@ function Nav() {
 function Hero() {
   const ref = useRef<HTMLDivElement>(null);
   const videoRef = useRef<HTMLVideoElement>(null);
+  const [text1Visible, setText1Visible] = useState(false);
   const { scrollYProgress } = useScroll({ target: ref, offset: ["start start", "end start"] });
 
-  // Text 1: "Apple級のWebサイトを。" — instant boom, scroll to fade out quickly
-  const text1FadeOut = useTransform(scrollYProgress, [0.05, 0.15], [1, 0]);
-  const text1Blur = useTransform(scrollYProgress, [0.05, 0.15], [0, 30]);
+  // Time-based: show text1 after 2s (Apple style — text appears on load, not on scroll)
+  useEffect(() => {
+    const t = setTimeout(() => setText1Visible(true), 2000);
+    return () => clearTimeout(t);
+  }, []);
 
-  // Text 2: "月額9,800円で" — same size, boom in right after text 1 fades
+  // Scroll-driven: fade out text1, bring in text2
+  const text1ScrollOpacity = useTransform(scrollYProgress, [0.05, 0.15], [1, 0]);
+  const text1ScrollBlur = useTransform(scrollYProgress, [0.05, 0.15], [0, 30]);
+
   const text2Opacity = useTransform(scrollYProgress, [0.15, 0.3, 0.5, 0.65], [0, 1, 1, 0]);
   const text2Scale = useTransform(scrollYProgress, [0.15, 0.3], [0.7, 1]);
   const text2Blur = useTransform(scrollYProgress, [0.15, 0.3], [30, 0]);
 
-  // CTA: appears after text 2
   const ctaOpacity = useTransform(scrollYProgress, [0.35, 0.45, 0.55, 0.7], [0, 1, 1, 0]);
   const ctaY = useTransform(scrollYProgress, [0.35, 0.45], [30, 0]);
 
-  // Scroll indicator: disappears quickly
   const scrollOpacity = useTransform(scrollYProgress, [0, 0.05], [1, 0]);
 
   return (
@@ -53,34 +57,33 @@ function Hero() {
           autoPlay
           muted
           playsInline
-          poster=""
         >
           <source src="/videos/hero-laptop.mp4" type="video/mp4" />
         </video>
 
-        {/* Dark overlay for text readability */}
+        {/* Dark overlay */}
         <div className="absolute inset-0 bg-black/30 z-[1]" />
 
-        {/* Center text — scroll-driven sequential booms */}
+        {/* Center text */}
         <div className="relative z-10 text-center px-6 flex flex-col items-center justify-center">
-          {/* 1st boom: instant 0.3s appear, scroll to fade out */}
+          {/* Text 1: time-based fade in + scroll-based fade out */}
           <motion.h1
             className="font-extralight tracking-[-0.04em] text-white leading-[0.95]"
             style={{
               fontSize: "clamp(3.5rem, 12vw, 96px)",
-              opacity: text1FadeOut,
-              filter: useTransform(text1Blur, (v) => `blur(${v}px)`),
+              opacity: text1ScrollOpacity,
+              filter: useTransform(text1ScrollBlur, (v) => `blur(${v}px)`),
             }}
-            initial={{ opacity: 0, scale: 0.7, filter: "blur(30px)" }}
-            animate={{ opacity: 1, scale: 1, filter: "blur(0px)" }}
-            transition={{ delay: 2.0, duration: 2.0, ease: [0.16, 1, 0.3, 1] }}
+            initial={false}
+            animate={text1Visible ? { opacity: 1, scale: 1, filter: "blur(0px)" } : { opacity: 0, scale: 0.7, filter: "blur(30px)" }}
+            transition={{ duration: 2.0, ease: [0.16, 1, 0.3, 1] }}
           >
             Apple級の
             <br />
             Webサイトを。
           </motion.h1>
 
-          {/* 2nd boom: 月額9,800円で — same size as heading */}
+          {/* Text 2: scroll-driven only */}
           <motion.h2
             className="font-extralight tracking-[-0.04em] text-white leading-[0.95] absolute inset-0 flex items-center justify-center"
             style={{
