@@ -44,12 +44,14 @@ function Hero() {
     return unsub;
   }, [scrollYProgress]);
 
-  // All scroll transforms
+  // All scroll transforms — MUST be at top level (React hooks rule)
   const t1Opacity = useTransform(scrollYProgress, [0.03, 0.15], [1, 0]);
   const t1Blur = useTransform(scrollYProgress, [0.03, 0.15], [0, 30]);
+  const t1Filter = useTransform(t1Blur, (v) => `blur(${v}px)`);
   const t2Opacity = useTransform(scrollYProgress, [0.15, 0.3, 0.5, 0.65], [0, 1, 1, 0]);
   const t2Scale = useTransform(scrollYProgress, [0.15, 0.3], [0.7, 1]);
   const t2Blur = useTransform(scrollYProgress, [0.15, 0.3], [30, 0]);
+  const t2Filter = useTransform(t2Blur, (v) => `blur(${v}px)`);
   const ctaOpacity = useTransform(scrollYProgress, [0.35, 0.45, 0.55, 0.7], [0, 1, 1, 0]);
   const ctaY = useTransform(scrollYProgress, [0.35, 0.45], [30, 0]);
   const scrollIndOp = useTransform(scrollYProgress, [0, 0.05], [1, 0]);
@@ -67,41 +69,31 @@ function Hero() {
         </video>
         <div className="absolute inset-0 bg-black/30 z-[1]" />
 
-        {/* --- Text 1: centered absolutely in the screen --- */}
-        <div className="absolute inset-0 z-10 flex items-center justify-center">
-          {phase === "scroll" ? (
-            <motion.h1
-              className="font-extralight tracking-[-0.04em] text-white leading-[0.95] text-center px-6"
-              style={{
-                fontSize: "clamp(3.5rem, 12vw, 96px)",
-                opacity: t1Opacity,
-                filter: useTransform(t1Blur, (v) => `blur(${v}px)`),
-              }}
-            >
-              Apple級の<br />Webサイトを。
-            </motion.h1>
-          ) : (
-            <h1
-              className="font-extralight tracking-[-0.04em] text-white leading-[0.95] text-center px-6 transition-all duration-[2000ms] ease-out"
-              style={{
-                fontSize: "clamp(3.5rem, 12vw, 96px)",
-                opacity: phase === "text1" ? 1 : 0,
-                transform: phase === "text1" ? "scale(1)" : "scale(0.7)",
-                filter: phase === "text1" ? "blur(0px)" : "blur(30px)",
-              }}
-            >
-              Apple級の<br />Webサイトを。
-            </h1>
-          )}
-        </div>
+        {/* --- Text 1: always rendered, CSS handles appear, Motion handles scroll fadeout --- */}
+        <motion.div
+          className="absolute inset-0 z-10 flex items-center justify-center pointer-events-none"
+          style={{ opacity: phase === "scroll" ? t1Opacity : 1, filter: phase === "scroll" ? t1Filter : "none" }}
+        >
+          <h1
+            className="font-extralight tracking-[-0.04em] text-white leading-[0.95] text-center px-6 transition-all duration-[2000ms] ease-out"
+            style={{
+              fontSize: "clamp(3.5rem, 12vw, 96px)",
+              opacity: phase !== "loading" ? 1 : 0,
+              transform: phase !== "loading" ? "scale(1)" : "scale(0.7)",
+              filter: phase !== "loading" ? "blur(0px)" : "blur(30px)",
+            }}
+          >
+            Apple級の<br />Webサイトを。
+          </h1>
+        </motion.div>
 
         {/* --- Text 2: centered absolutely, scroll-driven --- */}
         <motion.div
-          className="absolute inset-0 z-10 flex items-center justify-center"
+          className="absolute inset-0 z-10 flex items-center justify-center pointer-events-none"
           style={{
             opacity: t2Opacity,
             scale: t2Scale,
-            filter: useTransform(t2Blur, (v) => `blur(${v}px)`),
+            filter: t2Filter,
           }}
         >
           <h2
@@ -204,41 +196,30 @@ function Cocktail360() {
   // Text animations tied to scroll
   const headingOpacity = useTransform(scrollYProgress, [0, 0.08, 0.4, 0.55], [0, 1, 1, 0]);
   const headingBlur = useTransform(scrollYProgress, [0, 0.08], [20, 0]);
+  const headingFilter = useTransform(headingBlur, (v) => `blur(${v}px)`);
   const subOpacity = useTransform(scrollYProgress, [0.55, 0.7, 0.85, 0.95], [0, 1, 1, 0]);
   const subBlur = useTransform(scrollYProgress, [0.55, 0.7], [20, 0]);
+  const subFilter = useTransform(subBlur, (v) => `blur(${v}px)`);
 
   return (
     <section ref={sectionRef} className="relative h-[400vh]">
       <div className="sticky top-0 h-screen w-full overflow-hidden bg-black flex items-center justify-center">
-        {/* Canvas for flicker-free frame rendering */}
         <canvas
           ref={canvasRef}
           className="absolute inset-0 w-full h-full object-contain"
           style={{ objectFit: "contain" }}
         />
-
-        {/* Overlay gradient for text */}
         <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-black/30 z-[1]" />
-
-        {/* Text overlays */}
         <div className="relative z-10 text-center px-6">
           <motion.h2
             className="font-extralight tracking-[-0.04em] text-white leading-[0.95]"
-            style={{
-              fontSize: "clamp(3rem, 10vw, 88px)",
-              opacity: headingOpacity,
-              filter: useTransform(headingBlur, (v) => `blur(${v}px)`),
-            }}
+            style={{ fontSize: "clamp(3rem, 10vw, 88px)", opacity: headingOpacity, filter: headingFilter }}
           >
             動くサイト。
           </motion.h2>
           <motion.p
             className="font-extralight tracking-[-0.04em] text-white leading-[0.95]"
-            style={{
-              fontSize: "clamp(1.2rem, 3vw, 1.8rem)",
-              opacity: subOpacity,
-              filter: useTransform(subBlur, (v) => `blur(${v}px)`),
-            }}
+            style={{ fontSize: "clamp(1.2rem, 3vw, 1.8rem)", opacity: subOpacity, filter: subFilter }}
           >
             この体験を、月9,800円で。
           </motion.p>
@@ -360,79 +341,50 @@ function IndustryCard({ item, index }: { item: typeof industries[number]; index:
   // Fade out on exit
   const exitOpacity = useTransform(scrollYProgress, [0.75, 0.9], [1, 0]);
 
+  // Pre-compute all derived transforms at top level (React hooks rule)
+  const clipPath = useTransform(clipRadius, (r) =>
+    r >= 149 ? "inset(0%)" : `circle(${r}% at 50% 50%)`
+  );
+  const labelLineWidth = useTransform(scrollYProgress, [0.25, 0.4], [0, 40]);
+  const headingFilter = useTransform(headingBlur, (v) => `blur(${v}px)`);
+  const glowWidth = useTransform(scrollYProgress, [0.4, 0.6], ["0%", "30%"]);
+  const glowOpacity = useTransform(scrollYProgress, [0.4, 0.55, 0.75, 0.9], [0, 0.8, 0.8, 0]);
+
   return (
     <section ref={ref} className="relative h-[180vh]">
       <div className="sticky top-0 h-screen w-full overflow-hidden bg-black">
-        {/* Image with parallax + zoom + circular reveal */}
         <motion.div
           className="absolute inset-0"
-          style={{
-            opacity: exitOpacity,
-            clipPath: useTransform(clipRadius, (r) =>
-              r >= 149 ? "inset(0%)" : `circle(${r}% at 50% 50%)`
-            ),
-          }}
+          style={{ opacity: exitOpacity, clipPath }}
         >
           <motion.div
             className="absolute inset-[-15%] w-[130%] h-[130%]"
             style={{ scale: imgScale, y: imgY }}
           >
-            <Image
-              src={item.image}
-              alt={item.industry}
-              fill
-              className="object-cover"
-              sizes="100vw"
-            />
+            <Image src={item.image} alt={item.industry} fill className="object-cover" sizes="100vw" />
           </motion.div>
           <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/10 to-black/30" />
         </motion.div>
 
-        {/* Text overlay with stagger reveal */}
         <div className="absolute inset-0 z-10 flex items-end">
           <div className="w-full px-8 md:px-20 pb-20 md:pb-28">
-            {/* Label */}
-            <motion.div
-              className="flex items-center gap-3 mb-5"
-              style={{ opacity: labelOpacity, y: labelY }}
-            >
-              <motion.div
-                className="h-px origin-left"
-                style={{
-                  backgroundColor: item.accent,
-                  width: useTransform(scrollYProgress, [0.25, 0.4], [0, 40]),
-                }}
-              />
-              <span
-                className="text-[10px] font-semibold tracking-[0.3em] uppercase"
-                style={{ color: item.accent }}
-              >
+            <motion.div className="flex items-center gap-3 mb-5" style={{ opacity: labelOpacity, y: labelY }}>
+              <motion.div className="h-px origin-left" style={{ backgroundColor: item.accent, width: labelLineWidth }} />
+              <span className="text-[10px] font-semibold tracking-[0.3em] uppercase" style={{ color: item.accent }}>
                 {item.industry}
               </span>
             </motion.div>
 
-            {/* Heading — character by character reveal */}
             <motion.h2
               className="font-extralight tracking-[-0.02em] text-white leading-[1.1]"
-              style={{
-                fontSize: "clamp(2.5rem, 7vw, 72px)",
-                opacity: headingOpacity,
-                y: headingY,
-                filter: useTransform(headingBlur, (v) => `blur(${v}px)`),
-              }}
+              style={{ fontSize: "clamp(2.5rem, 7vw, 72px)", opacity: headingOpacity, y: headingY, filter: headingFilter }}
             >
               {item.heading}
             </motion.h2>
 
-            {/* Subtle accent glow */}
             <motion.div
               className="mt-6 h-[2px] rounded-full origin-left"
-              style={{
-                backgroundColor: item.accent,
-                width: useTransform(scrollYProgress, [0.4, 0.6], ["0%", "30%"]),
-                opacity: useTransform(scrollYProgress, [0.4, 0.55, 0.75, 0.9], [0, 0.8, 0.8, 0]),
-                boxShadow: `0 0 20px ${item.accent}`,
-              }}
+              style={{ backgroundColor: item.accent, width: glowWidth, opacity: glowOpacity, boxShadow: `0 0 20px ${item.accent}` }}
             />
           </div>
         </div>
