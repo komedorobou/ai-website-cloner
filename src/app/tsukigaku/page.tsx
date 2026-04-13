@@ -743,8 +743,17 @@ function Pricing() {
                   </li>
                 ))}
               </ul>
-              <div className="mt-6 p-3 bg-white/[0.03] rounded-xl text-sm text-white/40 font-light">
-                修正なしの年は翌年10%割引
+              <div className="mt-6 p-4 bg-white/[0.03] rounded-xl">
+                <p className="text-sm text-white/60 font-medium mb-3">修正なし割引（毎年10%ずつ、最大60%OFF）</p>
+                <div className="space-y-1.5 text-[13px] text-white/40 font-light">
+                  <div className="flex justify-between"><span>2年目</span><span className="text-white/60">¥8,820<span className="text-blue-400/70 ml-1.5">-10%</span></span></div>
+                  <div className="flex justify-between"><span>3年目</span><span className="text-white/60">¥7,840<span className="text-blue-400/70 ml-1.5">-20%</span></span></div>
+                  <div className="flex justify-between"><span>4年目</span><span className="text-white/60">¥6,860<span className="text-blue-400/70 ml-1.5">-30%</span></span></div>
+                  <div className="flex justify-between"><span>5年目</span><span className="text-white/60">¥5,880<span className="text-blue-400/70 ml-1.5">-40%</span></span></div>
+                  <div className="flex justify-between"><span>6年目</span><span className="text-white/60">¥4,900<span className="text-blue-400/70 ml-1.5">-50%</span></span></div>
+                  <div className="flex justify-between"><span>7年目〜</span><span className="text-white font-medium">¥3,920<span className="text-blue-400 ml-1.5">-60%</span></span></div>
+                </div>
+                <p className="text-[11px] text-white/25 mt-3">※修正依頼があった年はリセットされます</p>
               </div>
               <a
                 href="#"
@@ -780,7 +789,7 @@ const faqItems = [
   { q: "本当に制作会社と同じ品質ですか？", a: "はい。Apple.com、Netflix、Airbnbと同じ技術スタック（Next.js、React、GSAP）を使用しています。テンプレートではなく、完全オーダーメイドで制作します。" },
   { q: "完成までどのくらいかかりますか？", a: "最短1週間、通常2〜3週間で公開可能です。素材（写真・テキスト）をご用意いただければ、さらに早くなります。" },
   { q: "写真素材がなくても大丈夫ですか？", a: "はい。AI画像生成やフリー素材で対応可能です。プロカメラマンの手配も別途ご相談いただけます。" },
-  { q: "公開後の修正はできますか？", a: "月2回まで修正対応込みです。修正がない年は翌年10%割引になり、長く使うほどお得になります。" },
+  { q: "公開後の修正はできますか？", a: "月2回まで修正対応込みです。修正依頼がない年は翌年10%割引が積み重なり、最大60%OFF（月3,920円）まで下がります。長く使うほどお得です。" },
   { q: "初期費用は本当に0円ですか？", a: "はい。デザイン費・開発費・サーバー費・SSL証明書、すべて月額9,800円に含まれています。追加料金は一切ありません。" },
 ];
 
