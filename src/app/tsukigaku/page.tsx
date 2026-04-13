@@ -528,33 +528,62 @@ function FAQ() {
 }
 
 /* ═══════════════════ TECH STACK ═══════════════════ */
-const techList = [
-  { name: "Next.js 16", one: "0.1秒で表示", color: "text-white" },
-  { name: "React 19", one: "世界標準のUI", color: "text-blue-400" },
-  { name: "TypeScript 5", one: "バグを未然に防ぐ", color: "text-blue-300" },
-  { name: "Tailwind CSS 4", one: "1px単位の美", color: "text-cyan-400" },
-  { name: "GSAP", one: "Appleも採用", color: "text-green-400" },
-  { name: "Motion", one: "60fpsの滑らかさ", color: "text-purple-400" },
-  { name: "Lenis", one: "絹のスクロール", color: "text-orange-400" },
-  { name: "shadcn/ui", one: "洗練されたUI", color: "text-white/70" },
+const techCards = [
+  {
+    name: "Next.js 16",
+    headline: "0.1秒の世界。",
+    desc: "Vercel製の最新フレームワーク。サーバー・エッジ・静的生成を自動で最適化し、圧倒的な表示速度を実現。",
+    gradient: "from-[#111] to-[#000]",
+    accent: "text-white",
+  },
+  {
+    name: "React 19",
+    headline: "世界が選んだUI。",
+    desc: "Meta社開発。Apple、Netflix、Airbnbも採用するグローバルスタンダード。滑らかで一貫した操作体験。",
+    gradient: "from-[#0a1628] to-[#000]",
+    accent: "text-blue-400",
+  },
+  {
+    name: "TypeScript 5",
+    headline: "バグは、生まれない。",
+    desc: "型安全な設計思想。コードの品質を根本から保証し、どんな規模でも安定動作するサイトを構築。",
+    gradient: "from-[#0a1420] to-[#000]",
+    accent: "text-blue-300",
+  },
+  {
+    name: "Tailwind CSS 4",
+    headline: "1pxの妥協もない。",
+    desc: "ピクセル単位の緻密なデザインシステム。レスポンシブ対応も完璧。すべてのデバイスで美しく。",
+    gradient: "from-[#061418] to-[#000]",
+    accent: "text-cyan-400",
+  },
+  {
+    name: "GSAP + Motion",
+    headline: "画面が、呼吸する。",
+    desc: "Appleも採用するGSAPと、60fpsのMotionを組み合わせ。スクロール連動の没入感あるアニメーション体験。",
+    gradient: "from-[#0a1a0a] to-[#000]",
+    accent: "text-green-400",
+  },
+  {
+    name: "Lenis",
+    headline: "絹のスクロール。",
+    desc: "指先に吸い付くようなスムーススクロール。微細な慣性計算で、心地よさが格段に違う。",
+    gradient: "from-[#1a120a] to-[#000]",
+    accent: "text-orange-300",
+  },
+  {
+    name: "shadcn/ui",
+    headline: "美と機能の両立。",
+    desc: "Radixベースの洗練されたコンポーネント群。アクセシビリティ完全準拠。デザインと使いやすさを同時に。",
+    gradient: "from-[#111] to-[#000]",
+    accent: "text-white/80",
+  },
 ];
 
 function TechStack() {
   return (
-    <section className="relative py-[140px] md:py-[200px] px-6 overflow-hidden">
-      {/* Background image */}
-      <div className="absolute inset-0">
-        <Image
-          src="/images/tsukigaku/tech-bg.png"
-          alt=""
-          fill
-          className="object-cover"
-          sizes="100vw"
-        />
-        <div className="absolute inset-0 bg-black/60" />
-      </div>
-
-      <div className="relative z-10 mx-auto max-w-[800px]">
+    <section className="relative py-[120px] md:py-[180px] overflow-hidden bg-black">
+      <div className="px-6 mb-14 md:mb-20">
         <ScrollReveal>
           <p className="text-blue-400 text-[11px] font-semibold tracking-[0.25em] uppercase mb-5 text-center">
             Technology
@@ -570,22 +599,32 @@ function TechStack() {
             出せるのか。
           </h2>
         </ScrollReveal>
+      </div>
 
-        {/* Tech list — clean, minimal, Apple style */}
-        <div className="mt-20 space-y-0 border-t border-white/[0.06]">
-          {techList.map((tech, i) => (
+      {/* Horizontal scroll carousel */}
+      <div className="overflow-x-auto scrollbar-hide">
+        <div className="flex gap-4 px-6 pb-4" style={{ width: "max-content" }}>
+          {techCards.map((tech, i) => (
             <ScrollReveal key={tech.name} delay={i * 0.05}>
-              <div className="flex items-center justify-between py-5 border-b border-white/[0.06] group hover:bg-white/[0.02] transition-colors px-2 -mx-2 rounded-lg">
-                <span className={`${tech.color} font-medium text-[16px] md:text-[20px] tracking-[-0.02em]`}>
+              <div className={`relative w-[280px] md:w-[340px] rounded-3xl bg-gradient-to-b ${tech.gradient} border border-white/[0.08] p-7 md:p-9 flex flex-col shrink-0`}>
+                <p className={`${tech.accent} text-[12px] font-semibold tracking-[0.1em] uppercase mb-4`}>
                   {tech.name}
-                </span>
-                <span className="text-white/30 text-[13px] md:text-[15px] font-light">
-                  {tech.one}
-                </span>
+                </p>
+                <h3 className="text-white font-semibold text-[22px] md:text-[26px] tracking-[-0.03em] leading-tight">
+                  {tech.headline}
+                </h3>
+                <p className="text-white/35 text-[13px] md:text-[14px] font-light mt-4 leading-[1.8]">
+                  {tech.desc}
+                </p>
               </div>
             </ScrollReveal>
           ))}
         </div>
+      </div>
+
+      {/* Scroll hint */}
+      <div className="flex justify-center mt-8 gap-2">
+        <span className="text-white/20 text-[11px] tracking-[0.15em]">← スワイプ →</span>
       </div>
     </section>
   );
