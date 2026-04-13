@@ -408,28 +408,37 @@ const companyCards = [
   {
     label: "A社",
     headline: "最高のクオリティ。\n最高の価格。",
+    bigPrice: "500万",
+    priceSub: "初期費用だけで",
     price: "初期 500万円〜 / 月額 10万円〜",
     specs: ["完全オーダーメイド", "アニメーション対応", "制作期間 2〜3ヶ月"],
     accent: "text-white/50",
     gradient: "from-[#111] to-[#000]",
+    iconColor: "text-white/8",
     winner: false,
   },
   {
     label: "B社",
     headline: "安い。\nでも、テンプレート。",
+    bigPrice: "テンプレ",
+    priceSub: "どこかで見たデザイン",
     price: "初期 0円 / 月額 9,800円",
     specs: ["WordPressテンプレ", "アニメーション ✗", "制作期間 1〜2週間"],
     accent: "text-orange-400/70",
     gradient: "from-[#1a120a] to-[#000]",
+    iconColor: "text-orange-400/8",
     winner: false,
   },
   {
     label: "ツキガクサイト",
     headline: "A社の品質を。\nB社の価格で。",
+    bigPrice: "9,800",
+    priceSub: "月額・初期費用0円",
     price: "初期 0円 / 月額 9,800円",
     specs: ["完全オーダーメイド Apple級", "アニメーション標準搭載 ✓", "最短1週間"],
     accent: "text-blue-400",
     gradient: "from-[#0a0a1a] to-[#000]",
+    iconColor: "text-blue-400/10",
     winner: true,
   },
 ];
@@ -455,9 +464,24 @@ function ComparisonCard({ card }: { card: typeof companyCards[number] }) {
       className={`relative w-[85vw] max-w-[400px] shrink-0 rounded-3xl bg-gradient-to-b ${card.gradient} overflow-hidden ${card.winner ? "border-2 border-blue-500/30 shadow-[0_0_60px_-10px_rgba(59,130,246,0.25)]" : "border border-white/[0.08]"}`}
       style={{ scrollSnapAlign: "center" }}
     >
-      {/* Image placeholder */}
-      <div className={`w-full aspect-[3/2] ${card.winner ? "bg-blue-500/5" : "bg-white/[0.02]"} flex items-center justify-center`}>
-        <span className="text-white/10 text-[13px]">IMAGE</span>
+      {/* Visual impact area — no image, typography does the talking */}
+      <div className={`relative w-full aspect-[4/3] flex flex-col items-center justify-center overflow-hidden ${card.winner ? "bg-blue-500/[0.03]" : "bg-white/[0.01]"}`}>
+        {/* Giant background text for texture */}
+        <span className={`absolute ${card.iconColor} font-black text-[120px] md:text-[140px] tracking-tighter select-none pointer-events-none leading-none`}>
+          {card.winner ? "¥" : card.bigPrice === "テンプレ" ? "?" : "¥"}
+        </span>
+        {/* Big price / keyword */}
+        <span
+          className={`relative z-10 font-extralight tracking-[-0.04em] leading-none transition-all duration-700 ${card.winner ? "text-white" : "text-white/40"} ${isVisible ? "opacity-100 scale-100 blur-0" : "opacity-0 scale-90 blur-sm"}`}
+          style={{ fontSize: "clamp(2.8rem, 8vw, 4rem)" }}
+        >
+          {card.bigPrice}
+        </span>
+        <span
+          className={`relative z-10 mt-3 text-[12px] font-light tracking-wide transition-all duration-700 delay-150 ${card.winner ? "text-blue-400/70" : "text-white/25"} ${isVisible ? "opacity-100" : "opacity-0"}`}
+        >
+          {card.priceSub}
+        </span>
       </div>
 
       {/* Content */}
