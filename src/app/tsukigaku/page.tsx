@@ -83,7 +83,7 @@ function Hero() {
               filter: phase !== "loading" ? "blur(0px)" : "blur(30px)",
             }}
           >
-            Apple級の<br />Webサイトを。
+            HP制作費、<br />0円の時代。
           </h1>
         </motion.div>
 
@@ -100,7 +100,7 @@ function Hero() {
             className="font-extralight tracking-[-0.04em] text-white leading-[0.95] text-center px-6"
             style={{ fontSize: "clamp(3.5rem, 12vw, 96px)" }}
           >
-            月額9,800円で
+            月9,800円で全部やる
           </h2>
         </motion.div>
 
@@ -113,7 +113,7 @@ function Hero() {
             href="#pricing"
             className="px-8 py-3.5 text-[14px] font-medium rounded-full bg-white text-black hover:scale-105 transition-transform"
           >
-            まずは相談する
+            無料相談する
           </a>
         </motion.div>
 
@@ -241,13 +241,13 @@ function Cocktail360() {
             className="font-extralight tracking-[-0.04em] text-white leading-[0.95]"
             style={{ fontSize: "clamp(3rem, 10vw, 88px)", opacity: headingOpacity, filter: headingFilter }}
           >
-            動くサイト。
+            動くから、売れる。
           </motion.h2>
           <motion.p
             className="font-extralight tracking-[-0.04em] text-white leading-[0.95]"
             style={{ fontSize: "clamp(1.2rem, 3vw, 1.8rem)", opacity: subOpacity, filter: subFilter }}
           >
-            この体験を、月9,800円で。
+            アニメーション・動画・写真、全部込み。追加料金なし。
           </motion.p>
         </div>
       </div>
@@ -255,26 +255,7 @@ function Cocktail360() {
   );
 }
 
-/* ═══════════════════ PROBLEM ═══════════════════ */
-function Problem() {
-  return (
-    <section className="py-[160px] md:py-[200px] flex flex-col items-center justify-center px-6 text-center bg-[#fafafa]">
-      <ScrollReveal>
-        <h2
-          className="font-extrabold tracking-[-0.04em] leading-[1.05] text-[#1d1d1f]"
-          style={{ fontSize: "clamp(2.8rem, 8vw, 80px)" }}
-        >
-          売れてますか？
-        </h2>
-      </ScrollReveal>
-      <ScrollReveal delay={0.15}>
-        <p className="text-[#86868b] text-[clamp(1rem,2vw,1.25rem)] mt-8 font-light max-w-[400px]">
-          きれいなだけじゃ、意味がない。
-        </p>
-      </ScrollReveal>
-    </section>
-  );
-}
+/* ═══════════════════ PROBLEM — removed ═══════════════════ */
 
 /* ═══════════════════ MOCKUP REVEAL ═══════════════════ */
 function MockupReveal() {
@@ -288,13 +269,13 @@ function MockupReveal() {
       <div className="mx-auto max-w-[1200px] px-6 text-center">
         <ScrollReveal>
           <p className="text-blue-400 text-[11px] font-semibold tracking-[0.25em] uppercase mb-5">
-            What We Build
+            制作実績
           </p>
           <h2
             className="font-extralight tracking-[-0.03em] text-white leading-[1.05]"
             style={{ fontSize: "clamp(2rem, 5vw, 56px)" }}
           >
-            この品質を、月額で。
+            この品質が、月9,800円。
           </h2>
         </ScrollReveal>
         <motion.div className="mt-16" style={{ scale, opacity }}>
@@ -318,28 +299,28 @@ const industries = [
   {
     label: "RESTAURANT",
     industry: "飲食店",
-    heading: "湯気まで届く。",
+    heading: "ネットで予約が入るHP。",
     image: "/images/tsukigaku/ramen-hero.jpg",
     accent: "#f97316",
   },
   {
     label: "BEAUTY SALON",
     industry: "美容室",
-    heading: "美が、歩いてくる。",
+    heading: "指名予約が止まらないHP。",
     image: "/images/tsukigaku/salon-new.jpg",
     accent: "#ec4899",
   },
   {
     label: "CLINIC",
     industry: "クリニック",
-    heading: "安心が、見える。",
+    heading: "初めての患者が安心するHP。",
     image: "/images/tsukigaku/clinic-new.jpg",
     accent: "#06b6d4",
   },
   {
     label: "CAFE",
     industry: "カフェ",
-    heading: "香りが、漂う。",
+    heading: "Googleで見つかるHP。",
     image: "/images/tsukigaku/cafe-new.jpg",
     accent: "#a16207",
   },
@@ -534,7 +515,7 @@ function Comparison() {
       <div className="px-6 mb-14 md:mb-20">
         <ScrollReveal>
           <p className="text-blue-400 text-[11px] font-semibold tracking-[0.25em] uppercase mb-5 text-center">
-            Comparison
+            他社比較
           </p>
         </ScrollReveal>
         <ScrollReveal delay={0.1}>
@@ -542,9 +523,9 @@ function Comparison() {
             className="font-extralight tracking-[-0.04em] text-white leading-[1.05] text-center"
             style={{ fontSize: "clamp(2.5rem, 7vw, 72px)" }}
           >
-            500万円の品質を、
+            同じ品質。
             <br />
-            月9,800円で。
+            50分の1の値段。
           </h2>
         </ScrollReveal>
       </div>
@@ -579,7 +560,7 @@ function BeforeAfter() {
             className="text-white font-extralight text-center leading-[1] tracking-[-0.04em] mb-20"
             style={{ fontSize: "clamp(3rem, 9vw, 80px)" }}
           >
-            この差。
+            放置したHP。<br />売れるHP。
           </h2>
         </ScrollReveal>
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-10">
@@ -632,7 +613,7 @@ function BeforeAfter() {
         </div>
         <ScrollReveal delay={0.3}>
           <p className="text-center text-white/30 text-sm mt-16 font-light">
-            月額9,800円 — 初期費用0円
+            初期費用0円 — サイト公開まで最短1週間
           </p>
         </ScrollReveal>
       </div>
@@ -654,16 +635,15 @@ function Philosophy() {
             viewport={{ once: true }}
             transition={{ duration: 1.5 }}
           >
-            売るために、
-            <br />
-            作る。
+            サイトは営業マン。<br />
+            24時間働く。
           </motion.h2>
         </ScrollReveal>
         <ScrollReveal delay={0.2}>
           <p className="text-[#86868b] text-[clamp(0.95rem,1.8vw,1.15rem)] leading-relaxed mt-10 font-light">
-            写真どーん。感情が動いて、
+            写真で惹きつけて、予約まで一直線。
             <br className="hidden md:block" />
-            「行きたい」にたどり着く。
+            集客できるサイトだけを作ります。
           </p>
         </ScrollReveal>
       </div>
@@ -706,7 +686,7 @@ function Pricing() {
             className="font-extralight tracking-[-0.03em] text-white"
             style={{ fontSize: "clamp(2rem, 5vw, 56px)" }}
           >
-            シンプルな料金
+            料金
           </h2>
         </ScrollReveal>
 
@@ -755,7 +735,7 @@ function Pricing() {
                 href="#"
                 className="block mt-8 py-4 bg-white text-black font-semibold rounded-full hover:scale-[1.03] transition-transform text-center text-[15px]"
               >
-                無料相談を予約する
+                今すぐ無料相談する
               </a>
             </div>
           </motion.div>
@@ -975,9 +955,9 @@ function TechStack() {
             className="font-extralight tracking-[-0.04em] text-white leading-[1.05] text-center"
             style={{ fontSize: "clamp(2.5rem, 7vw, 72px)" }}
           >
-            なぜ、この品質が
+            Appleと同じ技術で
             <br />
-            出せるのか。
+            作ってます。
           </h2>
         </ScrollReveal>
       </div>
@@ -1026,14 +1006,14 @@ function CTAFinal() {
             viewport={{ once: true }}
             transition={{ duration: 1.5 }}
           >
-            あなたのビジネスを、
+            初期費用0円。
             <br />
-            Apple級に。
+            まず相談してください。
           </motion.h2>
         </ScrollReveal>
         <ScrollReveal delay={0.15}>
           <p className="text-white/30 text-[clamp(0.9rem,1.6vw,1.1rem)] mt-6 font-light">
-            初期費用0円。今すぐ無料相談。
+            30分の無料相談で、あなたの業種に合ったサイトをご提案します。
           </p>
         </ScrollReveal>
         <ScrollReveal delay={0.25}>
@@ -1041,7 +1021,7 @@ function CTAFinal() {
             href="#"
             className="inline-block mt-12 px-10 py-4 bg-white text-black font-semibold rounded-full hover:scale-105 transition-transform text-[15px]"
           >
-            無料相談を予約する
+            今すぐ無料相談する
           </a>
         </ScrollReveal>
       </div>
