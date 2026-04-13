@@ -613,26 +613,31 @@ function TechStack() {
         <div className="flex gap-4 px-6 pb-4" style={{ width: "max-content" }}>
           {techCards.map((tech, i) => (
             <ScrollReveal key={tech.name} delay={i * 0.05}>
-              <div className={`relative w-[300px] md:w-[360px] rounded-3xl bg-gradient-to-b ${tech.gradient} border border-white/[0.08] overflow-hidden flex flex-col shrink-0`}>
-                {/* Image */}
-                <div className="relative w-full aspect-[4/3] overflow-hidden">
+              <div className={`relative w-[85vw] max-w-[400px] rounded-3xl bg-gradient-to-b ${tech.gradient} border border-white/[0.08] overflow-hidden flex flex-col shrink-0`}>
+                {/* Image — dominant, fills most of card */}
+                <div className="relative w-full aspect-[3/4] overflow-hidden">
                   <Image
                     src={tech.image}
                     alt={tech.name}
                     fill
                     className="object-cover"
-                    sizes="360px"
+                    sizes="400px"
                   />
+                  {/* Gradient fade at bottom for text readability */}
+                  <div className="absolute inset-x-0 bottom-0 h-1/3 bg-gradient-to-t from-black/80 to-transparent" />
+                  {/* Tech name overlay on image */}
+                  <div className="absolute bottom-4 left-6 right-6">
+                    <p className={`${tech.accent} text-[11px] font-semibold tracking-[0.15em] uppercase`}>
+                      {tech.name}
+                    </p>
+                    <h3 className="text-white font-semibold text-[24px] md:text-[28px] tracking-[-0.03em] leading-tight mt-1">
+                      {tech.headline}
+                    </h3>
+                  </div>
                 </div>
-                {/* Text */}
-                <div className="p-7 md:p-8">
-                  <p className={`${tech.accent} text-[12px] font-semibold tracking-[0.1em] uppercase mb-3`}>
-                    {tech.name}
-                  </p>
-                  <h3 className="text-white font-semibold text-[22px] md:text-[26px] tracking-[-0.03em] leading-tight">
-                    {tech.headline}
-                  </h3>
-                  <p className="text-white/35 text-[13px] md:text-[14px] font-light mt-3 leading-[1.8]">
+                {/* Short description below */}
+                <div className="px-6 py-5">
+                  <p className="text-white/40 text-[13px] font-light leading-[1.7]">
                     {tech.desc}
                   </p>
                 </div>
