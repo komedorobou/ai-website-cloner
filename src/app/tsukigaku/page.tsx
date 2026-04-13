@@ -27,91 +27,107 @@ function Hero() {
   const videoRef = useRef<HTMLVideoElement>(null);
   const { scrollYProgress } = useScroll({ target: ref, offset: ["start start", "end start"] });
 
-  // --- Text 1: CSS transition for fade-in, scroll for fade-out ---
-  const [text1Ready, setText1Ready] = useState(false);
+  // State-driven: which phase are we in?
+  const [phase, setPhase] = useState<"loading" | "text1" | "scroll">("loading");
+
+  // After 2s, show text1
   useEffect(() => {
-    const t = setTimeout(() => setText1Ready(true), 2000);
+    const t = setTimeout(() => setPhase("text1"), 2000);
     return () => clearTimeout(t);
   }, []);
 
-  // Scroll fade-out for text 1 (only kicks in after user scrolls)
-  const text1ScrollFade = useTransform(scrollYProgress, [0.05, 0.15], [1, 0]);
-  const text1ScrollBlur = useTransform(scrollYProgress, [0.05, 0.15], [0, 30]);
+  // Once user scrolls past 3%, switch to scroll mode
+  useEffect(() => {
+    const unsub = scrollYProgress.on("change", (v) => {
+      if (v > 0.03) setPhase("scroll");
+    });
+    return unsub;
+  }, [scrollYProgress]);
 
-  // Text 2: fully scroll-driven
-  const text2Opacity = useTransform(scrollYProgress, [0.15, 0.3, 0.5, 0.65], [0, 1, 1, 0]);
-  const text2Scale = useTransform(scrollYProgress, [0.15, 0.3], [0.7, 1]);
-  const text2Blur = useTransform(scrollYProgress, [0.15, 0.3], [30, 0]);
-
-  // CTA
+  // All scroll transforms
+  const t1Opacity = useTransform(scrollYProgress, [0.03, 0.15], [1, 0]);
+  const t1Blur = useTransform(scrollYProgress, [0.03, 0.15], [0, 30]);
+  const t2Opacity = useTransform(scrollYProgress, [0.15, 0.3, 0.5, 0.65], [0, 1, 1, 0]);
+  const t2Scale = useTransform(scrollYProgress, [0.15, 0.3], [0.7, 1]);
+  const t2Blur = useTransform(scrollYProgress, [0.15, 0.3], [30, 0]);
   const ctaOpacity = useTransform(scrollYProgress, [0.35, 0.45, 0.55, 0.7], [0, 1, 1, 0]);
   const ctaY = useTransform(scrollYProgress, [0.35, 0.45], [30, 0]);
-
-  // Scroll indicator
-  const scrollIndicatorOpacity = useTransform(scrollYProgress, [0, 0.05], [1, 0]);
+  const scrollIndOp = useTransform(scrollYProgress, [0, 0.05], [1, 0]);
 
   return (
     <section ref={ref} className="relative h-[300vh]">
-      <div className="sticky top-0 h-screen w-full overflow-hidden flex items-center justify-center bg-black">
-        {/* Video background */}
+      <div className="sticky top-0 h-screen w-full overflow-hidden bg-black">
+        {/* Video */}
         <video
           ref={videoRef}
           className="absolute inset-0 w-full h-full object-cover"
-          autoPlay
-          muted
-          playsInline
+          autoPlay muted playsInline
         >
           <source src="/videos/hero-laptop.mp4" type="video/mp4" />
         </video>
-
         <div className="absolute inset-0 bg-black/30 z-[1]" />
 
-        {/* Text container */}
-        <div className="relative z-10 text-center px-6 flex flex-col items-center justify-center">
-
-          {/* Text 1: pure CSS transition for appear, Motion style for scroll fade-out */}
-          <motion.div style={{ opacity: text1ScrollFade, filter: useTransform(text1ScrollBlur, (v) => `blur(${v}px)`) }}>
-            <h1
-              className="font-extralight tracking-[-0.04em] text-white leading-[0.95] transition-all duration-[2000ms] ease-out"
+        {/* --- Text 1: centered absolutely in the screen --- */}
+        <div className="absolute inset-0 z-10 flex items-center justify-center">
+          {phase === "scroll" ? (
+            <motion.h1
+              className="font-extralight tracking-[-0.04em] text-white leading-[0.95] text-center px-6"
               style={{
                 fontSize: "clamp(3.5rem, 12vw, 96px)",
-                opacity: text1Ready ? 1 : 0,
-                transform: text1Ready ? "scale(1)" : "scale(0.7)",
-                filter: text1Ready ? "blur(0px)" : "blur(30px)",
+                opacity: t1Opacity,
+                filter: useTransform(t1Blur, (v) => `blur(${v}px)`),
               }}
             >
-              Apple級の
-              <br />
-              Webサイトを。
+              Apple級の<br />Webサイトを。
+            </motion.h1>
+          ) : (
+            <h1
+              className="font-extralight tracking-[-0.04em] text-white leading-[0.95] text-center px-6 transition-all duration-[2000ms] ease-out"
+              style={{
+                fontSize: "clamp(3.5rem, 12vw, 96px)",
+                opacity: phase === "text1" ? 1 : 0,
+                transform: phase === "text1" ? "scale(1)" : "scale(0.7)",
+                filter: phase === "text1" ? "blur(0px)" : "blur(30px)",
+              }}
+            >
+              Apple級の<br />Webサイトを。
             </h1>
-          </motion.div>
+          )}
+        </div>
 
-          {/* Text 2: scroll-driven */}
-          <motion.h2
-            className="font-extralight tracking-[-0.04em] text-white leading-[0.95] absolute inset-0 flex items-center justify-center"
-            style={{
-              fontSize: "clamp(3.5rem, 12vw, 96px)",
-              opacity: text2Opacity,
-              scale: text2Scale,
-              filter: useTransform(text2Blur, (v) => `blur(${v}px)`),
-            }}
+        {/* --- Text 2: centered absolutely, scroll-driven --- */}
+        <motion.div
+          className="absolute inset-0 z-10 flex items-center justify-center"
+          style={{
+            opacity: t2Opacity,
+            scale: t2Scale,
+            filter: useTransform(t2Blur, (v) => `blur(${v}px)`),
+          }}
+        >
+          <h2
+            className="font-extralight tracking-[-0.04em] text-white leading-[0.95] text-center px-6"
+            style={{ fontSize: "clamp(3.5rem, 12vw, 96px)" }}
           >
             月額9,800円で
-          </motion.h2>
+          </h2>
+        </motion.div>
 
-          {/* CTA */}
-          <motion.a
+        {/* --- CTA --- */}
+        <motion.div
+          className="absolute inset-x-0 bottom-[25%] z-10 flex justify-center"
+          style={{ opacity: ctaOpacity, y: ctaY }}
+        >
+          <a
             href="#pricing"
-            className="inline-block mt-10 px-8 py-3.5 text-[14px] font-medium rounded-full bg-white text-black hover:scale-105 transition-transform"
-            style={{ opacity: ctaOpacity, y: ctaY }}
+            className="px-8 py-3.5 text-[14px] font-medium rounded-full bg-white text-black hover:scale-105 transition-transform"
           >
             まずは相談する
-          </motion.a>
-        </div>
+          </a>
+        </motion.div>
 
         {/* Scroll indicator */}
         <motion.div
-          style={{ opacity: scrollIndicatorOpacity }}
+          style={{ opacity: scrollIndOp }}
           className="absolute bottom-10 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 z-20"
         >
           <span className="text-[10px] text-white/30 tracking-[0.3em] uppercase">scroll</span>
