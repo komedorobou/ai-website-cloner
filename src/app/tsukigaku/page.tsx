@@ -121,7 +121,7 @@ function Hero() {
 }
 
 /* ═══════════════════ COCKTAIL 360 — Scroll-driven frame animation ═══════════════════ */
-const COCKTAIL_FRAMES = 36;
+const COCKTAIL_FRAMES = 24;
 const cocktailFrames = Array.from({ length: COCKTAIL_FRAMES }, (_, i) =>
   `/images/tsukigaku/cocktail/frame-${String(i + 1).padStart(2, "0")}.jpg`
 );
