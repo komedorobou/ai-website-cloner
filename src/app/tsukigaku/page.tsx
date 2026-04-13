@@ -316,49 +316,114 @@ const industries = [
   },
 ];
 
+/* Single industry card with scroll-driven effects */
+function IndustryCard({ item, index }: { item: typeof industries[number]; index: number }) {
+  const ref = useRef<HTMLDivElement>(null);
+  const { scrollYProgress } = useScroll({ target: ref, offset: ["start end", "end start"] });
+
+  // Image: Ken Burns zoom + parallax
+  const imgScale = useTransform(scrollYProgress, [0, 0.5, 1], [1.3, 1, 1.1]);
+  const imgY = useTransform(scrollYProgress, [0, 1], ["-15%", "15%"]);
+
+  // Circular clip-path reveal from center
+  const clipRadius = useTransform(scrollYProgress, [0.1, 0.4], [0, 150]);
+
+  // Text stagger
+  const labelOpacity = useTransform(scrollYProgress, [0.25, 0.35], [0, 1]);
+  const labelY = useTransform(scrollYProgress, [0.25, 0.35], [30, 0]);
+  const headingOpacity = useTransform(scrollYProgress, [0.3, 0.45], [0, 1]);
+  const headingY = useTransform(scrollYProgress, [0.3, 0.45], [60, 0]);
+  const headingBlur = useTransform(scrollYProgress, [0.3, 0.45], [20, 0]);
+
+  // Fade out on exit
+  const exitOpacity = useTransform(scrollYProgress, [0.75, 0.9], [1, 0]);
+
+  return (
+    <section ref={ref} className="relative h-[180vh]">
+      <div className="sticky top-0 h-screen w-full overflow-hidden bg-black">
+        {/* Image with parallax + zoom + circular reveal */}
+        <motion.div
+          className="absolute inset-0"
+          style={{
+            opacity: exitOpacity,
+            clipPath: useTransform(clipRadius, (r) =>
+              r >= 149 ? "inset(0%)" : `circle(${r}% at 50% 50%)`
+            ),
+          }}
+        >
+          <motion.div
+            className="absolute inset-[-15%] w-[130%] h-[130%]"
+            style={{ scale: imgScale, y: imgY }}
+          >
+            <Image
+              src={item.image}
+              alt={item.industry}
+              fill
+              className="object-cover"
+              sizes="100vw"
+            />
+          </motion.div>
+          <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/10 to-black/30" />
+        </motion.div>
+
+        {/* Text overlay with stagger reveal */}
+        <div className="absolute inset-0 z-10 flex items-end">
+          <div className="w-full px-8 md:px-20 pb-20 md:pb-28">
+            {/* Label */}
+            <motion.div
+              className="flex items-center gap-3 mb-5"
+              style={{ opacity: labelOpacity, y: labelY }}
+            >
+              <motion.div
+                className="h-px origin-left"
+                style={{
+                  backgroundColor: item.accent,
+                  width: useTransform(scrollYProgress, [0.25, 0.4], [0, 40]),
+                }}
+              />
+              <span
+                className="text-[10px] font-semibold tracking-[0.3em] uppercase"
+                style={{ color: item.accent }}
+              >
+                {item.industry}
+              </span>
+            </motion.div>
+
+            {/* Heading — character by character reveal */}
+            <motion.h2
+              className="font-extralight tracking-[-0.02em] text-white leading-[1.1]"
+              style={{
+                fontSize: "clamp(2.5rem, 7vw, 72px)",
+                opacity: headingOpacity,
+                y: headingY,
+                filter: useTransform(headingBlur, (v) => `blur(${v}px)`),
+              }}
+            >
+              {item.heading}
+            </motion.h2>
+
+            {/* Subtle accent glow */}
+            <motion.div
+              className="mt-6 h-[2px] rounded-full origin-left"
+              style={{
+                backgroundColor: item.accent,
+                width: useTransform(scrollYProgress, [0.4, 0.6], ["0%", "30%"]),
+                opacity: useTransform(scrollYProgress, [0.4, 0.55, 0.75, 0.9], [0, 0.8, 0.8, 0]),
+                boxShadow: `0 0 20px ${item.accent}`,
+              }}
+            />
+          </div>
+        </div>
+      </div>
+    </section>
+  );
+}
+
 function IndustryShowcase() {
   return (
     <div>
       {industries.map((item, i) => (
-        <section key={item.label} className="relative h-screen flex items-end overflow-hidden">
-          {/* Full bleed image with clip-path reveal */}
-          <motion.div
-            className="absolute inset-0"
-            initial={{ clipPath: "inset(10% 10% 10% 10%)" }}
-            whileInView={{ clipPath: "inset(0% 0% 0% 0%)" }}
-            viewport={{ once: true, amount: 0.3 }}
-            transition={{ duration: 1.2, ease: [0.16, 1, 0.3, 1] }}
-          >
-            <Image src={item.image} alt={item.industry} fill className="object-cover" sizes="100vw" />
-            <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent" />
-          </motion.div>
-
-          {/* Minimal text overlay */}
-          <div className="relative z-10 w-full px-8 md:px-20 pb-20 md:pb-28">
-            <motion.div
-              initial={{ opacity: 0, x: i % 2 === 0 ? -60 : 60 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              viewport={{ once: true, amount: 0.5 }}
-              transition={{ duration: 1, ease: [0.16, 1, 0.3, 1], delay: 0.3 }}
-            >
-              <div className="flex items-center gap-3 mb-4">
-                <div className="w-8 h-px" style={{ backgroundColor: item.accent }} />
-                <span
-                  className="text-[10px] font-semibold tracking-[0.3em] uppercase"
-                  style={{ color: item.accent }}
-                >
-                  {item.industry}
-                </span>
-              </div>
-              <h2
-                className="font-extralight tracking-[-0.02em] text-white leading-[1.1]"
-                style={{ fontSize: "clamp(2.5rem, 7vw, 72px)" }}
-              >
-                {item.heading}
-              </h2>
-            </motion.div>
-          </div>
-        </section>
+        <IndustryCard key={item.label} item={item} index={i} />
       ))}
     </div>
   );
