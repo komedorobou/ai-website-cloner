@@ -120,6 +120,81 @@ function Hero() {
   );
 }
 
+/* ═══════════════════ COCKTAIL 360 — Scroll-driven frame animation ═══════════════════ */
+const COCKTAIL_FRAMES = 36;
+const cocktailFrames = Array.from({ length: COCKTAIL_FRAMES }, (_, i) =>
+  `/images/tsukigaku/cocktail/frame-${String(i + 1).padStart(2, "0")}.jpg`
+);
+
+function Cocktail360() {
+  const sectionRef = useRef<HTMLDivElement>(null);
+  const [frameIndex, setFrameIndex] = useState(0);
+  const { scrollYProgress } = useScroll({ target: sectionRef, offset: ["start start", "end start"] });
+
+  // Map scroll progress to frame index
+  useEffect(() => {
+    const unsubscribe = scrollYProgress.on("change", (v) => {
+      const idx = Math.min(COCKTAIL_FRAMES - 1, Math.floor(v * COCKTAIL_FRAMES));
+      setFrameIndex(idx);
+    });
+    return unsubscribe;
+  }, [scrollYProgress]);
+
+  // Text animations tied to scroll
+  const headingOpacity = useTransform(scrollYProgress, [0, 0.08, 0.4, 0.55], [0, 1, 1, 0]);
+  const headingBlur = useTransform(scrollYProgress, [0, 0.08], [20, 0]);
+  const subOpacity = useTransform(scrollYProgress, [0.55, 0.7, 0.85, 0.95], [0, 1, 1, 0]);
+  const subBlur = useTransform(scrollYProgress, [0.55, 0.7], [20, 0]);
+
+  return (
+    <section ref={sectionRef} className="relative h-[400vh]">
+      <div className="sticky top-0 h-screen w-full overflow-hidden bg-black flex items-center justify-center">
+        {/* Frame image */}
+        <div className="absolute inset-0">
+          {cocktailFrames.map((src, i) => (
+            <Image
+              key={src}
+              src={src}
+              alt=""
+              fill
+              className={`object-contain transition-opacity duration-100 ${i === frameIndex ? "opacity-100" : "opacity-0"}`}
+              sizes="100vw"
+              priority={i < 3}
+            />
+          ))}
+        </div>
+
+        {/* Overlay gradient for text */}
+        <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-black/30 z-[1]" />
+
+        {/* Text overlays */}
+        <div className="relative z-10 text-center px-6">
+          <motion.h2
+            className="font-extralight tracking-[-0.04em] text-white leading-[0.95]"
+            style={{
+              fontSize: "clamp(3rem, 10vw, 88px)",
+              opacity: headingOpacity,
+              filter: useTransform(headingBlur, (v) => `blur(${v}px)`),
+            }}
+          >
+            動くサイト。
+          </motion.h2>
+          <motion.p
+            className="font-extralight tracking-[-0.04em] text-white leading-[0.95]"
+            style={{
+              fontSize: "clamp(1.2rem, 3vw, 1.8rem)",
+              opacity: subOpacity,
+              filter: useTransform(subBlur, (v) => `blur(${v}px)`),
+            }}
+          >
+            この体験を、月9,800円で。
+          </motion.p>
+        </div>
+      </div>
+    </section>
+  );
+}
+
 /* ═══════════════════ PROBLEM ═══════════════════ */
 function Problem() {
   return (
@@ -744,6 +819,7 @@ export default function TsukigakuPage() {
     <main className="bg-black">
       <Nav />
       <Hero />
+      <Cocktail360 />
       <Problem />
       <MockupReveal />
       <IndustryShowcase />
