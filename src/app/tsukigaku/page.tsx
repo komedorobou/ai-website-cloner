@@ -851,8 +851,6 @@ export default function TsukigakuPage() {
       <Nav />
       <Hero />
       <Cocktail360 />
-      <Problem />
-      <MockupReveal />
       <IndustryShowcase />
       <BeforeAfter />
       <Philosophy />
