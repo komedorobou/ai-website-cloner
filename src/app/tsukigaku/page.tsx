@@ -407,51 +407,30 @@ function IndustryShowcase() {
 const companyCards = [
   {
     label: "A社",
-    type: "ハイエンド制作会社",
-    tech: "オリジナル開発",
-    initial: "500万円〜",
-    monthly: "10万円〜/月",
-    animation: true,
-    design: "完全オーダーメイド 高品質",
-    period: "制作期間 2〜3ヶ月",
-    accent: "text-white/60",
+    headline: "最高のクオリティ。\n最高の価格。",
+    price: "初期 500万円〜 / 月額 10万円〜",
+    specs: ["完全オーダーメイド", "アニメーション対応", "制作期間 2〜3ヶ月"],
+    accent: "text-white/50",
     gradient: "from-[#111] to-[#000]",
+    winner: false,
   },
   {
     label: "B社",
-    type: "サブスク型制作",
-    tech: "WordPressテンプレ",
-    initial: "0〜5,000円",
-    monthly: "9,800円/月",
-    animation: false,
-    design: "オリジナル風テンプレート",
-    period: "制作期間 1〜2週間",
-    accent: "text-orange-400",
+    headline: "安い。\nでも、テンプレート。",
+    price: "初期 0円 / 月額 9,800円",
+    specs: ["WordPressテンプレ", "アニメーション ✗", "制作期間 1〜2週間"],
+    accent: "text-orange-400/70",
     gradient: "from-[#1a120a] to-[#000]",
-  },
-  {
-    label: "C社",
-    type: "ノーコードツール",
-    tech: "Wix / STUDIO",
-    initial: "0円",
-    monthly: "980〜4,980円/月",
-    animation: false,
-    design: "テンプレート選択式",
-    period: "自分で作る",
-    accent: "text-yellow-400",
-    gradient: "from-[#1a1a0a] to-[#000]",
+    winner: false,
   },
   {
     label: "ツキガクサイト",
-    type: "AI × プロ制作",
-    tech: "Next.js 16 / React 19 / GSAP",
-    initial: "0円",
-    monthly: "9,800円/月",
-    animation: true,
-    design: "完全オーダーメイド Apple級",
-    period: "最短1週間",
+    headline: "A社の品質を。\nB社の価格で。",
+    price: "初期 0円 / 月額 9,800円",
+    specs: ["完全オーダーメイド Apple級", "アニメーション標準搭載 ✓", "最短1週間"],
     accent: "text-blue-400",
     gradient: "from-[#0a0a1a] to-[#000]",
+    winner: true,
   },
 ];
 
@@ -470,59 +449,43 @@ function ComparisonCard({ card }: { card: typeof companyCards[number] }) {
     return () => observer.disconnect();
   }, []);
 
-  const isWinner = card.label === "ツキガクサイト";
-
   return (
     <div
       ref={cardRef}
-      className={`relative w-[85vw] max-w-[400px] shrink-0 rounded-3xl bg-gradient-to-b ${card.gradient} overflow-hidden ${isWinner ? "border-2 border-blue-500/30 shadow-[0_0_40px_-10px_rgba(59,130,246,0.2)]" : "border border-white/[0.08]"}`}
+      className={`relative w-[85vw] max-w-[400px] shrink-0 rounded-3xl bg-gradient-to-b ${card.gradient} overflow-hidden ${card.winner ? "border-2 border-blue-500/30 shadow-[0_0_60px_-10px_rgba(59,130,246,0.25)]" : "border border-white/[0.08]"}`}
       style={{ scrollSnapAlign: "center" }}
     >
-      {/* Placeholder for future image */}
-      <div className={`w-full aspect-[16/10] ${isWinner ? "bg-blue-500/5" : "bg-white/[0.02]"} flex items-center justify-center`}>
+      {/* Image placeholder */}
+      <div className={`w-full aspect-[3/2] ${card.winner ? "bg-blue-500/5" : "bg-white/[0.02]"} flex items-center justify-center`}>
         <span className="text-white/10 text-[13px]">IMAGE</span>
       </div>
 
       {/* Content */}
-      <div className="p-7 md:p-8">
-        {/* Label + type */}
-        <div className="mb-5">
-          <p className={`${card.accent} text-[11px] font-semibold tracking-[0.15em] uppercase transition-all duration-700 ${isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-3"}`}>
-            {card.label}
-          </p>
-          <h3 className={`text-white font-semibold text-[22px] md:text-[26px] tracking-[-0.03em] leading-tight mt-1 transition-all duration-700 delay-100 ${isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-4"}`}>
-            {card.type}
-          </h3>
-        </div>
+      <div className="p-7 md:p-9">
+        <p className={`${card.accent} text-[11px] font-semibold tracking-[0.15em] uppercase mb-4 transition-all duration-700 ${isVisible ? "opacity-100" : "opacity-0"}`}>
+          {card.label}
+        </p>
 
-        {/* Specs */}
-        <div className={`space-y-3 transition-all duration-700 delay-200 ${isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-4"}`}>
-          <div className="flex justify-between items-center py-2 border-b border-white/[0.06]">
-            <span className="text-white/30 text-[12px]">技術</span>
-            <span className="text-white/70 text-[13px] font-medium">{card.tech}</span>
-          </div>
-          <div className="flex justify-between items-center py-2 border-b border-white/[0.06]">
-            <span className="text-white/30 text-[12px]">初期費用</span>
-            <span className={`text-[13px] font-medium ${isWinner ? "text-blue-400" : "text-white/70"}`}>{card.initial}</span>
-          </div>
-          <div className="flex justify-between items-center py-2 border-b border-white/[0.06]">
-            <span className="text-white/30 text-[12px]">月額</span>
-            <span className="text-white/70 text-[13px] font-medium">{card.monthly}</span>
-          </div>
-          <div className="flex justify-between items-center py-2 border-b border-white/[0.06]">
-            <span className="text-white/30 text-[12px]">デザイン</span>
-            <span className={`text-[13px] font-medium ${isWinner ? "text-blue-400" : "text-white/70"}`}>{card.design}</span>
-          </div>
-          <div className="flex justify-between items-center py-2 border-b border-white/[0.06]">
-            <span className="text-white/30 text-[12px]">アニメーション</span>
-            <span className={`text-[14px] font-bold ${card.animation ? "text-green-400" : "text-red-400/60"}`}>
-              {card.animation ? "✓ 標準搭載" : "✗"}
-            </span>
-          </div>
-          <div className="flex justify-between items-center py-2">
-            <span className="text-white/30 text-[12px]">納期</span>
-            <span className="text-white/70 text-[13px] font-medium">{card.period}</span>
-          </div>
+        {/* Big headline */}
+        <h3
+          className={`text-white font-semibold tracking-[-0.03em] leading-tight whitespace-pre-line transition-all duration-700 delay-100 ${isVisible ? "opacity-100 translate-y-0 blur-0" : "opacity-0 translate-y-6 blur-sm"}`}
+          style={{ fontSize: "clamp(1.6rem, 5vw, 2rem)" }}
+        >
+          {card.headline}
+        </h3>
+
+        {/* Price */}
+        <p className={`mt-5 text-[14px] font-medium transition-all duration-700 delay-200 ${card.winner ? "text-blue-400" : "text-white/50"} ${isVisible ? "opacity-100" : "opacity-0"}`}>
+          {card.price}
+        </p>
+
+        {/* Specs as simple list */}
+        <div className={`mt-5 space-y-2 transition-all duration-700 delay-300 ${isVisible ? "opacity-100" : "opacity-0"}`}>
+          {card.specs.map((spec) => (
+            <p key={spec} className="text-white/35 text-[13px] font-light">
+              {spec}
+            </p>
+          ))}
         </div>
       </div>
     </div>
