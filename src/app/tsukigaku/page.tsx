@@ -894,7 +894,7 @@ function Flow() {
 
         <div className="mt-16 space-y-0">
           {flowSteps.map((step, i) => (
-            <ScrollReveal key={step.num} delay={i * 0.08}>
+            <div key={step.num}>
               <div className="flex gap-6 md:gap-10">
                 {/* Left: number + line */}
                 <div className="flex flex-col items-center">
@@ -911,7 +911,7 @@ function Flow() {
                   <p className="text-white/45 text-[14px] md:text-[15px] font-light leading-relaxed mt-2">{step.desc}</p>
                 </div>
               </div>
-            </ScrollReveal>
+            </div>
           ))}
         </div>
       </div>
