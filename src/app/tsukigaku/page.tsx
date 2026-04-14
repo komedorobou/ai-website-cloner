@@ -746,32 +746,58 @@ function Pricing() {
               <div className="mt-10">
                 <p className="text-[11px] font-semibold tracking-[0.2em] uppercase text-blue-400 mb-4">長く使うほど安くなる</p>
                 <p className="text-white/50 text-[13px] font-light mb-6">修正依頼がない年ごとに10%ずつ割引。最大60%OFF。</p>
-                <div className="grid grid-cols-6 gap-2">
-                  {[
-                    { y: "2年目", price: "8,820", pct: 10, h: "90%" },
-                    { y: "3年目", price: "7,840", pct: 20, h: "80%" },
-                    { y: "4年目", price: "6,860", pct: 30, h: "70%" },
-                    { y: "5年目", price: "5,880", pct: 40, h: "60%" },
-                    { y: "6年目", price: "4,900", pct: 50, h: "50%" },
-                    { y: "7年目〜", price: "3,920", pct: 60, h: "40%" },
-                  ].map((d) => (
-                    <button
-                      key={d.y}
-                      className="group flex flex-col items-center gap-2 cursor-pointer"
-                      onClick={(e) => e.preventDefault()}
-                    >
-                      <span className={`text-[12px] md:text-[13px] font-bold transition-colors group-hover:text-blue-400 group-active:text-blue-300 ${d.pct === 60 ? "text-blue-400" : "text-white/40"}`}>-{d.pct}%</span>
-                      <div className="w-full h-[120px] md:h-[140px] relative rounded-lg overflow-hidden bg-white/[0.03] transition-all group-hover:bg-white/[0.06] group-active:bg-white/[0.08]">
-                        <div
-                          className={`absolute top-0 w-full rounded-lg transition-all duration-300 group-hover:brightness-150 group-active:brightness-200 ${d.pct === 60 ? "bg-blue-500/50 shadow-[0_0_20px_rgba(59,130,246,0.3)]" : "bg-blue-500/20"}`}
-                          style={{ height: d.h }}
-                        />
-                        <div className="absolute inset-0 opacity-0 group-hover:opacity-100 group-active:opacity-100 transition-opacity duration-200 bg-blue-400/5 shadow-[inset_0_0_30px_rgba(59,130,246,0.15)]" />
-                      </div>
-                      <span className={`text-[12px] md:text-[14px] font-semibold transition-colors group-hover:text-white group-active:text-blue-300 ${d.pct === 60 ? "text-white" : "text-white/50"}`}>¥{d.price}</span>
-                      <span className={`text-[10px] md:text-[11px] transition-colors group-hover:text-white/60 ${d.pct === 60 ? "text-white/50" : "text-white/30"}`}>{d.y}</span>
-                    </button>
-                  ))}
+                {/* Line chart */}
+                <div className="relative mt-2">
+                  <svg viewBox="0 0 400 180" className="w-full h-auto" fill="none">
+                    {/* Grid lines */}
+                    {[0, 1, 2, 3, 4].map((i) => (
+                      <line key={i} x1="50" y1={20 + i * 30} x2="380" y2={20 + i * 30} stroke="white" strokeOpacity="0.05" />
+                    ))}
+                    {/* Y-axis labels */}
+                    <text x="44" y="24" textAnchor="end" fill="white" fillOpacity="0.3" fontSize="10">¥9,800</text>
+                    <text x="44" y="54" textAnchor="end" fill="white" fillOpacity="0.3" fontSize="10">¥8,000</text>
+                    <text x="44" y="84" textAnchor="end" fill="white" fillOpacity="0.3" fontSize="10">¥6,000</text>
+                    <text x="44" y="114" textAnchor="end" fill="white" fillOpacity="0.3" fontSize="10">¥4,000</text>
+                    {/* Line — points calculated: 9800→8820→7840→6860→5880→4900→3920 mapped to y 20→140 (9800=20, 3920=140) */}
+                    <polyline
+                      points="60,20 113,36 166,52 220,68 273,85 326,101 380,120"
+                      stroke="#3b82f6"
+                      strokeWidth="2.5"
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                    />
+                    {/* Gradient fill under line */}
+                    <defs>
+                      <linearGradient id="lineGrad" x1="0" y1="0" x2="0" y2="1">
+                        <stop offset="0%" stopColor="#3b82f6" stopOpacity="0.2" />
+                        <stop offset="100%" stopColor="#3b82f6" stopOpacity="0" />
+                      </linearGradient>
+                    </defs>
+                    <polygon
+                      points="60,20 113,36 166,52 220,68 273,85 326,101 380,120 380,140 60,140"
+                      fill="url(#lineGrad)"
+                    />
+                    {/* Dots */}
+                    {[
+                      { x: 60, y: 20 }, { x: 113, y: 36 }, { x: 166, y: 52 },
+                      { x: 220, y: 68 }, { x: 273, y: 85 }, { x: 326, y: 101 }, { x: 380, y: 120 },
+                    ].map((p, i) => (
+                      <circle key={i} cx={p.x} cy={p.y} r="4" fill="#3b82f6" stroke="#000" strokeWidth="2" />
+                    ))}
+                    {/* X-axis labels */}
+                    {["1年目", "2年目", "3年目", "4年目", "5年目", "6年目", "7年目〜"].map((label, i) => (
+                      <text key={label} x={60 + i * 53.3} y="158" textAnchor="middle" fill="white" fillOpacity="0.35" fontSize="10">{label}</text>
+                    ))}
+                    {/* Price labels on dots */}
+                    {[
+                      { x: 60, y: 14, t: "¥9,800" }, { x: 113, y: 30, t: "¥8,820" }, { x: 166, y: 46, t: "¥7,840" },
+                      { x: 220, y: 62, t: "¥6,860" }, { x: 273, y: 79, t: "¥5,880" }, { x: 326, y: 95, t: "¥4,900" }, { x: 380, y: 114, t: "¥3,920" },
+                    ].map((p) => (
+                      <text key={p.t} x={p.x} y={p.y} textAnchor="middle" fill="white" fillOpacity="0.6" fontSize="9" fontWeight="500">{p.t}</text>
+                    ))}
+                    {/* Downward arrow at the end */}
+                    <path d="M385,105 L385,130 M380,125 L385,132 L390,125" stroke="#3b82f6" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+                  </svg>
                 </div>
                 <p className="text-[11px] text-white/20 mt-5 text-center">※修正依頼があった年はリセットされます</p>
               </div>
