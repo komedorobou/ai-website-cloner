@@ -93,7 +93,7 @@ function Hero() {
               filter: phase !== "loading" ? "blur(0px)" : "blur(30px)",
             }}
           >
-            HP制作費、<br />0円の時代。
+            このサイト、<br />月9,800円で作れます。
           </h1>
         </motion.div>
 
@@ -110,7 +110,7 @@ function Hero() {
             className="font-light tracking-[-0.04em] text-white leading-[0.95] text-center px-6"
             style={{ fontSize: "clamp(3.5rem, 12vw, 96px)" }}
           >
-            月9,800円で全部やる
+            あなたのお店でも。
           </h2>
         </motion.div>
 
