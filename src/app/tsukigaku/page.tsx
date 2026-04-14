@@ -772,7 +772,6 @@ function Pricing() {
         </ScrollReveal>
 
         {/* Discount line chart — full width, big */}
-        <ScrollReveal delay={0.3}>
           <div className="max-w-[800px] mx-auto mt-20 md:mt-28 px-4">
             <h3
               className="font-light tracking-[-0.03em] text-white text-center leading-[1.1] mb-4"
@@ -831,7 +830,6 @@ function Pricing() {
             </svg>
             <p className="text-[12px] text-white/20 mt-6 text-center">※修正依頼があった年はリセットされます</p>
           </div>
-        </ScrollReveal>
       </div>
     </section>
   );
