@@ -1120,6 +1120,42 @@ function TechStack() {
   );
 }
 
+/* ═══════════════════ TECH CHALLENGE ═══════════════════ */
+function TechChallenge() {
+  return (
+    <section className="py-[120px] md:py-[180px] px-6 bg-[#fafafa]">
+      <div className="max-w-[800px] mx-auto text-center">
+        <ScrollReveal>
+          <h2
+            className="font-medium tracking-[-0.03em] text-[#1d1d1f] leading-[1.1]"
+            style={{ fontSize: "clamp(2rem, 5vw, 48px)" }}
+          >
+            他社のサイト、<br />
+            「使用技術」を見てみてください。
+          </h2>
+        </ScrollReveal>
+        <ScrollReveal delay={0.15}>
+          <p className="text-[#86868b] text-[clamp(1rem,1.8vw,1.2rem)] mt-8 font-light leading-relaxed max-w-[600px] mx-auto">
+            書いてないはずです。
+          </p>
+        </ScrollReveal>
+        <ScrollReveal delay={0.25}>
+          <p className="text-[#86868b] text-[clamp(0.95rem,1.6vw,1.1rem)] mt-6 font-light leading-relaxed max-w-[600px] mx-auto">
+            書けないんです。WordPressかWixだから。
+          </p>
+        </ScrollReveal>
+        <ScrollReveal delay={0.35}>
+          <p className="text-[#1d1d1f] text-[clamp(1.1rem,2vw,1.3rem)] mt-12 font-medium leading-relaxed max-w-[600px] mx-auto">
+            ツキガクサイトは、使っている技術を<br className="hidden md:block" />
+            堂々と公開しています。<br />
+            同じ月額9,800円。中身が違います。
+          </p>
+        </ScrollReveal>
+      </div>
+    </section>
+  );
+}
+
 /* ═══════════════════ CTA FINAL ═══════════════════ */
 function CTAFinal() {
   return (
@@ -1175,6 +1211,7 @@ export default function TsukigakuPage() {
       <BeforeAfter />
       <Philosophy />
       <TechStack />
+      <TechChallenge />
       <Pricing />
       <FAQ />
       <CTAFinal />
