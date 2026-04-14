@@ -246,20 +246,27 @@ function Cocktail360() {
           className="absolute inset-0 w-full h-full"
         />
         <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-black/30 z-[1]" />
-        <div className="relative z-10 text-center px-6">
+        {/* Heading — center */}
+        <div className="absolute inset-0 z-10 flex items-center justify-center px-6">
           <motion.h2
-            className="font-light tracking-[-0.04em] text-white leading-[0.95]"
+            className="font-light tracking-[-0.04em] text-white leading-[0.95] text-center"
             style={{ fontSize: "clamp(3rem, 10vw, 88px)", opacity: headingOpacity, filter: headingFilter, textShadow: "0 2px 20px rgba(0,0,0,0.8), 0 4px 40px rgba(0,0,0,0.6)" }}
           >
             3秒、目が離せなかったでしょ？
           </motion.h2>
-          <motion.p
+        </div>
+        {/* Sub — bottom area */}
+        <motion.div
+          className="absolute inset-x-0 bottom-[15%] z-10 px-6 text-center"
+          style={{ opacity: subOpacity, filter: subFilter }}
+        >
+          <p
             className="font-light tracking-[-0.04em] text-white leading-[1.1]"
-            style={{ fontSize: "clamp(1.8rem, 5vw, 3rem)", opacity: subOpacity, filter: subFilter, textShadow: "0 2px 20px rgba(0,0,0,0.8), 0 4px 40px rgba(0,0,0,0.6)" }}
+            style={{ fontSize: "clamp(1.8rem, 5vw, 3rem)", textShadow: "0 2px 20px rgba(0,0,0,0.8), 0 4px 40px rgba(0,0,0,0.6)" }}
           >
             あなたのお客様も同じ。<br />この動き、月額に全部込み。
-          </motion.p>
-        </div>
+          </p>
+        </motion.div>
       </div>
     </section>
   );
