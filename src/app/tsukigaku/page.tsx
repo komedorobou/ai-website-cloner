@@ -1062,9 +1062,21 @@ function TechStack() {
         ))}
         <div className="shrink-0 w-[8vw]" />
       </div>
-      <div className="hidden md:grid grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-5 max-w-[1200px] mx-auto px-8">
-        {techCards.map((tech) => (
-          <TechCard key={tech.name} tech={tech} />
+      {/* PC: zigzag layout — image left/text right, then swap */}
+      <div className="hidden md:flex flex-col gap-20 max-w-[1000px] mx-auto px-8">
+        {techCards.map((tech, i) => (
+          <ScrollReveal key={tech.name}>
+            <div className={`flex items-center gap-12 ${i % 2 === 1 ? "flex-row-reverse" : ""}`}>
+              <div className="relative w-[280px] h-[280px] shrink-0 rounded-2xl overflow-hidden">
+                <Image src={tech.image} alt={tech.name} fill className="object-cover" sizes="280px" />
+              </div>
+              <div className="flex-1">
+                <p className={`${tech.accent} text-[11px] font-semibold tracking-[0.15em] uppercase mb-2`}>{tech.name}</p>
+                <h3 className="text-white font-medium text-[28px] tracking-[-0.02em] leading-tight mb-4">{tech.headline}</h3>
+                <p className="text-white/40 text-[15px] font-light leading-[1.7]">{tech.desc}</p>
+              </div>
+            </div>
+          </ScrollReveal>
         ))}
       </div>
       <style>{`div::-webkit-scrollbar { display: none; }`}</style>
