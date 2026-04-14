@@ -467,7 +467,7 @@ function ComparisonCard({ card }: { card: typeof companyCards[number] }) {
   return (
     <div
       ref={cardRef}
-      className={`relative w-[85vw] max-w-[400px] shrink-0 rounded-3xl bg-gradient-to-b ${card.gradient} overflow-hidden ${card.winner ? "border-2 border-blue-500/30 shadow-[0_0_60px_-10px_rgba(59,130,246,0.25)]" : "border border-white/[0.08]"}`}
+      className={`relative w-[85vw] md:w-full max-w-[400px] shrink-0 md:shrink md:flex-1 rounded-3xl bg-gradient-to-b ${card.gradient} overflow-hidden ${card.winner ? "border-2 border-blue-500/30 shadow-[0_0_60px_-10px_rgba(59,130,246,0.25)]" : "border border-white/[0.08]"}`}
       style={{ scrollSnapAlign: "center" }}
     >
       {/* Image */}
@@ -540,9 +540,9 @@ function Comparison() {
         </ScrollReveal>
       </div>
 
-      {/* Apple-style CSS scroll-snap carousel */}
+      {/* Mobile: horizontal scroll / PC: flex row */}
       <div
-        className="flex gap-4 overflow-x-scroll px-[8vw] pb-6"
+        className="flex gap-4 overflow-x-scroll px-[8vw] pb-6 md:hidden"
         style={{
           scrollSnapType: "x mandatory",
           WebkitOverflowScrolling: "touch",
@@ -554,6 +554,11 @@ function Comparison() {
           <ComparisonCard key={card.label} card={card} />
         ))}
         <div className="shrink-0 w-[8vw]" />
+      </div>
+      <div className="hidden md:flex gap-6 justify-center max-w-[1200px] mx-auto px-8">
+        {companyCards.map((card) => (
+          <ComparisonCard key={card.label} card={card} />
+        ))}
       </div>
       <style>{`div::-webkit-scrollbar { display: none; }`}</style>
     </section>
@@ -971,7 +976,7 @@ function TechCard({ tech }: { tech: typeof techCards[number] }) {
   return (
     <div
       ref={cardRef}
-      className={`relative w-[78vw] max-w-[380px] shrink-0 rounded-3xl bg-gradient-to-b ${tech.gradient} border border-white/[0.08] overflow-hidden`}
+      className={`relative w-[78vw] md:w-full max-w-[380px] md:max-w-none shrink-0 md:shrink rounded-3xl bg-gradient-to-b ${tech.gradient} border border-white/[0.08] overflow-hidden`}
       style={{ scrollSnapAlign: "center" }}
     >
       {/* Image */}
@@ -1042,9 +1047,9 @@ function TechStack() {
         </ScrollReveal>
       </div>
 
-      {/* Apple-style CSS scroll-snap carousel */}
+      {/* Mobile: horizontal scroll carousel / PC: grid */}
       <div
-        className="flex gap-4 overflow-x-scroll px-[8vw] pb-6"
+        className="flex gap-4 overflow-x-scroll px-[8vw] pb-6 md:hidden"
         style={{
           scrollSnapType: "x mandatory",
           WebkitOverflowScrolling: "touch",
@@ -1055,13 +1060,14 @@ function TechStack() {
         {techCards.map((tech) => (
           <TechCard key={tech.name} tech={tech} />
         ))}
-        {/* End spacer */}
         <div className="shrink-0 w-[8vw]" />
       </div>
-      {/* Hide scrollbar globally via style tag */}
-      <style>{`
-        div::-webkit-scrollbar { display: none; }
-      `}</style>
+      <div className="hidden md:grid grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-5 max-w-[1200px] mx-auto px-8">
+        {techCards.map((tech) => (
+          <TechCard key={tech.name} tech={tech} />
+        ))}
+      </div>
+      <style>{`div::-webkit-scrollbar { display: none; }`}</style>
     </section>
   );
 }
