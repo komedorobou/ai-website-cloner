@@ -249,13 +249,13 @@ function Cocktail360() {
         <div className="relative z-10 text-center px-6">
           <motion.h2
             className="font-light tracking-[-0.04em] text-white leading-[0.95]"
-            style={{ fontSize: "clamp(3rem, 10vw, 88px)", opacity: headingOpacity, filter: headingFilter }}
+            style={{ fontSize: "clamp(3rem, 10vw, 88px)", opacity: headingOpacity, filter: headingFilter, textShadow: "0 2px 20px rgba(0,0,0,0.8), 0 4px 40px rgba(0,0,0,0.6)" }}
           >
             3秒、目が離せなかったでしょ？
           </motion.h2>
           <motion.p
             className="font-light tracking-[-0.04em] text-white leading-[1.1]"
-            style={{ fontSize: "clamp(1.8rem, 5vw, 3rem)", opacity: subOpacity, filter: subFilter }}
+            style={{ fontSize: "clamp(1.8rem, 5vw, 3rem)", opacity: subOpacity, filter: subFilter, textShadow: "0 2px 20px rgba(0,0,0,0.8), 0 4px 40px rgba(0,0,0,0.6)" }}
           >
             あなたのお客様も同じ。この動き、月額に全部込み。
           </motion.p>
