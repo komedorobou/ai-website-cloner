@@ -231,11 +231,11 @@ function Cocktail360() {
   }, [loaded, scrollYProgress]);
 
   // Text animations tied to scroll — heading appears after some rotation
-  const headingOpacity = useTransform(scrollYProgress, [0.25, 0.35, 0.55, 0.65], [0, 1, 1, 0]);
+  const headingOpacity = useTransform(scrollYProgress, [0.25, 0.35, 0.50, 0.58], [0, 1, 1, 0]);
   const headingBlur = useTransform(scrollYProgress, [0.25, 0.35], [20, 0]);
   const headingFilter = useTransform(headingBlur, (v) => `blur(${v}px)`);
-  const subOpacity = useTransform(scrollYProgress, [0.65, 0.75, 0.88, 0.95], [0, 1, 1, 0]);
-  const subBlur = useTransform(scrollYProgress, [0.65, 0.75], [20, 0]);
+  const subOpacity = useTransform(scrollYProgress, [0.56, 0.64, 0.82, 0.92], [0, 1, 1, 0]);
+  const subBlur = useTransform(scrollYProgress, [0.56, 0.64], [20, 0]);
   const subFilter = useTransform(subBlur, (v) => `blur(${v}px)`);
 
   return (
