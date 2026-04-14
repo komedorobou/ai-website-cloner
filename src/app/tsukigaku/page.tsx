@@ -1197,63 +1197,57 @@ function TechStack() {
 /* ═══════════════════ TECH CHALLENGE ═══════════════════ */
 function TechChallenge() {
   return (
-    <section className="py-[120px] md:py-[180px] px-6 bg-black">
-      <div className="max-w-[1100px] mx-auto">
+    <section className="relative py-[160px] md:py-[220px] px-6 overflow-hidden">
+      {/* Particle video background */}
+      <video
+        className="absolute inset-0 w-full h-full object-cover"
+        autoPlay muted loop playsInline
+      >
+        <source src="/videos/particles.mp4" type="video/mp4" />
+      </video>
+      <div className="absolute inset-0 bg-black/40" />
+
+      <div className="relative z-10 max-w-[900px] mx-auto text-center">
         <ScrollReveal>
           <h2
-            className="font-medium tracking-[-0.03em] text-white leading-[1.1] text-center mb-20"
-            style={{ fontSize: "clamp(2rem, 5vw, 48px)" }}
+            className="font-medium tracking-[-0.03em] text-white leading-[1.1]"
+            style={{ fontSize: "clamp(2.2rem, 6vw, 56px)" }}
           >
             他のHP業者に聞いてみてください。<br />
             「何の技術で作ってますか？」と。
           </h2>
         </ScrollReveal>
-
-        {/* Row 1: image left, text right — テンプレ側 */}
-        <ScrollReveal>
-          <div className="flex flex-col md:flex-row items-center gap-10 md:gap-14 mb-20">
-            <div className="relative w-full md:w-1/2 aspect-square rounded-2xl overflow-hidden">
-              <Image src="/images/tsukigaku/template-site.png" alt="テンプレートサイトの例" fill className="object-cover opacity-60 saturate-[0.3]" sizes="(max-width:768px) 100vw, 550px" />
-            </div>
-            <div className="w-full md:w-1/2">
-              <p
-                className="text-white font-medium leading-[1.3]"
-                style={{ fontSize: "clamp(1.5rem, 4vw, 2.2rem)" }}
-              >
-                答えられないはずです。
-              </p>
-              <p
-                className="text-white/50 mt-4 font-light leading-relaxed"
-                style={{ fontSize: "clamp(1.1rem, 2.5vw, 1.4rem)" }}
-              >
-                テンプレートを貼り替えてるだけだから。<br />
-                どこのお店も同じ見た目。同じ動き。同じ速度。
-              </p>
-            </div>
-          </div>
+        <ScrollReveal delay={0.15}>
+          <p
+            className="text-white mt-16 font-medium leading-relaxed"
+            style={{ fontSize: "clamp(1.5rem, 4vw, 2.5rem)" }}
+          >
+            答えられないはずです。
+          </p>
         </ScrollReveal>
-
-        {/* Row 2: text left, image right — ツキガク側 */}
-        <ScrollReveal>
-          <div className="flex flex-col md:flex-row-reverse items-center gap-10 md:gap-14">
-            <div className="relative w-full md:w-1/2 aspect-square rounded-2xl overflow-hidden">
-              <Image src="/images/tsukigaku/premium-site.png" alt="ツキガクサイトの品質" fill className="object-cover" sizes="(max-width:768px) 100vw, 550px" />
-            </div>
-            <div className="w-full md:w-1/2">
-              <p
-                className="text-white font-medium leading-[1.3]"
-                style={{ fontSize: "clamp(1.5rem, 4vw, 2.2rem)" }}
-              >
-                ツキガクサイトは、使っている技術を<br className="hidden md:block" />
-                堂々と公開しています。
-              </p>
-              <p
-                className="text-white font-bold mt-6 leading-[1.3]"
-                style={{ fontSize: "clamp(1.3rem, 3.5vw, 2rem)" }}
-              >
-                同じ月額9,800円。中身が違います。
-              </p>
-            </div>
+        <ScrollReveal delay={0.25}>
+          <p
+            className="text-white/60 mt-6 font-light leading-relaxed"
+            style={{ fontSize: "clamp(1.2rem, 3vw, 1.8rem)" }}
+          >
+            テンプレートを貼り替えてるだけだから。
+          </p>
+        </ScrollReveal>
+        <ScrollReveal delay={0.35}>
+          <div className="mt-20 pt-16 border-t border-white/10">
+            <p
+              className="text-white/80 font-medium leading-[1.4]"
+              style={{ fontSize: "clamp(1.2rem, 3vw, 1.6rem)" }}
+            >
+              ツキガクサイトは、使っている技術を<br className="hidden md:block" />
+              堂々と公開しています。
+            </p>
+            <p
+              className="text-white mt-4 font-bold leading-[1.4]"
+              style={{ fontSize: "clamp(1.4rem, 3.5vw, 2rem)" }}
+            >
+              同じ月額9,800円。中身が違います。
+            </p>
           </div>
         </ScrollReveal>
       </div>
