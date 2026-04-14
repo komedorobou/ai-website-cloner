@@ -1021,6 +1021,72 @@ function TechCard({ tech }: { tech: typeof techCards[number] }) {
   );
 }
 
+function TechCarousel() {
+  const scrollRef = useRef<HTMLDivElement>(null);
+
+  const scroll = (dir: "left" | "right") => {
+    const el = scrollRef.current;
+    if (!el) return;
+    const cardWidth = el.querySelector("div")?.offsetWidth ?? 500;
+    el.scrollBy({ left: dir === "left" ? -cardWidth - 20 : cardWidth + 20, behavior: "smooth" });
+  };
+
+  return (
+    <div className="relative">
+      {/* Arrow buttons — PC only */}
+      <button
+        onClick={() => scroll("left")}
+        className="hidden md:flex absolute left-4 top-1/2 -translate-y-1/2 z-20 w-12 h-12 items-center justify-center rounded-full bg-white/10 hover:bg-white/20 backdrop-blur-sm transition-colors"
+        aria-label="前へ"
+      >
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="white" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><polyline points="15 18 9 12 15 6" /></svg>
+      </button>
+      <button
+        onClick={() => scroll("right")}
+        className="hidden md:flex absolute right-4 top-1/2 -translate-y-1/2 z-20 w-12 h-12 items-center justify-center rounded-full bg-white/10 hover:bg-white/20 backdrop-blur-sm transition-colors"
+        aria-label="次へ"
+      >
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="white" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><polyline points="9 18 15 12 9 6" /></svg>
+      </button>
+
+      <div
+        ref={scrollRef}
+        className="flex gap-5 md:gap-8 overflow-x-scroll px-[8vw] pb-6"
+        style={{
+          scrollSnapType: "x mandatory",
+          WebkitOverflowScrolling: "touch",
+          scrollbarWidth: "none",
+          msOverflowStyle: "none",
+        }}
+      >
+        {techCards.map((tech) => (
+          <div
+            key={tech.name}
+            className={`relative w-[85vw] md:w-[60vw] md:max-w-[700px] shrink-0 rounded-3xl bg-gradient-to-b ${tech.gradient} border border-white/[0.08] overflow-hidden`}
+            style={{ scrollSnapAlign: "center" }}
+          >
+            {/* Big image */}
+            <div className="relative w-full aspect-[4/3] overflow-hidden">
+              <Image src={tech.image} alt={tech.name} fill className="object-cover" sizes="(max-width:768px) 85vw, 700px" />
+              <div className="absolute inset-x-0 bottom-0 h-2/5 bg-gradient-to-t from-black/90 to-transparent" />
+              <div className="absolute bottom-6 left-7 right-7">
+                <p className={`${tech.accent} text-[12px] font-semibold tracking-[0.15em] uppercase mb-1`}>{tech.name}</p>
+                <h3 className="text-white font-medium text-[28px] md:text-[36px] tracking-[-0.02em] leading-tight">{tech.headline}</h3>
+              </div>
+            </div>
+            {/* Description */}
+            <div className="px-7 py-6">
+              <p className="text-white/40 text-[14px] md:text-[16px] font-light leading-[1.7]">{tech.desc}</p>
+            </div>
+          </div>
+        ))}
+        <div className="shrink-0 w-[8vw]" />
+      </div>
+      <style>{`div::-webkit-scrollbar { display: none; }`}</style>
+    </div>
+  );
+}
+
 function TechStack() {
   return (
     <section className="relative py-[120px] md:py-[180px] overflow-hidden bg-black">
@@ -1047,38 +1113,8 @@ function TechStack() {
         </ScrollReveal>
       </div>
 
-      {/* Mobile: horizontal scroll carousel / PC: grid */}
-      <div
-        className="flex gap-4 overflow-x-scroll px-[8vw] pb-6 md:hidden"
-        style={{
-          scrollSnapType: "x mandatory",
-          WebkitOverflowScrolling: "touch",
-          scrollbarWidth: "none",
-          msOverflowStyle: "none",
-        }}
-      >
-        {techCards.map((tech) => (
-          <TechCard key={tech.name} tech={tech} />
-        ))}
-        <div className="shrink-0 w-[8vw]" />
-      </div>
-      {/* PC: zigzag layout — image left/text right, then swap */}
-      <div className="hidden md:flex flex-col gap-28 max-w-[1200px] mx-auto px-8">
-        {techCards.map((tech, i) => (
-          <ScrollReveal key={tech.name}>
-            <div className={`flex items-center gap-14 ${i % 2 === 1 ? "flex-row-reverse" : ""}`}>
-              <div className="relative w-[420px] h-[420px] shrink-0 rounded-3xl overflow-hidden">
-                <Image src={tech.image} alt={tech.name} fill className="object-cover" sizes="420px" />
-              </div>
-              <div className="flex-1">
-                <p className={`${tech.accent} text-[12px] font-semibold tracking-[0.15em] uppercase mb-3`}>{tech.name}</p>
-                <h3 className="text-white font-medium text-[36px] tracking-[-0.02em] leading-tight mb-5">{tech.headline}</h3>
-                <p className="text-white/45 text-[17px] font-light leading-[1.8]">{tech.desc}</p>
-              </div>
-            </div>
-          </ScrollReveal>
-        ))}
-      </div>
+      {/* Carousel with arrow nav for PC */}
+      <TechCarousel />
       <style>{`div::-webkit-scrollbar { display: none; }`}</style>
     </section>
   );
