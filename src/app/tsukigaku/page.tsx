@@ -861,31 +861,31 @@ const flowSteps = [
     num: "01",
     title: "お問い合わせ",
     desc: "フォームまたはメールでご連絡ください。30分の無料相談で、ご要望やイメージをお伺いします。",
-    image: "/images/tsukigaku/flow-01-contact.png",
+    image: "/images/tsukigaku/flow-01-contact.jpg",
   },
   {
     num: "02",
     title: "ヒアリング",
     desc: "業種・ターゲット・掲載内容を詳しくお聞きします。写真やテキストなどの素材もこの段階でご準備いただきます。",
-    image: "/images/tsukigaku/flow-02-hearing.png",
+    image: "/images/tsukigaku/flow-02-hearing.jpg",
   },
   {
     num: "03",
     title: "制作開始",
     desc: "ヒアリング内容をもとに制作を開始。最短1週間で初稿をお見せします。",
-    image: "/images/tsukigaku/flow-03-build.png",
+    image: "/images/tsukigaku/flow-03-build.jpg",
   },
   {
     num: "04",
     title: "確認・修正",
     desc: "仮サイトでご確認いただき、フィードバックをもとに修正。ご納得いくまで調整します。",
-    image: "/images/tsukigaku/flow-04-review.png",
+    image: "/images/tsukigaku/flow-04-review.jpg",
   },
   {
     num: "05",
     title: "公開・運用開始",
     desc: "本番公開。公開後も月2回まで修正対応込み。サイトを常に最新の状態に保ちます。",
-    image: "/images/tsukigaku/flow-05-launch.png",
+    image: "/images/tsukigaku/flow-05-launch.jpg",
   },
 ];
 
