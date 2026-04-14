@@ -1340,7 +1340,7 @@ export default function TsukigakuPage() {
       <Cocktail360 />
       <IndustryShowcase />
       <Comparison />
-      <BeforeAfter />
+      {/* BeforeAfter removed */}
       <Philosophy />
       <TechStack />
       <TechChallenge />
