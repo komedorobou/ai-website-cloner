@@ -743,32 +743,37 @@ function Pricing() {
                   </li>
                 ))}
               </ul>
-              <div className="mt-8">
+              <div className="mt-10">
                 <p className="text-[11px] font-semibold tracking-[0.2em] uppercase text-blue-400 mb-4">長く使うほど安くなる</p>
-                <p className="text-white/50 text-[13px] font-light mb-5">修正依頼がない年ごとに10%ずつ割引。最大60%OFF。</p>
-                <div className="grid grid-cols-6 gap-1.5">
+                <p className="text-white/50 text-[13px] font-light mb-6">修正依頼がない年ごとに10%ずつ割引。最大60%OFF。</p>
+                <div className="grid grid-cols-6 gap-2">
                   {[
-                    { y: "2年", price: "8,820", pct: 10, h: "30%" },
-                    { y: "3年", price: "7,840", pct: 20, h: "40%" },
-                    { y: "4年", price: "6,860", pct: 30, h: "50%" },
-                    { y: "5年", price: "5,880", pct: 40, h: "60%" },
-                    { y: "6年", price: "4,900", pct: 50, h: "75%" },
-                    { y: "7年〜", price: "3,920", pct: 60, h: "100%" },
+                    { y: "2年目", price: "8,820", pct: 10, h: "25%" },
+                    { y: "3年目", price: "7,840", pct: 20, h: "38%" },
+                    { y: "4年目", price: "6,860", pct: 30, h: "50%" },
+                    { y: "5年目", price: "5,880", pct: 40, h: "65%" },
+                    { y: "6年目", price: "4,900", pct: 50, h: "80%" },
+                    { y: "7年目〜", price: "3,920", pct: 60, h: "100%" },
                   ].map((d) => (
-                    <div key={d.y} className="flex flex-col items-center gap-2">
-                      <span className={`text-[11px] font-semibold ${d.pct === 60 ? "text-blue-400" : "text-white/40"}`}>-{d.pct}%</span>
-                      <div className="w-full h-[80px] relative rounded-md overflow-hidden bg-white/[0.03]">
+                    <button
+                      key={d.y}
+                      className="group flex flex-col items-center gap-2 cursor-pointer"
+                      onClick={(e) => e.preventDefault()}
+                    >
+                      <span className={`text-[12px] md:text-[13px] font-bold transition-colors group-hover:text-blue-400 group-active:text-blue-300 ${d.pct === 60 ? "text-blue-400" : "text-white/40"}`}>-{d.pct}%</span>
+                      <div className="w-full h-[120px] md:h-[140px] relative rounded-lg overflow-hidden bg-white/[0.03] transition-all group-hover:bg-white/[0.06] group-active:bg-white/[0.08]">
                         <div
-                          className={`absolute bottom-0 w-full rounded-md transition-all ${d.pct === 60 ? "bg-blue-500/40" : "bg-blue-500/15"}`}
+                          className={`absolute bottom-0 w-full rounded-lg transition-all duration-300 group-hover:brightness-150 group-active:brightness-200 ${d.pct === 60 ? "bg-blue-500/50 shadow-[0_0_20px_rgba(59,130,246,0.3)]" : "bg-blue-500/20"}`}
                           style={{ height: d.h }}
                         />
+                        <div className="absolute inset-0 opacity-0 group-hover:opacity-100 group-active:opacity-100 transition-opacity duration-200 bg-blue-400/5 shadow-[inset_0_0_30px_rgba(59,130,246,0.15)]" />
                       </div>
-                      <span className={`text-[10px] font-medium ${d.pct === 60 ? "text-white" : "text-white/50"}`}>¥{d.price}</span>
-                      <span className="text-[10px] text-white/30">{d.y}</span>
-                    </div>
+                      <span className={`text-[12px] md:text-[14px] font-semibold transition-colors group-hover:text-white group-active:text-blue-300 ${d.pct === 60 ? "text-white" : "text-white/50"}`}>¥{d.price}</span>
+                      <span className={`text-[10px] md:text-[11px] transition-colors group-hover:text-white/60 ${d.pct === 60 ? "text-white/50" : "text-white/30"}`}>{d.y}</span>
+                    </button>
                   ))}
                 </div>
-                <p className="text-[11px] text-white/20 mt-4 text-center">※修正依頼があった年はリセットされます</p>
+                <p className="text-[11px] text-white/20 mt-5 text-center">※修正依頼があった年はリセットされます</p>
               </div>
               <a
                 href="#"
