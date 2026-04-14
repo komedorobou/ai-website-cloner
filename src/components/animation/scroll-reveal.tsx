@@ -39,7 +39,7 @@ export function ScrollReveal({
 }: ScrollRevealProps) {
   const { ref, isInView } = useInViewReveal<HTMLDivElement>({ threshold, once });
   const [hasAnimated, setHasAnimated] = useState(false);
-  const [isMobile, setIsMobile] = useState(false);
+  const [isMobile, setIsMobile] = useState(true);
 
   useEffect(() => {
     setIsMobile(window.matchMedia("(max-width: 768px)").matches);
