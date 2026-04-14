@@ -1349,23 +1349,75 @@ export default function TsukigakuPage() {
       <FAQ />
       <Founder />
       <CTAFinal />
-      <footer id="contact" className="border-t border-white/5 bg-black py-16 px-6">
-        <div className="max-w-[600px] mx-auto text-center">
-          <h3 className="text-white text-lg font-medium mb-2">ツキガクサイト</h3>
-          <p className="text-white/40 text-sm mb-8">月額9,800円のWeb制作サービス</p>
-          <div className="space-y-4 text-sm">
-            <p className="text-white/50">お問い合わせ・無料相談</p>
-            <a href="mailto:info@tsukigaku.site" className="block text-blue-400 hover:text-blue-300 transition-colors">info@tsukigaku.site</a>
+      <footer id="contact" className="border-t border-white/5 bg-black py-20 px-6">
+        <div className="max-w-[500px] mx-auto">
+          <h3 className="text-white text-center text-[24px] md:text-[28px] font-medium mb-3">無料相談フォーム</h3>
+          <p className="text-white/40 text-sm text-center mb-10">お気軽にお問い合わせください。</p>
+          <form
+            action="https://formspree.io/f/placeholder"
+            method="POST"
+            className="space-y-5"
+          >
+            <div>
+              <label htmlFor="name" className="block text-white/60 text-[13px] mb-2">お名前</label>
+              <input
+                type="text"
+                id="name"
+                name="name"
+                required
+                className="w-full px-4 py-3.5 rounded-xl bg-white/[0.06] border border-white/10 text-white text-[15px] placeholder-white/30 focus:outline-none focus:border-blue-500/50 transition-colors"
+                placeholder="山田 太郎"
+              />
+            </div>
+            <div>
+              <label htmlFor="business" className="block text-white/60 text-[13px] mb-2">業種・店舗名</label>
+              <input
+                type="text"
+                id="business"
+                name="business"
+                className="w-full px-4 py-3.5 rounded-xl bg-white/[0.06] border border-white/10 text-white text-[15px] placeholder-white/30 focus:outline-none focus:border-blue-500/50 transition-colors"
+                placeholder="飲食店「〇〇」"
+              />
+            </div>
+            <div>
+              <label htmlFor="email" className="block text-white/60 text-[13px] mb-2">メールアドレス</label>
+              <input
+                type="email"
+                id="email"
+                name="email"
+                required
+                className="w-full px-4 py-3.5 rounded-xl bg-white/[0.06] border border-white/10 text-white text-[15px] placeholder-white/30 focus:outline-none focus:border-blue-500/50 transition-colors"
+                placeholder="info@example.com"
+              />
+            </div>
+            <div>
+              <label htmlFor="message" className="block text-white/60 text-[13px] mb-2">ご相談内容（任意）</label>
+              <textarea
+                id="message"
+                name="message"
+                rows={4}
+                className="w-full px-4 py-3.5 rounded-xl bg-white/[0.06] border border-white/10 text-white text-[15px] placeholder-white/30 focus:outline-none focus:border-blue-500/50 transition-colors resize-none"
+                placeholder="どんなサイトにしたいか、お気軽にお書きください"
+              />
+            </div>
+            <button
+              type="submit"
+              className="w-full py-4 bg-white text-black font-semibold rounded-full hover:scale-[1.02] transition-transform text-[16px]"
+            >
+              送信する
+            </button>
+          </form>
+          <div className="mt-10 text-center">
             <a
               href="https://line.me/R/"
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-block mt-2 px-8 py-3 rounded-full bg-[#06C755] text-white font-medium text-[15px] hover:bg-[#05b34c] transition-colors"
+              className="inline-block px-8 py-3 rounded-full bg-[#06C755] text-white font-medium text-[15px] hover:bg-[#05b34c] transition-colors"
             >
               LINEで相談する
             </a>
           </div>
-          <p className="text-[11px] text-white/20 mt-12">&copy; 2026 ツキガクサイト</p>
+          <p className="text-[11px] text-white/20 mt-12 text-center">&copy; 2026 ツキガクサイト</p>
         </div>
       </footer>
     </main>
