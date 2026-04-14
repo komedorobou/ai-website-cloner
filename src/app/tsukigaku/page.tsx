@@ -1063,17 +1063,17 @@ function TechStack() {
         <div className="shrink-0 w-[8vw]" />
       </div>
       {/* PC: zigzag layout — image left/text right, then swap */}
-      <div className="hidden md:flex flex-col gap-20 max-w-[1000px] mx-auto px-8">
+      <div className="hidden md:flex flex-col gap-28 max-w-[1200px] mx-auto px-8">
         {techCards.map((tech, i) => (
           <ScrollReveal key={tech.name}>
-            <div className={`flex items-center gap-12 ${i % 2 === 1 ? "flex-row-reverse" : ""}`}>
-              <div className="relative w-[280px] h-[280px] shrink-0 rounded-2xl overflow-hidden">
-                <Image src={tech.image} alt={tech.name} fill className="object-cover" sizes="280px" />
+            <div className={`flex items-center gap-14 ${i % 2 === 1 ? "flex-row-reverse" : ""}`}>
+              <div className="relative w-[420px] h-[420px] shrink-0 rounded-3xl overflow-hidden">
+                <Image src={tech.image} alt={tech.name} fill className="object-cover" sizes="420px" />
               </div>
               <div className="flex-1">
-                <p className={`${tech.accent} text-[11px] font-semibold tracking-[0.15em] uppercase mb-2`}>{tech.name}</p>
-                <h3 className="text-white font-medium text-[28px] tracking-[-0.02em] leading-tight mb-4">{tech.headline}</h3>
-                <p className="text-white/40 text-[15px] font-light leading-[1.7]">{tech.desc}</p>
+                <p className={`${tech.accent} text-[12px] font-semibold tracking-[0.15em] uppercase mb-3`}>{tech.name}</p>
+                <h3 className="text-white font-medium text-[36px] tracking-[-0.02em] leading-tight mb-5">{tech.headline}</h3>
+                <p className="text-white/45 text-[17px] font-light leading-[1.8]">{tech.desc}</p>
               </div>
             </div>
           </ScrollReveal>
