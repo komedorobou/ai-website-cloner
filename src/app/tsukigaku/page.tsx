@@ -11,12 +11,22 @@ function Nav() {
   return (
     <nav className="fixed top-0 left-0 right-0 z-50 h-[48px] flex items-center justify-between px-8 md:px-16 bg-black/60 backdrop-blur-2xl border-b border-white/5">
       <span className="font-light text-[14px] tracking-[0.02em] text-white/90">ツキガクサイト</span>
-      <a
-        href="#pricing"
-        className="text-[12px] font-medium px-5 py-1.5 rounded-full bg-white text-black hover:bg-white/90 transition-colors"
-      >
-        無料相談
-      </a>
+      <div className="flex items-center gap-3">
+        <a
+          href="#contact"
+          className="text-[12px] font-medium px-5 py-1.5 rounded-full bg-white text-black hover:bg-white/90 transition-colors"
+        >
+          まずは相談する
+        </a>
+        <a
+          href="https://line.me/R/"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="text-[12px] font-medium px-4 py-1.5 rounded-full bg-[#06C755] text-white hover:bg-[#05b34c] transition-colors"
+        >
+          LINE
+        </a>
+      </div>
     </nav>
   );
 }
@@ -241,13 +251,13 @@ function Cocktail360() {
             className="font-light tracking-[-0.04em] text-white leading-[0.95]"
             style={{ fontSize: "clamp(3rem, 10vw, 88px)", opacity: headingOpacity, filter: headingFilter }}
           >
-            動くから、売れる。
+            3秒、目が離せなかったでしょ？
           </motion.h2>
           <motion.p
             className="font-light tracking-[-0.04em] text-white leading-[0.95]"
             style={{ fontSize: "clamp(1.2rem, 3vw, 1.8rem)", opacity: subOpacity, filter: subFilter }}
           >
-            アニメーション・動画・写真、全部込み。追加料金なし。
+            あなたのお客様も同じ。この動き、月額に全部込み。
           </motion.p>
         </div>
       </div>
@@ -673,7 +683,7 @@ function Philosophy() {
 /* ═══════════════════ PRICING ═══════════════════ */
 function Pricing() {
   const features = [
-    "Apple級デザイン",
+    "あなたのお店専用デザイン",
     "完全オーダーメイド 5P",
     "アニメーション標準搭載",
     "スマホ完全対応",
@@ -837,7 +847,7 @@ function Pricing() {
 
 /* ═══════════════════ FAQ ═══════════════════ */
 const faqItems = [
-  { q: "解約したらどうなりますか？", a: "サイトは非公開になります。データのお渡しは行っておりません。月額サービスのため、契約期間中のみサイトが公開されます。" },
+  { q: "解約したらサイトはどうなりますか？", a: "サイトは非公開になります。ただし契約期間に縛りはなく、いつでも解約可能です。再開したい場合は、以前のデザインをそのまま復元できます。" },
   { q: "本当に制作会社と同じ品質ですか？", a: "はい。Netflix、Airbnbなど世界のトップ企業と同じ技術スタック（Next.js、React、GSAP）を使用しています。テンプレートではなく、完全オーダーメイドで制作します。" },
   { q: "完成までどのくらいかかりますか？", a: "最短1週間、通常2〜3週間で公開可能です。素材（写真・テキスト）をご用意いただければ、さらに早くなります。" },
   { q: "写真素材がなくても大丈夫ですか？", a: "はい。AI画像生成やフリー素材で対応可能です。プロカメラマンの手配も別途ご相談いただけます。" },
@@ -968,56 +978,56 @@ function FAQ() {
 const techCards = [
   {
     name: "Next.js 16",
-    headline: "0.1秒の世界。",
-    desc: "Vercel製の最新フレームワーク。サーバー・エッジ・静的生成を自動で最適化し、圧倒的な表示速度を実現。",
+    headline: "3秒待てず、客は去る。",
+    desc: "表示が遅いだけで売上は落ちます。Appleも使う最新技術で、タップした瞬間もう表示されている。その速さが予約率を変えます。",
     gradient: "from-[#111] to-[#000]",
     accent: "text-white",
     image: "/images/tsukigaku/tech/nextjs.png",
   },
   {
     name: "React 19",
-    headline: "世界が選んだUI。",
-    desc: "Meta社開発。Apple、Netflix、Airbnbも採用するグローバルスタンダード。滑らかで一貫した操作体験。",
+    headline: "Apple、Netflix。同じ土俵。",
+    desc: "世界のトップ企業が採用する技術で、あなたのお店のサイトを作ります。お客様が「このお店、ちゃんとしてる」と感じる操作感。",
     gradient: "from-[#0a1628] to-[#000]",
     accent: "text-blue-400",
     image: "/images/tsukigaku/tech/react.png",
   },
   {
     name: "TypeScript 5",
-    headline: "バグは、生まれない。",
-    desc: "型安全な設計思想。コードの品質を根本から保証し、どんな規模でも安定動作するサイトを構築。",
+    headline: "「繋がらない」が起きない。",
+    desc: "予約フォームが動かない、画像が出ない。そんなトラブルを設計段階から防ぐ技術。営業中に壊れないサイトを保証します。",
     gradient: "from-[#0a1420] to-[#000]",
     accent: "text-blue-300",
     image: "/images/tsukigaku/tech/typescript.png",
   },
   {
     name: "Tailwind CSS 4",
-    headline: "1pxの妥協もない。",
-    desc: "ピクセル単位の緻密なデザインシステム。レスポンシブ対応も完璧。すべてのデバイスで美しく。",
+    headline: "スマホでも、PCでも美しい。",
+    desc: "お客様の7割はスマホで見ています。どの画面サイズでもレイアウトが崩れない。それだけで離脱率は下がります。",
     gradient: "from-[#061418] to-[#000]",
     accent: "text-cyan-400",
     image: "/images/tsukigaku/tech/tailwind.png",
   },
   {
     name: "GSAP + Motion",
-    headline: "画面が、呼吸する。",
-    desc: "Appleも採用するGSAPと、60fpsのMotionを組み合わせ。スクロール連動の没入感あるアニメーション体験。",
+    headline: "iPhoneの商品ページ、見たことありますか？",
+    desc: "スクロールするたびに商品が動き出す、あのワクワク感。同じ技術で、お店の魅力を「体験」に変えます。",
     gradient: "from-[#0a1a0a] to-[#000]",
     accent: "text-green-400",
     image: "/images/tsukigaku/tech/gsap.png",
   },
   {
     name: "Lenis",
-    headline: "絹のスクロール。",
-    desc: "指先に吸い付くようなスムーススクロール。微細な慣性計算で、心地よさが格段に違う。",
+    headline: "「なんか気持ちいい」の正体。",
+    desc: "高級サイトを触ったとき、なぜか長く見てしまう。その秘密がスクロールの滑らかさ。滞在時間が伸びれば、予約も増えます。",
     gradient: "from-[#1a120a] to-[#000]",
     accent: "text-orange-300",
     image: "/images/tsukigaku/tech/lenis.png",
   },
   {
     name: "shadcn/ui",
-    headline: "美と機能の両立。",
-    desc: "Radixベースの洗練されたコンポーネント群。アクセシビリティ完全準拠。デザインと使いやすさを同時に。",
+    headline: "迷わせない、だから押す。",
+    desc: "ボタン、フォーム、メニュー。すべてが直感的で、年配のお客様でも迷わず予約完了まで辿り着けます。",
     gradient: "from-[#111] to-[#000]",
     accent: "text-white/80",
     image: "/images/tsukigaku/tech/shadcn.png",
@@ -1166,14 +1176,14 @@ function TechStack() {
             className="font-light tracking-[-0.04em] text-white leading-[1.05] text-center"
             style={{ fontSize: "clamp(2.5rem, 7vw, 72px)" }}
           >
-            世界基準の技術で
+            iPhoneの商品ページ、
             <br />
-            作ってます。
+            見たことありますか。
           </h2>
         </ScrollReveal>
         <ScrollReveal delay={0.15}>
           <p className="text-white/50 text-[clamp(0.9rem,1.6vw,1.1rem)] mt-6 font-light max-w-[600px] mx-auto leading-relaxed text-center">
-            Netflix、Airbnbなど世界のトップ企業が採用する技術をそのまま使用。表示速度・SEO・セキュリティすべてが最高水準。だからGoogleに強く、お客さんに選ばれるサイトになります。
+            あのスクロールした時のワクワク。画面が動き出す滑らかさ。あなたのお店のサイトでも、同じことができます。
           </p>
         </ScrollReveal>
       </div>
@@ -1194,8 +1204,8 @@ function TechChallenge() {
             className="font-medium tracking-[-0.03em] text-white leading-[1.1]"
             style={{ fontSize: "clamp(2.5rem, 7vw, 64px)" }}
           >
-            他社のサイト、<br />
-            「使用技術」を<br className="md:hidden" />見てみてください。
+            他のHP業者に聞いてみてください。<br />
+            「何の技術で作ってますか？」と。
           </h2>
         </ScrollReveal>
         <ScrollReveal delay={0.15}>
@@ -1203,7 +1213,7 @@ function TechChallenge() {
             className="text-white mt-16 font-medium leading-relaxed"
             style={{ fontSize: "clamp(1.5rem, 4vw, 2.5rem)" }}
           >
-            書いてないはずです。
+            答えられないはずです。
           </p>
         </ScrollReveal>
         <ScrollReveal delay={0.25}>
@@ -1211,7 +1221,7 @@ function TechChallenge() {
             className="text-white/50 mt-6 font-light leading-relaxed"
             style={{ fontSize: "clamp(1.3rem, 3.5vw, 2rem)" }}
           >
-            書けないんです。<br className="md:hidden" />WordPressかWixだから。
+            テンプレートを貼り替えてるだけだから。
           </p>
         </ScrollReveal>
         <ScrollReveal delay={0.35}>
@@ -1237,6 +1247,44 @@ function TechChallenge() {
 }
 
 /* ═══════════════════ CTA FINAL ═══════════════════ */
+/* ═══════════════════ FOUNDER ═══════════════════ */
+function Founder() {
+  return (
+    <section className="py-[120px] md:py-[160px] px-6 bg-[#0a0a0a]">
+      <div className="max-w-[700px] mx-auto text-center">
+        <ScrollReveal>
+          <p className="text-blue-400 text-[11px] font-semibold tracking-[0.25em] uppercase mb-5">
+            代表より
+          </p>
+          <h2
+            className="font-light tracking-[-0.03em] text-white leading-[1.2]"
+            style={{ fontSize: "clamp(1.8rem, 4vw, 36px)" }}
+          >
+            なぜ、月額9,800円で<br />
+            できるのか。
+          </h2>
+        </ScrollReveal>
+        <ScrollReveal delay={0.15}>
+          <div className="mt-12 text-white/60 text-[15px] md:text-[16px] font-light leading-[2] text-left space-y-6">
+            <p>
+              HP制作会社に勤めていた頃、いつも疑問でした。なぜ50万円もかかるのか。なぜ営業マンと下請けの中間マージンがこんなに高いのか。
+            </p>
+            <p>
+              お客さんが本当に欲しいのは「おしゃれなHP」じゃない。お客さんが来ること。予約が入ること。それだけなんです。
+            </p>
+            <p>
+              AIと最新技術を使えば、大手と同じ品質のサイトを、中間マージンなしで作れる。だから月額9,800円。
+            </p>
+            <p>
+              「安かろう悪かろう」ではありません。使っている技術は全て公開しています。品質は、このサイト自体が証明です。
+            </p>
+          </div>
+        </ScrollReveal>
+      </div>
+    </section>
+  );
+}
+
 function CTAFinal() {
   return (
     <section className="relative py-[160px] md:py-[200px] px-6 text-center overflow-hidden">
@@ -1256,14 +1304,14 @@ function CTAFinal() {
             viewport={{ once: true }}
             transition={{ duration: 1.5 }}
           >
-            初期費用0円。
+            あなたのお店のサイト、
             <br />
-            まず相談してください。
+            一緒に作りませんか。
           </motion.h2>
         </ScrollReveal>
         <ScrollReveal delay={0.15}>
           <p className="text-white/30 text-[clamp(0.9rem,1.6vw,1.1rem)] mt-6 font-light">
-            30分の無料相談で、あなたの業種に合ったサイトをご提案します。営業電話は一切しません。
+            初期費用0円。30分の無料相談で、あなたの業種に合ったサイトをご提案します。
           </p>
         </ScrollReveal>
         <ScrollReveal delay={0.25}>
@@ -1295,14 +1343,23 @@ export default function TsukigakuPage() {
       <Pricing />
       <Flow />
       <FAQ />
+      <Founder />
       <CTAFinal />
       <footer id="contact" className="border-t border-white/5 bg-black py-16 px-6">
         <div className="max-w-[600px] mx-auto text-center">
           <h3 className="text-white text-lg font-medium mb-2">ツキガクサイト</h3>
           <p className="text-white/40 text-sm mb-8">月額9,800円のWeb制作サービス</p>
-          <div className="space-y-3 text-sm text-white/50">
-            <p>お問い合わせ・無料相談</p>
+          <div className="space-y-4 text-sm">
+            <p className="text-white/50">お問い合わせ・無料相談</p>
             <a href="mailto:info@tsukigaku.site" className="block text-blue-400 hover:text-blue-300 transition-colors">info@tsukigaku.site</a>
+            <a
+              href="https://line.me/R/"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-block mt-2 px-8 py-3 rounded-full bg-[#06C755] text-white font-medium text-[15px] hover:bg-[#05b34c] transition-colors"
+            >
+              LINEで相談する
+            </a>
           </div>
           <p className="text-[11px] text-white/20 mt-12">&copy; 2026 ツキガクサイト</p>
         </div>

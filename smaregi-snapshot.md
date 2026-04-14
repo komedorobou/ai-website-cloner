@@ -1,0 +1,1199 @@
+- generic [active] [ref=e1]:
+  - generic [ref=e2]:
+    - banner [ref=e3]:
+      - generic [ref=e4]:
+        - generic [ref=e5]:
+          - link "トップへ" [ref=e6] [cursor=pointer]:
+            - /url: /
+            - img [ref=e8]
+          - link "まずは資料ダウンロード" [ref=e10] [cursor=pointer]:
+            - /url: /f/info-download/
+          - generic [ref=e12]: "\"MENU\""
+        - navigation [ref=e13]:
+          - generic [ref=e14]:
+            - list [ref=e15]:
+              - listitem [ref=e16]:
+                - list [ref=e17]:
+                  - listitem
+                  - listitem [ref=e18]:
+                    - link "スマレジの 機能・周辺機器" [ref=e19] [cursor=pointer]:
+                      - /url: /product/
+                      - generic [ref=e20]: スマレジの
+                      - text: 機能・周辺機器
+                    - generic [ref=e22]:
+                      - generic [ref=e24]:
+                        - generic [ref=e25]:
+                          - generic [ref=e27]: 会計・レジ機能
+                          - list:
+                            - listitem [ref=e28]:
+                              - link "基本のレジ機能" [ref=e29] [cursor=pointer]:
+                                - /url: /product/register.php
+                                - generic [ref=e30]: 基本のレジ機能
+                            - listitem [ref=e31]:
+                              - link "キャッシュレス決済" [ref=e32] [cursor=pointer]:
+                                - /url: /payment/
+                                - generic [ref=e33]: キャッシュレス決済
+                            - listitem [ref=e34]:
+                              - link "券売機・食券機" [ref=e35] [cursor=pointer]:
+                                - /url: /lp/ticket-vending/
+                                - generic [ref=e36]: 券売機・食券機
+                            - listitem [ref=e37]:
+                              - link "セルフレジ・セミセルフレジ" [ref=e38] [cursor=pointer]:
+                                - /url: /product/self-register.php
+                                - generic [ref=e39]: セルフレジ・セミセルフレジ
+                            - listitem [ref=e40]:
+                              - link "モバイルオーダー" [ref=e41] [cursor=pointer]:
+                                - /url: /product/self_register/mobileorder.php
+                                - generic [ref=e42]: モバイルオーダー
+                            - listitem [ref=e43]:
+                              - link "免税対応" [ref=e44] [cursor=pointer]:
+                                - /url: /product/taxfree.php
+                                - generic [ref=e45]: 免税対応
+                            - listitem [ref=e46]:
+                              - link "税率変更対応" [ref=e47] [cursor=pointer]:
+                                - /url: /product/taxrate.php
+                                - generic [ref=e48]: 税率変更対応
+                          - generic [ref=e50]: 飲食向けオーダー機能
+                          - list:
+                            - listitem [ref=e51]:
+                              - link "オーダーエントリー" [ref=e52] [cursor=pointer]:
+                                - /url: /product/order-entry-system.php
+                                - generic [ref=e53]: オーダーエントリー
+                            - listitem [ref=e54]:
+                              - link "テーブルオーダー" [ref=e55] [cursor=pointer]:
+                                - /url: /price/table-order.php
+                                - generic [ref=e56]: テーブルオーダー
+                        - generic [ref=e57]:
+                          - generic [ref=e59]: 拡張機能・ システム連携
+                          - list:
+                            - listitem [ref=e60]:
+                              - link "スマレジ・アプリマーケット" [ref=e61] [cursor=pointer]:
+                                - /url: /product/appmarket.php
+                                - generic [ref=e62]: スマレジ・アプリマーケット
+                            - listitem [ref=e63]:
+                              - link "外部システム連携" [ref=e64] [cursor=pointer]:
+                                - /url: /product/cooperation.php
+                                - generic [ref=e65]: 外部システム連携
+                            - listitem [ref=e66]:
+                              - link "スマレジ・タイムカード連携" [ref=e67] [cursor=pointer]:
+                                - /url: /product/timecard-cooperation.php
+                                - generic [ref=e68]: スマレジ・タイムカード連携
+                            - listitem [ref=e69]:
+                              - link "スマレジAPI" [ref=e70] [cursor=pointer]:
+                                - /url: /product/api.php
+                                - generic [ref=e71]: スマレジAPI
+                            - listitem [ref=e72]:
+                              - link "スマレジEC" [ref=e73] [cursor=pointer]:
+                                - /url: https://ec.smaregi.jp/
+                                - generic [ref=e74]: スマレジEC
+                          - generic [ref=e76]: サポート機能
+                          - list:
+                            - listitem [ref=e77]:
+                              - link "トレーニングモード" [ref=e78] [cursor=pointer]:
+                                - /url: /product/register.php#registerTraning
+                                - generic [ref=e79]: トレーニングモード
+                            - listitem [ref=e80]:
+                              - link "スマレジ・ストア" [ref=e81] [cursor=pointer]:
+                                - /url: /product/smaregi-store.php
+                                - generic [ref=e82]: スマレジ・ストア
+                            - listitem [ref=e83]:
+                              - link "アラート通知機能" [ref=e84] [cursor=pointer]:
+                                - /url: /product/alert.php
+                                - generic [ref=e85]: アラート通知機能
+                        - generic [ref=e86]:
+                          - generic [ref=e88]: 分析・管理業務
+                          - list:
+                            - listitem [ref=e89]:
+                              - link "売上分析" [ref=e90] [cursor=pointer]:
+                                - /url: /product/analysis.php
+                                - generic [ref=e91]: 売上分析
+                            - listitem [ref=e92]:
+                              - link "予算管理" [ref=e93] [cursor=pointer]:
+                                - /url: /product/budget.php
+                                - generic [ref=e94]: 予算管理
+                            - listitem [ref=e95]:
+                              - link "顧客管理" [ref=e96] [cursor=pointer]:
+                                - /url: /product/customer.php
+                                - generic [ref=e97]: 顧客管理
+                            - listitem [ref=e98]:
+                              - link "予約管理" [ref=e99] [cursor=pointer]:
+                                - /url: /lp/reserve/
+                                - generic [ref=e100]: 予約管理
+                            - listitem [ref=e101]:
+                              - link "複数店舗管理" [ref=e102] [cursor=pointer]:
+                                - /url: /product/multiple-stores.php
+                                - generic [ref=e103]: 複数店舗管理
+                            - listitem [ref=e104]:
+                              - link "本部管理" [ref=e105] [cursor=pointer]:
+                                - /url: /product/headquarters.php
+                                - generic [ref=e106]: 本部管理
+                            - listitem [ref=e107]:
+                              - link "小売店向け在庫管理" [ref=e108] [cursor=pointer]:
+                                - /url: /product/inventory.php
+                                - generic [ref=e109]: 小売店向け在庫管理
+                            - listitem [ref=e110]:
+                              - link "受注管理" [ref=e111] [cursor=pointer]:
+                                - /url: /product/order-shipment.php
+                                - generic [ref=e112]: 受注管理
+                            - listitem [ref=e113]:
+                              - link "スタッフ管理" [ref=e114] [cursor=pointer]:
+                                - /url: /product/staff.php
+                                - generic [ref=e115]: スタッフ管理
+                            - listitem [ref=e116]:
+                              - link "イベントカレンダー" [ref=e117] [cursor=pointer]:
+                                - /url: /product/event-calendar.php
+                                - generic [ref=e118]: イベントカレンダー
+                            - listitem [ref=e119]:
+                              - link "PL 管理" [ref=e120] [cursor=pointer]:
+                                - /url: /product/profit_and_loss.php
+                                - generic [ref=e121]:
+                                  - generic "Profit and Loss" [ref=e122]: PL
+                                  - text: 管理
+                      - generic [ref=e124]:
+                        - list [ref=e125]:
+                          - listitem [ref=e126]:
+                            - link "周辺機器" [ref=e127] [cursor=pointer]:
+                              - /url: /hardware/
+                              - generic [ref=e128]: 周辺機器
+                          - listitem [ref=e129]:
+                            - link "自動釣銭機" [ref=e130] [cursor=pointer]:
+                              - /url: /hardware/autochangemachine.php
+                              - generic [ref=e131]: 自動釣銭機
+                          - listitem [ref=e132]:
+                            - link "レジ一体型ドロア mPOP" [ref=e133] [cursor=pointer]:
+                              - /url: /hardware/mpop.php
+                              - generic [ref=e134]: レジ一体型ドロア mPOP
+                          - listitem [ref=e135]:
+                            - link "マルチ決済端末" [ref=e136] [cursor=pointer]:
+                              - /url: /hardware/#Multi
+                              - generic [ref=e137]: マルチ決済端末
+                        - link "主な機能一覧" [ref=e138] [cursor=pointer]:
+                          - /url: /product/
+                          - paragraph [ref=e139]: 主な機能一覧
+                        - link "すべての機能一覧" [ref=e140] [cursor=pointer]:
+                          - /url: /product/index.php#functionsList
+                          - paragraph [ref=e141]: すべての機能一覧
+                  - listitem [ref=e142]:
+                    - link "料金プラン" [ref=e143] [cursor=pointer]:
+                      - /url: /price/
+                    - generic [ref=e145]:
+                      - generic [ref=e146]:
+                        - generic [ref=e147]:
+                          - link "料金・プラン一覧をみる" [ref=e148] [cursor=pointer]:
+                            - /url: /price/
+                            - paragraph [ref=e149]: 料金・プラン一覧をみる
+                          - link "プレミアムプラス 人気 No.1" [ref=e150] [cursor=pointer]:
+                            - /url: /price/premium-plus.php
+                            - paragraph [ref=e151]:
+                              - text: プレミアムプラス
+                              - generic [ref=e152]: 人気 No.1
+                          - link "プレミアム" [ref=e153] [cursor=pointer]:
+                            - /url: /price/premium.php
+                            - paragraph [ref=e154]: プレミアム
+                        - generic [ref=e155]:
+                          - link "フードビジネス モバイルオーダー搭載" [ref=e156] [cursor=pointer]:
+                            - /url: /price/food.php
+                            - paragraph [ref=e157]:
+                              - text: フードビジネス
+                              - generic [ref=e158]: モバイルオーダー搭載
+                          - link "リテールビジネス" [ref=e159] [cursor=pointer]:
+                            - /url: /price/retail.php
+                            - paragraph [ref=e160]: リテールビジネス
+                          - link "スタンダード" [ref=e161] [cursor=pointer]:
+                            - /url: /price/standard.php
+                            - paragraph [ref=e162]: スタンダード
+                      - list [ref=e165]:
+                        - listitem [ref=e166]:
+                          - link "機器サブスクプラン" [ref=e167] [cursor=pointer]:
+                            - /url: /price/subscription.php
+                            - generic [ref=e168]: 機器サブスクプラン
+                        - listitem [ref=e169]:
+                          - link "導入サポートサービス" [ref=e170] [cursor=pointer]:
+                            - /url: /price/support.php
+                            - generic [ref=e171]: 導入サポートサービス
+                        - listitem [ref=e172]:
+                          - link "スマレジ・ウェイター料金" [ref=e173] [cursor=pointer]:
+                            - /url: /product/waiter-price.php
+                            - generic [ref=e174]: スマレジ・ウェイター料金
+                  - listitem [ref=e175]:
+                    - link "業種別にみる" [ref=e176] [cursor=pointer]:
+                      - /url: /category/
+                    - generic [ref=e179]:
+                      - generic [ref=e180]:
+                        - link "業種一覧をみる" [ref=e181] [cursor=pointer]:
+                          - /url: /category/
+                          - paragraph [ref=e182]: 業種一覧をみる
+                        - link "飲食店で使う" [ref=e183] [cursor=pointer]:
+                          - /url: /category/food.php
+                          - paragraph [ref=e184]: 飲食店で使う
+                        - link "クリニック・薬局で使う" [ref=e185] [cursor=pointer]:
+                          - /url: /category/clinic-pharmacy.php
+                          - paragraph [ref=e186]: クリニック・薬局で使う
+                        - link "アパレル・小売業で使う" [ref=e187] [cursor=pointer]:
+                          - /url: /category/retail.php
+                          - paragraph [ref=e188]: アパレル・小売業で使う
+                      - generic [ref=e189]:
+                        - link "美容室・エステで使う" [ref=e190] [cursor=pointer]:
+                          - /url: /category/service.php
+                          - paragraph [ref=e191]: 美容室・エステで使う
+                        - link "イベント・催事で使う" [ref=e192] [cursor=pointer]:
+                          - /url: /category/event.php
+                          - paragraph [ref=e193]: イベント・催事で使う
+                        - link "官公庁・地方自治体で使う" [ref=e194] [cursor=pointer]:
+                          - /url: /category/jichitai.php
+                          - paragraph [ref=e195]: 官公庁・地方自治体で使う
+                  - listitem [ref=e196]:
+                    - link "スマレジとは" [ref=e197] [cursor=pointer]:
+                      - /url: /feature/
+                    - generic [ref=e199]:
+                      - generic [ref=e200]:
+                        - generic [ref=e201]:
+                          - link "クラウド型POSの特長とは" [ref=e202] [cursor=pointer]:
+                            - /url: /feature/cloud.php
+                            - paragraph [ref=e203]: クラウド型POSの特長とは
+                          - link "スマレジが選ばれる理由" [ref=e204] [cursor=pointer]:
+                            - /url: /feature/
+                            - paragraph [ref=e205]: スマレジが選ばれる理由
+                        - generic [ref=e206]:
+                          - link "圧倒的な高機能" [ref=e207] [cursor=pointer]:
+                            - /url: /feature/functions.php
+                            - paragraph [ref=e208]: 圧倒的な高機能
+                          - link "安心・安全のサービス保証" [ref=e209] [cursor=pointer]:
+                            - /url: /feature/sla.php
+                            - paragraph [ref=e210]: 安心・安全のサービス保証
+                          - link "アフターサポート" [ref=e211] [cursor=pointer]:
+                            - /url: /support/
+                            - paragraph [ref=e212]: アフターサポート
+                      - generic [ref=e214]:
+                        - list [ref=e215]:
+                          - listitem [ref=e216]:
+                            - link "レジ導入について" [ref=e217] [cursor=pointer]:
+                              - /url: /flow/
+                              - generic [ref=e218]: レジ導入について
+                          - listitem [ref=e219]:
+                            - link "よくあるご質問" [ref=e220] [cursor=pointer]:
+                              - /url: /faq/
+                              - generic [ref=e221]: よくあるご質問
+                        - list [ref=e222]:
+                          - listitem [ref=e223]:
+                            - link "POS レジとは？" [ref=e224] [cursor=pointer]:
+                              - /url: /learn/about_pos.php
+                              - generic [ref=e225]:
+                                - generic [ref=e226]: POS
+                                - text: レジとは？
+                          - listitem [ref=e227]:
+                            - link "POS データとは？" [ref=e228] [cursor=pointer]:
+                              - /url: /learn/about_pos_data.php
+                              - generic [ref=e229]:
+                                - generic [ref=e230]: POS
+                                - text: データとは？
+                          - listitem [ref=e231]:
+                            - link "キャッシュレスとは？" [ref=e232] [cursor=pointer]:
+                              - /url: /payment/learn/cashless.php
+                              - generic [ref=e233]: キャッシュレスとは？
+                          - listitem [ref=e234]:
+                            - link "インバウンド対策について" [ref=e235] [cursor=pointer]:
+                              - /url: /lp/inbound_pos/
+                              - generic [ref=e236]: インバウンド対策について
+                  - listitem [ref=e237]:
+                    - link "導入事例" [ref=e238] [cursor=pointer]:
+                      - /url: /casestudy/
+                    - generic [ref=e241]:
+                      - generic [ref=e242]:
+                        - link "導入事例一覧をみる" [ref=e243] [cursor=pointer]:
+                          - /url: /casestudy/
+                          - paragraph [ref=e244]: 導入事例一覧をみる
+                        - link "飲食店" [ref=e245] [cursor=pointer]:
+                          - /url: /casestudy/?tnm=飲食店
+                          - paragraph [ref=e246]: 飲食店
+                        - link "クリニック・薬局" [ref=e247] [cursor=pointer]:
+                          - /url: /casestudy/?tnm=クリニック・薬局
+                          - paragraph [ref=e248]: クリニック・薬局
+                        - link "アパレル・小売業" [ref=e249] [cursor=pointer]:
+                          - /url: /casestudy/?tnm=小売・アパレル
+                          - paragraph [ref=e250]: アパレル・小売業
+                      - generic [ref=e251]:
+                        - link "サービス業" [ref=e252] [cursor=pointer]:
+                          - /url: /casestudy/?tnm=サービス業
+                          - paragraph [ref=e253]: サービス業
+                        - link "イベント・催事" [ref=e254] [cursor=pointer]:
+                          - /url: /casestudy/?tnm=イベント・催事
+                          - paragraph [ref=e255]: イベント・催事
+                        - link "百貨店・ショッピングモール" [ref=e256] [cursor=pointer]:
+                          - /url: /casestudy/?tnm=百貨店・ショッピングモール
+                          - paragraph [ref=e257]: 百貨店・ショッピングモール
+                  - listitem [ref=e258]:
+                    - link "ショールームを探す" [ref=e259] [cursor=pointer]:
+                      - /url: /showroom/
+                    - generic [ref=e263]:
+                      - link "ショールーム一覧をみる" [ref=e264] [cursor=pointer]:
+                        - /url: /showroom/
+                        - paragraph [ref=e265]: ショールーム一覧をみる
+                      - link "恵比寿ショールーム" [ref=e266] [cursor=pointer]:
+                        - /url: /showroom/#ebisuAnchor
+                        - paragraph [ref=e267]: 恵比寿ショールーム
+                      - link "池袋ショールーム" [ref=e268] [cursor=pointer]:
+                        - /url: /showroom/#ikebukuroAnchor
+                        - paragraph [ref=e269]: 池袋ショールーム
+                      - link "名古屋ショールーム" [ref=e270] [cursor=pointer]:
+                        - /url: /showroom/#nagoyaAnchor
+                        - paragraph [ref=e271]: 名古屋ショールーム
+                      - link "大阪ショールーム" [ref=e272] [cursor=pointer]:
+                        - /url: /showroom/#osakaAnchor
+                        - paragraph [ref=e273]: 大阪ショールーム
+                      - link "福岡ショールーム" [ref=e274] [cursor=pointer]:
+                        - /url: /showroom/#fukuokaParcoAnchor
+                        - paragraph [ref=e275]: 福岡ショールーム
+                      - link "沖縄ショールーム" [ref=e276] [cursor=pointer]:
+                        - /url: /showroom/#okinawaAnchor
+                        - paragraph [ref=e277]: 沖縄ショールーム
+              - listitem [ref=e278]:
+                - list [ref=e279]:
+                  - listitem [ref=e280]:
+                    - link "ログイン" [ref=e281] [cursor=pointer]:
+                      - /url: https://accounts.smaregi.jp/login?client_id=pos
+                    - generic [ref=e285]:
+                      - link "スマレジへログイン" [ref=e286] [cursor=pointer]:
+                        - /url: https://accounts.smaregi.jp/login?client_id=pos
+                        - paragraph [ref=e287]: スマレジへログイン
+                      - link "ウェイターへログイン" [ref=e288] [cursor=pointer]:
+                        - /url: https://accounts.smaregi.jp/login?client_id=waiter
+                        - paragraph [ref=e289]: ウェイターへログイン
+              - listitem [ref=e290]:
+                - list [ref=e291]:
+                  - listitem [ref=e292]:
+                    - link "資料ダウンロード" [ref=e293] [cursor=pointer]:
+                      - /url: /f/info-download/
+                  - listitem [ref=e294]:
+                    - link "お見積り・お問い合わせ" [ref=e295] [cursor=pointer]:
+                      - /url: /request/
+            - list [ref=e296]:
+              - listitem [ref=e297]:
+                - link "アカウント作成" [ref=e298] [cursor=pointer]:
+                  - /url: /signup/
+              - listitem [ref=e299]:
+                - link "お知らせ" [ref=e300] [cursor=pointer]:
+                  - /url: /news/
+              - listitem [ref=e301]:
+                - link "イベント・セミナー" [ref=e302] [cursor=pointer]:
+                  - /url: /event/
+              - listitem [ref=e303]:
+                - link "ヘルプ" [ref=e304] [cursor=pointer]:
+                  - /url: https://help.smaregi.jp/hc/ja
+              - listitem [ref=e305]:
+                - link "よくあるご質問" [ref=e306] [cursor=pointer]:
+                  - /url: /faq/
+              - listitem [ref=e307]:
+                - link "POSお役立ち情報" [ref=e308] [cursor=pointer]:
+                  - /url: /learn/
+              - listitem [ref=e309]:
+                - link "決済お役立ち情報" [ref=e310] [cursor=pointer]:
+                  - /url: /payment/learn/
+              - listitem [ref=e311]:
+                - link "ビジネスパートナー" [ref=e312] [cursor=pointer]:
+                  - /url: /partner/
+              - listitem [ref=e313]:
+                - link "スマレジユーザー コミュニティ会" [ref=e314] [cursor=pointer]:
+                  - /url: /user-community/
+                  - text: スマレジユーザー
+                  - text: コミュニティ会
+    - generic [ref=e318]:
+      - generic [ref=e319]:
+        - img "高機能なのに、驚くほど使いやすい。¥0から始められるクラウドPOSレジ" [ref=e321]
+        - heading "iPad・iPhone・iPod touchアプリを 使った無料で 使えるPOSシステム" [level=2] [ref=e365]:
+          - text: iPad・iPhone・iPod touchアプリを
+          - text: 使った無料で 使えるPOSシステム
+        - generic [ref=e366]:
+          - link "ショールーム予約" [ref=e368] [cursor=pointer]:
+            - /url: /showroom/
+          - link "資料ダウンロード" [ref=e370] [cursor=pointer]:
+            - /url: /f/info-download/
+      - link "新CM公開中 藤﨑 ゆみあさん出演 新CM公開中！" [ref=e373] [cursor=pointer]:
+        - /url: javascript:void(0);
+        - generic [ref=e374]:
+          - img "新CM公開中" [ref=e375]
+          - img [ref=e376]
+        - paragraph [ref=e379]:
+          - text: 藤﨑 ゆみあさん出演
+          - text: 新CM公開中！
+    - generic [ref=e382]:
+      - article [ref=e383]:
+        - link "モバイルオーダーイメージ画像 PICK UP モバイルオーダー標準搭載 飲食店向けプラン" [ref=e384] [cursor=pointer]:
+          - /url: /price/food.php
+          - img "モバイルオーダーイメージ画像" [ref=e386]
+          - generic [ref=e387]:
+            - generic [ref=e388]: PICK UP
+            - heading "モバイルオーダー標準搭載 飲食店向けプラン" [level=4] [ref=e389]
+      - article [ref=e391]:
+        - link "PAYGATE端末画像 PICK UP 決済手数料1.98%〜" [ref=e392] [cursor=pointer]:
+          - /url: /payment/
+          - img "PAYGATE端末画像" [ref=e394]
+          - generic [ref=e395]:
+            - generic [ref=e396]: PICK UP
+            - heading "決済手数料1.98%〜" [level=4] [ref=e397]
+    - generic [ref=e400]:
+      - heading "さまざまな業種・業態に対応 スマレジなら、お店にあった最適なPOSレジ運用が可能です" [level=2] [ref=e402]:
+        - text: さまざまな業種・業態に対応
+        - text: スマレジなら、お店にあった最適なPOSレジ運用が可能です
+      - generic [ref=e404]:
+        - link "飲食店 詳しく見る" [ref=e406] [cursor=pointer]:
+          - /url: /category/food.php
+          - generic [ref=e410]:
+            - heading "飲食店" [level=2] [ref=e411]
+            - paragraph [ref=e413]: 詳しく見る
+        - link "アパレル・小売店 詳しく見る" [ref=e415] [cursor=pointer]:
+          - /url: /category/retail.php
+          - generic [ref=e419]:
+            - heading "アパレル・小売店" [level=2] [ref=e420]
+            - paragraph [ref=e422]: 詳しく見る
+        - link "クリニック・医療・薬局 詳しく見る" [ref=e424] [cursor=pointer]:
+          - /url: /category/clinic-pharmacy.php
+          - generic [ref=e428]:
+            - heading "クリニック・医療・薬局" [level=2] [ref=e429]
+            - paragraph [ref=e431]: 詳しく見る
+        - link "美容室・エステ 詳しく見る" [ref=e433] [cursor=pointer]:
+          - /url: /category/service.php
+          - generic [ref=e437]:
+            - heading "美容室・エステ" [level=2] [ref=e438]
+            - paragraph [ref=e440]: 詳しく見る
+      - link "無料で始めるクラウド勤怠管理システム「スマレジ・タイムカード」 全店舗をつなぎ、経営の未来を変える 多店舗・チェーン店でもスマレジ 詳しく見る" [ref=e443] [cursor=pointer]:
+        - /url: /category/enterprise.php
+        - generic [ref=e448]:
+          - generic [ref=e449]:
+            - img "無料で始めるクラウド勤怠管理システム「スマレジ・タイムカード」"
+          - generic [ref=e450]:
+            - paragraph [ref=e451]:
+              - generic [ref=e452]: 全店舗をつなぎ、経営の未来を変える
+              - text: 多店舗・チェーン店でもスマレジ
+            - generic [ref=e454]: 詳しく見る
+      - link "他の業種を見る" [ref=e456] [cursor=pointer]:
+        - /url: /category/
+    - generic [ref=e458]:
+      - heading "スマレジが選ばれる３つの理由" [level=2] [ref=e460]
+      - article [ref=e463]:
+        - generic [ref=e464]:
+          - heading "お店の「やりたい」を叶える 充実の機能と拡張性" [level=3] [ref=e465]:
+            - text: お店の「やりたい」を叶える
+            - text: 充実の機能と拡張性
+          - img "01"
+          - img "高機能なのにシンプルな使い心地"
+          - paragraph [ref=e466]:
+            - text: スマレジは、業態・業種・規模を問わず使えるクラウドPOSレジです。
+            - text: アプリマーケットで機能を自由に拡張でき、外部システム連携や消費税率の変更にも、スムーズに対応できます。
+          - generic [ref=e467]:
+            - link "外部システム連携" [ref=e468] [cursor=pointer]:
+              - /url: /product/cooperation.php
+              - text: 外部システム連携
+            - link "EC連携" [ref=e470] [cursor=pointer]:
+              - /url: https://ec.smaregi.jp/
+              - text: EC連携
+            - link "キャッシュレス対応" [ref=e472] [cursor=pointer]:
+              - /url: /payment/
+              - text: キャッシュレス対応
+          - generic [ref=e474]:
+            - link "アプリマーケット利用可" [ref=e475] [cursor=pointer]:
+              - /url: /product/appmarket.php
+              - text: アプリマーケット利用可
+            - link "スマレジAPI" [ref=e477] [cursor=pointer]:
+              - /url: /product/api.php
+              - text: スマレジAPI
+            - link "税率（消費税等）変更対応" [ref=e479] [cursor=pointer]:
+              - /url: /product/taxrate.php
+              - text: 税率（消費税等）変更対応
+          - generic [ref=e482]:
+            - generic [ref=e483]:
+              - img "ショールームイメージ画像"
+            - generic [ref=e484]:
+              - paragraph [ref=e485]: 全国6箇所！スマレジ・ショールーム
+              - heading "ショールームで実機体験" [level=4] [ref=e486]
+              - link [ref=e487] [cursor=pointer]:
+                - /url: /showroom
+              - list [ref=e488]:
+                - listitem [ref=e489]:
+                  - link "恵比寿" [ref=e490] [cursor=pointer]:
+                    - /url: /f/showroom/ebisu/
+                - listitem [ref=e491]:
+                  - link "池袋" [ref=e492] [cursor=pointer]:
+                    - /url: /f/showroom/ikebukuro/
+                - listitem [ref=e493]:
+                  - link "名古屋" [ref=e494] [cursor=pointer]:
+                    - /url: /f/showroom/nagoya/
+                - listitem [ref=e495]:
+                  - link "大阪" [ref=e496] [cursor=pointer]:
+                    - /url: /f/showroom/osaka/
+                - listitem [ref=e497]:
+                  - link "福岡" [ref=e498] [cursor=pointer]:
+                    - /url: /f/showroom/fukuoka/
+                - listitem [ref=e499]:
+                  - link "沖縄" [ref=e500] [cursor=pointer]:
+                    - /url: /f/showroom/okinawa/
+      - generic [ref=e502]:
+        - article [ref=e503]:
+          - generic [ref=e505]:
+            - heading "365日対応の 手厚いサポートで安心" [level=3] [ref=e506]:
+              - text: 365日対応の
+              - text: 手厚いサポートで安心
+            - img "02"
+            - paragraph [ref=e507]: 電話・チャット・メールで、 知識豊富なスタッフが丁寧に対応。
+            - link "詳しく見る" [ref=e509] [cursor=pointer]:
+              - /url: /support/
+        - article [ref=e510]:
+          - generic [ref=e512]:
+            - heading "基本のレジ機能は無料 でも、しっかり使えます" [level=3] [ref=e513]
+            - img "02"
+            - paragraph [ref=e514]: 無料プランでも売上分析、在庫管理、 必要な機能はすべて揃っています。
+            - link "詳しく見る" [ref=e516] [cursor=pointer]:
+              - /url: /price/
+      - generic [ref=e517]:
+        - generic [ref=e518]:
+          - generic [ref=e520]:
+            - img "店舗スタッフが選ぶサポートが充実No.1" [ref=e521]
+            - img "店舗スタッフが選ぶ信頼できるNo.1" [ref=e522]
+            - img "店舗経営者が選ぶ品質が良いNo.1" [ref=e523]
+          - generic [ref=e525]:
+            - paragraph [ref=e526]: お客さまから選ばれて、 ３部門でNo.1を獲得
+            - paragraph [ref=e527]: サービス継続率 99.4 %
+            - generic [ref=e528]: ※2022/5～2023/4
+        - generic [ref=e529]: 調査方法：インターネット調査、調査期間：2021年6月22日～23日、調査概要：クラウドPOSレジ10サービスを対象にしたサイト比較イメージ調査、調査対象：男女、20～69歳、全国、1.2.店舗スタッフ330名、3.店舗運営者189名、調査実施：株式会社ショッパーズアイ、比較対象企業：「クラウドPOSレジ」Google検索 検索上位7サービス（2021年6月17日16時00分時点）及び選定企業2サービス
+      - link "今すぐ無料でダウンロード！ スマレジかんたん早わかり資料 スマレジのサービス内容が3分でわかる資料をご用意しました。 資料をダウンロード" [ref=e531] [cursor=pointer]:
+        - /url: /f/info-download/
+        - generic [ref=e533]:
+          - generic [ref=e534]:
+            - text: 今すぐ無料でダウンロード！
+            - heading "スマレジかんたん早わかり資料" [level=3] [ref=e535]
+          - generic [ref=e536]:
+            - paragraph [ref=e537]: スマレジのサービス内容が3分でわかる資料をご用意しました。
+            - generic [ref=e538]: 資料をダウンロード
+    - generic [ref=e540]:
+      - generic [ref=e541]:
+        - heading "54,000店舗※突破。 幅広い業種で利用されています" [level=2] [ref=e542]:
+          - text: 54,000店舗
+          - subscript [ref=e543]: ※
+          - text: 突破。
+          - text: 幅広い業種で利用されています
+        - paragraph [ref=e544]:
+          - text: スマレジは業種・業態・規模を問わず、
+          - text: 1店舗から500店舗以上を運営する事業者まで、幅広いお客さまにご利用いただいております。
+        - generic [ref=e545]: ※2025年10月時点のアクティブ店舗（直近1ヶ月の間に商取引の記録を行った店舗）数
+      - generic [ref=e548]:
+        - img "スマレジ利用店舗数 業種別利用率グラフ"
+      - generic [ref=e549]:
+        - generic [ref=e550]:
+          - img "株式会社銀座コージーコーナー"
+        - generic [ref=e551]:
+          - img "株式会社BAKE"
+        - generic [ref=e552]:
+          - img "株式会社 M&S フォアフロント（JTの子会社）"
+        - generic [ref=e553]:
+          - img "株式会社中川政七商店"
+        - generic [ref=e554]:
+          - img "株式会社虎屋"
+        - generic [ref=e555]:
+          - img "ルタオ"
+        - generic [ref=e556]:
+          - img "エレコム株式会社"
+        - generic [ref=e557]:
+          - img "タビオ株式会社"
+        - generic [ref=e558]:
+          - img "株式会社ファミリア"
+        - generic [ref=e559]:
+          - img "株式会社イーストボーイ"
+        - generic [ref=e560]:
+          - img "株式会社ダンダダン"
+        - generic [ref=e561]:
+          - img "株式会社FTG company"
+        - generic [ref=e562]:
+          - img "株式会社スープストックトーキョー"
+        - generic [ref=e563]:
+          - img "株式会社関門海"
+        - generic [ref=e564]:
+          - img "株式会社パソナグループ"
+        - generic [ref=e565]:
+          - img "ヴェレダ"
+        - generic [ref=e566]:
+          - img "株式会社東京ドーム"
+        - generic [ref=e567]:
+          - img "大阪エヴェッサ 運営会社：ヒューマンプランニング株式会社"
+      - generic [ref=e568]: ※順不同、掲載許可を頂いた一部の導入店舗さまのみ掲載
+    - generic [ref=e570]:
+      - heading "高機能クラウドPOSレジ 「スマレジ」の導入事例" [level=2] [ref=e572]:
+        - text: 高機能クラウドPOSレジ
+        - text: 「スマレジ」の導入事例
+      - link "株式会社ファミリア 74店舗 70店舗超のレジ一括切替、業務を大幅削減。 売上状況をリアルタイムに確認したり、商品企画部門が店頭の売れ筋傾向を把握。データ分析業務は10分の1に。" [ref=e574] [cursor=pointer]:
+        - /url: /casestudy/retail/familiar.php
+        - generic [ref=e576]:
+          - text: 株式会社ファミリア
+          - generic [ref=e577]: 74店舗
+        - heading "70店舗超のレジ一括切替、業務を大幅削減。" [level=3] [ref=e578]
+        - paragraph [ref=e579]: 売上状況をリアルタイムに確認したり、商品企画部門が店頭の売れ筋傾向を把握。データ分析業務は10分の1に。
+      - button [ref=e580] [cursor=pointer]
+      - button [ref=e581] [cursor=pointer]
+      - listbox [ref=e582]:
+        - option "1" [ref=e583] [cursor=pointer]
+        - option "2" [ref=e584] [cursor=pointer]
+        - option "3" [ref=e585] [cursor=pointer]
+      - link "導入事例 一覧を見る" [ref=e587] [cursor=pointer]:
+        - /url: /casestudy/
+    - generic [ref=e589]:
+      - generic [ref=e590]:
+        - heading "スマレジで始める、 セルフレジ販売" [level=2] [ref=e591]:
+          - text: スマレジで始める、
+          - text: セルフレジ販売
+        - paragraph [ref=e592]:
+          - text: 注文・会計・精算をお客さま自身が操作する新しい販売様式で、人件費を削減しませんか？
+          - text: セルフ運用に必要な周辺機器もあわせてご提案いたします。
+      - list [ref=e593]:
+        - listitem [ref=e594]:
+          - generic [ref=e595]:
+            - link "キャッシュレス決済":
+              - /url: /payment/
+              - img "キャッシュレス決済"
+          - heading "キャッシュレス決済" [level=3] [ref=e596]
+          - paragraph [ref=e597]: クレジットカード・タッチ決済・電子マネー・QRコード決済などさまざまなキャッシュレスにマルチに対応。端末がコンパクトなのでイベントや移動販売にも活躍します。
+          - link "詳しく見る" [ref=e599] [cursor=pointer]:
+            - /url: /payment/
+      - button [ref=e600] [cursor=pointer]
+      - button [ref=e601] [cursor=pointer]
+      - listbox [ref=e602]:
+        - option "1" [ref=e603] [cursor=pointer]
+        - option "2" [ref=e604] [cursor=pointer]
+        - option "3" [ref=e605] [cursor=pointer]
+        - option "4" [ref=e606] [cursor=pointer]
+    - link "機器サブスクプラン （オプション） 高額になりがちなレジの周辺機器を、初期費用を抑えて導入できるオプションプラン。自動釣銭機や券売機など、セルフレジ販売に必要な機器も月額でご利用いただけます。 サブスクプランについて" [ref=e609] [cursor=pointer]:
+      - /url: /price/subscription.php
+      - generic [ref=e610]:
+        - generic [ref=e612]:
+          - heading "機器サブスクプラン （オプション）" [level=3] [ref=e613]:
+            - text: 機器サブスクプラン
+            - text: （オプション）
+          - paragraph [ref=e614]: 高額になりがちなレジの周辺機器を、初期費用を抑えて導入できるオプションプラン。自動釣銭機や券売機など、セルフレジ販売に必要な機器も月額でご利用いただけます。
+        - generic [ref=e617]: サブスクプランについて
+    - generic [ref=e619]:
+      - heading "スマレジの主な機能" [level=2] [ref=e621]
+      - list [ref=e622]:
+        - listitem [ref=e623]:
+          - link "レジ機能" [ref=e624] [cursor=pointer]:
+            - /url: /product/register.php
+            - img [ref=e626]
+            - generic [ref=e638]: レジ機能
+        - listitem [ref=e639]:
+          - link "充実の周辺機器対応" [ref=e640] [cursor=pointer]:
+            - /url: /hardware/
+            - img [ref=e642]
+            - generic [ref=e653]: 充実の周辺機器対応
+        - listitem [ref=e654]:
+          - link "キャッシュレス決済" [ref=e655] [cursor=pointer]:
+            - /url: /payment/
+            - generic [ref=e657]: キャッシュレス決済
+        - listitem [ref=e658]:
+          - link "免税対応 免税対応" [ref=e659] [cursor=pointer]:
+            - /url: /product/taxfree.php
+            - img "免税対応" [ref=e661]
+            - generic [ref=e662]: 免税対応
+        - listitem [ref=e663]:
+          - link "軽減税率対応" [ref=e664] [cursor=pointer]:
+            - /url: /product/taxrate.php
+            - img [ref=e666]
+            - generic [ref=e675]: 軽減税率対応
+        - listitem [ref=e676]:
+          - link "商品別税設定" [ref=e677] [cursor=pointer]:
+            - /url: /product/register.php#registerTaxEachItem
+            - img [ref=e679]
+            - generic [ref=e690]: 商品別税設定
+        - listitem [ref=e691]:
+          - link "セルフレジ・券売機" [ref=e692] [cursor=pointer]:
+            - /url: /product/self-register.php
+            - img [ref=e694]
+            - generic [ref=e711]: セルフレジ・券売機
+        - listitem [ref=e712]:
+          - link "クイックコマンド" [ref=e713] [cursor=pointer]:
+            - /url: /product/register.php#registerQuickCommand
+            - img [ref=e715]
+            - generic [ref=e720]: クイックコマンド
+        - listitem [ref=e721]:
+          - link "売上分析" [ref=e722] [cursor=pointer]:
+            - /url: /product/analysis.php
+            - img [ref=e724]
+            - generic [ref=e733]: 売上分析
+        - listitem [ref=e734]:
+          - link "予算管理" [ref=e735] [cursor=pointer]:
+            - /url: /product/budget.php
+            - img [ref=e737]
+            - generic [ref=e744]: 予算管理
+        - listitem [ref=e745]:
+          - link "顧客管理" [ref=e746] [cursor=pointer]:
+            - /url: /product/customer.php
+            - img [ref=e748]
+            - generic [ref=e763]: 顧客管理
+        - listitem [ref=e764]:
+          - link "複数店舗管理" [ref=e765] [cursor=pointer]:
+            - /url: /product/multiple-stores.php
+            - img [ref=e767]
+            - generic [ref=e779]: 複数店舗管理
+        - listitem [ref=e780]:
+          - link "本部管理 本部管理" [ref=e781] [cursor=pointer]:
+            - /url: /product/headquarters.php
+            - img "本部管理" [ref=e783]
+            - generic [ref=e784]: 本部管理
+        - listitem [ref=e785]:
+          - link "小売店向け在庫管理" [ref=e786] [cursor=pointer]:
+            - /url: /product/inventory.php
+            - img [ref=e788]
+            - generic [ref=e805]: 小売店向け在庫管理
+        - listitem [ref=e806]:
+          - link "データのCSV出力" [ref=e807] [cursor=pointer]:
+            - /url: /product/register.php#registerCsv
+            - img [ref=e809]
+            - generic [ref=e818]: データのCSV出力
+        - listitem [ref=e819]:
+          - link "ユーザーの閲覧権限設定" [ref=e820] [cursor=pointer]:
+            - /url: "/product/staff.php "
+            - img [ref=e822]
+            - generic [ref=e825]: ユーザーの閲覧権限設定
+        - listitem [ref=e826]:
+          - link "外部システム連携" [ref=e827] [cursor=pointer]:
+            - /url: /product/cooperation.php
+            - img [ref=e829]
+            - generic [ref=e835]: 外部システム連携
+        - listitem [ref=e836]:
+          - link "スマレジ・ アプリマーケット" [ref=e837] [cursor=pointer]:
+            - /url: /product/appmarket.php
+            - img [ref=e839]
+            - generic [ref=e849]:
+              - text: スマレジ・
+              - text: アプリマーケット
+        - listitem [ref=e850]:
+          - link "受注管理" [ref=e851] [cursor=pointer]:
+            - /url: /product/order-shipment.php
+            - generic [ref=e853]: 受注管理
+        - listitem [ref=e854]:
+          - link "スマレジ・ タイムカード連携" [ref=e855] [cursor=pointer]:
+            - /url: /product/timecard-cooperation.php
+            - generic [ref=e857]:
+              - text: スマレジ・
+              - text: タイムカード連携
+        - listitem [ref=e858]:
+          - link "オーダーエントリー" [ref=e859] [cursor=pointer]:
+            - /url: /product/order-entry-system.php
+            - img [ref=e861]
+            - generic [ref=e875]: オーダーエントリー
+        - listitem [ref=e876]:
+          - link "セルフオーダー" [ref=e877] [cursor=pointer]:
+            - /url: /price/table-order.php
+            - generic [ref=e879]: セルフオーダー
+        - listitem [ref=e880]:
+          - link "トレーニングモード" [ref=e881] [cursor=pointer]:
+            - /url: /product/register.php#registerTraning
+            - img [ref=e883]
+            - generic [ref=e888]: トレーニングモード
+        - listitem [ref=e889]:
+          - link "PL管理" [ref=e890] [cursor=pointer]:
+            - /url: /product/profit_and_loss.php
+            - img [ref=e892]
+            - generic [ref=e904]: PL管理
+        - listitem [ref=e905]:
+          - link "アラート機能" [ref=e906] [cursor=pointer]:
+            - /url: /product/alert.php
+            - img [ref=e908]
+            - generic [ref=e911]: アラート機能
+      - link "機能一覧を見る" [ref=e913] [cursor=pointer]:
+        - /url: /product/
+    - generic [ref=e916]:
+      - list [ref=e917]:
+        - listitem [ref=e918]
+        - listitem [ref=e919]
+      - link "ショールームイメージ1 ショールームイメージ2 ショールームイメージ3 ショールームイメージ4 カンタン 予約 実機体験 ショールーム予約 恵比寿 池袋 名古屋 大阪 福岡 実機で操作性や機能を確認したい 自動釣銭機やセルフレジを体験したい レジ導入のアドバイスを受けたい ショールーム予約" [ref=e921] [cursor=pointer]:
+        - /url: /showroom/
+        - generic [ref=e922]:
+          - generic [ref=e923]:
+            - img "ショールームイメージ1" [ref=e924]
+            - img "ショールームイメージ2" [ref=e925]
+            - img "ショールームイメージ3" [ref=e926]
+            - img "ショールームイメージ4" [ref=e927]
+            - generic [ref=e928]:
+              - text: カンタン
+              - text: 予約
+          - generic [ref=e929]:
+            - heading "実機体験 ショールーム予約" [level=3] [ref=e930]:
+              - generic [ref=e931]: 実機体験
+              - text: ショールーム予約
+            - list [ref=e932]:
+              - listitem [ref=e933]: 恵比寿
+              - listitem [ref=e934]: 池袋
+              - listitem [ref=e935]: 名古屋
+              - listitem [ref=e936]: 大阪
+              - listitem [ref=e937]: 福岡
+            - paragraph [ref=e938]: 実機で操作性や機能を確認したい
+            - paragraph [ref=e939]: 自動釣銭機やセルフレジを体験したい
+            - paragraph [ref=e940]: レジ導入のアドバイスを受けたい
+            - generic [ref=e942]: ショールーム予約
+      - generic [ref=e945]:
+        - article [ref=e946]:
+          - link "全国受付 オンライン相談 全国どこからでも、機器動画付きのご説明で対面と変わりなく導入相談 オンライン相談" [ref=e947] [cursor=pointer]:
+            - /url: /f/online/
+            - generic [ref=e948]:
+              - heading "全国受付 オンライン相談" [level=3] [ref=e949]:
+                - generic [ref=e950]: 全国受付
+                - text: オンライン相談
+              - paragraph [ref=e951]: 全国どこからでも、機器動画付きのご説明で対面と変わりなく導入相談
+              - generic [ref=e953]: オンライン相談
+        - article [ref=e954]:
+          - link "お気軽に お問い合わせ スマレジについての疑問やご相談、お見積もりのご依頼など お問い合わせ" [ref=e955] [cursor=pointer]:
+            - /url: /request/
+            - generic [ref=e956]:
+              - heading "お気軽に お問い合わせ" [level=3] [ref=e957]:
+                - generic [ref=e958]: お気軽に
+                - text: お問い合わせ
+              - paragraph [ref=e959]: スマレジについての疑問やご相談、お見積もりのご依頼など
+            - generic [ref=e961]: お問い合わせ
+        - article [ref=e962]:
+          - link "無料配布 資料請求 スマレジの機能、機器構成、プラン、サポートなど分かりやすく解説 資料ダウンロード" [ref=e963] [cursor=pointer]:
+            - /url: /f/info-download/
+            - generic [ref=e964]:
+              - heading "無料配布 資料請求" [level=3] [ref=e965]:
+                - generic [ref=e966]: 無料配布
+                - text: 資料請求
+              - paragraph [ref=e967]: スマレジの機能、機器構成、プラン、サポートなど分かりやすく解説
+              - generic [ref=e969]: 資料ダウンロード
+    - generic [ref=e971]:
+      - generic [ref=e973]:
+        - heading "プランと料金" [level=2] [ref=e974]
+        - paragraph [ref=e975]: ご利用状況に合わせて、５つのプランをご用意しております。
+      - generic [ref=e977]:
+        - generic [ref=e978]:
+          - generic [ref=e980]:
+            - generic [ref=e981]:
+              - heading "スタンダード" [level=3] [ref=e982]
+              - text: 1店舗のみ / 月額 ¥
+              - generic [ref=e983]: "0"
+            - generic [ref=e984]:
+              - text: 基本的なPOSレジ機能を備えた、気軽に使える無料プラン。
+              - link "最適なプランを相談" [ref=e985] [cursor=pointer]:
+                - /url: /f/online/
+              - link "プラン詳細" [ref=e986] [cursor=pointer]:
+                - /url: /price/standard.php
+          - generic [ref=e988]:
+            - generic [ref=e989]:
+              - heading "プレミアム" [level=3] [ref=e990]
+              - text: 1店舗につき / 月額 ¥ 5,500 (税込)
+            - generic [ref=e991]:
+              - generic [ref=e992]: 複数店舗で使えるプラン。売上を一括管理。安心のセキュリティ。
+              - link "最適なプランを相談" [ref=e993] [cursor=pointer]:
+                - /url: /f/online/
+              - link "プラン詳細" [ref=e994] [cursor=pointer]:
+                - /url: /price/premium.php
+          - generic [ref=e995]:
+            - generic [ref=e996]: 人気 No.1
+            - generic [ref=e997]:
+              - generic [ref=e998]:
+                - heading "プレミアム プラス" [level=3] [ref=e999]
+                - text: 1店舗につき / 月額 ¥ 8,800 (税込)
+              - generic [ref=e1000]:
+                - generic [ref=e1001]: 顧客管理10万件、ポイント管理、電話サポートのついたプラン。
+                - link "最適なプランを相談" [ref=e1002] [cursor=pointer]:
+                  - /url: /f/online/
+                - link "プラン詳細" [ref=e1003] [cursor=pointer]:
+                  - /url: /price/premium-plus.php
+          - generic [ref=e1004]:
+            - generic [ref=e1005]: モバイルオーダー標準搭載
+            - generic [ref=e1006]:
+              - generic [ref=e1007]:
+                - heading "フードビジネス" [level=3] [ref=e1008]
+                - text: 1店舗につき / 月額 ¥ 15,400 (税込)
+              - generic [ref=e1010]:
+                - generic [ref=e1011]: モバイルオーダーなど、飲食向け機能が充実したプラン。
+                - link "最適なプランを相談" [ref=e1012] [cursor=pointer]:
+                  - /url: /f/online/
+                - link "プラン詳細" [ref=e1013] [cursor=pointer]:
+                  - /url: /price/food.php
+          - generic [ref=e1014]:
+            - generic [ref=e1015]: 高度な在庫管理
+            - generic [ref=e1016]:
+              - generic [ref=e1017]:
+                - heading "リテールビジネス" [level=3] [ref=e1018]
+                - text: 1店舗につき / 月額 ¥ 15,400 (税込)
+              - generic [ref=e1019]:
+                - generic [ref=e1020]: 小売店向けの、高度な在庫管理が可能なフル機能プラン。
+                - link "最適なプランを相談" [ref=e1021] [cursor=pointer]:
+                  - /url: /f/online/
+                - link "プラン詳細" [ref=e1022] [cursor=pointer]:
+                  - /url: /price/retail.php
+        - list [ref=e1024]:
+          - listitem [ref=e1025]: ■ レジ端末は、1店舗につき3台までご利用いただけます。※追加の場合、別途1,540円（1台／税込月額）※スタンダードプランは追加は行えません。
+          - listitem [ref=e1026]: ■ フードビジネスプランのハンディ端末は、1店舗につき5台までご利用いただけます。※ 追加の場合、別途1,540円（1台／税込月額）
+          - listitem [ref=e1027]: ■ フードビジネスプランとリテールビジネスプラン併用の場合は、1店舗につき月額22,000円（税込）となります。
+          - listitem [ref=e1028]:
+            - text: ■ 商品点数10万点以上、会員数10万人以上の場合は、従量課金制となります。詳しくは、
+            - link "お問い合わせ" [ref=e1029] [cursor=pointer]:
+              - /url: /request/
+            - text: ください。
+          - listitem [ref=e1030]:
+            - text: ■ スタンダードプランおよびプレミアムプランでは、
+            - link "セルフレジ機能" [ref=e1031] [cursor=pointer]:
+              - /url: https://help.smaregi.jp/hc/ja/articles/360051002834-%E3%82%BB%E3%83%AB%E3%83%95%E3%83%AC%E3%82%B8%E3%83%A2%E3%83%BC%E3%83%89%E3%81%A8%E3%81%AF
+            - text: をご利用いただくことができません。
+            - link "セルフレジ機能" [ref=e1032] [cursor=pointer]:
+              - /url: https://help.smaregi.jp/hc/ja/articles/360051002834-%E3%82%BB%E3%83%AB%E3%83%95%E3%83%AC%E3%82%B8%E3%83%A2%E3%83%BC%E3%83%89%E3%81%A8%E3%81%AF
+            - text: を除く操作画面は、あくまで店舗スタッフがレジ操作を行っていただくことを前提に作成されております。
+            - text: 商品/サービスのご購入者がレジ操作を行われる場合、セルフレジ機能がついたプレミアムプラスプラン以上をお求めください。利用料は1,320円（1台／税込月額）です。詳しくは、
+            - link "お問い合わせ" [ref=e1033] [cursor=pointer]:
+              - /url: /request/?select=セルフレジについて
+            - text: ください。
+          - listitem [ref=e1034]: ■ 受注管理機能は、受注店舗ごとに月額11,000円（税込） の利用料がかかり、取引件数1,001件/月から1件につき33円（税込）の従量課金制となります。
+      - link "料金一覧を見る" [ref=e1037] [cursor=pointer]:
+        - /url: /price/
+    - generic [ref=e1039]:
+      - heading "よくあるご質問" [level=2] [ref=e1041]
+      - generic [ref=e1042]:
+        - generic [ref=e1043]:
+          - heading "アプリのセキュリティ面は安全ですか？ Q." [level=3] [ref=e1044] [cursor=pointer]
+          - paragraph [ref=e1045]:
+            - text: A. パスワード制限をかけ、メニューごとにロックすることができます。また会員データはローカルには保持しません。
+            - text: サーバーとの通信はSSL暗号化通信です。万一、iPadレジ端末などを紛失した場合、管理画面からレジ利用不可に制御することができます。
+        - generic [ref=e1046]:
+          - heading "契約してから導入までの期間はどれくらいですか？ Q." [level=3] [ref=e1047] [cursor=pointer]
+          - paragraph [ref=e1048]: A. 導入する内容によりますが、お申込みから運用開始まで、およそ1ヶ月程度が一般的な期間の目安となります。
+        - generic [ref=e1049]:
+          - heading "現金・クレジット以外の決済方法には対応していますか？ Q." [level=3] [ref=e1050] [cursor=pointer]
+          - paragraph [ref=e1051]:
+            - text: A. はい、スマレジは現金・クレジットカードに加えて、電子マネーやQRコード決済にも対応しています。
+            - text: さらに、スマレジの決済サービス「
+            - link "PAYGATE（ペイゲート）" [ref=e1052] [cursor=pointer]:
+              - /url: /payment/
+            - text: 」を利用することで、主要な電子マネーや各種QRコード決済をまとめて導入できます。
+        - generic [ref=e1053]:
+          - heading "飲食用のオーダーエントリーシステムとの連動はできますか？ Q." [level=3] [ref=e1054] [cursor=pointer]
+          - paragraph [ref=e1055]:
+            - text: A. 弊社が開発したオーダーエントリーシステム「スマレジ・ウェイター」と連動することが可能です。
+            - link "詳しくはこちら" [ref=e1056] [cursor=pointer]:
+              - /url: /product/order-entry-system.php
+            - text: をご覧ください。
+        - generic [ref=e1057]:
+          - heading "インターネットに繋がらなくなってしまった場合はどうなりますか？ Q." [level=3] [ref=e1058] [cursor=pointer]
+          - paragraph [ref=e1059]:
+            - text: A. スマレジは、インターネットにつながっていないオフライン状態でも、販売を行うことができます。
+            - text: オフライン状態で販売した売上データは、スマレジ・アプリに蓄積され、オンライン状態になった時に、
+            - text: スマレジ・サーバー（管理画面）に送信することで、オンラインでもオフラインでも気にせずに販売することができます。
+      - link "よくあるご質問一覧を見る" [ref=e1061] [cursor=pointer]:
+        - /url: /faq/
+    - generic [ref=e1067]:
+      - heading "スマレジは、 アフターサポートも万全" [level=2] [ref=e1068]:
+        - text: スマレジは、
+        - text: アフターサポートも万全
+      - paragraph [ref=e1069]:
+        - text: 専門知識が豊富なスマレジ検定に合格したスタッフが丁寧に対応。
+        - text: 世界で一番スマレジに詳しいスタッフが、 誠実に対応、お客さまの満足度の向上に努めます。
+      - link "アフターサポートを見る" [ref=e1071] [cursor=pointer]:
+        - /url: /support/
+    - generic [ref=e1074]:
+      - generic [ref=e1075]:
+        - heading "製品に関するお知らせ" [level=3] [ref=e1076]:
+          - link "製品に関するお知らせ" [ref=e1077] [cursor=pointer]:
+            - /url: /news/?cid=2
+        - list [ref=e1079]:
+          - listitem [ref=e1080]:
+            - generic [ref=e1081]:
+              - generic [ref=e1082]: "04.14"
+              - generic [ref=e1083]: 火
+            - generic [ref=e1084]:
+              - generic [ref=e1085]: 製品リリース情報
+              - heading "管理画面・POS 4.65 精算印刷画面の前受金に支払方法ごとの内訳が表示されるようになりました（スマレジ管理画面・POS ver4.65）" [level=4] [ref=e1086]:
+                - link "管理画面・POS 4.65 精算印刷画面の前受金に支払方法ごとの内訳が表示されるようになりました（スマレジ管理画面・POS ver4.65）" [ref=e1087] [cursor=pointer]:
+                  - /url: /news/product/20260414150000.php
+                  - generic [ref=e1088]: 管理画面・POS
+                  - generic [ref=e1089]: "4.65"
+                  - text: 精算印刷画面の前受金に支払方法ごとの内訳が表示されるようになりました（スマレジ管理画面・POS ver4.65）
+          - listitem [ref=e1090]:
+            - generic [ref=e1091]:
+              - generic [ref=e1092]: "04.08"
+              - generic [ref=e1093]: 水
+            - generic [ref=e1094]:
+              - generic [ref=e1095]: 製品リリース情報
+              - heading "管理画面・在庫管理 4.50.0 在庫一覧画面の検索条件に『部門グループ』を追加しました（スマレジ管理画面・在庫管理 ver.4.50.0）" [level=4] [ref=e1096]:
+                - link "管理画面・在庫管理 4.50.0 在庫一覧画面の検索条件に『部門グループ』を追加しました（スマレジ管理画面・在庫管理 ver.4.50.0）" [ref=e1097] [cursor=pointer]:
+                  - /url: /news/product/202604081646.php
+                  - generic [ref=e1098]: 管理画面・在庫管理
+                  - generic [ref=e1099]: 4.50.0
+                  - text: 在庫一覧画面の検索条件に『部門グループ』を追加しました（スマレジ管理画面・在庫管理 ver.4.50.0）
+          - listitem [ref=e1100]:
+            - generic [ref=e1101]:
+              - generic [ref=e1102]: "04.08"
+              - generic [ref=e1103]: 水
+            - generic [ref=e1104]:
+              - generic [ref=e1105]: 製品リリース情報
+              - heading "アプリ・セルフサービス 2.2.2 システムの修正を行います（セルフサービス・アプリ ver.2.2.2）" [level=4] [ref=e1106]:
+                - link "アプリ・セルフサービス 2.2.2 システムの修正を行います（セルフサービス・アプリ ver.2.2.2）" [ref=e1107] [cursor=pointer]:
+                  - /url: /news/product/2026040801.php
+                  - generic [ref=e1108]: アプリ・セルフサービス
+                  - generic [ref=e1109]: 2.2.2
+                  - text: システムの修正を行います（セルフサービス・アプリ ver.2.2.2）
+        - generic [ref=e1110]:
+          - link "一覧を見る" [ref=e1111] [cursor=pointer]:
+            - /url: /news/?cid=2
+          - link "→ サーバー障害情報" [ref=e1112] [cursor=pointer]:
+            - /url: /news/?cid=4&cnm=%E9%9A%9C%E5%AE%B3%E6%83%85%E5%A0%B1
+      - generic [ref=e1113]:
+        - heading "ニュース・プレスリリース" [level=3] [ref=e1114]:
+          - link "ニュース・プレスリリース" [ref=e1115] [cursor=pointer]:
+            - /url: /news/?cid=3
+        - list [ref=e1117]:
+          - listitem [ref=e1118]:
+            - generic [ref=e1119]:
+              - generic [ref=e1120]: "03.30"
+              - generic [ref=e1121]: 月
+            - generic [ref=e1122]:
+              - generic [ref=e1123]: ニュース・プレス
+              - heading "藤﨑ゆみあさん出演、新TVCM 『お店、わかる、スマレジ』篇を4月1日より放映開始" [level=4] [ref=e1124]:
+                - link "藤﨑ゆみあさん出演、新TVCM 『お店、わかる、スマレジ』篇を4月1日より放映開始" [ref=e1125] [cursor=pointer]:
+                  - /url: /news/press/20260330_cm.php
+          - listitem [ref=e1126]:
+            - generic [ref=e1127]:
+              - generic [ref=e1128]: "03.25"
+              - generic [ref=e1129]: 水
+            - generic [ref=e1130]:
+              - generic [ref=e1131]: ニュース・プレス
+              - heading "最短1営業日で最大2,000万円入金！中小店舗のキャッシュフローをAIで支援する 「スマレジ・出世払い」を3月25日（水）より提供開始" [level=4] [ref=e1132]:
+                - link "最短1営業日で最大2,000万円入金！中小店舗のキャッシュフローをAIで支援する 「スマレジ・出世払い」を3月25日（水）より提供開始" [ref=e1133] [cursor=pointer]:
+                  - /url: /news/press/20260325_smaregirbf.php
+          - listitem [ref=e1134]:
+            - generic [ref=e1135]:
+              - generic [ref=e1136]: "03.09"
+              - generic [ref=e1137]: 月
+            - generic [ref=e1138]:
+              - generic [ref=e1139]: ニュース・プレス
+              - heading "【重要】外部アプリにおけるデータ流出について（最終報告）" [level=4] [ref=e1140]:
+                - link "【重要】外部アプリにおけるデータ流出について（最終報告）" [ref=e1141] [cursor=pointer]:
+                  - /url: /news/press/20260309.php
+        - link "一覧を見る" [ref=e1143] [cursor=pointer]:
+          - /url: /news/?cid=3
+    - generic [ref=e1147]:
+      - heading "イベント・セミナー" [level=3] [ref=e1148]:
+        - link "イベント・セミナー" [ref=e1149] [cursor=pointer]:
+          - /url: /event/
+      - list [ref=e1151]:
+        - listitem [ref=e1152]:
+          - generic [ref=e1153]:
+            - generic [ref=e1154]: "03.03"
+            - generic [ref=e1155]: 火
+          - generic [ref=e1156]:
+            - link "イベント 【3/3〜6】流通情報システム総合展「リテールテックJAPAN 2026」に出展" [ref=e1158] [cursor=pointer]:
+              - /url: /event/event/retailtechjapan_2026.php
+              - generic [ref=e1159]: イベント
+              - img "【3/3〜6】流通情報システム総合展「リテールテックJAPAN 2026」に出展" [ref=e1161]
+            - link "【3/3〜6】流通情報システム総合展「リテールテックJAPAN 2026」に出展" [ref=e1164] [cursor=pointer]:
+              - /url: /event/event/retailtechjapan_2026.php
+        - listitem [ref=e1165]:
+          - generic [ref=e1166]:
+            - generic [ref=e1167]: "02.25"
+            - generic [ref=e1168]: 水
+          - generic [ref=e1169]:
+            - link "イベント 【2/25・26】外食・中食・小売業界へ販路開拓するための商談展示会「FOOD STYLE JAPAN 2026 ＜沖縄＞」に出展します" [ref=e1171] [cursor=pointer]:
+              - /url: /event/event/foodstyle_okinawa_2026.php
+              - generic [ref=e1172]: イベント
+              - img "【2/25・26】外食・中食・小売業界へ販路開拓するための商談展示会「FOOD STYLE JAPAN 2026 ＜沖縄＞」に出展します" [ref=e1174]
+            - link "【2/25・26】外食・中食・小売業界へ販路開拓するための商談展示会「FOOD STYLE JAPAN 2026 ＜沖縄＞」に出展します" [ref=e1177] [cursor=pointer]:
+              - /url: /event/event/foodstyle_okinawa_2026.php
+        - listitem [ref=e1178]:
+          - generic [ref=e1179]:
+            - generic [ref=e1180]: "02.17"
+            - generic [ref=e1181]: 火
+          - generic [ref=e1182]:
+            - link "イベント 【2/17〜20】外食・宿泊・レジャー業界に向けた商談専門展「第54回 国際ホテル・レストラン・ショー」に出展します" [ref=e1184] [cursor=pointer]:
+              - /url: /event/event/hoteres-japan2026.php
+              - generic [ref=e1185]: イベント
+              - img "【2/17〜20】外食・宿泊・レジャー業界に向けた商談専門展「第54回 国際ホテル・レストラン・ショー」に出展します" [ref=e1187]
+            - link "【2/17〜20】外食・宿泊・レジャー業界に向けた商談専門展「第54回 国際ホテル・レストラン・ショー」に出展します" [ref=e1190] [cursor=pointer]:
+              - /url: /event/event/hoteres-japan2026.php
+      - link "一覧を見る" [ref=e1192] [cursor=pointer]:
+        - /url: /event/
+    - generic [ref=e1197]:
+      - heading "POSレジとは？" [level=2] [ref=e1198]
+      - paragraph [ref=e1199]:
+        - text: POSレジとは、商品の販売時にリアルタイムで売上や在庫情報を自動収集・管理できるシステム付きレジです。
+        - text: 従来型レジとは異なり、販売データの分析や複数店舗間の在庫確認が可能で、タブレットやスマートフォンにも対応しています。
+        - text: これにより店舗運営の効率化や販売促進、顧客サービス向上が図れるため、現代の店舗経営に不可欠な存在となっています。
+      - link "詳しく見る" [ref=e1201] [cursor=pointer]:
+        - /url: /learn/about_pos.php
+    - generic:
+      - generic:
+        - link "新規相談専用ダイヤル （平日 10:00〜19:00）":
+          - /url: tel:0368976235
+          - generic:
+            - generic:
+              - text: 新規相談専用ダイヤル
+              - generic: （平日 10:00〜19:00）
+  - list [ref=e1204]:
+    - listitem [ref=e1205]:
+      - link "スマレジホーム" [ref=e1206] [cursor=pointer]:
+        - /url: /
+    - listitem [ref=e1207]: "> 【公式】 POSレジなら「スマレジ」"
+  - contentinfo [ref=e1208]:
+    - generic [ref=e1212]:
+      - link [ref=e1214] [cursor=pointer]:
+        - /url: https://timecard.smaregi.jp/
+      - button [ref=e1215] [cursor=pointer]
+      - button [ref=e1216] [cursor=pointer]
+      - listbox [ref=e1217]:
+        - option "1" [ref=e1218] [cursor=pointer]
+        - option "2" [ref=e1219] [cursor=pointer]
+        - option "3" [ref=e1220] [cursor=pointer]
+    - generic [ref=e1221]:
+      - generic [ref=e1224]:
+        - generic [ref=e1225]:
+          - generic [ref=e1226]:
+            - link [ref=e1227] [cursor=pointer]:
+              - /url: /
+              - img [ref=e1228]
+            - generic [ref=e1230]: お店を元気に、街を元気に！ 株式会社スマレジ
+          - navigation [ref=e1231]:
+            - list [ref=e1232]:
+              - listitem [ref=e1233]:
+                - link "会社概要" [ref=e1234] [cursor=pointer]:
+                  - /url: https://corp.smaregi.jp/corporate/
+              - listitem [ref=e1235]:
+                - link "採用情報" [ref=e1236] [cursor=pointer]:
+                  - /url: https://corp.smaregi.jp/recruit/
+              - listitem [ref=e1237]:
+                - link "スマレジのデザイン" [ref=e1238] [cursor=pointer]:
+                  - /url: /design/
+        - list [ref=e1240]:
+          - listitem [ref=e1241]:
+            - link "スマレジTwitterページへ" [ref=e1242] [cursor=pointer]:
+              - /url: https://twitter.com/smaregi
+          - listitem [ref=e1243]:
+            - link "スマレジfacebookページへ" [ref=e1244] [cursor=pointer]:
+              - /url: https://www.facebook.com/smaregi/
+          - listitem [ref=e1245]:
+            - link "スマレジYouTubeページへ" [ref=e1246] [cursor=pointer]:
+              - /url: https://www.youtube.com/channel/UCKnm9MeWXQWcPbU_Z94ffgg/featured
+        - img "株式会社スマレジのサービス一覧" [ref=e1248] [cursor=pointer]
+      - generic [ref=e1250]:
+        - generic [ref=e1251]: ※スマレジは、株式会社スマレジの登録商標です。※Apple、Appleロゴ、iPad、iPhone、iPod touchは、Apple Inc.の商標です。※iPhoneの商標は、アイホン株式会社のライセンスに基づき使用されています。
+        - generic [ref=e1253]:
+          - link "利用規約" [ref=e1254] [cursor=pointer]:
+            - /url: /legal/terms.php
+          - text: "|"
+          - link "個人情報の取り扱いについて" [ref=e1255] [cursor=pointer]:
+            - /url: /legal/privacy.php
+          - text: "|"
+          - link "特定商取引に関する表記" [ref=e1256] [cursor=pointer]:
+            - /url: /legal/s51ho057.php
+          - text: "|"
+          - link "カスタマーハラスメントへの対応方針" [ref=e1257] [cursor=pointer]:
+            - /url: https://corp.smaregi.jp/legal/customer-harassment.php
+          - text: "|"
+          - link "反社会的勢力に対する基本方針" [ref=e1258] [cursor=pointer]:
+            - /url: https://corp.smaregi.jp/legal/antisocial.php
+          - text: "|"
+          - link "捜査機関等への情報開示ガイドライン" [ref=e1259] [cursor=pointer]:
+            - /url: /legal/disclosure-guideline.php
+          - text: "|"
+          - link "お問い合わせ" [ref=e1260] [cursor=pointer]:
+            - /url: /request/
+          - text: "|"
+          - link "ヘルプ" [ref=e1261] [cursor=pointer]:
+            - /url: https://help.smaregi.jp/hc/ja
+          - generic [ref=e1262]:
+            - text: ©
+            - link "Smaregi, Inc." [ref=e1263] [cursor=pointer]:
+              - /url: https://corp.smaregi.jp/

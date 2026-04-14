@@ -1,0 +1,33 @@
+- generic [active] [ref=e1]:
+  - generic [ref=e2]:
+    - banner [ref=e3]:
+      - generic [ref=e5]:
+        - link "Skip to Content" [ref=e6] [cursor=pointer]:
+          - /url: "#main-content"
+        - generic [ref=e8]
+    - main [ref=e30]:
+      - generic [ref=e31]:
+        - generic [ref=e32]
+        - generic [ref=e48]
+        - generic [ref=e67] [cursor=pointer]
+        - generic [ref=e86]
+        - generic [ref=e99]
+        - generic [ref=e489] [cursor=pointer]
+        - generic [ref=e506]
+        - paragraph [ref=e536]
+        - generic [ref=e539]
+        - generic [ref=e571]
+        - generic [ref=e597]
+        - generic [ref=e664]
+        - generic [ref=e720]
+    - contentinfo [ref=e725]:
+      - generic [ref=e726]:
+        - navigation [ref=e727]
+        - paragraph [ref=e918]: QRコードは株式会社デンソーウェーブの登録商標です。
+        - paragraph [ref=e919]
+        - navigation [ref=e921]
+        - generic [ref=e935]
+  - iframe
+  - generic [ref=e1225]:
+    - generic "AI アシスタント" [ref=e1226]
+    - generic "AI アシスタントの後" [ref=e1227]

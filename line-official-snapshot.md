@@ -1,0 +1,17 @@
+- generic [active] [ref=e1]:
+  - generic [ref=e3]:
+    - banner [ref=e4]:
+      - generic [ref=e5]
+      - text:  
+    - main [ref=e12]:
+      - generic [ref=e13]
+    - contentinfo [ref=e509]:
+      - text: 
+      - generic [ref=e510]
+  - generic [ref=e551]:
+    - list [ref=e552]:
+      - listitem [ref=e553]
+    - paragraph [ref=e555]:
+      - link "ログイン" [ref=e556] [cursor=pointer]:
+        - /url: https://manager.line.biz/
+  - iframe

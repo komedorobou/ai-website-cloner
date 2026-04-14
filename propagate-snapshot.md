@@ -1,0 +1,797 @@
+- generic [ref=e3]:
+  - region "top of page" [active]
+  - generic [ref=e10]:
+    - link "Propagate%20WEB_edited.png" [ref=e12] [cursor=pointer]:
+      - /url: https://www.propagateinc.com
+      - img "Propagate%20WEB_edited.png" [ref=e13]
+    - navigation "サイト" [ref=e15]:
+      - list [ref=e16]:
+        - listitem [ref=e17]:
+          - link "TOP" [ref=e19] [cursor=pointer]:
+            - /url: https://www.propagateinc.com
+            - generic [ref=e21]: TOP
+        - listitem [ref=e22]:
+          - generic [ref=e23]:
+            - button "サービス一覧" [ref=e24] [cursor=pointer]:
+              - generic [ref=e26]: サービス一覧
+            - generic:
+              - button "Toggle サービス一覧":
+                - img
+        - listitem [ref=e28]:
+          - generic [ref=e29]:
+            - button "実績" [ref=e30] [cursor=pointer]:
+              - generic [ref=e32]: 実績
+            - generic:
+              - button "Toggle 実績":
+                - img
+        - listitem [ref=e34]:
+          - link "会社情報" [ref=e36] [cursor=pointer]:
+            - /url: https://www.propagateinc.com/company
+            - generic [ref=e38]: 会社情報
+        - listitem [ref=e39]:
+          - generic [ref=e40]:
+            - link "採用情報" [ref=e41] [cursor=pointer]:
+              - /url: https://www.propagateinc.com/recruit
+              - generic [ref=e43]: 採用情報
+            - generic:
+              - button "Toggle 採用情報":
+                - img
+        - listitem [ref=e45]:
+          - link "お問い合わせ/資料請求" [ref=e47] [cursor=pointer]:
+            - /url: https://www.propagateinc.com/question
+            - generic [ref=e49]: お問い合わせ/資料請求
+    - banner [ref=e50]
+    - main [ref=e57]:
+      - generic [ref=e61]:
+        - generic:
+          - generic:
+            - generic:
+              - generic [ref=e66]:
+                - img "プロパゲート サブスクWEB制作" [ref=e71]
+                - generic [ref=e77]:
+                  - generic:
+                    - generic:
+                      - generic [ref=e82]:
+                        - generic:
+                          - generic:
+                            - heading "無料で資料ダウンロード" [level=1] [ref=e83]:
+                              - generic [ref=e85]: 無料で資料ダウンロード
+                            - generic [ref=e90]:
+                              - generic [ref=e91]: 知ったきっかけ
+                              - generic [ref=e92]:
+                                - combobox "知ったきっかけ" [ref=e93] [cursor=pointer]:
+                                  - option "Instagram"
+                                  - option "FaceBook"
+                                  - option "TikTok"
+                                  - option "YouTube"
+                                  - option "X（旧:Twitter）"
+                                  - option "検索（Google）"
+                                  - option "検索（Yahoo）"
+                                  - option "検索（Bing）"
+                                  - option "プレスリリース"
+                                  - option "知人の紹介"
+                                  - option "その他"
+                                - generic:
+                                  - generic:
+                                    - img
+                            - generic [ref=e94]:
+                              - generic [ref=e95]: 貴社名
+                              - textbox "貴社名" [ref=e97]:
+                                - /placeholder: 例：〇〇株式会社（所属組織名）
+                            - generic [ref=e98]:
+                              - generic [ref=e99]: お名前（必須） *
+                              - textbox "お名前（必須） *" [ref=e101]:
+                                - /placeholder: 例：〇〇 花子
+                            - generic [ref=e102]:
+                              - generic [ref=e103]: メールアドレス（必須） *
+                              - textbox "メールアドレス（必須） *" [ref=e105]:
+                                - /placeholder: 例：mail@example.com
+                            - generic [ref=e106]:
+                              - generic [ref=e107]: 電話番号（必須） *
+                              - textbox "電話番号（必須） *" [ref=e109]:
+                                - /placeholder: 例：090-0000-0000
+                            - generic [ref=e110]:
+                              - checkbox "プライバシーポリシーに同意 規約はこちら" [checked] [ref=e111] [cursor=pointer]
+                              - generic:
+                                - img
+                              - generic [ref=e112]:
+                                - text: プライバシーポリシーに同意
+                                - link "規約はこちら" [ref=e113] [cursor=pointer]:
+                                  - /url: https://www.propagateinc.com/privacy
+                            - button "資料をダウンロードする" [ref=e115] [cursor=pointer]:
+                              - generic [ref=e116]: 資料をダウンロードする
+                      - img "プロパゲート 資料ダウンロード" [ref=e119]
+              - generic [ref=e120]:
+                - generic:
+                  - generic:
+                    - generic [ref=e129]:
+                      - generic:
+                        - generic:
+                          - generic [ref=e133]:
+                            - img
+                            - img "6.webp" [ref=e135]
+                          - heading "MISSION" [level=2] [ref=e136]:
+                            - generic [ref=e145]: MISSION
+                          - img "株式会社プロパゲートの提供価値.webp" [ref=e148]
+                          - heading "挑戦者の価値を届ける" [level=2] [ref=e149]:
+                            - generic [ref=e158]: 挑戦者の価値を届ける
+                          - generic:
+                            - paragraph [ref=e159]:
+                              - generic [ref=e168]:
+                                - text: Instagramの画像
+                                - text: X（Twitter）の文章
+                                - text: TikTokのショート動画
+                                - text: 広告メディアのフォーマット
+                            - paragraph [ref=e169]:
+                              - generic [ref=e177]: その枠内であなたの価値は伝わりますか？
+                            - paragraph [ref=e178]:
+                              - generic [ref=e187]:
+                                - text: 私たちプロパゲートのミッションは
+                                - text: 『挑戦者の価値を届ける』
+                          - generic:
+                            - paragraph [ref=e188]:
+                              - generic [ref=e197]:
+                                - text: あなたが磨き上げた価値を言語化し
+                                - text: その価値を自由に表現する場として
+                            - paragraph [ref=e198]:
+                              - generic [ref=e206]: ホームページを作り上げます。
+                            - paragraph [ref=e207]:
+                              - generic [ref=e216]:
+                                - text: 勿論、作っただけで終わりません。
+                                - text: その後の運用まで代行することで
+                                - text: 『届けたい人に価値を届ける』
+                                - text: その瞬間までこだわります。
+                            - paragraph [ref=e217]
+                            - paragraph [ref=e218]:
+                              - generic [ref=e227]:
+                                - text: 『世界で唯一、あなただけのプラットフォーム』
+                                - text: で本当の価値を届けませんか？
+                          - img "AdobeStock_3275319615B9BE6%9.webp" [ref=e230]
+                          - heading "テンプレート不使用。 完全オリジナル、あなただけのホームページ" [level=2] [ref=e231]:
+                            - generic [ref=e237]:
+                              - text: テンプレート不使用。
+                              - text: 完全オリジナル、あなただけのホームページ
+                          - link "まずは無料で資料ダウンロード" [ref=e239] [cursor=pointer]:
+                            - /url: https://www.propagateinc.com/question
+                            - generic [ref=e240]:
+                              - generic [ref=e241]: まずは無料で資料ダウンロード
+                              - img [ref=e244]
+                    - generic [ref=e252]:
+                      - generic:
+                        - generic:
+                          - heading "WHAT WE DO" [level=2] [ref=e256]:
+                            - generic [ref=e258]: WHAT WE DO
+                          - generic [ref=e259]:
+                            - img
+                            - img "6.webp" [ref=e261]
+                          - generic [ref=e262]:
+                            - generic:
+                              - generic:
+                                - generic:
+                                  - paragraph [ref=e264]:
+                                    - generic [ref=e266]: 制作費無料。
+                                  - paragraph [ref=e267]:
+                                    - generic [ref=e269]: 解約費無料。
+                                  - paragraph [ref=e270]:
+                                    - generic [ref=e272]: 必要なのは月々9,800円だけ。
+                                  - paragraph [ref=e273]
+                                  - paragraph [ref=e274]:
+                                    - generic [ref=e276]: 挑戦する企業・個人事業主を
+                                  - paragraph [ref=e277]:
+                                    - generic [ref=e279]: 支援するために生まれた
+                                  - paragraph [ref=e280]:
+                                    - generic [ref=e282]: 月額定額制（サブスクリプション型）ホームページ制作＆運用代行
+                          - link "無料相談・資料請求はこちら" [ref=e284] [cursor=pointer]:
+                            - /url: https://www.propagateinc.com/question
+                            - generic [ref=e285]:
+                              - generic [ref=e286]: 無料相談・資料請求はこちら
+                              - img [ref=e289]
+                          - generic "Video Player" [ref=e292]
+                          - generic:
+                            - paragraph [ref=e293]:
+                              - generic [ref=e295]: サブスクWEB制作は定額制
+                            - paragraph [ref=e296]:
+                              - generic [ref=e299]: （追加料金は発生しません）
+                            - paragraph [ref=e300]:
+                              - generic [ref=e302]: プランの違いはサイトページ数のみ
+                          - img "料金表 (2300 x 2000 px) (5).png" [ref=e305]
+                          - img "料金表 (2300 x 2000 px) (5).png" [ref=e308]
+                          - img "料金表 (2300 x 2000 px) (5).png" [ref=e311]
+                          - generic:
+                            - paragraph [ref=e312]:
+                              - generic [ref=e314]: 契約プランによる違いは、サイトのページ数のみ。
+                            - paragraph [ref=e315]:
+                              - generic [ref=e317]: サポート内容の優劣はございません。
+                            - paragraph [ref=e318]
+                            - paragraph [ref=e319]:
+                              - generic [ref=e323]: 「1ページ（BASIC）のホームページはどんな仕上がりになるの？」
+                            - paragraph [ref=e324]:
+                              - generic [ref=e328]: 「プラン別サイト事例を見てみたい」
+                            - paragraph [ref=e329]:
+                              - generic [ref=e331]: そんな方は、下記より制作実績をご参考にください。
+                          - link "プラン別WEB制作実積はこちら" [ref=e333] [cursor=pointer]:
+                            - /url: https://www.propagateinc.com/activities
+                            - generic [ref=e335]: プラン別WEB制作実積はこちら
+                    - region "料金表"
+                    - generic [ref=e340]:
+                      - generic [ref=e341]:
+                        - generic:
+                          - generic:
+                            - 'heading "POINT #1" [level=2] [ref=e345]':
+                              - generic [ref=e347]: "POINT #1"
+                            - heading "「3人体制でサポート」 チーム担当制" [level=2] [ref=e348]:
+                              - generic [ref=e356]:
+                                - text: 「3人体制でサポート」
+                                - text: チーム担当制
+                            - img "AdobeStock_290492187.jpeg" [ref=e359]
+                            - paragraph [ref=e360]:
+                              - generic [ref=e366]: ご契約者様には営業担当・デザイナー・ディレクターの３名がついてサポート。ホームページの修正・保守管理、ご要望に応じた修正更新まで徹底サポートします。
+                      - generic [ref=e367]:
+                        - generic:
+                          - generic:
+                            - 'heading "POINT #2" [level=2] [ref=e371]':
+                              - generic [ref=e373]: "POINT #2"
+                            - heading "「安心してお任せＯＫ」 抜群のコストパフォーマンス" [level=2] [ref=e374]:
+                              - generic [ref=e375]:
+                                - generic [ref=e376]: 「安心してお任せＯＫ」
+                                - generic [ref=e377]: 抜群のコストパフォーマンス
+                            - img "Asteroid20(8)_edited.webp" [ref=e380]
+                            - paragraph [ref=e381]:
+                              - generic [ref=e384]: 月額定額でプロのWEBデザインチームが1からサイト構築、修正・運用まで全てサポート。クオリティとコストパフォーマンスにおいて、他の追随を許しません。
+                    - region "特徴"
+              - generic [ref=e385]:
+                - generic:
+                  - generic:
+                    - generic [ref=e394]:
+                      - generic:
+                        - generic:
+                          - 'heading "POINT #3" [level=2] [ref=e398]':
+                            - generic [ref=e401]: "POINT #3"
+                          - heading "「お申込から最短4週間で納品」 スピードと質を両立" [level=2] [ref=e402]:
+                            - generic [ref=e403]:
+                              - generic [ref=e406]: 「お申込から最短4週間で納品」
+                              - generic [ref=e409]: スピードと質を両立
+                          - img "プロパゲート制作の流れ.png" [ref=e412]
+                          - link "フォームから無料相談する" [ref=e414] [cursor=pointer]:
+                            - /url: https://www.propagateinc.com/question
+                            - generic [ref=e415]:
+                              - generic [ref=e416]: フォームから無料相談する
+                              - img [ref=e419]
+                    - generic [ref=e427]:
+                      - generic:
+                        - generic:
+                          - heading "PARTNERS" [level=2] [ref=e431]:
+                            - generic [ref=e433]: PARTNERS
+                          - generic [ref=e434]:
+                            - img
+                            - img "6.webp" [ref=e436]
+                          - region "スライドショー" [ref=e437]:
+                            - button "前の" [ref=e438] [cursor=pointer]:
+                              - img [ref=e439]
+                            - button "次へ" [ref=e441] [cursor=pointer]:
+                              - img [ref=e442]
+                            - generic [ref=e445]:
+                              - generic:
+                                - generic:
+                                  - img "298424_1572295403260_757330418_n_edited." [ref=e451]
+                                  - generic:
+                                    - paragraph [ref=e452]:
+                                      - generic [ref=e456]: 古市 勝久 様
+                                    - paragraph [ref=e457]:
+                                      - generic [ref=e460]: 株式会社HRC 代表取締役社長
+                                  - heading "事業の本質を気づかせてくれる「大事な存在」" [level=2] [ref=e461]:
+                                    - generic [ref=e463]: 事業の本質を気づかせてくれる「大事な存在」
+                                  - generic:
+                                    - paragraph [ref=e464]:
+                                      - generic [ref=e467]: 各事業別にサイトが必要になった為、HPを3つプロパゲートに依頼しました。
+                                    - paragraph [ref=e468]:
+                                      - generic [ref=e471]: 専属担当者がしっかり私の想いや大事にしている考えをヒアリングしてくれた甲斐あり、明確なコンセプトを持つHPが出来上がりました。担当者が打ち合わせまでしてくれながら、この金額は破格です。これからも末永く付き合っていきたいパートナーです。
+                            - navigation "スライド" [ref=e472]:
+                              - list:
+                                - listitem:
+                                  - link "2" [ref=e473] [cursor=pointer]:
+                                    - /url: ./#comp-lgkj2o2x1
+                                - listitem:
+                                  - link "1" [ref=e474] [cursor=pointer]:
+                                    - /url: ./#comp-lgkj2o2s3
+                          - generic:
+                            - paragraph [ref=e475]:
+                              - generic [ref=e482]: 大手企業からスタートアップまで、
+                            - paragraph [ref=e483]:
+                              - generic [ref=e490]: 4,000以上の企業・個人事業主のご支援しております
+                          - img "17live-logo_edited.jpg" [ref=e493]
+                          - img "logo_form-eyes.webp" [ref=e496]
+                          - img "RGF_edited.webp" [ref=e499]
+                          - img "hrc_edited.webp" [ref=e502]
+                          - img "Lixi_edited.png" [ref=e505]
+                          - img "MaxValu_logo_(2nd)_edited.webp" [ref=e508]
+                          - img "for the win_edited.webp" [ref=e511]
+                          - img "ロゴタイプ3行.webp" [ref=e514]
+                          - img "goodstaff_edited_edited.webp" [ref=e517]
+                          - img "logo (2).webp" [ref=e520]
+                          - generic:
+                            - paragraph [ref=e521]:
+                              - generic [ref=e525]: サブスクWEB制作 ご契約パートナー（※一部抜粋）
+                            - paragraph [ref=e526]:
+                              - generic [ref=e530]: 伊藤忠建材株式会社・RGPジャパン株式会社・マックスバリュ南東北株式会社・フロムアイズ株式会社・17LIVE株式会社・株式会社紀乃屋・株式会社エイチジェイ・株式会社グッドスタッフ・きもの365株式会社・株式会社エイチイム・ヤマインターナショナル株式会社・株式会社モテックスジャパン・株式会社アップグレード ・株式会社ティーズエージェント・株式会社 漢方堂本舗・コアスポーツマネージメント株式会社・富士通ゼネラル体育館・銀座コバウ・横浜高校・その他4,000以上の企業・公共団体・個人事業主
+                          - link "フォームで無料相談・資料請求" [ref=e532] [cursor=pointer]:
+                            - /url: https://www.propagateinc.com/question
+                            - generic [ref=e533]:
+                              - generic [ref=e534]: フォームで無料相談・資料請求
+                              - img [ref=e537]
+                    - region "お客様"
+                    - generic [ref=e545]:
+                      - generic:
+                        - generic:
+                          - generic [ref=e549]:
+                            - img
+                            - img "6.webp" [ref=e551]
+                          - heading "ACTIVITIES" [level=2] [ref=e552]:
+                            - generic [ref=e554]: ACTIVITIES
+                          - region "スライドショー" [ref=e555]:
+                            - generic [ref=e557]:
+                              - generic:
+                                - generic:
+                                  - img "スクリーンショット 2023-04-08 224001.webp" [ref=e563]
+                                  - generic:
+                                    - paragraph [ref=e564]:
+                                      - generic [ref=e568]: 銀座コバウ 様
+                                    - paragraph [ref=e569]
+                                    - paragraph [ref=e570]:
+                                      - generic [ref=e574]: 東京・千葉に店舗を持つ高級焼肉店です。
+                                    - paragraph [ref=e575]:
+                                      - generic [ref=e579]: 洗練されたデザインと多言語対応を実現したホームページを制作しました。
+                                    - paragraph [ref=e580]
+                                    - paragraph [ref=e581]:
+                                      - generic [ref=e585]: コンセプトが一目で伝わり、各店舗情報やメニューが一覧で分かるサイトに仕上がりました。
+                                    - paragraph [ref=e586]
+                                    - paragraph [ref=e587]:
+                                      - generic [ref=e588]:
+                                        - generic [ref=e591]: 国内のお客様からご好評だけでなく、海外からの来店者にもアクセスしやすいサイト
+                                        - generic [ref=e594]: に仕上げることができました。
+                                  - generic:
+                                    - paragraph [ref=e595]:
+                                      - generic [ref=e599]: まつした鍼灸整体院 様
+                                    - paragraph [ref=e600]
+                                    - paragraph [ref=e601]:
+                                      - generic [ref=e605]:
+                                        - text: 同院は京都にある鍼灸整体院です。
+                                        - text: 弊社でホームページをリニューアルさせて頂くにあたり、「お問い合わせ獲得」に特化したサイトに仕上げました。
+                                    - paragraph [ref=e606]:
+                                      - generic [ref=e609]: 多角的な観点からサービスの魅力を余すことなく伝えるホームページとなっています。
+                                    - paragraph [ref=e610]
+                                    - paragraph [ref=e611]:
+                                      - generic [ref=e615]: その結果、ホームページリニューアル前と比較して、「ホームページからの問い合わせが3倍以上増加」しております。
+                                  - img "スクリーンショット 2023-04-08 223754.webp" [ref=e618]
+                            - navigation "スライド" [ref=e619]:
+                              - list:
+                                - listitem:
+                                  - link "1" [ref=e620] [cursor=pointer]:
+                                    - /url: ./#comp-lgkj2o3m3
+                          - link "無料相談・資料請求はこちら" [ref=e622] [cursor=pointer]:
+                            - /url: https://www.propagateinc.com/question
+                            - generic [ref=e623]:
+                              - generic [ref=e624]: 無料相談・資料請求はこちら
+                              - img [ref=e627]
+              - generic [ref=e630]:
+                - generic:
+                  - generic:
+                    - generic:
+                      - generic:
+                        - generic:
+                          - heading "マーケティング基盤の設計も ワンストップでサポート" [level=2] [ref=e634]:
+                            - generic [ref=e635]:
+                              - generic [ref=e638]: マーケティング基盤の設計も
+                              - generic [ref=e641]: ワンストップでサポート
+                          - img [ref=e644]
+              - generic [ref=e657]:
+                - generic:
+                  - generic:
+                    - heading "OPTIONS" [level=2] [ref=e661]:
+                      - generic [ref=e664]: OPTIONS
+                    - generic [ref=e665]:
+                      - img
+                      - img "6.webp" [ref=e667]
+                    - img "図18_tif.webp" [ref=e670]
+                    - paragraph [ref=e671]:
+                      - generic [ref=e674]: 集客コンサル
+                      - generic [ref=e677]: ティング
+                    - img "図19_tif.webp" [ref=e680]
+                    - generic:
+                      - paragraph [ref=e681]:
+                        - generic [ref=e684]: 独自ドメイン
+                      - paragraph [ref=e685]:
+                        - generic [ref=e688]: メール作成
+                    - img "図22_tif.webp" [ref=e691]
+                    - paragraph [ref=e692]:
+                      - generic [ref=e695]: ロゴ作成
+                    - img "図20_tif.webp" [ref=e698]
+                    - paragraph [ref=e699]:
+                      - generic [ref=e702]: 名刺作成
+                    - img "図16_tif.webp" [ref=e705]
+                    - img "年間制作実績 600社超 (1).webp" [ref=e708]
+                    - paragraph [ref=e709]:
+                      - generic [ref=e712]: LP設計
+                    - paragraph [ref=e713]:
+                      - generic [ref=e716]: WEB広告運用
+                    - list "SNS バー" [ref=e718]:
+                      - listitem [ref=e719]:
+                        - generic "TikTok" [ref=e720]:
+                          - img "TikTok" [ref=e721]
+                    - img [ref=e724]
+                    - paragraph [ref=e728]:
+                      - generic [ref=e731]: MEO対策
+                    - paragraph [ref=e732]:
+                      - generic [ref=e735]: TikTokのCM企画
+                    - heading "ホームページの効果を最大化させる 上記サービスも承っております。" [level=2] [ref=e736]:
+                      - generic [ref=e739]:
+                        - generic [ref=e740]: ホームページの効果を最大化させる
+                        - generic [ref=e741]: 上記サービスも承っております。
+                    - link "フォームで無料相談・資料請求" [ref=e743] [cursor=pointer]:
+                      - /url: https://www.propagateinc.com/question
+                      - generic [ref=e744]:
+                        - generic [ref=e745]: フォームで無料相談・資料請求
+                        - img [ref=e748]
+              - generic [ref=e751]:
+                - generic:
+                  - generic:
+                    - generic [ref=e755]:
+                      - img
+                      - img "6.webp" [ref=e757]
+                    - heading "FAQ" [level=2] [ref=e758]:
+                      - generic [ref=e762]: FAQ
+                    - generic:
+                      - paragraph [ref=e763]:
+                        - generic [ref=e767]: Q：月額費用はどの位かかるのでしょうか？
+                      - paragraph [ref=e768]:
+                        - generic [ref=e771]: A：ホームページのページ数に応じて、月額9,800円・14,800円・19,800円(※税別)と3プランに分かれます。
+                        - generic [ref=e774]: 初回お打ち合わせで弊社営業スタッフよりヒアリングさせて頂き、お客様の事業にあったプランをご提案致します。
+                      - paragraph [ref=e775]
+                      - paragraph [ref=e776]
+                      - paragraph [ref=e777]:
+                        - generic [ref=e781]: Q：契約プランはどの基準で選べばよいですか？
+                      - paragraph [ref=e782]:
+                        - generic [ref=e783]:
+                          - generic [ref=e785]: A：お客様の訴求したい情報量によります。1ページ（BASICプラン）のホームページであっても充分に情報訴求は可能です。ただし、
+                          - generic [ref=e787]: 『会社情報や採用情報は別ページで訴求したい』『複数事業があるので、事業別にページを用意したい』という場合は複数ページのプランを推奨させて頂きます。こちらの
+                          - generic [ref=e790]:
+                            - link "制作実績" [ref=e792] [cursor=pointer]:
+                              - /url: https://www.propagateinc.com/activities
+                            - text: もご参考にください。
+                      - paragraph [ref=e793]
+                      - paragraph [ref=e794]
+                      - paragraph [ref=e795]:
+                        - generic [ref=e799]: Q：本当に制作料金無料でホームページ作成～運用までしてくれるのでしょうか？
+                      - paragraph [ref=e800]:
+                        - generic [ref=e803]: A：はい。初期費用5,000円と月額費用以外に一切掛かりません。
+                      - paragraph [ref=e804]:
+                        - generic [ref=e807]: 費用には、新規ドメイン取得・SSL化・SEO内部対策・修正対応も含んでおります。
+                      - paragraph [ref=e808]:
+                        - generic [ref=e811]: ※SEO内部対策は、ターゲットキーワードに応じたページタイトル設定・meta description（メタ ディスクリプション）最適化・見出しタグ（h1～6）による文章構造化・内部リンク最適化・レスポンシブ対応（スマホ画面対応）全て含みます。
+                      - paragraph [ref=e812]
+                      - paragraph [ref=e813]
+                      - paragraph [ref=e814]:
+                        - generic [ref=e818]: Q：月額費用はいつから発生するのでしょうか？
+                      - paragraph [ref=e819]:
+                        - generic [ref=e822]: A：ご契約書を締結し、ホームページ制作に取り掛かった初月から費用発生します。
+                      - paragraph [ref=e823]:
+                        - generic [ref=e826]: ※ホームページの制作には4～8週ほどかかります。
+                      - paragraph [ref=e827]
+                      - paragraph [ref=e828]
+                      - paragraph [ref=e829]:
+                        - generic [ref=e833]: Q：契約期間の縛りはありますか？
+                      - paragraph [ref=e834]:
+                        - generic [ref=e837]: A：最低契約期間を6か月とさせて頂いております。
+                      - paragraph [ref=e838]:
+                        - generic [ref=e841]: 6か月以降は、お好きなタイミングでホームページのご解約/休止を判断頂けます。
+                      - paragraph [ref=e842]:
+                        - generic [ref=e845]: ご解約はメール・LINEでご一報頂ければ手続き完了となります。違約金も一切ございません。
+                      - paragraph [ref=e846]:
+                        - generic [ref=e849]: ※最終お支払い月の月末日を以って、ホームページは非公開となります。
+                      - paragraph [ref=e850]
+                      - paragraph [ref=e851]
+                      - paragraph [ref=e852]:
+                        - generic [ref=e856]: Q：契約したホームページの月額支払いは、解約しない限り永久に続きますか？
+                      - paragraph [ref=e857]:
+                        - generic [ref=e860]: A：いえ、ご契約から36か月経過すると、ご契約ホームページを弊社からご契約者様に譲渡可能です。譲渡の場合、譲渡費用は一切掛かりません。（譲渡後のホームページ維持費はご契約者様負担）
+                      - paragraph [ref=e861]:
+                        - generic [ref=e864]: また、ご契約から36カ月後も継続して弊社にホームページの修正・保守・管理を依頼したい場合は、継続して月額費用をお支払い頂ければもちろん可能です。
+                      - paragraph [ref=e865]
+                      - paragraph [ref=e866]
+                      - paragraph [ref=e867]:
+                        - generic [ref=e871]: Q：ドメインを持っているのですが、ホームページ制作に使用してもらうことはできますか？
+                      - paragraph [ref=e872]:
+                        - generic [ref=e876]:
+                          - text: A：はい。お客様がすでにお持ちのドメインをご利用頂けます。
+                          - text: その際には、お客様がお持ちのドメイン名・レジストラ情報を教えていただき、こちらでサーバーの手配を行わせて頂きます。
+                      - paragraph [ref=e877]
+                      - paragraph [ref=e878]
+                      - paragraph [ref=e879]:
+                        - generic [ref=e883]: Q：ECサイトの制作もお願いできますか？
+                      - paragraph [ref=e884]:
+                        - generic [ref=e888]:
+                          - text: A：はい。ECサイトにつきましては、サブスクWEB制作（ホームページ制作）ではなく、別サービスでのご提供となります。詳しくは
+                          - link "こちら" [ref=e890] [cursor=pointer]:
+                            - /url: https://www.propagateinc.com/shopify-design
+                          - text: をご覧ください。
+                      - paragraph [ref=e891]
+                      - paragraph [ref=e892]
+                      - paragraph [ref=e893]:
+                        - generic [ref=e897]: Q：個人事業主（フリーランス）でも制作してもらうことはできますか？
+                      - paragraph [ref=e898]:
+                        - generic [ref=e901]: A：もちろんです。
+                      - paragraph [ref=e902]:
+                        - generic [ref=e906]:
+                          - text: 弊社ご契約パートナー様のうち、約40％が個人事業主・フリーランスの方々になります。
+                          - text: ホームページを持つことで、集客・ブランディング（顧客からの信頼獲得）はもちろんのこと、ご自身のサービスや想いをお客様へ伝えることにも役立ちます。
+                          - link "まずは一度ご相談ください。" [ref=e907] [cursor=pointer]:
+                            - /url: https://www.propagateinc.com/question
+                      - paragraph [ref=e908]
+                      - paragraph [ref=e909]
+                      - paragraph [ref=e910]:
+                        - generic [ref=e914]: Q：取材は全国で対応していますか？
+                      - paragraph [ref=e915]:
+                        - generic [ref=e917]:
+                          - generic [ref=e918]: A：はい。お打ち合わせは基本オンライン（zoom）で行いますので、全国対応可能です。
+                          - generic [ref=e920]:
+                            - text: ※弊社オフィスは
+                            - link "東京都渋谷区" [ref=e921] [cursor=pointer]:
+                              - /url: https://www.propagateinc.com/company
+                            - text: にあります。ご来訪頂ければ、ご対面でのお打ち合わせも可能です。
+              - generic [ref=e922]:
+                - generic:
+                  - generic:
+                    - generic [ref=e931]:
+                      - generic:
+                        - generic:
+                          - heading "CONTACT" [level=1] [ref=e940]:
+                            - generic [ref=e947]: CONTACT
+                          - generic [ref=e948]:
+                            - img
+                            - img "6.webp" [ref=e950]
+                          - paragraph [ref=e951]:
+                            - generic [ref=e955]:
+                              - text: 1営業日以内に、担当者からご返信させていただきます。
+                              - text: ※フォームの返信は、登録メールアドレス宛に致します。
+                          - generic [ref=e957]:
+                            - generic:
+                              - generic:
+                                - generic:
+                                  - paragraph [ref=e958]:
+                                    - generic [ref=e962]: 30分オンライン無料相談・資料請求
+                                  - paragraph [ref=e963]:
+                                    - generic [ref=e967]: 受付フォーム
+                                - group "ご希望のお問合せ内容を選択ください" [ref=e969]:
+                                  - generic [ref=e971]: ご希望のお問合せ内容を選択ください
+                                  - generic [ref=e972]:
+                                    - generic [ref=e973]:
+                                      - checkbox "オンライン無料相談" [checked] [ref=e974] [cursor=pointer]
+                                      - generic:
+                                        - img
+                                      - generic [ref=e975]: オンライン無料相談
+                                    - generic [ref=e976]:
+                                      - checkbox "資料請求" [checked] [ref=e977] [cursor=pointer]
+                                      - generic:
+                                        - img
+                                      - generic [ref=e978]: 資料請求
+                                - generic [ref=e979]:
+                                  - generic [ref=e980]: プロパゲートを知ったきっかけ
+                                  - generic [ref=e981]:
+                                    - combobox "選択ください" [ref=e982] [cursor=pointer]
+                                    - generic:
+                                      - generic:
+                                        - img
+                                - generic [ref=e983]:
+                                  - generic [ref=e984]: お名前（必須） *
+                                  - textbox "お名前（必須） *" [ref=e986]:
+                                    - /placeholder: 例：〇〇 花子
+                                - generic [ref=e987]:
+                                  - generic [ref=e988]: 電話番号
+                                  - textbox "電話番号" [ref=e990]:
+                                    - /placeholder: 例：03-0000-0000
+                                - generic [ref=e991]:
+                                  - generic [ref=e992]: 貴社名
+                                  - textbox "貴社名" [ref=e994]:
+                                    - /placeholder: 例：〇〇株式会社（所属組織名）
+                                - generic [ref=e995]:
+                                  - generic [ref=e996]: メールアドレス（必須） *
+                                  - textbox "メールアドレス（必須） *" [ref=e998]:
+                                    - /placeholder: 例：mail@example.com
+                                - generic [ref=e999]:
+                                  - generic [ref=e1000]: お問い合わせ内容
+                                  - textbox "お問い合わせ内容" [ref=e1001]:
+                                    - /placeholder: ※可能な範囲で、事業概要・依頼背景・対象サイト・目標・予算などを記載いただけますとご案内がスムーズになります。
+                                - button "送信する" [ref=e1003] [cursor=pointer]:
+                                  - generic [ref=e1005]: 送信する
+                    - region "contact"
+              - generic [ref=e1006]:
+                - generic:
+                  - generic:
+                    - heading "すべての挑戦者に “価値を届けるホームページ”を" [level=2] [ref=e1010]:
+                      - generic [ref=e1013]:
+                        - text: すべての挑戦者に
+                        - text: “価値を届けるホームページ”を
+                    - generic:
+                      - paragraph [ref=e1014]:
+                        - generic [ref=e1016]: 私たちプロパゲートのミッションは
+                      - paragraph [ref=e1017]:
+                        - generic [ref=e1019]: “挑戦者 の価値を届ける”
+                      - paragraph [ref=e1020]:
+                        - generic [ref=e1022]: そのミッションを体現したサービスが、この“サブスクWEB制作”になります。
+                      - paragraph [ref=e1023]
+                      - paragraph [ref=e1024]:
+                        - generic [ref=e1026]: ビジネス規模を問わず、すべての挑戦者にとって、ホームページは不可欠な存在です。
+                      - paragraph [ref=e1027]:
+                        - generic [ref=e1029]: 見込み客、求職者、あなたのビジネスのファンであれ、
+                        - generic [ref=e1031]: 彼らは必ずと言っていいほどあなたのホームページを訪れるでしょう。
+                      - paragraph [ref=e1032]
+                      - paragraph [ref=e1033]:
+                        - generic [ref=e1035]: そんな大事な場面で、
+                      - paragraph [ref=e1036]:
+                        - generic [ref=e1038]: “あなたの価値を届けるホームページ”
+                      - paragraph [ref=e1039]:
+                        - generic [ref=e1041]: があれば、訪れた人の心はグッと動くはずです。
+                      - paragraph [ref=e1042]
+                      - paragraph [ref=e1043]:
+                        - generic [ref=e1045]: 私たちのサービスでは、月額9,800円～というお手頃な価格で、
+                        - generic [ref=e1047]: デザイナーチームが完全オリジナルのホームページを制作。
+                      - paragraph [ref=e1048]:
+                        - generic [ref=e1050]: その維持・更新から基礎的なSEO対策に至るまで、包括的なサポートを提供します。
+                      - paragraph [ref=e1051]:
+                        - generic [ref=e1053]: あなたの事業がインターネット上で成功を収めるための強固な基盤を築きます。
+                      - paragraph [ref=e1054]
+                      - paragraph [ref=e1055]:
+                        - generic [ref=e1057]: 私たちプロパゲートと、共に挑戦してみませんか？
+                      - paragraph [ref=e1058]
+                      - paragraph [ref=e1059]:
+                        - generic [ref=e1061]: まずは、オンライン無料相談で
+                      - paragraph [ref=e1062]:
+                        - generic [ref=e1064]: あなたにお会いできることを楽しみにしております。
+                      - paragraph [ref=e1065]:
+                        - generic [ref=e1067]: 株式会社プロパゲート
+                      - paragraph [ref=e1068]:
+                        - generic [ref=e1070]: サブスクWEB制作事業部 一同
+    - contentinfo [ref=e1071]:
+      - generic [ref=e1074]:
+        - generic:
+          - generic:
+            - generic:
+              - paragraph [ref=e1075]:
+                - link "TOP" [ref=e1076] [cursor=pointer]:
+                  - /url: https://www.propagateinc.com
+                  - generic [ref=e1083]: TOP
+              - paragraph [ref=e1084]
+              - paragraph [ref=e1085]:
+                - link "会社情報" [ref=e1086] [cursor=pointer]:
+                  - /url: https://www.propagateinc.com/company
+                  - generic [ref=e1093]: 会社情報
+              - paragraph [ref=e1094]
+              - paragraph [ref=e1095]:
+                - link "採用情報" [ref=e1097] [cursor=pointer]:
+                  - /url: https://www.propagateinc.com/recruit
+                  - generic [ref=e1103]: 採用情報
+              - paragraph [ref=e1104]:
+                - link "メンバーインタビュー" [ref=e1116] [cursor=pointer]:
+                  - /url: https://www.wantedly.com/companies/propagate/stories
+                  - generic [ref=e1129]: メンバーインタビュー
+              - paragraph [ref=e1130]:
+                - link "募集求人一覧" [ref=e1131] [cursor=pointer]:
+                  - /url: https://www.propagateinc.com/jobs
+                  - generic [ref=e1138]: 募集求人一覧
+            - generic:
+              - paragraph [ref=e1139]:
+                - link "マーケティングブログ" [ref=e1141] [cursor=pointer]:
+                  - /url: https://www.propagateinc.com/blog
+                  - generic [ref=e1147]: マーケティングブログ
+              - paragraph [ref=e1148]
+              - paragraph [ref=e1149]:
+                - link "個人情報利用規約" [ref=e1151] [cursor=pointer]:
+                  - /url: https://www.propagateinc.com/privacy
+                  - generic [ref=e1157]: 個人情報利用規約
+              - paragraph [ref=e1158]
+              - paragraph [ref=e1159]:
+                - link "お問い合わせ/資料請求" [ref=e1161] [cursor=pointer]:
+                  - /url: https://www.propagateinc.com/question
+                  - generic [ref=e1167]: お問い合わせ/資料請求
+            - generic:
+              - paragraph [ref=e1168]:
+                - link "Webデザイン" [ref=e1171] [cursor=pointer]:
+                  - /url: https://www.propagateinc.com
+                  - generic [ref=e1176]: Webデザイン
+              - paragraph [ref=e1177]:
+                - link "サブスクWEB制作（ホームページ制作）" [ref=e1181] [cursor=pointer]:
+                  - /url: https://www.propagateinc.com/web-design
+                  - generic [ref=e1184]: サブスクWEB制作（ホームページ制作）
+              - paragraph [ref=e1185]:
+                - link "ECサイト制作（Shopify制作）" [ref=e1189] [cursor=pointer]:
+                  - /url: https://www.propagateinc.com/shopify-design
+                  - generic [ref=e1192]: ECサイト制作（Shopify制作）
+              - paragraph [ref=e1193]
+              - paragraph [ref=e1194]:
+                - link "Webマーケティング" [ref=e1197] [cursor=pointer]:
+                  - /url: https://www.propagateinc.com
+                  - generic [ref=e1202]: Webマーケティング
+              - paragraph [ref=e1203]:
+                - link "SPARK BUZZ（TikTok広告企画）" [ref=e1207] [cursor=pointer]:
+                  - /url: https://www.propagateinc.com/spark-buzz
+                  - generic [ref=e1213]: SPARK BUZZ（TikTok広告企画）
+              - paragraph [ref=e1214]:
+                - link "サブスクAd（Web広告運用代行）" [ref=e1215] [cursor=pointer]:
+                  - /url: https://www.propagateinc.com/subscription-ad
+                  - generic [ref=e1224]: サブスクAd（Web広告運用代行）
+              - paragraph [ref=e1225]:
+                - link "BEEAM（インスタDM自動送信）" [ref=e1229] [cursor=pointer]:
+                  - /url: https://www.propagateinc.com/instagram-dmsystem
+                  - generic [ref=e1232]: BEEAM（インスタDM自動送信）
+              - paragraph [ref=e1233]:
+                - link "スマートSEO（SEO記事代行）🔗" [ref=e1241] [cursor=pointer]:
+                  - /url: https://www.smart-seo.jp/
+              - paragraph [ref=e1242]:
+                - link "採用DX（ショート動画×SNS広告）🔗" [ref=e1249] [cursor=pointer]:
+                  - /url: https://www.saiyo-dx.jp/
+                  - generic [ref=e1254]: 採用DX（ショート動画×SNS広告）🔗
+              - paragraph [ref=e1255]:
+                - link "集客エージェント（成果報酬型集客）🔗" [ref=e1257] [cursor=pointer]:
+                  - /url: https://www.shukyaku-agent.com/
+                  - generic [ref=e1263]: 集客エージェント（成果報酬型集客）🔗
+              - paragraph [ref=e1264]
+              - paragraph [ref=e1265]:
+                - generic [ref=e1272]: 実績
+              - paragraph [ref=e1273]:
+                - link "取組実績" [ref=e1277] [cursor=pointer]:
+                  - /url: https://www.propagateinc.com/cases
+                  - generic [ref=e1280]: 取組実績
+              - paragraph [ref=e1281]:
+                - link "WEB制作実績" [ref=e1285] [cursor=pointer]:
+                  - /url: https://www.propagateinc.com/activities
+                  - generic [ref=e1288]: WEB制作実績
+            - generic:
+              - generic:
+                - generic:
+                  - link "25b37d_86184ab8a8b24a17b069966e689cd10e~mv2.webp" [ref=e1290] [cursor=pointer]:
+                    - /url: https://www.propagateinc.com
+                    - img "25b37d_86184ab8a8b24a17b069966e689cd10e~mv2.webp" [ref=e1291]
+                  - paragraph [ref=e1292]:
+                    - generic [ref=e1295]:
+                      - text: TEL
+                      - link "03-6824-7712" [ref=e1296] [cursor=pointer]:
+                        - /url: tel:03-6824-7712
+                      - text: /
+                      - link:
+                        - /url: mailto:info@propagateinc.com?subject=【お問い合わせ】
+                      - link "info@propagateinc.com" [ref=e1297] [cursor=pointer]:
+                        - /url: mailto:info@propagateinc.com
+                  - link "お問い合わせ" [ref=e1299] [cursor=pointer]:
+                    - /url: https://www.propagateinc.com/question
+                    - generic [ref=e1300]: お問い合わせ
+                  - link "LINEで無料相談" [ref=e1302] [cursor=pointer]:
+                    - /url: https://s.lmes.jp/landing-qr/1661085572-0XbDLjR9?uLand=XeRA38
+                    - generic [ref=e1303]: LINEで無料相談
+                  - list "SNS バー" [ref=e1305]:
+                    - listitem [ref=e1306]:
+                      - link "プロパゲート YouTube" [ref=e1307] [cursor=pointer]:
+                        - /url: https://www.youtube.com/@propagate-ceo
+                        - img "プロパゲート YouTube" [ref=e1308]
+                    - listitem [ref=e1309]:
+                      - link "Instagram" [ref=e1310] [cursor=pointer]:
+                        - /url: https://www.instagram.com/propagate_life/
+                        - img "Instagram" [ref=e1311]
+                    - listitem [ref=e1312]:
+                      - link "Facebookの - ブラックサークル" [ref=e1313] [cursor=pointer]:
+                        - /url: https://www.facebook.com/%E6%A0%AA%E5%BC%8F%E4%BC%9A%E7%A4%BE%E3%83%97%E3%83%AD%E3%83%91%E3%82%B2%E3%83%BC%E3%83%88Propagateinc-100854565026666/
+                        - img "Facebookの - ブラックサークル" [ref=e1314]
+                    - listitem [ref=e1315]:
+                      - link "チクタク" [ref=e1316] [cursor=pointer]:
+                        - /url: https://www.tiktok.com/@propagate_inc?lang=ja-JP
+                        - img "チクタク" [ref=e1317]
+                    - listitem [ref=e1318]:
+                      - link [ref=e1319] [cursor=pointer]:
+                        - /url: https://twitter.com/propagate_life
+                    - listitem [ref=e1320]:
+                      - link [ref=e1321] [cursor=pointer]:
+                        - /url: https://www.wantedly.com/companies/propagate/
+            - heading "©2026 Propagate.inc" [level=6] [ref=e1322]:
+              - link "©2026 Propagate.inc" [ref=e1324] [cursor=pointer]:
+                - /url: https://www.propagateinc.com
+                - generic [ref=e1325]: ©2026 Propagate.inc
+  - region "bottom of page"

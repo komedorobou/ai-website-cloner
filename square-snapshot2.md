@@ -1,0 +1,168 @@
+- generic [active] [ref=e1]:
+  - generic [ref=e2]:
+    - banner [ref=e3]:
+      - generic [ref=e5]:
+        - link "Skip to Content" [ref=e6] [cursor=pointer]:
+          - /url: "#main-content"
+        - generic [ref=e8]:
+          - link "Square" [ref=e952] [cursor=pointer]:
+            - /url: https://squareup.com
+            - img [ref=e12]
+            - generic [ref=e14]: Square
+          - button "Open menu" [ref=e16] [cursor=pointer]:
+            - generic [ref=e17]: Open menu
+          - generic [ref=e23]:
+            - link "お問い合わせ" [ref=e25] [cursor=pointer]:
+              - /url: /jp/ja/sales/contact?page=/jp/ja
+            - link "まずは無料で登録してみる" [ref=e28] [cursor=pointer]:
+              - /url: /signup/ja-JP
+    - main [ref=e30]:
+      - generic [ref=e31]:
+        - generic [ref=e32]:
+          - heading "ビジネスにスピードを。導入・決済・入金、すべてがはやいSquare" [level=1] [ref=e34]:
+            - generic [ref=e35]: ビジネスにスピードを。導入・決済・入金、すべてがはやいSquare
+          - paragraph [ref=e37]: 最短申込当日から決済を開始。決済処理もお客さまを待たせず一瞬。売上の入金は即時に*。Squareは、ビジネスを”はやさ”でサポートします。
+          - generic [ref=e38]:
+            - generic [ref=e39]
+            - generic [ref=e43]
+        - generic [ref=e48]:
+          - region "Scrolling marquee" [ref=e49]:
+            - list [ref=e50]
+          - button "Pause" [ref=e59] [cursor=pointer]:
+            - img [ref=e60]
+        - generic [ref=e67] [cursor=pointer]:
+          - generic [ref=e68]:
+            - paragraph [ref=e70]
+            - heading "Squareに乗り換えよう" [level=4] [ref=e73]
+            - heading "他社からの乗換コスト0円＆決済端末がもらえる" [level=1] [ref=e75]
+          - paragraph [ref=e78]:
+            - text: ✔︎ Squareの決済端末が1台無料
+            - text: ✔︎ 100万円分のキャッシュレス決済に対する手数料が無料
+            - text: ✔︎ 5/31までの期間限定キャンペーン
+          - link "詳しくはこちら →" [ref=e81]:
+            - /url: /jp/ja/campaign/switch-to-square
+        - generic [ref=e86]:
+          - paragraph [ref=e89]:
+            - generic [ref=e91]: 新登場
+          - paragraph [ref=e93]:
+            - generic [ref=e94]: Square レジスター (第2世代)
+          - generic [ref=e95]:
+            - paragraph [ref=e96]: 高感度のデュアルタッチスクリーンと内蔵POSアプリを搭載し、日々の業務で生じるさまざまな状況にも対応できる高い耐久性を備えています。
+            - link "詳細はこちら →" [ref=e98] [cursor=pointer]:
+              - /url: /jp/ja/hardware/register
+        - generic [ref=e99]:
+          - generic [ref=e101]:
+            - paragraph [ref=e104]
+            - tablist [ref=e107]
+          - generic [ref=e120] [cursor=pointer]:
+            - paragraph [ref=e123]: 全業種
+            - img [ref=e125]
+          - generic [ref=e129]:
+            - generic [ref=e130]
+            - generic [ref=e135]
+            - generic [ref=e171]
+            - heading "Squareの料金体系" [level=2] [ref=e220]
+            - generic [ref=e221]
+            - generic [ref=e248]
+            - generic [ref=e259]
+            - generic [ref=e275]
+            - generic [ref=e416]
+        - generic [ref=e489] [cursor=pointer]:
+          - generic [ref=e490]:
+            - paragraph [ref=e492]
+            - heading "今日の売上を数タップで即入金できるサービスが新登場" [level=4] [ref=e495]
+            - heading "いつもの入金日を待たなくても、売上が今すぐ “資金”に" [level=4] [ref=e497]
+          - paragraph [ref=e500]: 業界最速の入金スピードを体験してみませんか
+          - link "今すぐ利用する →" [ref=e503]:
+            - /url: https://app.squareup.com/dashboard/balance/balance
+        - generic [ref=e506]:
+          - heading "数値で見るSquare" [level=2] [ref=e509]:
+            - generic [ref=e510]: 数値で見るSquare
+          - generic [ref=e511]:
+            - generic [ref=e512]
+            - generic [ref=e518]
+            - generic [ref=e524]
+            - paragraph [ref=e531]
+        - paragraph [ref=e536]:
+          - generic [ref=e537]: 決済に必要なすべてがそろったオールインワンSquare ターミナル
+        - generic [ref=e539]:
+          - generic [ref=e540]:
+            - generic [ref=e541]
+            - generic [ref=e549]
+            - generic [ref=e555]
+            - generic [ref=e562]
+          - generic:
+            - img
+        - generic [ref=e571]:
+          - heading "サポートへの問い合わせ" [level=1] [ref=e573]:
+            - generic [ref=e574]: サポートへの問い合わせ
+          - generic [ref=e575]:
+            - generic [ref=e576] [cursor=pointer]
+            - generic [ref=e586] [cursor=pointer]
+        - generic [ref=e597]:
+          - heading "資料ダウンロード" [level=2] [ref=e599]:
+            - generic [ref=e600]: 資料ダウンロード
+          - generic [ref=e601]:
+            - paragraph [ref=e603]
+            - generic [ref=e609]
+        - generic [ref=e664]:
+          - heading "FAQ" [level=2] [ref=e666]:
+            - generic [ref=e667]: FAQ
+          - generic [ref=e668]:
+            - list [ref=e669]
+            - list [ref=e694]
+        - generic [ref=e720]:
+          - paragraph [ref=e721]:
+            - generic [ref=e722]: "*即時入金サービスをご利用いただいた場合"
+          - paragraph [ref=e723]:
+            - generic [ref=e724]: ¹分割払いは、日本国内で発行され、分割払いに対応した有効なクレジットカードでお支払いのお客様が対象です。ご利用可否、適用される手数料や条件については、ご利用のクレジットカード会社にご確認ください。
+    - contentinfo [ref=e725]:
+      - generic [ref=e726]:
+        - navigation [ref=e727]:
+          - generic [ref=e728]:
+            - button "決済サービス ›" [ref=e729] [cursor=pointer]
+            - list [ref=e731]
+          - generic [ref=e758]:
+            - button "機能とサービス ›" [ref=e759] [cursor=pointer]
+            - list [ref=e761]
+          - generic [ref=e794]:
+            - button "Eコマース ›" [ref=e795] [cursor=pointer]
+            - list [ref=e797]
+          - generic [ref=e808]:
+            - button "ハードウェア ›" [ref=e809] [cursor=pointer]
+            - list [ref=e811]
+          - generic [ref=e830]:
+            - button "ビジネスの種類 ›" [ref=e831] [cursor=pointer]
+            - list [ref=e833]
+          - generic [ref=e864]:
+            - button "Developers ›" [ref=e865] [cursor=pointer]
+            - list [ref=e867]
+          - generic [ref=e876]:
+            - button "Square ›" [ref=e877] [cursor=pointer]
+            - list [ref=e879]
+          - generic [ref=e890]:
+            - button "サポート ›" [ref=e891] [cursor=pointer]
+            - list [ref=e893]
+        - paragraph [ref=e918]: QRコードは株式会社デンソーウェーブの登録商標です。
+        - paragraph [ref=e919]:
+          - strong [ref=e920]: 翻訳に関するお知らせ
+          - text: ：世界中のユーザーにご利用いただくため、一部のコンテンツはAI（人工知能）によって翻訳されている場合があります。すべてのコンテンツは人間によってレビューされていますが、レビュー前のコンテンツが公開されている場合もあります。ご不明な点がございましたら、お気軽にご希望の言語でSquare サポートまでお問い合わせください。
+        - navigation [ref=e921]:
+          - button "日本 (日本語)" [ref=e922] [cursor=pointer]:
+            - img [ref=e923]
+            - text: 日本 (日本語)
+          - navigation [ref=e925]:
+            - link "Square Twitter" [ref=e926] [cursor=pointer]:
+              - /url: https://twitter.com/SquareJapan
+            - link "Square Facebook" [ref=e929] [cursor=pointer]:
+              - /url: https://www.facebook.com/squarejp
+            - link "Square Instagram" [ref=e932] [cursor=pointer]:
+              - /url: https://instagram.com/squarejapan
+        - generic [ref=e935]:
+          - paragraph [ref=e937]: © 2026 Block, Inc., Squareup Pte. Ltd.
+          - navigation [ref=e938]:
+            - list [ref=e939]
+  - iframe
+  - generic [ref=e1225]:
+    - generic "AI アシスタント" [ref=e1226]
+    - generic "AI アシスタントの後" [ref=e1227]
