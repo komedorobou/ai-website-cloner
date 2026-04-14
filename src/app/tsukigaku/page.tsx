@@ -1123,33 +1123,49 @@ function TechStack() {
 /* ═══════════════════ TECH CHALLENGE ═══════════════════ */
 function TechChallenge() {
   return (
-    <section className="py-[120px] md:py-[180px] px-6 bg-[#fafafa]">
-      <div className="max-w-[800px] mx-auto text-center">
+    <section className="py-[160px] md:py-[220px] px-6 bg-[#fafafa]">
+      <div className="max-w-[900px] mx-auto text-center">
         <ScrollReveal>
           <h2
             className="font-medium tracking-[-0.03em] text-[#1d1d1f] leading-[1.1]"
-            style={{ fontSize: "clamp(2rem, 5vw, 48px)" }}
+            style={{ fontSize: "clamp(2.5rem, 7vw, 64px)" }}
           >
             他社のサイト、<br />
-            「使用技術」を見てみてください。
+            「使用技術」を<br className="md:hidden" />見てみてください。
           </h2>
         </ScrollReveal>
         <ScrollReveal delay={0.15}>
-          <p className="text-[#86868b] text-[clamp(1rem,1.8vw,1.2rem)] mt-8 font-light leading-relaxed max-w-[600px] mx-auto">
+          <p
+            className="text-[#1d1d1f] mt-16 font-medium leading-relaxed"
+            style={{ fontSize: "clamp(1.5rem, 4vw, 2.5rem)" }}
+          >
             書いてないはずです。
           </p>
         </ScrollReveal>
         <ScrollReveal delay={0.25}>
-          <p className="text-[#86868b] text-[clamp(0.95rem,1.6vw,1.1rem)] mt-6 font-light leading-relaxed max-w-[600px] mx-auto">
-            書けないんです。WordPressかWixだから。
+          <p
+            className="text-[#86868b] mt-6 font-light leading-relaxed"
+            style={{ fontSize: "clamp(1.3rem, 3.5vw, 2rem)" }}
+          >
+            書けないんです。<br className="md:hidden" />WordPressかWixだから。
           </p>
         </ScrollReveal>
         <ScrollReveal delay={0.35}>
-          <p className="text-[#1d1d1f] text-[clamp(1.1rem,2vw,1.3rem)] mt-12 font-medium leading-relaxed max-w-[600px] mx-auto">
-            ツキガクサイトは、使っている技術を<br className="hidden md:block" />
-            堂々と公開しています。<br />
-            同じ月額9,800円。中身が違います。
-          </p>
+          <div className="mt-20 pt-16 border-t border-black/5">
+            <p
+              className="text-[#1d1d1f] font-medium leading-[1.4]"
+              style={{ fontSize: "clamp(1.2rem, 3vw, 1.6rem)" }}
+            >
+              ツキガクサイトは、使っている技術を<br className="hidden md:block" />
+              堂々と公開しています。
+            </p>
+            <p
+              className="text-[#1d1d1f] mt-4 font-bold leading-[1.4]"
+              style={{ fontSize: "clamp(1.4rem, 3.5vw, 2rem)" }}
+            >
+              同じ月額9,800円。中身が違います。
+            </p>
+          </div>
         </ScrollReveal>
       </div>
     </section>
