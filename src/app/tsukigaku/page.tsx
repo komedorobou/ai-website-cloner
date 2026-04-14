@@ -880,17 +880,15 @@ function Flow() {
   return (
     <section className="py-[120px] md:py-[180px] px-6 bg-black">
       <div className="max-w-[800px] mx-auto">
-        <ScrollReveal>
-          <p className="text-blue-400 text-[11px] font-semibold tracking-[0.25em] uppercase mb-5 text-center">
-            導入の流れ
-          </p>
-          <h2
-            className="font-light tracking-[-0.03em] text-white text-center"
-            style={{ fontSize: "clamp(2rem, 5vw, 48px)" }}
-          >
-            公開まで、最短1週間。
-          </h2>
-        </ScrollReveal>
+        <p className="text-blue-400 text-[11px] font-semibold tracking-[0.25em] uppercase mb-5 text-center">
+          導入の流れ
+        </p>
+        <h2
+          className="font-light tracking-[-0.03em] text-white text-center"
+          style={{ fontSize: "clamp(2rem, 5vw, 48px)" }}
+        >
+          公開まで、最短1週間。
+        </h2>
 
         <div className="mt-16 space-y-0">
           {flowSteps.map((step, i) => (
