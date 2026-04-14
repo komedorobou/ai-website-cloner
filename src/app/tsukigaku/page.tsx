@@ -4,7 +4,7 @@ import { useRef, useState, useEffect } from "react";
 import Image from "next/image";
 import { motion, useScroll, useTransform, AnimatePresence } from "motion/react";
 import { ScrollReveal } from "@/components/animation/scroll-reveal";
-import { ParallaxLayer } from "@/components/animation/parallax-layer";
+/* ParallaxLayer removed — unused */
 
 /* ═══════════════════ NAV ═══════════════════ */
 function Nav() {
@@ -75,7 +75,7 @@ function Hero() {
           style={{ opacity: phase === "scroll" ? t1Opacity : 1, filter: phase === "scroll" ? t1Filter : "none" }}
         >
           <h1
-            className="font-extralight tracking-[-0.04em] text-white leading-[0.95] text-center px-6 transition-all duration-[2000ms] ease-out"
+            className="font-light tracking-[-0.04em] text-white leading-[0.95] text-center px-6 transition-all duration-[2000ms] ease-out"
             style={{
               fontSize: "clamp(3.5rem, 12vw, 96px)",
               opacity: phase !== "loading" ? 1 : 0,
@@ -97,7 +97,7 @@ function Hero() {
           }}
         >
           <h2
-            className="font-extralight tracking-[-0.04em] text-white leading-[0.95] text-center px-6"
+            className="font-light tracking-[-0.04em] text-white leading-[0.95] text-center px-6"
             style={{ fontSize: "clamp(3.5rem, 12vw, 96px)" }}
           >
             月9,800円で全部やる
@@ -238,13 +238,13 @@ function Cocktail360() {
         <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-black/30 z-[1]" />
         <div className="relative z-10 text-center px-6">
           <motion.h2
-            className="font-extralight tracking-[-0.04em] text-white leading-[0.95]"
+            className="font-light tracking-[-0.04em] text-white leading-[0.95]"
             style={{ fontSize: "clamp(3rem, 10vw, 88px)", opacity: headingOpacity, filter: headingFilter }}
           >
             動くから、売れる。
           </motion.h2>
           <motion.p
-            className="font-extralight tracking-[-0.04em] text-white leading-[0.95]"
+            className="font-light tracking-[-0.04em] text-white leading-[0.95]"
             style={{ fontSize: "clamp(1.2rem, 3vw, 1.8rem)", opacity: subOpacity, filter: subFilter }}
           >
             アニメーション・動画・写真、全部込み。追加料金なし。
@@ -272,7 +272,7 @@ function MockupReveal() {
             制作実績
           </p>
           <h2
-            className="font-extralight tracking-[-0.03em] text-white leading-[1.05]"
+            className="font-light tracking-[-0.03em] text-white leading-[1.05]"
             style={{ fontSize: "clamp(2rem, 5vw, 56px)" }}
           >
             この品質が、月9,800円。
@@ -388,7 +388,7 @@ function IndustryCard({ item, index }: { item: typeof industries[number]; index:
             </motion.div>
 
             <motion.h2
-              className="font-extralight tracking-[-0.02em] text-white leading-[1.1]"
+              className="font-light tracking-[-0.02em] text-white leading-[1.1]"
               style={{ fontSize: "clamp(2.5rem, 7vw, 72px)", opacity: headingOpacity, y: headingY, filter: headingFilter }}
             >
               {item.heading}
@@ -441,7 +441,7 @@ const companyCards = [
     label: "ツキガクサイト",
     headline: "A社の品質を。\nB社の価格で。",
     price: "初期 0円 / 月額 9,800円",
-    specs: ["完全オーダーメイド Apple級", "アニメーション標準搭載 ✓", "最短1週間"],
+    specs: ["完全オーダーメイド", "アニメーション標準搭載 ✓", "最短1週間"],
     accent: "text-blue-400",
     gradient: "from-[#0a0a1a] to-[#000]",
     image: "/images/tsukigaku/comparison-tsukigaku.png",
@@ -525,7 +525,7 @@ function Comparison() {
         </ScrollReveal>
         <ScrollReveal delay={0.1}>
           <h2
-            className="font-extralight tracking-[-0.04em] text-white leading-[1.05] text-center"
+            className="font-light tracking-[-0.04em] text-white leading-[1.05] text-center"
             style={{ fontSize: "clamp(2.5rem, 7vw, 72px)" }}
           >
             同じ品質。
@@ -567,7 +567,7 @@ function BeforeAfter() {
       <div className="mx-auto max-w-[1200px] px-6">
         <ScrollReveal>
           <h2
-            className="text-white font-extralight text-center leading-[1] tracking-[-0.04em] mb-20"
+            className="text-white font-light text-center leading-[1] tracking-[-0.04em] mb-20"
             style={{ fontSize: "clamp(3rem, 9vw, 80px)" }}
           >
             放置したHP。<br />売れるHP。
@@ -589,7 +589,7 @@ function BeforeAfter() {
           >
             <div className="px-5 pt-5 pb-3">
               <span className="text-[#666] text-[10px] font-bold uppercase tracking-[0.25em]">
-                Before
+                変更前
               </span>
             </div>
             <div className="relative w-full aspect-[3/2] overflow-hidden">
@@ -613,7 +613,7 @@ function BeforeAfter() {
           >
             <div className="px-5 pt-5 pb-3">
               <span className="text-blue-400 text-[10px] font-bold uppercase tracking-[0.25em]">
-                After
+                変更後
               </span>
             </div>
             <div className="relative w-full aspect-[3/2] overflow-hidden">
@@ -643,7 +643,7 @@ function Philosophy() {
       <div className="max-w-[700px]">
         <ScrollReveal>
           <motion.h2
-            className="font-extralight tracking-[-0.04em] leading-[1.1] text-[#1d1d1f]"
+            className="font-light tracking-[-0.04em] leading-[1.1] text-[#1d1d1f]"
             style={{ fontSize: "clamp(2.5rem, 7vw, 72px)" }}
             initial={{ filter: "blur(12px)" }}
             whileInView={{ filter: "blur(0px)" }}
@@ -695,10 +695,10 @@ function Pricing() {
       <div className="relative z-10">
         <ScrollReveal>
           <p className="text-blue-400 text-[11px] font-semibold tracking-[0.25em] uppercase mb-5">
-            Pricing
+            料金プラン
           </p>
           <h2
-            className="font-extralight tracking-[-0.03em] text-white"
+            className="font-light tracking-[-0.03em] text-white"
             style={{ fontSize: "clamp(2rem, 5vw, 56px)" }}
           >
             料金
@@ -714,7 +714,7 @@ function Pricing() {
             <div className="p-10 md:p-12">
               <div className="text-center mb-10">
                 <span className="text-white/50 text-lg align-top">&#165;</span>
-                <span className="text-[5rem] font-extralight tracking-tight leading-none text-white">
+                <span className="text-[5rem] font-light tracking-tight leading-none text-white">
                   9,800
                 </span>
                 <p className="text-white/30 text-sm mt-2">/月（税込）</p>
@@ -744,7 +744,7 @@ function Pricing() {
                 ))}
               </ul>
               <a
-                href="#"
+                href="#contact"
                 className="block mt-8 py-4 bg-white text-black font-semibold rounded-full hover:scale-[1.03] transition-transform text-center text-[15px]"
               >
                 今すぐ無料相談する
@@ -771,7 +771,7 @@ function Pricing() {
         <ScrollReveal delay={0.3}>
           <div className="max-w-[800px] mx-auto mt-20 md:mt-28 px-4">
             <h3
-              className="font-extralight tracking-[-0.03em] text-white text-center leading-[1.1] mb-4"
+              className="font-light tracking-[-0.03em] text-white text-center leading-[1.1] mb-4"
               style={{ fontSize: "clamp(1.8rem, 4vw, 40px)" }}
             >
               長く使うほど安くなる
@@ -836,7 +836,7 @@ function Pricing() {
 /* ═══════════════════ FAQ ═══════════════════ */
 const faqItems = [
   { q: "解約したらどうなりますか？", a: "サイトは非公開になります。データのお渡しは行っておりません。月額サービスのため、契約期間中のみサイトが公開されます。" },
-  { q: "本当に制作会社と同じ品質ですか？", a: "はい。Apple.com、Netflix、Airbnbと同じ技術スタック（Next.js、React、GSAP）を使用しています。テンプレートではなく、完全オーダーメイドで制作します。" },
+  { q: "本当に制作会社と同じ品質ですか？", a: "はい。Netflix、Airbnbなど世界のトップ企業と同じ技術スタック（Next.js、React、GSAP）を使用しています。テンプレートではなく、完全オーダーメイドで制作します。" },
   { q: "完成までどのくらいかかりますか？", a: "最短1週間、通常2〜3週間で公開可能です。素材（写真・テキスト）をご用意いただければ、さらに早くなります。" },
   { q: "写真素材がなくても大丈夫ですか？", a: "はい。AI画像生成やフリー素材で対応可能です。プロカメラマンの手配も別途ご相談いただけます。" },
   { q: "公開後の修正はできますか？", a: "月2回まで修正対応込みです。修正依頼がない年は翌年10%割引が積み重なり、最大60%OFF（月3,920円）まで下がります。長く使うほどお得です。" },
@@ -849,7 +849,7 @@ function FAQ() {
     <section className="py-[120px] md:py-[160px] px-6 bg-[#fafafa]">
       <ScrollReveal>
         <h2
-          className="font-extralight tracking-[-0.03em] text-center text-[#1d1d1f]"
+          className="font-light tracking-[-0.03em] text-center text-[#1d1d1f]"
           style={{ fontSize: "clamp(1.8rem, 4vw, 48px)" }}
         >
           よくある質問
@@ -1022,22 +1022,22 @@ function TechStack() {
       <div className="px-6 mb-14 md:mb-20">
         <ScrollReveal>
           <p className="text-blue-400 text-[11px] font-semibold tracking-[0.25em] uppercase mb-5 text-center">
-            Technology
+            使用技術
           </p>
         </ScrollReveal>
         <ScrollReveal delay={0.1}>
           <h2
-            className="font-extralight tracking-[-0.04em] text-white leading-[1.05] text-center"
+            className="font-light tracking-[-0.04em] text-white leading-[1.05] text-center"
             style={{ fontSize: "clamp(2.5rem, 7vw, 72px)" }}
           >
-            Appleと同じ技術で
+            世界基準の技術で
             <br />
             作ってます。
           </h2>
         </ScrollReveal>
         <ScrollReveal delay={0.15}>
           <p className="text-white/50 text-[clamp(0.9rem,1.6vw,1.1rem)] mt-6 font-light max-w-[600px] mx-auto leading-relaxed text-center">
-            Apple、Netflix、Airbnbが採用する技術をそのまま使用。表示速度・SEO・セキュリティすべてが最高水準。だからGoogleに強く、お客さんに選ばれるサイトになります。
+            Netflix、Airbnbなど世界のトップ企業が採用する技術をそのまま使用。表示速度・SEO・セキュリティすべてが最高水準。だからGoogleに強く、お客さんに選ばれるサイトになります。
           </p>
         </ScrollReveal>
       </div>
@@ -1079,7 +1079,7 @@ function CTAFinal() {
       <div className="relative z-10">
         <ScrollReveal>
           <motion.h2
-            className="font-extralight tracking-[-0.04em] text-white leading-[1.05]"
+            className="font-light tracking-[-0.04em] text-white leading-[1.05]"
             style={{ fontSize: "clamp(2.5rem, 8vw, 80px)" }}
             initial={{ filter: "blur(16px)", scale: 0.95 }}
             whileInView={{ filter: "blur(0px)", scale: 1 }}
@@ -1124,8 +1124,16 @@ export default function TsukigakuPage() {
       <Pricing />
       <FAQ />
       <CTAFinal />
-      <footer className="text-center py-10 text-[11px] text-white/20 border-t border-white/5 bg-black">
-        &copy; 2026 ツキガクサイト
+      <footer id="contact" className="border-t border-white/5 bg-black py-16 px-6">
+        <div className="max-w-[600px] mx-auto text-center">
+          <h3 className="text-white text-lg font-medium mb-2">ツキガクサイト</h3>
+          <p className="text-white/40 text-sm mb-8">月額9,800円のWeb制作サービス</p>
+          <div className="space-y-3 text-sm text-white/50">
+            <p>お問い合わせ・無料相談</p>
+            <a href="mailto:info@tsukigaku.site" className="block text-blue-400 hover:text-blue-300 transition-colors">info@tsukigaku.site</a>
+          </div>
+          <p className="text-[11px] text-white/20 mt-12">&copy; 2026 ツキガクサイト</p>
+        </div>
       </footer>
     </main>
   );
