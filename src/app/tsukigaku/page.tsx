@@ -257,7 +257,7 @@ function Cocktail360() {
             className="font-light tracking-[-0.04em] text-white leading-[1.1]"
             style={{ fontSize: "clamp(1.8rem, 5vw, 3rem)", opacity: subOpacity, filter: subFilter, textShadow: "0 2px 20px rgba(0,0,0,0.8), 0 4px 40px rgba(0,0,0,0.6)" }}
           >
-            あなたのお客様も同じ。この動き、月額に全部込み。
+            あなたのお客様も同じ。<br />この動き、月額に全部込み。
           </motion.p>
         </div>
       </div>
