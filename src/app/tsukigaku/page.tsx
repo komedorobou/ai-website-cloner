@@ -58,7 +58,7 @@ function Hero() {
 
   return (
     <section ref={ref} className="relative h-[250vh]">
-      <div className="sticky top-0 h-screen w-full overflow-hidden bg-black">
+      <div className="sticky top-0 h-[100svh] w-full overflow-hidden bg-black">
         {/* Video */}
         <video
           ref={videoRef}
@@ -230,7 +230,7 @@ function Cocktail360() {
 
   return (
     <section ref={sectionRef} className="relative h-[300vh]">
-      <div className="sticky top-0 h-screen w-full overflow-hidden bg-black flex items-center justify-center">
+      <div className="sticky top-0 h-[100svh] w-full overflow-hidden bg-black flex items-center justify-center">
         <canvas
           ref={canvasRef}
           className="absolute inset-0 w-full h-full"
@@ -364,10 +364,10 @@ function IndustryCard({ item, index }: { item: typeof industries[number]; index:
 
   return (
     <section ref={ref} className="relative h-[150vh]">
-      <div className="sticky top-0 h-screen w-full overflow-hidden bg-black">
+      <div className="sticky top-0 h-[100svh] w-full overflow-hidden bg-black">
         <motion.div
           className="absolute inset-0"
-          style={{ opacity: exitOpacity, clipPath }}
+          style={{ opacity: exitOpacity, clipPath, willChange: "clip-path, opacity", transform: "translateZ(0)" }}
         >
           <motion.div
             className="absolute inset-[-15%] w-[130%] h-[130%]"
@@ -560,7 +560,6 @@ function Comparison() {
           <ComparisonCard key={card.label} card={card} />
         ))}
       </div>
-      <style>{`div::-webkit-scrollbar { display: none; }`}</style>
     </section>
   );
 }
@@ -1082,7 +1081,6 @@ function TechCarousel() {
         ))}
         <div className="shrink-0 w-[8vw]" />
       </div>
-      <style>{`div::-webkit-scrollbar { display: none; }`}</style>
     </div>
   );
 }
@@ -1115,7 +1113,6 @@ function TechStack() {
 
       {/* Carousel with arrow nav for PC */}
       <TechCarousel />
-      <style>{`div::-webkit-scrollbar { display: none; }`}</style>
     </section>
   );
 }

@@ -60,7 +60,7 @@ export function ScrollReveal({
       animate={isInView ? "visible" : "hidden"}
       variants={variants}
       className={className}
-      style={{ willChange: "opacity, transform" }}
+      style={{ willChange: isInView ? "auto" : "opacity, transform" }}
     >
       {children}
     </motion.div>
