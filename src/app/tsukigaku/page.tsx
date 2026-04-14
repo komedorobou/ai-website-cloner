@@ -254,8 +254,8 @@ function Cocktail360() {
             3秒、目が離せなかったでしょ？
           </motion.h2>
           <motion.p
-            className="font-light tracking-[-0.04em] text-white leading-[0.95]"
-            style={{ fontSize: "clamp(1.2rem, 3vw, 1.8rem)", opacity: subOpacity, filter: subFilter }}
+            className="font-light tracking-[-0.04em] text-white leading-[1.1]"
+            style={{ fontSize: "clamp(1.8rem, 5vw, 3rem)", opacity: subOpacity, filter: subFilter }}
           >
             あなたのお客様も同じ。この動き、月額に全部込み。
           </motion.p>
