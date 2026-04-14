@@ -57,7 +57,7 @@ function Hero() {
   const scrollIndOp = useTransform(scrollYProgress, [0, 0.05], [1, 0]);
 
   return (
-    <section ref={ref} className="relative h-[300vh]">
+    <section ref={ref} className="relative h-[250vh]">
       <div className="sticky top-0 h-screen w-full overflow-hidden bg-black">
         {/* Video */}
         <video
@@ -229,7 +229,7 @@ function Cocktail360() {
   const subFilter = useTransform(subBlur, (v) => `blur(${v}px)`);
 
   return (
-    <section ref={sectionRef} className="relative h-[400vh]">
+    <section ref={sectionRef} className="relative h-[300vh]">
       <div className="sticky top-0 h-screen w-full overflow-hidden bg-black flex items-center justify-center">
         <canvas
           ref={canvasRef}
@@ -363,7 +363,7 @@ function IndustryCard({ item, index }: { item: typeof industries[number]; index:
   const glowOpacity = useTransform(scrollYProgress, [0.4, 0.55, 0.75, 0.9], [0, 0.8, 0.8, 0]);
 
   return (
-    <section ref={ref} className="relative h-[180vh]">
+    <section ref={ref} className="relative h-[150vh]">
       <div className="sticky top-0 h-screen w-full overflow-hidden bg-black">
         <motion.div
           className="absolute inset-0"
@@ -644,11 +644,11 @@ function BeforeAfter() {
 /* ═══════════════════ PHILOSOPHY ═══════════════════ */
 function Philosophy() {
   return (
-    <section className="py-[160px] md:py-[240px] flex items-center justify-center bg-white text-center px-6">
+    <section className="py-[160px] md:py-[240px] flex items-center justify-center bg-black text-center px-6">
       <div className="max-w-[700px]">
         <ScrollReveal>
           <motion.h2
-            className="font-light tracking-[-0.04em] leading-[1.1] text-[#1d1d1f]"
+            className="font-light tracking-[-0.04em] leading-[1.1] text-white"
             style={{ fontSize: "clamp(2.5rem, 7vw, 72px)" }}
             initial={{ filter: "blur(12px)" }}
             whileInView={{ filter: "blur(0px)" }}
@@ -660,7 +660,7 @@ function Philosophy() {
           </motion.h2>
         </ScrollReveal>
         <ScrollReveal delay={0.2}>
-          <p className="text-[#86868b] text-[clamp(0.95rem,1.8vw,1.15rem)] leading-relaxed mt-10 font-light">
+          <p className="text-white/50 text-[clamp(0.95rem,1.8vw,1.15rem)] leading-relaxed mt-10 font-light">
             写真で惹きつけて、予約まで一直線。集客できるサイトだけを作ります。
             <br className="hidden md:block" />
             きれいなだけのHPは作りません。お客さんが「行きたい」「買いたい」と思う導線を設計します。
@@ -851,10 +851,10 @@ const faqItems = [
 function FAQ() {
   const [openIndex, setOpenIndex] = useState<number | null>(null);
   return (
-    <section className="py-[120px] md:py-[160px] px-6 bg-[#fafafa]">
+    <section className="py-[120px] md:py-[160px] px-6 bg-black">
       <ScrollReveal>
         <h2
-          className="font-light tracking-[-0.03em] text-center text-[#1d1d1f]"
+          className="font-light tracking-[-0.03em] text-center text-white"
           style={{ fontSize: "clamp(1.8rem, 4vw, 48px)" }}
         >
           よくある質問
@@ -863,14 +863,14 @@ function FAQ() {
       <div className="max-w-[600px] mx-auto mt-14">
         {faqItems.map((item, i) => (
           <ScrollReveal key={i} delay={i * 0.04}>
-            <div className="border-b border-black/5">
+            <div className="border-b border-white/10">
               <button
-                className="w-full flex justify-between items-center py-6 text-left text-[15px] font-medium text-[#1d1d1f]"
+                className="w-full flex justify-between items-center py-6 text-left text-[15px] font-medium text-white"
                 onClick={() => setOpenIndex(openIndex === i ? null : i)}
               >
                 {item.q}
                 <motion.span
-                  className="text-xl text-[#86868b]"
+                  className="text-xl text-white/40"
                   animate={{ rotate: openIndex === i ? 45 : 0 }}
                   transition={{ duration: 0.25 }}
                 >
@@ -886,7 +886,7 @@ function FAQ() {
                     transition={{ duration: 0.3 }}
                     className="overflow-hidden"
                   >
-                    <p className="text-[#86868b] text-sm leading-relaxed pb-6">{item.a}</p>
+                    <p className="text-white/50 text-sm leading-relaxed pb-6">{item.a}</p>
                   </motion.div>
                 )}
               </AnimatePresence>
@@ -1123,11 +1123,11 @@ function TechStack() {
 /* ═══════════════════ TECH CHALLENGE ═══════════════════ */
 function TechChallenge() {
   return (
-    <section className="py-[160px] md:py-[220px] px-6 bg-[#fafafa]">
+    <section className="py-[160px] md:py-[220px] px-6 bg-black">
       <div className="max-w-[900px] mx-auto text-center">
         <ScrollReveal>
           <h2
-            className="font-medium tracking-[-0.03em] text-[#1d1d1f] leading-[1.1]"
+            className="font-medium tracking-[-0.03em] text-white leading-[1.1]"
             style={{ fontSize: "clamp(2.5rem, 7vw, 64px)" }}
           >
             他社のサイト、<br />
@@ -1136,7 +1136,7 @@ function TechChallenge() {
         </ScrollReveal>
         <ScrollReveal delay={0.15}>
           <p
-            className="text-[#1d1d1f] mt-16 font-medium leading-relaxed"
+            className="text-white mt-16 font-medium leading-relaxed"
             style={{ fontSize: "clamp(1.5rem, 4vw, 2.5rem)" }}
           >
             書いてないはずです。
@@ -1144,23 +1144,23 @@ function TechChallenge() {
         </ScrollReveal>
         <ScrollReveal delay={0.25}>
           <p
-            className="text-[#86868b] mt-6 font-light leading-relaxed"
+            className="text-white/50 mt-6 font-light leading-relaxed"
             style={{ fontSize: "clamp(1.3rem, 3.5vw, 2rem)" }}
           >
             書けないんです。<br className="md:hidden" />WordPressかWixだから。
           </p>
         </ScrollReveal>
         <ScrollReveal delay={0.35}>
-          <div className="mt-20 pt-16 border-t border-black/5">
+          <div className="mt-20 pt-16 border-t border-white/10">
             <p
-              className="text-[#1d1d1f] font-medium leading-[1.4]"
+              className="text-white/70 font-medium leading-[1.4]"
               style={{ fontSize: "clamp(1.2rem, 3vw, 1.6rem)" }}
             >
               ツキガクサイトは、使っている技術を<br className="hidden md:block" />
               堂々と公開しています。
             </p>
             <p
-              className="text-[#1d1d1f] mt-4 font-bold leading-[1.4]"
+              className="text-white mt-4 font-bold leading-[1.4]"
               style={{ fontSize: "clamp(1.4rem, 3.5vw, 2rem)" }}
             >
               同じ月額9,800円。中身が違います。
