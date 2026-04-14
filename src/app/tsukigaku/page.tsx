@@ -847,6 +847,78 @@ const faqItems = [
   { q: "初期費用は本当に0円ですか？", a: "はい。デザイン費・開発費・サーバー費・SSL証明書、すべて月額9,800円に含まれています。追加料金は一切ありません。" },
 ];
 
+/* ═══════════════════ FLOW ═══════════════════ */
+const flowSteps = [
+  {
+    num: "01",
+    title: "お問い合わせ",
+    desc: "フォームまたはメールでご連絡ください。30分の無料相談で、ご要望やイメージをお伺いします。",
+  },
+  {
+    num: "02",
+    title: "ヒアリング",
+    desc: "業種・ターゲット・掲載内容を詳しくお聞きします。写真やテキストなどの素材もこの段階でご準備いただきます。",
+  },
+  {
+    num: "03",
+    title: "制作開始",
+    desc: "ヒアリング内容をもとに制作を開始。最短1週間で初稿をお見せします。",
+  },
+  {
+    num: "04",
+    title: "確認・修正",
+    desc: "仮サイトでご確認いただき、フィードバックをもとに修正。ご納得いくまで調整します。",
+  },
+  {
+    num: "05",
+    title: "公開・運用開始",
+    desc: "本番公開。公開後も月2回まで修正対応込み。サイトを常に最新の状態に保ちます。",
+  },
+];
+
+function Flow() {
+  return (
+    <section className="py-[120px] md:py-[180px] px-6 bg-black">
+      <div className="max-w-[800px] mx-auto">
+        <ScrollReveal>
+          <p className="text-blue-400 text-[11px] font-semibold tracking-[0.25em] uppercase mb-5 text-center">
+            導入の流れ
+          </p>
+          <h2
+            className="font-light tracking-[-0.03em] text-white text-center"
+            style={{ fontSize: "clamp(2rem, 5vw, 48px)" }}
+          >
+            公開まで、最短1週間。
+          </h2>
+        </ScrollReveal>
+
+        <div className="mt-16 space-y-0">
+          {flowSteps.map((step, i) => (
+            <ScrollReveal key={step.num} delay={i * 0.08}>
+              <div className="flex gap-6 md:gap-10">
+                {/* Left: number + line */}
+                <div className="flex flex-col items-center">
+                  <div className="w-12 h-12 rounded-full border border-blue-500/30 flex items-center justify-center shrink-0">
+                    <span className="text-blue-400 text-[14px] font-semibold">{step.num}</span>
+                  </div>
+                  {i < flowSteps.length - 1 && (
+                    <div className="w-px flex-1 bg-white/10 my-2" />
+                  )}
+                </div>
+                {/* Right: content */}
+                <div className="pb-12">
+                  <h3 className="text-white font-medium text-[18px] md:text-[20px]">{step.title}</h3>
+                  <p className="text-white/45 text-[14px] md:text-[15px] font-light leading-relaxed mt-2">{step.desc}</p>
+                </div>
+              </div>
+            </ScrollReveal>
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+}
+
 function FAQ() {
   const [openIndex, setOpenIndex] = useState<number | null>(null);
   return (
@@ -1226,6 +1298,7 @@ export default function TsukigakuPage() {
       <TechStack />
       <TechChallenge />
       <Pricing />
+      <Flow />
       <FAQ />
       <CTAFinal />
       <footer id="contact" className="border-t border-white/5 bg-black py-16 px-6">
