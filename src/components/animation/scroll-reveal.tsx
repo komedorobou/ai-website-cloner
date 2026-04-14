@@ -1,6 +1,6 @@
 "use client";
 
-import { type ReactNode } from "react";
+import { type ReactNode, useState } from "react";
 import { motion, type Variants } from "motion/react";
 import { useInViewReveal } from "@/hooks/use-in-view-reveal";
 
@@ -17,20 +17,16 @@ interface ScrollRevealProps {
   threshold?: number;
 }
 
-const getInitialTransform = (direction: Direction, distance: number) => {
-  switch (direction) {
-    case "up": return { y: distance, opacity: 0 };
-    case "down": return { y: -distance, opacity: 0 };
-    case "left": return { x: distance, opacity: 0 };
-    case "right": return { x: -distance, opacity: 0 };
-    case "none": return { opacity: 0 };
-  }
-};
-
+/**
+ * iOS Safari で opacity:0 + translateY な要素がビューポートに入った瞬間に
+ * レイアウト再計算 → スクロール位置が飛ぶ問題を回避するため、
+ * translateX/Y は使わず opacity のみでアニメーションする。
+ * direction/distance は互換性のため引数として残すが無視する。
+ */
 export function ScrollReveal({
   children,
-  direction = "up",
-  distance = 32,
+  direction: _direction = "up",
+  distance: _distance = 32,
   duration = 0.7,
   delay = 0,
   className,
@@ -38,12 +34,11 @@ export function ScrollReveal({
   threshold = 0.1,
 }: ScrollRevealProps) {
   const { ref, isInView } = useInViewReveal<HTMLDivElement>({ threshold, once });
+  const [hasAnimated, setHasAnimated] = useState(false);
 
   const variants: Variants = {
-    hidden: getInitialTransform(direction, distance),
+    hidden: { opacity: 0 },
     visible: {
-      x: 0,
-      y: 0,
       opacity: 1,
       transition: {
         duration,
@@ -60,7 +55,10 @@ export function ScrollReveal({
       animate={isInView ? "visible" : "hidden"}
       variants={variants}
       className={className}
-      style={{ willChange: isInView ? "auto" : "opacity, transform" }}
+      onAnimationComplete={() => {
+        if (isInView) setHasAnimated(true);
+      }}
+      style={{ willChange: hasAnimated ? "auto" : "opacity" }}
     >
       {children}
     </motion.div>

@@ -4,9 +4,9 @@
 
 @custom-variant dark (&:is(.dark *));
 
-/* Hide scrollbars globally */
-*::-webkit-scrollbar { display: none; }
-* { scrollbar-width: none; }
+/* Hide scrollbars — body only (avoid side effects on inner scroll containers in iOS Safari) */
+body::-webkit-scrollbar { display: none; }
+body { scrollbar-width: none; }
 
 @theme inline {
   --color-background: var(--background);

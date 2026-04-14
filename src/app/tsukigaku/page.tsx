@@ -929,36 +929,35 @@ function FAQ() {
       </ScrollReveal>
       <div className="max-w-[600px] mx-auto mt-14">
         {faqItems.map((item, i) => (
-          <ScrollReveal key={i} delay={i * 0.04}>
-            <div className="border-b border-white/10">
-              <button
-                className="w-full flex justify-between items-center py-6 text-left text-[15px] font-medium text-white"
-                onClick={() => setOpenIndex(openIndex === i ? null : i)}
+          <div key={i} className="border-b border-white/10">
+            <button
+              className="w-full flex justify-between items-center py-6 text-left text-[15px] font-medium text-white"
+              onClick={() => setOpenIndex(openIndex === i ? null : i)}
+            >
+              {item.q}
+              <motion.span
+                className="text-xl text-white/40"
+                animate={{ rotate: openIndex === i ? 45 : 0 }}
+                transition={{ duration: 0.25 }}
               >
-                {item.q}
-                <motion.span
-                  className="text-xl text-white/40"
-                  animate={{ rotate: openIndex === i ? 45 : 0 }}
-                  transition={{ duration: 0.25 }}
+                +
+              </motion.span>
+            </button>
+            <AnimatePresence initial={false}>
+              {openIndex === i && (
+                <motion.div
+                  initial={{ height: 0, opacity: 0 }}
+                  animate={{ height: "auto", opacity: 1 }}
+                  exit={{ height: 0, opacity: 0 }}
+                  transition={{ duration: 0.3, ease: [0.22, 1, 0.36, 1] }}
+                  className="overflow-hidden"
+                  style={{ willChange: "height, opacity" }}
                 >
-                  +
-                </motion.span>
-              </button>
-              <AnimatePresence initial={false}>
-                {openIndex === i && (
-                  <motion.div
-                    initial={{ height: 0, opacity: 0 }}
-                    animate={{ height: "auto", opacity: 1 }}
-                    exit={{ height: 0, opacity: 0 }}
-                    transition={{ duration: 0.3 }}
-                    className="overflow-hidden"
-                  >
-                    <p className="text-white/50 text-sm leading-relaxed pb-6">{item.a}</p>
-                  </motion.div>
-                )}
-              </AnimatePresence>
-            </div>
-          </ScrollReveal>
+                  <p className="text-white/50 text-sm leading-relaxed pb-6">{item.a}</p>
+                </motion.div>
+              )}
+            </AnimatePresence>
+          </div>
         ))}
       </div>
     </section>
