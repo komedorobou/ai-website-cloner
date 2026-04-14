@@ -861,33 +861,38 @@ const flowSteps = [
     num: "01",
     title: "お問い合わせ",
     desc: "フォームまたはメールでご連絡ください。30分の無料相談で、ご要望やイメージをお伺いします。",
+    image: "/images/tsukigaku/flow-01-contact.png",
   },
   {
     num: "02",
     title: "ヒアリング",
     desc: "業種・ターゲット・掲載内容を詳しくお聞きします。写真やテキストなどの素材もこの段階でご準備いただきます。",
+    image: "/images/tsukigaku/flow-02-hearing.png",
   },
   {
     num: "03",
     title: "制作開始",
     desc: "ヒアリング内容をもとに制作を開始。最短1週間で初稿をお見せします。",
+    image: "/images/tsukigaku/flow-03-build.png",
   },
   {
     num: "04",
     title: "確認・修正",
     desc: "仮サイトでご確認いただき、フィードバックをもとに修正。ご納得いくまで調整します。",
+    image: "/images/tsukigaku/flow-04-review.png",
   },
   {
     num: "05",
     title: "公開・運用開始",
     desc: "本番公開。公開後も月2回まで修正対応込み。サイトを常に最新の状態に保ちます。",
+    image: "/images/tsukigaku/flow-05-launch.png",
   },
 ];
 
 function Flow() {
   return (
     <section className="py-[120px] md:py-[180px] px-6 bg-black">
-      <div className="max-w-[800px] mx-auto">
+      <div className="max-w-[1100px] mx-auto">
         <p className="text-blue-400 text-[11px] font-semibold tracking-[0.25em] uppercase mb-5 text-center">
           導入の流れ
         </p>
@@ -898,26 +903,25 @@ function Flow() {
           公開まで、最短1週間。
         </h2>
 
-        <div className="mt-16 space-y-0">
+        <div className="mt-16 md:mt-24 space-y-16 md:space-y-24">
           {flowSteps.map((step, i) => (
-            <div key={step.num}>
-              <div className="flex gap-6 md:gap-10">
-                {/* Left: number + line */}
-                <div className="flex flex-col items-center">
-                  <div className="w-12 h-12 rounded-full border border-blue-500/30 flex items-center justify-center shrink-0">
-                    <span className="text-blue-400 text-[14px] font-semibold">{step.num}</span>
+            <ScrollReveal key={step.num}>
+              <div className={`flex flex-col ${i % 2 === 0 ? "md:flex-row" : "md:flex-row-reverse"} items-center gap-8 md:gap-14`}>
+                {/* Image */}
+                <div className="relative w-full md:w-1/2 aspect-[16/10] rounded-2xl overflow-hidden">
+                  <Image src={step.image} alt={step.title} fill className="object-cover" sizes="(max-width:768px) 100vw, 550px" />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent" />
+                  <div className="absolute top-4 left-4 w-10 h-10 rounded-full bg-blue-500/20 backdrop-blur-sm border border-blue-500/30 flex items-center justify-center">
+                    <span className="text-blue-400 text-[13px] font-semibold">{step.num}</span>
                   </div>
-                  {i < flowSteps.length - 1 && (
-                    <div className="w-px flex-1 bg-white/10 my-2" />
-                  )}
                 </div>
-                {/* Right: content */}
-                <div className="pb-12">
-                  <h3 className="text-white font-medium text-[18px] md:text-[20px]">{step.title}</h3>
-                  <p className="text-white/45 text-[14px] md:text-[15px] font-light leading-relaxed mt-2">{step.desc}</p>
+                {/* Text */}
+                <div className="w-full md:w-1/2">
+                  <h3 className="text-white font-medium text-[22px] md:text-[28px] tracking-[-0.02em]">{step.title}</h3>
+                  <p className="text-white/60 text-[15px] md:text-[16px] font-light leading-[1.8] mt-4">{step.desc}</p>
                 </div>
               </div>
-            </div>
+            </ScrollReveal>
           ))}
         </div>
       </div>
