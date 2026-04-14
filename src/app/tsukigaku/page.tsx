@@ -743,64 +743,6 @@ function Pricing() {
                   </li>
                 ))}
               </ul>
-              <div className="mt-10">
-                <p className="text-[11px] font-semibold tracking-[0.2em] uppercase text-blue-400 mb-4">長く使うほど安くなる</p>
-                <p className="text-white/50 text-[13px] font-light mb-6">修正依頼がない年ごとに10%ずつ割引。最大60%OFF。</p>
-                {/* Line chart */}
-                <div className="relative mt-2">
-                  <svg viewBox="0 0 400 180" className="w-full h-auto" fill="none">
-                    {/* Grid lines */}
-                    {[0, 1, 2, 3, 4].map((i) => (
-                      <line key={i} x1="50" y1={20 + i * 30} x2="380" y2={20 + i * 30} stroke="white" strokeOpacity="0.05" />
-                    ))}
-                    {/* Y-axis labels */}
-                    <text x="44" y="24" textAnchor="end" fill="white" fillOpacity="0.3" fontSize="10">¥9,800</text>
-                    <text x="44" y="54" textAnchor="end" fill="white" fillOpacity="0.3" fontSize="10">¥8,000</text>
-                    <text x="44" y="84" textAnchor="end" fill="white" fillOpacity="0.3" fontSize="10">¥6,000</text>
-                    <text x="44" y="114" textAnchor="end" fill="white" fillOpacity="0.3" fontSize="10">¥4,000</text>
-                    {/* Line — points calculated: 9800→8820→7840→6860→5880→4900→3920 mapped to y 20→140 (9800=20, 3920=140) */}
-                    <polyline
-                      points="60,20 113,36 166,52 220,68 273,85 326,101 380,120"
-                      stroke="#3b82f6"
-                      strokeWidth="2.5"
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                    />
-                    {/* Gradient fill under line */}
-                    <defs>
-                      <linearGradient id="lineGrad" x1="0" y1="0" x2="0" y2="1">
-                        <stop offset="0%" stopColor="#3b82f6" stopOpacity="0.2" />
-                        <stop offset="100%" stopColor="#3b82f6" stopOpacity="0" />
-                      </linearGradient>
-                    </defs>
-                    <polygon
-                      points="60,20 113,36 166,52 220,68 273,85 326,101 380,120 380,140 60,140"
-                      fill="url(#lineGrad)"
-                    />
-                    {/* Dots */}
-                    {[
-                      { x: 60, y: 20 }, { x: 113, y: 36 }, { x: 166, y: 52 },
-                      { x: 220, y: 68 }, { x: 273, y: 85 }, { x: 326, y: 101 }, { x: 380, y: 120 },
-                    ].map((p, i) => (
-                      <circle key={i} cx={p.x} cy={p.y} r="4" fill="#3b82f6" stroke="#000" strokeWidth="2" />
-                    ))}
-                    {/* X-axis labels */}
-                    {["1年目", "2年目", "3年目", "4年目", "5年目", "6年目", "7年目〜"].map((label, i) => (
-                      <text key={label} x={60 + i * 53.3} y="158" textAnchor="middle" fill="white" fillOpacity="0.35" fontSize="10">{label}</text>
-                    ))}
-                    {/* Price labels on dots */}
-                    {[
-                      { x: 60, y: 14, t: "¥9,800" }, { x: 113, y: 30, t: "¥8,820" }, { x: 166, y: 46, t: "¥7,840" },
-                      { x: 220, y: 62, t: "¥6,860" }, { x: 273, y: 79, t: "¥5,880" }, { x: 326, y: 95, t: "¥4,900" }, { x: 380, y: 114, t: "¥3,920" },
-                    ].map((p) => (
-                      <text key={p.t} x={p.x} y={p.y} textAnchor="middle" fill="white" fillOpacity="0.6" fontSize="9" fontWeight="500">{p.t}</text>
-                    ))}
-                    {/* Downward arrow at the end */}
-                    <path d="M385,105 L385,130 M380,125 L385,132 L390,125" stroke="#3b82f6" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
-                  </svg>
-                </div>
-                <p className="text-[11px] text-white/20 mt-5 text-center">※修正依頼があった年はリセットされます</p>
-              </div>
               <a
                 href="#"
                 className="block mt-8 py-4 bg-white text-black font-semibold rounded-full hover:scale-[1.03] transition-transform text-center text-[15px]"
@@ -822,6 +764,68 @@ function Pricing() {
                 <p className="text-white/30 text-xs mt-1">{o.l}</p>
               </div>
             ))}
+          </div>
+        </ScrollReveal>
+
+        {/* Discount line chart — full width, big */}
+        <ScrollReveal delay={0.3}>
+          <div className="max-w-[800px] mx-auto mt-20 md:mt-28 px-4">
+            <h3
+              className="font-extralight tracking-[-0.03em] text-white text-center leading-[1.1] mb-4"
+              style={{ fontSize: "clamp(1.8rem, 4vw, 40px)" }}
+            >
+              長く使うほど安くなる
+            </h3>
+            <p className="text-white/40 text-[clamp(0.85rem,1.4vw,1rem)] font-light text-center mb-10">
+              修正依頼がない年ごとに10%ずつ割引。最大60%OFF。
+            </p>
+            <svg viewBox="0 0 420 200" className="w-full h-auto" fill="none">
+              {/* Grid lines */}
+              {[0, 1, 2, 3, 4, 5].map((i) => (
+                <line key={i} x1="55" y1={25 + i * 28} x2="400" y2={25 + i * 28} stroke="white" strokeOpacity="0.05" />
+              ))}
+              {/* Y-axis labels */}
+              <text x="48" y="30" textAnchor="end" fill="white" fillOpacity="0.3" fontSize="11">¥10,000</text>
+              <text x="48" y="58" textAnchor="end" fill="white" fillOpacity="0.3" fontSize="11">¥8,000</text>
+              <text x="48" y="86" textAnchor="end" fill="white" fillOpacity="0.3" fontSize="11">¥6,000</text>
+              <text x="48" y="114" textAnchor="end" fill="white" fillOpacity="0.3" fontSize="11">¥4,000</text>
+              {/* Gradient fill */}
+              <defs>
+                <linearGradient id="discountGrad" x1="0" y1="0" x2="0" y2="1">
+                  <stop offset="0%" stopColor="#3b82f6" stopOpacity="0.25" />
+                  <stop offset="100%" stopColor="#3b82f6" stopOpacity="0.02" />
+                </linearGradient>
+              </defs>
+              <polygon
+                points="65,25 120,39 177,53 234,67 291,82 348,97 400,114 400,165 65,165"
+                fill="url(#discountGrad)"
+              />
+              {/* Line */}
+              <polyline
+                points="65,25 120,39 177,53 234,67 291,82 348,97 400,114"
+                stroke="#3b82f6"
+                strokeWidth="3"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+              />
+              {/* Dots + price labels */}
+              {[
+                { x: 65, y: 25, t: "¥9,800", yr: "1年目" },
+                { x: 120, y: 39, t: "¥8,820", yr: "2年目" },
+                { x: 177, y: 53, t: "¥7,840", yr: "3年目" },
+                { x: 234, y: 67, t: "¥6,860", yr: "4年目" },
+                { x: 291, y: 82, t: "¥5,880", yr: "5年目" },
+                { x: 348, y: 97, t: "¥4,900", yr: "6年目" },
+                { x: 400, y: 114, t: "¥3,920", yr: "7年目〜" },
+              ].map((p) => (
+                <g key={p.yr}>
+                  <circle cx={p.x} cy={p.y} r="5" fill="#3b82f6" stroke="#0a0a0a" strokeWidth="2.5" />
+                  <text x={p.x} y={p.y - 12} textAnchor="middle" fill="white" fillOpacity="0.7" fontSize="11" fontWeight="600">{p.t}</text>
+                  <text x={p.x} y="182" textAnchor="middle" fill="white" fillOpacity="0.35" fontSize="11">{p.yr}</text>
+                </g>
+              ))}
+            </svg>
+            <p className="text-[12px] text-white/20 mt-6 text-center">※修正依頼があった年はリセットされます</p>
           </div>
         </ScrollReveal>
       </div>
