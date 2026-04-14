@@ -1197,17 +1197,8 @@ function TechStack() {
 /* ═══════════════════ TECH CHALLENGE ═══════════════════ */
 function TechChallenge() {
   return (
-    <section className="relative py-[160px] md:py-[220px] px-6 overflow-hidden">
-      {/* Particle video background */}
-      <video
-        className="absolute inset-0 w-full h-full object-cover"
-        autoPlay muted loop playsInline
-      >
-        <source src="/videos/particles.mp4" type="video/mp4" />
-      </video>
-      <div className="absolute inset-0 bg-black/40" />
-
-      <div className="relative z-10 max-w-[900px] mx-auto text-center">
+    <section className="py-[160px] md:py-[220px] px-6 bg-black">
+      <div className="max-w-[900px] mx-auto text-center">
         <ScrollReveal>
           <h2
             className="font-medium tracking-[-0.03em] text-white leading-[1.1]"
