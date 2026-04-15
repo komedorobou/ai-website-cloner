@@ -22,7 +22,7 @@ function multiLerp(bp: number[], vals: number[], v: number): number {
 
 /* ═══════════════════ SCROLL INDICATOR ═══════════════════ */
 function ScrollIndicator({ scrollProgress }: { scrollProgress: ReturnType<typeof useScroll>["scrollYProgress"] }) {
-  const opacity = useTransform(scrollProgress, [0, 0.02], [1, 0]);
+  const opacity = useTransform(scrollProgress, [0, 0.25], [1, 0]);
 
   return (
     <motion.div
@@ -820,7 +820,6 @@ function InteractiveDemo() {
   const ctaBtnScale = useTransform(scrollYProgress, [0.44, 0.52], [0.8, 1]);
 
   // Heading text
-  const headingOp = useTransform(scrollYProgress, (v) => multiLerp([0.05, 0.12, 0.55, 0.62], [0, 1, 1, 0], v));
   const heading2Op = useTransform(scrollYProgress, (v) => multiLerp([0.55, 0.65, 0.85, 0.95], [0, 1, 1, 0], v));
 
   // Glow effect behind phone
@@ -839,29 +838,6 @@ function InteractiveDemo() {
           }}
         />
 
-        {/* Scroll arrows instead of heading */}
-        <motion.div
-          className="absolute inset-0 z-20 flex items-center justify-center pointer-events-none"
-          style={{ opacity: headingOp }}
-        >
-          <div className="flex flex-col items-center gap-3">
-            <motion.svg
-              width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="white" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"
-              animate={{ y: [0, -10, 0], opacity: [0, 0.7, 0] }}
-              transition={{ repeat: Infinity, duration: 3, ease: "easeInOut" }}
-            >
-              <polyline points="6 15 12 9 18 15" />
-            </motion.svg>
-            <span className="text-[13px] text-white/50 tracking-[0.3em] uppercase font-light">scroll</span>
-            <motion.svg
-              width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="white" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"
-              animate={{ y: [0, 10, 0], opacity: [0, 0.7, 0] }}
-              transition={{ repeat: Infinity, duration: 3, ease: "easeInOut" }}
-            >
-              <polyline points="6 9 12 15 18 9" />
-            </motion.svg>
-          </div>
-        </motion.div>
 
         {/* Heading 2 */}
         <motion.div
