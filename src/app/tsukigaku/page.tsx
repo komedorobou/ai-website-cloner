@@ -415,6 +415,45 @@ function ProblemAgitation() {
   );
 }
 
+/* ═══════════════════ SITUATION PERSONAS ═══════════════════ */
+const personas = [
+  { icon: Monitor, text: "HP、5年前に作ったまま。更新したいけど制作会社に連絡するのも面倒。" },
+  { icon: Wrench, text: "「自分で作れる」ツールを試したけど、途中で止まった。" },
+  { icon: CircleDollarSign, text: "毎回の修正に1〜2万。年間でいくら払ってるか、考えたくもない。" },
+  { icon: Frown, text: "SNSは頑張ってるのに、「ちゃんとしたHP」がないのが恥ずかしい。" },
+  { icon: Smartphone, text: "新規のお客さんに「ホームページありますか？」って聞かれて、答えに詰まった。" },
+];
+
+function SituationPersonas() {
+  return (
+    <section className="py-[100px] md:py-[140px] bg-black px-6">
+      <div className="max-w-[900px] mx-auto">
+        <ScrollReveal>
+          <p className="text-blue-400 text-[11px] font-semibold tracking-[0.25em] uppercase mb-5 text-center">
+            こんな状況、ありませんか？
+          </p>
+        </ScrollReveal>
+
+        <div className="mt-10 grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-5">
+          {personas.map((p, i) => {
+            const Icon = p.icon;
+            return (
+              <ScrollReveal key={i} delay={i * 0.08}>
+                <div className="bg-white/[0.03] border border-white/[0.08] rounded-2xl p-6 md:p-8 h-full">
+                  <Icon className="w-7 h-7 text-blue-400/70 mb-4" strokeWidth={1.5} />
+                  <p className="text-white/70 text-[15px] md:text-[16px] font-light leading-relaxed border-l-2 border-blue-500/30 pl-4">
+                    {p.text}
+                  </p>
+                </div>
+              </ScrollReveal>
+            );
+          })}
+        </div>
+      </div>
+    </section>
+  );
+}
+
 /* ═══════════════════ MOCKUP REVEAL ═══════════════════ */
 function MockupReveal() {
   const ref = useRef<HTMLDivElement>(null);
