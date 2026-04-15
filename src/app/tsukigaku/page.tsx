@@ -839,14 +839,14 @@ function InteractiveDemo() {
         />
 
 
-        {/* Heading 2 */}
+        {/* Heading 2 — below phone */}
         <motion.div
-          className="absolute inset-0 z-20 flex items-center justify-center pointer-events-none px-6"
+          className="absolute inset-x-0 bottom-[8%] md:bottom-[6%] z-20 pointer-events-none px-6"
           style={{ opacity: heading2Op }}
         >
           <h2
-            className="font-light tracking-[-0.04em] text-white leading-[0.95] text-center"
-            style={{ fontSize: "clamp(1.6rem, 5vw, 56px)", textShadow: "0 4px 40px rgba(0,0,0,0.8)" }}
+            className="font-light tracking-[-0.04em] text-white leading-[1.1] text-center"
+            style={{ fontSize: "clamp(1.4rem, 4vw, 40px)", textShadow: "0 4px 40px rgba(0,0,0,0.8)" }}
           >
             このアニメーション、<br />あなたのサイトにも。
           </h2>
