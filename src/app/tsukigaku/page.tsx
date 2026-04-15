@@ -340,7 +340,80 @@ function Cocktail360() {
   );
 }
 
-/* ═══════════════════ PROBLEM — removed ═══════════════════ */
+/* ═══════════════════ PROBLEM AGITATION — Loss frame ═══════════════════ */
+function ProblemAgitation() {
+  const { count: c1, ref: r1 } = useCountUp(53);
+  const { count: c2, ref: r2 } = useCountUp(61);
+
+  return (
+    <section className="py-[120px] md:py-[180px] bg-black px-6">
+      <div className="max-w-[900px] mx-auto">
+        <ScrollReveal>
+          <h2
+            className="font-light tracking-[-0.04em] text-white leading-[1.05] text-center"
+            style={{ fontSize: "clamp(2.5rem, 7vw, 72px)" }}
+          >
+            今のサイト、毎日いくら<br />損してるか知ってますか？
+          </h2>
+        </ScrollReveal>
+        <ScrollReveal delay={0.15}>
+          <p className="text-white/40 text-[clamp(0.9rem,1.6vw,1.1rem)] mt-8 font-light max-w-[600px] mx-auto leading-relaxed text-center">
+            きれいなだけのHPは作りません。お客さんが「行きたい」「買いたい」と思う導線がなければ、サイトは毎日チャンスを逃しています。
+          </p>
+        </ScrollReveal>
+
+        <div className="mt-16 md:mt-24 space-y-12 md:space-y-16">
+          <ScrollReveal>
+            <div className="flex flex-col md:flex-row items-center gap-6 md:gap-10">
+              <div ref={r1} className="shrink-0">
+                <span className="text-red-400 font-bold tracking-tight" style={{ fontSize: "clamp(3rem, 8vw, 64px)" }}>
+                  {c1}%
+                </span>
+              </div>
+              <p className="text-white/60 text-[15px] md:text-[17px] font-light leading-relaxed text-center md:text-left">
+                表示に3秒以上かかるサイトは、<strong className="text-white/90">半分以上のお客さんが見る前に去ります。</strong>あなたのサイト、何秒かかっていますか？
+              </p>
+            </div>
+          </ScrollReveal>
+
+          <ScrollReveal delay={0.1}>
+            <div className="flex flex-col md:flex-row items-center gap-6 md:gap-10">
+              <div ref={r2} className="shrink-0">
+                <span className="text-red-400 font-bold tracking-tight" style={{ fontSize: "clamp(3rem, 8vw, 64px)" }}>
+                  {c2}%
+                </span>
+              </div>
+              <p className="text-white/60 text-[15px] md:text-[17px] font-light leading-relaxed text-center md:text-left">
+                スマホ対応していないサイトは、<strong className="text-white/90">6割が二度と来ません。</strong>今の時代、お客様の7割はスマホで検索しています。
+              </p>
+            </div>
+          </ScrollReveal>
+
+          <ScrollReveal delay={0.2}>
+            <div className="flex flex-col items-center gap-6 text-center">
+              <p className="text-white/60 text-[15px] md:text-[17px] font-light leading-relaxed max-w-[600px]">
+                5年前に作ったデザインのまま放置していたら、新規のお客さんは<strong className="text-white/90">「この店、大丈夫？」</strong>と思っています。
+              </p>
+            </div>
+          </ScrollReveal>
+        </div>
+
+        <ScrollReveal delay={0.3}>
+          <motion.p
+            className="text-center mt-20 font-medium text-blue-400 leading-relaxed"
+            style={{ fontSize: "clamp(1.4rem, 3.5vw, 2rem)" }}
+            initial={{ filter: "blur(20px)" }}
+            whileInView={{ filter: "blur(0px)" }}
+            viewport={{ once: true }}
+            transition={{ duration: 1.5 }}
+          >
+            でも、月9,800円で全部解決できます。
+          </motion.p>
+        </ScrollReveal>
+      </div>
+    </section>
+  );
+}
 
 /* ═══════════════════ MOCKUP REVEAL ═══════════════════ */
 function MockupReveal() {
