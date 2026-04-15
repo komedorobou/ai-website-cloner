@@ -21,34 +21,13 @@ function multiLerp(bp: number[], vals: number[], v: number): number {
 }
 
 /* ═══════════════════ SCROLL INDICATOR ═══════════════════ */
-function ScrollIndicator() {
-  const ref = useRef<HTMLDivElement>(null);
-  const [show, setShow] = useState(false);
-  const [hide, setHide] = useState(false);
-
-  useEffect(() => {
-    const el = ref.current;
-    if (!el) return;
-    const observer = new IntersectionObserver(
-      ([entry]) => { if (entry.isIntersecting && !show) setShow(true); },
-      { threshold: 0.3 }
-    );
-    observer.observe(el);
-    return () => observer.disconnect();
-  }, [show]);
-
-  useEffect(() => {
-    if (!show) return;
-    const t = setTimeout(() => setHide(true), 3000);
-    return () => clearTimeout(t);
-  }, [show]);
+function ScrollIndicator({ scrollProgress }: { scrollProgress: ReturnType<typeof useScroll>["scrollYProgress"] }) {
+  const opacity = useTransform(scrollProgress, [0, 0.05], [1, 0]);
 
   return (
     <motion.div
-      ref={ref}
       className="absolute bottom-20 md:bottom-10 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 z-20"
-      animate={{ opacity: !show ? 0 : hide ? 0 : 1 }}
-      transition={{ duration: 0.5 }}
+      style={{ opacity }}
     >
       <motion.svg
         width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="white" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"
@@ -390,7 +369,7 @@ function Cocktail360() {
             あなたのお客様も同じ。<br />この動き、月額に全部込み。
           </p>
         </motion.div>
-        <ScrollIndicator />
+        <ScrollIndicator scrollProgress={scrollYProgress} />
       </div>
     </section>
   );
@@ -960,7 +939,7 @@ function InteractiveDemo() {
             </motion.div>
           </div>
         </motion.div>
-        <ScrollIndicator />
+        <ScrollIndicator scrollProgress={scrollYProgress} />
       </div>
     </section>
   );
