@@ -39,6 +39,8 @@ function Hero() {
 
   // State-driven: which phase are we in?
   const [phase, setPhase] = useState<"loading" | "text1" | "text2" | "scroll">("loading");
+  const phaseRef = useRef(phase);
+  phaseRef.current = phase;
 
   // After 2s, show text1 (h1)
   useEffect(() => {
@@ -53,10 +55,10 @@ function Hero() {
     return () => clearTimeout(t);
   }, [phase]);
 
-  // Once user scrolls past 3%, switch to scroll mode
+  // Once user scrolls past 3%, switch to scroll mode — only after text2 has appeared
   useEffect(() => {
     const unsub = scrollYProgress.on("change", (v) => {
-      if (v > 0.03) setPhase("scroll");
+      if (v > 0.03 && phaseRef.current === "text2") setPhase("scroll");
     });
     return unsub;
   }, [scrollYProgress]);
