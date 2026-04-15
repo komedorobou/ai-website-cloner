@@ -1441,14 +1441,12 @@ function TechStack() {
             className="font-light tracking-[-0.04em] text-white leading-[1.05] text-center"
             style={{ fontSize: "clamp(2.2rem, 7vw, 72px)" }}
           >
-            iPhoneの商品ページ、
-            <br />
-            見たことありますか。
+            ワクワクする<br className="md:hidden" />ホームページの裏側には、<br />確かな技術。
           </h2>
         </ScrollReveal>
         <ScrollReveal delay={0.15}>
           <p className="text-white/50 text-[clamp(0.9rem,1.6vw,1.1rem)] mt-6 font-light max-w-[600px] mx-auto leading-relaxed text-center">
-            あのスクロールした時のワクワク。画面が動き出す滑らかさ。あなたのお店のサイトでも、同じことができます。
+            スクロールするたびに動き出す画面。その滑らかさの裏には、世界のトップ企業と同じ技術があります。
           </p>
         </ScrollReveal>
       </div>
