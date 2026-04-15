@@ -817,7 +817,7 @@ function InteractiveDemo() {
         >
           <h2
             className="font-light tracking-[-0.04em] text-white leading-[0.95] text-center"
-            style={{ fontSize: "clamp(2rem, 7vw, 72px)", textShadow: "0 4px 40px rgba(0,0,0,0.8)" }}
+            style={{ fontSize: "clamp(1.5rem, 5vw, 56px)", textShadow: "0 4px 40px rgba(0,0,0,0.8)" }}
           >
             スクロールしてみてください。
           </h2>
@@ -830,7 +830,7 @@ function InteractiveDemo() {
         >
           <h2
             className="font-light tracking-[-0.04em] text-white leading-[0.95] text-center"
-            style={{ fontSize: "clamp(2rem, 7vw, 64px)", textShadow: "0 4px 40px rgba(0,0,0,0.8)" }}
+            style={{ fontSize: "clamp(1.4rem, 5vw, 56px)", textShadow: "0 4px 40px rgba(0,0,0,0.8)" }}
           >
             このアニメーション、<br />あなたのサイトにも。
           </h2>
