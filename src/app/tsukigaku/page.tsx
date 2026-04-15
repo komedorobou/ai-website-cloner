@@ -1067,33 +1067,6 @@ function Pricing() {
             <p className="text-[12px] text-white/20 mt-6 text-center">※修正依頼があった年はリセットされます</p>
           </div>
 
-        {/* Price Breakdown — Radical Transparency */}
-        <ScrollReveal delay={0.3}>
-          <div className="max-w-[700px] mx-auto mt-20 md:mt-28">
-            <h3
-              className="font-light tracking-[-0.03em] text-white text-center leading-[1.1] mb-10"
-              style={{ fontSize: "clamp(1.6rem, 3.5vw, 32px)" }}
-            >
-              月額9,800円の内訳
-            </h3>
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-              {[
-                { amount: "¥5,000", label: "デザイン・開発", desc: "完全オーダーメイド" },
-                { amount: "¥2,800", label: "ホスティング・SSL", desc: "Vercel CDN、稼働率99.99%" },
-                { amount: "¥2,000", label: "サポート・修正", desc: "月2回まで修正対応" },
-              ].map((item) => (
-                <div key={item.label} className="bg-white/[0.03] border border-white/[0.06] rounded-xl p-6 text-center">
-                  <p className="text-white font-medium text-[24px]">{item.amount}</p>
-                  <p className="text-white/60 text-[13px] mt-2 font-medium">{item.label}</p>
-                  <p className="text-white/30 text-[12px] mt-1 font-light">{item.desc}</p>
-                </div>
-              ))}
-            </div>
-            <p className="text-blue-400/60 text-[13px] mt-6 text-center font-light">
-              中間マージン：¥0。営業コスト：¥0。だからこの価格。
-            </p>
-          </div>
-        </ScrollReveal>
       </div>
     </section>
   );
