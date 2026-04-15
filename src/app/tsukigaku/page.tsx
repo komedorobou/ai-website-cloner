@@ -55,19 +55,19 @@ function Hero() {
   }, [scrollYProgress]);
 
   // All scroll transforms — MUST be at top level (React hooks rule)
-  const t1Opacity = useTransform(scrollYProgress, [0.03, 0.15], [1, 0]);
-  const t1Blur = useTransform(scrollYProgress, [0.03, 0.15], [0, 30]);
+  const t1Opacity = useTransform(scrollYProgress, [0.02, 0.2], [1, 0]);
+  const t1Blur = useTransform(scrollYProgress, [0.02, 0.2], [0, 30]);
   const t1Filter = useTransform(t1Blur, (v) => `blur(${v}px)`);
-  const t2Opacity = useTransform(scrollYProgress, [0.15, 0.3, 0.5, 0.65], [0, 1, 1, 0]);
-  const t2Scale = useTransform(scrollYProgress, [0.15, 0.3], [0.7, 1]);
-  const t2Blur = useTransform(scrollYProgress, [0.15, 0.3], [30, 0]);
+  const t2Opacity = useTransform(scrollYProgress, [0.2, 0.35, 0.6, 0.75], [0, 1, 1, 0]);
+  const t2Scale = useTransform(scrollYProgress, [0.2, 0.35], [0.7, 1]);
+  const t2Blur = useTransform(scrollYProgress, [0.2, 0.35], [30, 0]);
   const t2Filter = useTransform(t2Blur, (v) => `blur(${v}px)`);
-  const ctaOpacity = useTransform(scrollYProgress, [0.35, 0.45, 0.55, 0.7], [0, 1, 1, 0]);
-  const ctaY = useTransform(scrollYProgress, [0.35, 0.45], [30, 0]);
+  const ctaOpacity = useTransform(scrollYProgress, [0.4, 0.5, 0.65, 0.8], [0, 1, 1, 0]);
+  const ctaY = useTransform(scrollYProgress, [0.4, 0.5], [30, 0]);
   const scrollIndOp = useTransform(scrollYProgress, [0, 0.05], [1, 0]);
 
   return (
-    <section ref={ref} className="relative h-[250vh]">
+    <section ref={ref} className="relative h-[300vh]">
       <div className="sticky top-0 h-[100svh] w-full overflow-hidden bg-black">
         {/* Video */}
         <video
