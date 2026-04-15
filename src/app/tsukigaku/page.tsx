@@ -1623,7 +1623,6 @@ export default function TsukigakuPage() {
       <IndustryShowcase />
       <InlineCTA text="無料で始める" micro="月額9,800円ですべてお任せ" variant="medium" />
       <InteractiveDemo />
-      <SelfProof />
       <TechStack />
       <InlineCTA text="今すぐ申し込む" micro="初期費用0円・いつでも解約OK" variant="hard" />
       <Pricing />
