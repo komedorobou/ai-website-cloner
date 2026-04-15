@@ -23,19 +23,19 @@ function multiLerp(bp: number[], vals: number[], v: number): number {
 /* ═══════════════════ SCROLL INDICATOR ═══════════════════ */
 function ScrollIndicator() {
   return (
-    <div className="absolute bottom-20 md:bottom-10 left-1/2 -translate-x-1/2 flex flex-col items-center gap-3 z-20">
+    <div className="absolute bottom-20 md:bottom-10 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 z-20">
       <motion.svg
-        width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="white" strokeOpacity="0.5" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"
-        animate={{ y: [0, -3, 0], opacity: [0.5, 0.2, 0.5] }}
-        transition={{ repeat: Infinity, duration: 2 }}
+        width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="white" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"
+        animate={{ y: [0, -8, 0], opacity: [0, 0.6, 0] }}
+        transition={{ repeat: Infinity, duration: 3, ease: "easeInOut" }}
       >
         <polyline points="6 15 12 9 18 15" />
       </motion.svg>
-      <span className="text-[11px] text-white/50 tracking-[0.25em] uppercase font-medium">scroll</span>
+      <span className="text-[12px] text-white/40 tracking-[0.3em] uppercase font-light">scroll</span>
       <motion.svg
-        width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="white" strokeOpacity="0.5" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"
-        animate={{ y: [0, 3, 0], opacity: [0.5, 0.2, 0.5] }}
-        transition={{ repeat: Infinity, duration: 2 }}
+        width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="white" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"
+        animate={{ y: [0, 8, 0], opacity: [0, 0.6, 0] }}
+        transition={{ repeat: Infinity, duration: 3, ease: "easeInOut" }}
       >
         <polyline points="6 9 12 15 18 9" />
       </motion.svg>
