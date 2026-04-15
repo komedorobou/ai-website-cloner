@@ -761,6 +761,180 @@ function Comparison() {
   );
 }
 
+/* ═══════════════════ LIGHTHOUSE GAUGE ═══════════════════ */
+function LighthouseGauge({ score, label }: { score: number; label: string }) {
+  const { count, ref } = useCountUp(score, 2000);
+  const circumference = 2 * Math.PI * 54;
+  const offset = circumference - (count / 100) * circumference;
+  const color = count >= 90 ? "#22c55e" : count >= 50 ? "#f59e0b" : "#ef4444";
+
+  return (
+    <div ref={ref} className="flex flex-col items-center">
+      <svg width="130" height="130" viewBox="0 0 120 120">
+        <circle cx="60" cy="60" r="54" fill="none" stroke="white" strokeOpacity="0.05" strokeWidth="8" />
+        <circle
+          cx="60" cy="60" r="54" fill="none"
+          stroke={color} strokeWidth="8"
+          strokeLinecap="round"
+          strokeDasharray={circumference}
+          strokeDashoffset={offset}
+          transform="rotate(-90 60 60)"
+          style={{ transition: "stroke-dashoffset 0.1s linear" }}
+        />
+        <text x="60" y="60" textAnchor="middle" dominantBaseline="central" fill="white" fontSize="32" fontWeight="300">
+          {count}
+        </text>
+      </svg>
+      <p className="text-white/40 text-[13px] mt-2 font-light">{label}</p>
+    </div>
+  );
+}
+
+/* ═══════════════════ SELF PROOF — Dogfooding ═══════════════════ */
+function SelfProof() {
+  const { count: speedCount, ref: speedRef } = useCountUp(8, 1500);
+  const parallaxRef = useRef<HTMLDivElement>(null);
+  const { scrollYProgress } = useScroll({ target: parallaxRef, offset: ["start end", "end start"] });
+  const parallaxY = useTransform(scrollYProgress, [0, 1], ["-20%", "20%"]);
+  const [hovered, setHovered] = useState(false);
+
+  return (
+    <section className="py-[120px] md:py-[180px] bg-black px-6 overflow-hidden">
+      <div className="max-w-[1000px] mx-auto">
+        {/* Headline */}
+        <ScrollReveal>
+          <h2
+            className="font-light tracking-[-0.04em] text-white leading-[1.05] text-center"
+            style={{ fontSize: "clamp(2rem, 5vw, 56px)" }}
+          >
+            このサイトの制作コスト：¥0。<br />
+            初期費用：¥0。月額：¥9,800。
+          </h2>
+        </ScrollReveal>
+        <ScrollReveal delay={0.1}>
+          <p ref={speedRef} className="text-white/40 text-[clamp(0.9rem,1.6vw,1.1rem)] mt-6 font-light max-w-[600px] mx-auto leading-relaxed text-center">
+            このページの表示速度：0.{speedCount}秒。あなたのサイトも。
+          </p>
+        </ScrollReveal>
+
+        {/* Metrics */}
+        <ScrollReveal delay={0.2}>
+          <div className="flex justify-center gap-8 md:gap-16 mt-14">
+            <LighthouseGauge score={98} label="Performance" />
+            <LighthouseGauge score={100} label="Accessibility" />
+            <LighthouseGauge score={100} label="SEO" />
+          </div>
+        </ScrollReveal>
+
+        {/* TechChallenge integrated */}
+        <div className="mt-24 md:mt-32 text-center max-w-[800px] mx-auto">
+          <ScrollReveal>
+            <h2
+              className="font-medium tracking-[-0.03em] text-white leading-[1.1]"
+              style={{ fontSize: "clamp(1.8rem, 5vw, 48px)" }}
+            >
+              他のHP業者に聞いてみてください。<br />
+              「何の技術で作ってますか？」と。
+            </h2>
+          </ScrollReveal>
+          <ScrollReveal delay={0.15}>
+            <p className="text-white mt-10 font-medium" style={{ fontSize: "clamp(1.2rem, 3vw, 2rem)" }}>
+              答えられないはずです。
+            </p>
+          </ScrollReveal>
+          <ScrollReveal delay={0.25}>
+            <p className="text-white/60 mt-4 font-light" style={{ fontSize: "clamp(1rem, 2.5vw, 1.5rem)" }}>
+              テンプレートを貼り替えてるだけだから。
+            </p>
+          </ScrollReveal>
+          <ScrollReveal delay={0.35}>
+            <div className="mt-14 pt-12 border-t border-white/10">
+              <p className="text-white/80 font-medium leading-[1.4]" style={{ fontSize: "clamp(1rem, 2.5vw, 1.4rem)" }}>
+                ツキガクサイトは、使っている技術を<br className="hidden md:block" />堂々と公開しています。
+              </p>
+              <p className="text-white mt-3 font-bold" style={{ fontSize: "clamp(1.2rem, 3vw, 1.8rem)" }}>
+                同じ月額9,800円。中身が違います。
+              </p>
+            </div>
+          </ScrollReveal>
+        </div>
+
+        {/* Interactive Demos */}
+        <div className="mt-24 md:mt-32">
+          <ScrollReveal>
+            <h3 className="font-medium tracking-[-0.03em] text-white text-center" style={{ fontSize: "clamp(1.6rem, 4vw, 36px)" }}>
+              触ってみてください。
+            </h3>
+            <p className="text-white/40 text-[clamp(0.85rem,1.4vw,1rem)] mt-3 font-light text-center">
+              このアニメーション、あなたのサイトにも入ります。
+            </p>
+          </ScrollReveal>
+
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-5 mt-12">
+            {/* Demo 1: Parallax */}
+            <ScrollReveal delay={0.05}>
+              <div ref={parallaxRef} className="bg-white/[0.03] border border-white/[0.08] rounded-2xl overflow-hidden aspect-[4/3] relative">
+                <motion.div className="absolute inset-[-20%] w-[140%] h-[140%]" style={{ y: parallaxY }}>
+                  <Image src="/images/tsukigaku/ramen-hero.jpg" alt="パララックスデモ" fill className="object-cover" sizes="400px" />
+                </motion.div>
+                <div className="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent" />
+                <div className="absolute bottom-4 left-5 right-5">
+                  <p className="text-blue-400 text-[10px] font-semibold tracking-[0.2em] uppercase">パララックス効果</p>
+                  <p className="text-white/50 text-[12px] mt-1 font-light">スクロールで画像が動く</p>
+                </div>
+              </div>
+            </ScrollReveal>
+
+            {/* Demo 2: Hover Reveal */}
+            <ScrollReveal delay={0.15}>
+              <motion.div
+                className="bg-white/[0.03] border border-white/[0.08] rounded-2xl overflow-hidden aspect-[4/3] relative cursor-pointer"
+                onHoverStart={() => setHovered(true)}
+                onHoverEnd={() => setHovered(false)}
+                onTapStart={() => setHovered(true)}
+                onTap={() => setHovered(false)}
+              >
+                <motion.div
+                  className="absolute inset-0"
+                  animate={{ scale: hovered ? 1.08 : 1 }}
+                  transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
+                >
+                  <Image src="/images/tsukigaku/salon-new.jpg" alt="ホバーデモ" fill className="object-cover" sizes="400px" />
+                </motion.div>
+                <div className="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent" />
+                <motion.div
+                  className="absolute bottom-4 left-5 right-5"
+                  animate={{ y: hovered ? 0 : 10, opacity: hovered ? 1 : 0.6 }}
+                  transition={{ duration: 0.4 }}
+                >
+                  <p className="text-blue-400 text-[10px] font-semibold tracking-[0.2em] uppercase">ホバーアニメーション</p>
+                  <p className="text-white/50 text-[12px] mt-1 font-light">タッチ/ホバーで拡大</p>
+                </motion.div>
+              </motion.div>
+            </ScrollReveal>
+
+            {/* Demo 3: Scroll Counter */}
+            <ScrollReveal delay={0.25}>
+              <div className="bg-white/[0.03] border border-white/[0.08] rounded-2xl overflow-hidden aspect-[4/3] relative flex items-center justify-center">
+                <div className="text-center">
+                  <div className="text-white font-light tracking-tight" style={{ fontSize: "clamp(3rem, 8vw, 56px)" }}>
+                    ¥9,800
+                  </div>
+                  <p className="text-white/30 text-sm mt-1">/月</p>
+                </div>
+                <div className="absolute bottom-4 left-5 right-5">
+                  <p className="text-blue-400 text-[10px] font-semibold tracking-[0.2em] uppercase">スクロール連動</p>
+                  <p className="text-white/50 text-[12px] mt-1 font-light">数字が動き出す</p>
+                </div>
+              </div>
+            </ScrollReveal>
+          </div>
+        </div>
+      </div>
+    </section>
+  );
+}
+
 /* ═══════════════════ BEFORE / AFTER ═══════════════════ */
 function BeforeAfter() {
   return (
