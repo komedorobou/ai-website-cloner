@@ -22,8 +22,23 @@ function multiLerp(bp: number[], vals: number[], v: number): number {
 
 /* ═══════════════════ SCROLL INDICATOR ═══════════════════ */
 function ScrollIndicator() {
+  const [visible, setVisible] = useState(true);
+
+  useEffect(() => {
+    const t = setTimeout(() => setVisible(false), 3000);
+    return () => clearTimeout(t);
+  }, []);
+
+  if (!visible) return null;
+
   return (
-    <div className="absolute bottom-20 md:bottom-10 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 z-20">
+    <motion.div
+      className="absolute bottom-20 md:bottom-10 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 z-20"
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      exit={{ opacity: 0 }}
+      transition={{ duration: 0.5 }}
+    >
       <motion.svg
         width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="white" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"
         animate={{ y: [0, -8, 0], opacity: [0, 0.6, 0] }}
@@ -39,7 +54,7 @@ function ScrollIndicator() {
       >
         <polyline points="6 9 12 15 18 9" />
       </motion.svg>
-    </div>
+    </motion.div>
   );
 }
 
