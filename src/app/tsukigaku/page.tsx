@@ -38,13 +38,20 @@ function Hero() {
   const { scrollYProgress } = useScroll({ target: ref, offset: ["start start", "end start"] });
 
   // State-driven: which phase are we in?
-  const [phase, setPhase] = useState<"loading" | "text1" | "scroll">("loading");
+  const [phase, setPhase] = useState<"loading" | "text1" | "text2" | "scroll">("loading");
 
-  // After 2s, show text1
+  // After 2s, show text1 (h1)
   useEffect(() => {
     const t = setTimeout(() => setPhase("text1"), 2000);
     return () => clearTimeout(t);
   }, []);
+
+  // 3s after text1, show text2 (h2)
+  useEffect(() => {
+    if (phase !== "text1") return;
+    const t = setTimeout(() => setPhase("text2"), 3000);
+    return () => clearTimeout(t);
+  }, [phase]);
 
   // Once user scrolls past 3%, switch to scroll mode
   useEffect(() => {
@@ -58,10 +65,6 @@ function Hero() {
   const t1Opacity = useTransform(scrollYProgress, [0.02, 0.2], [1, 0]);
   const t1Blur = useTransform(scrollYProgress, [0.02, 0.2], [0, 30]);
   const t1Filter = useTransform(t1Blur, (v) => `blur(${v}px)`);
-  const t2Opacity = useTransform(scrollYProgress, [0.2, 0.35, 0.6, 0.75], [0, 1, 1, 0]);
-  const t2Scale = useTransform(scrollYProgress, [0.2, 0.35], [0.7, 1]);
-  const t2Blur = useTransform(scrollYProgress, [0.2, 0.35], [30, 0]);
-  const t2Filter = useTransform(t2Blur, (v) => `blur(${v}px)`);
   const ctaOpacity = useTransform(scrollYProgress, [0.4, 0.5, 0.65, 0.8], [0, 1, 1, 0]);
   const ctaY = useTransform(scrollYProgress, [0.4, 0.5], [30, 0]);
   const scrollIndOp = useTransform(scrollYProgress, [0, 0.05], [1, 0]);
@@ -88,31 +91,29 @@ function Hero() {
             className="font-light tracking-[-0.04em] text-white leading-[0.95] text-center px-6 transition-all duration-[2000ms] ease-out"
             style={{
               fontSize: "clamp(3.5rem, 12vw, 96px)",
-              opacity: phase !== "loading" ? 1 : 0,
-              transform: phase !== "loading" ? "scale(1)" : "scale(0.7)",
-              filter: phase !== "loading" ? "blur(0px)" : "blur(30px)",
+              opacity: phase === "text1" ? 1 : 0,
+              transform: phase === "text1" ? "scale(1)" : "scale(0.7)",
+              filter: phase === "text1" ? "blur(0px)" : "blur(30px)",
             }}
           >
             このサイト、<br />月9,800円で作れます。
           </h1>
         </motion.div>
 
-        {/* --- Text 2: centered absolutely, scroll-driven --- */}
-        <motion.div
-          className="absolute inset-0 z-10 flex items-center justify-center pointer-events-none"
-          style={{
-            opacity: t2Opacity,
-            scale: t2Scale,
-            filter: t2Filter,
-          }}
-        >
+        {/* --- Text 2: phase-driven (same as h1) --- */}
+        <div className="absolute inset-0 z-10 flex items-center justify-center pointer-events-none">
           <h2
-            className="font-light tracking-[-0.04em] text-white leading-[0.95] text-center px-6"
-            style={{ fontSize: "clamp(3.5rem, 12vw, 96px)" }}
+            className="font-light tracking-[-0.04em] text-white leading-[0.95] text-center px-6 transition-all duration-[2000ms] ease-out"
+            style={{
+              fontSize: "clamp(3.5rem, 12vw, 96px)",
+              opacity: phase === "text2" ? 1 : 0,
+              transform: phase === "text2" ? "scale(1)" : "scale(0.7)",
+              filter: phase === "text2" ? "blur(0px)" : "blur(30px)",
+            }}
           >
             あなたのお店でも。
           </h2>
-        </motion.div>
+        </div>
 
         {/* --- CTA --- */}
         <motion.div
