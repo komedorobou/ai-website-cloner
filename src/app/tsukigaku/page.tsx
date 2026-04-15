@@ -163,7 +163,7 @@ function Hero() {
           <h1
             className="font-light tracking-[-0.04em] text-white leading-[0.95] text-center px-6 transition-all duration-[2000ms] ease-out"
             style={{
-              fontSize: "clamp(3.5rem, 12vw, 96px)",
+              fontSize: "clamp(2.2rem, 9vw, 96px)",
               opacity: phase === "text1" ? 1 : 0,
               transform: phase === "text1" ? "scale(1)" : "scale(0.7)",
               filter: phase === "text1" ? "blur(0px)" : "blur(30px)",
@@ -178,7 +178,7 @@ function Hero() {
           <h2
             className="font-light tracking-[-0.04em] text-white leading-[0.95] text-center px-6 transition-all duration-[2000ms] ease-out"
             style={{
-              fontSize: "clamp(3.5rem, 12vw, 96px)",
+              fontSize: "clamp(2.2rem, 9vw, 96px)",
               opacity: phase === "text2" ? 1 : 0,
               transform: phase === "text2" ? "scale(1)" : "scale(0.7)",
               filter: phase === "text2" ? "blur(0px)" : "blur(30px)",
@@ -324,7 +324,7 @@ function Cocktail360() {
         <div className="absolute inset-0 z-10 flex items-center justify-center px-6">
           <motion.h2
             className="font-light tracking-[-0.04em] text-white leading-[0.95] text-center"
-            style={{ fontSize: "clamp(3rem, 10vw, 88px)", opacity: headingOpacity, filter: headingFilter, textShadow: "0 2px 20px rgba(0,0,0,0.8), 0 4px 40px rgba(0,0,0,0.6)" }}
+            style={{ fontSize: "clamp(2rem, 8vw, 88px)", opacity: headingOpacity, filter: headingFilter, textShadow: "0 2px 20px rgba(0,0,0,0.8), 0 4px 40px rgba(0,0,0,0.6)" }}
           >
             3秒、目が離せなかったでしょ？
           </motion.h2>
@@ -354,7 +354,7 @@ function ProblemAgitation() {
         <ScrollReveal>
           <h2
             className="font-light tracking-[-0.04em] text-white leading-[1.05]"
-            style={{ fontSize: "clamp(2.5rem, 7vw, 72px)" }}
+            style={{ fontSize: "clamp(2rem, 6vw, 72px)" }}
           >
             ホームページで損してる店は、<br />3パターンしかない。
           </h2>
@@ -497,7 +497,7 @@ function IndustryCard({ item, index }: { item: typeof industries[number]; index:
 
             <motion.h2
               className="font-light tracking-[-0.02em] text-white leading-[1.1]"
-              style={{ fontSize: "clamp(2.5rem, 7vw, 72px)", opacity: headingOpacity, y: headingY, filter: headingFilter }}
+              style={{ fontSize: "clamp(2rem, 6vw, 72px)", opacity: headingOpacity, y: headingY, filter: headingFilter }}
             >
               {item.heading}
             </motion.h2>
@@ -634,7 +634,7 @@ function Comparison() {
         <ScrollReveal delay={0.1}>
           <h2
             className="font-light tracking-[-0.04em] text-white leading-[1.05] text-center"
-            style={{ fontSize: "clamp(2.5rem, 7vw, 72px)" }}
+            style={{ fontSize: "clamp(2rem, 6vw, 72px)" }}
           >
             同じ品質。
             <br />
@@ -817,7 +817,7 @@ function InteractiveDemo() {
         >
           <h2
             className="font-light tracking-[-0.04em] text-white leading-[0.95] text-center"
-            style={{ fontSize: "clamp(2.5rem, 8vw, 72px)", textShadow: "0 4px 40px rgba(0,0,0,0.8)" }}
+            style={{ fontSize: "clamp(2rem, 7vw, 72px)", textShadow: "0 4px 40px rgba(0,0,0,0.8)" }}
           >
             スクロールしてみてください。
           </h2>
@@ -1405,7 +1405,7 @@ function TechStack() {
         <ScrollReveal delay={0.1}>
           <h2
             className="font-light tracking-[-0.04em] text-white leading-[1.05] text-center"
-            style={{ fontSize: "clamp(2.5rem, 7vw, 72px)" }}
+            style={{ fontSize: "clamp(2rem, 6vw, 72px)" }}
           >
             iPhoneの商品ページ、
             <br />
@@ -1476,7 +1476,7 @@ function CTAFinal() {
         <ScrollReveal>
           <motion.h2
             className="font-light tracking-[-0.04em] text-white leading-[1.05]"
-            style={{ fontSize: "clamp(2.5rem, 8vw, 80px)" }}
+            style={{ fontSize: "clamp(2rem, 7vw, 80px)" }}
             initial={{ filter: "blur(16px)", scale: 0.95 }}
             whileInView={{ filter: "blur(0px)", scale: 1 }}
             viewport={{ once: true }}
