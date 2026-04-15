@@ -4,6 +4,7 @@ import { useRef, useState, useEffect } from "react";
 import Image from "next/image";
 import { motion, useScroll, useTransform, AnimatePresence } from "motion/react";
 import { ScrollReveal } from "@/components/animation/scroll-reveal";
+import { Monitor, Wrench, CircleDollarSign, Frown, Smartphone } from "lucide-react";
 /* ParallaxLayer removed — unused */
 
 /* Motion v12 multi-keyframe useTransform workaround */
@@ -17,6 +18,57 @@ function multiLerp(bp: number[], vals: number[], v: number): number {
     }
   }
   return vals[vals.length - 1];
+}
+
+/* ═══════════════════ COUNT-UP HOOK ═══════════════════ */
+function useCountUp(end: number, duration = 1500) {
+  const [count, setCount] = useState(0);
+  const [started, setStarted] = useState(false);
+  const ref = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    const el = ref.current;
+    if (!el) return;
+    const observer = new IntersectionObserver(
+      ([entry]) => { if (entry.isIntersecting) setStarted(true); },
+      { threshold: 0.5 }
+    );
+    observer.observe(el);
+    return () => observer.disconnect();
+  }, []);
+
+  useEffect(() => {
+    if (!started) return;
+    const start = performance.now();
+    const tick = (now: number) => {
+      const progress = Math.min((now - start) / duration, 1);
+      const eased = 1 - Math.pow(1 - progress, 3);
+      setCount(Math.round(eased * end));
+      if (progress < 1) requestAnimationFrame(tick);
+    };
+    requestAnimationFrame(tick);
+  }, [started, end, duration]);
+
+  return { count, ref };
+}
+
+/* ═══════════════════ INLINE CTA ═══════════════════ */
+function InlineCTA({ text, micro, variant = "medium" }: { text: string; micro: string; variant?: "soft" | "medium" | "hard" }) {
+  const btnClass = variant === "soft"
+    ? "bg-white/10 border border-white/20 text-white hover:bg-white/20"
+    : "bg-white text-black hover:scale-[1.03]";
+  const microClass = variant === "hard" ? "text-blue-400/60 font-medium" : "text-white/30";
+
+  return (
+    <div className="text-center py-12 md:py-16">
+      <ScrollReveal>
+        <a href="#contact" className={`inline-block px-8 py-3.5 rounded-full text-[14px] font-medium transition-all ${btnClass}`}>
+          {text}
+        </a>
+        <p className={`text-[12px] mt-3 ${microClass}`}>{micro}</p>
+      </ScrollReveal>
+    </div>
+  );
 }
 
 /* ═══════════════════ NAV ═══════════════════ */
