@@ -153,7 +153,7 @@ function Hero() {
         >
           <source src="/videos/hero-laptop.mp4" type="video/mp4" />
         </video>
-        <div className="absolute inset-0 bg-black/30 z-[1]" />
+        <div className="absolute inset-0 bg-black/50 z-[1]" />
 
         {/* --- Text 1: always rendered, CSS handles appear, Motion handles scroll fadeout --- */}
         <motion.div
@@ -163,13 +163,13 @@ function Hero() {
           <h1
             className="font-light tracking-[-0.04em] text-white leading-[0.95] text-center px-6 transition-all duration-[2000ms] ease-out"
             style={{
-              fontSize: "clamp(1.8rem, 8vw, 96px)",
+              fontSize: "clamp(2.8rem, 10vw, 96px)",
               opacity: phase === "text1" ? 1 : 0,
               transform: phase === "text1" ? "scale(1)" : "scale(0.7)",
               filter: phase === "text1" ? "blur(0px)" : "blur(30px)",
             }}
           >
-            このサイト、<br />月9,800円で作れます。
+            このサイト、<br />月9,800円で<br className="md:hidden" />作れます。
           </h1>
         </motion.div>
 
@@ -178,7 +178,7 @@ function Hero() {
           <h2
             className="font-light tracking-[-0.04em] text-white leading-[0.95] text-center px-6 transition-all duration-[2000ms] ease-out"
             style={{
-              fontSize: "clamp(1.8rem, 8vw, 96px)",
+              fontSize: "clamp(2.8rem, 10vw, 96px)",
               opacity: phase === "text2" ? 1 : 0,
               transform: phase === "text2" ? "scale(1)" : "scale(0.7)",
               filter: phase === "text2" ? "blur(0px)" : "blur(30px)",
@@ -319,14 +319,14 @@ function Cocktail360() {
           ref={canvasRef}
           className="absolute inset-0 w-full h-full"
         />
-        <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-black/30 z-[1]" />
+        <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-black/40 z-[1]" />
         {/* Heading — center */}
         <div className="absolute inset-0 z-10 flex items-center justify-center px-6">
           <motion.h2
             className="font-light tracking-[-0.04em] text-white leading-[0.95] text-center"
-            style={{ fontSize: "clamp(1.5rem, 6vw, 88px)", opacity: headingOpacity, filter: headingFilter, textShadow: "0 2px 20px rgba(0,0,0,0.8), 0 4px 40px rgba(0,0,0,0.6)" }}
+            style={{ fontSize: "clamp(2rem, 7vw, 88px)", opacity: headingOpacity, filter: headingFilter, textShadow: "0 2px 20px rgba(0,0,0,0.8), 0 4px 40px rgba(0,0,0,0.6)" }}
           >
-            3秒、目が離せなかった<br className="md:hidden" />でしょ？
+            3秒、<br className="md:hidden" />目が離せなかった<br className="md:hidden" />でしょ？
           </motion.h2>
         </div>
         {/* Sub — bottom area */}
@@ -354,7 +354,7 @@ function ProblemAgitation() {
         <ScrollReveal>
           <h2
             className="font-light tracking-[-0.04em] text-white leading-[1.05]"
-            style={{ fontSize: "clamp(2rem, 6vw, 72px)" }}
+            style={{ fontSize: "clamp(2.2rem, 7vw, 72px)" }}
           >
             ホームページで損してる店は、<br />3パターンしかない。
           </h2>
@@ -483,7 +483,7 @@ function IndustryCard({ item, index }: { item: typeof industries[number]; index:
           >
             <Image src={item.image} alt={item.industry} fill className="object-cover" sizes="100vw" />
           </motion.div>
-          <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/10 to-black/30" />
+          <div className="absolute inset-0 bg-gradient-to-t from-black/85 via-black/30 to-black/40" />
         </motion.div>
 
         <div className="absolute inset-0 z-10 flex items-end">
@@ -497,7 +497,7 @@ function IndustryCard({ item, index }: { item: typeof industries[number]; index:
 
             <motion.h2
               className="font-light tracking-[-0.02em] text-white leading-[1.1]"
-              style={{ fontSize: "clamp(2rem, 6vw, 72px)", opacity: headingOpacity, y: headingY, filter: headingFilter }}
+              style={{ fontSize: "clamp(2.2rem, 7vw, 72px)", opacity: headingOpacity, y: headingY, filter: headingFilter }}
             >
               {item.heading}
             </motion.h2>
@@ -634,7 +634,7 @@ function Comparison() {
         <ScrollReveal delay={0.1}>
           <h2
             className="font-light tracking-[-0.04em] text-white leading-[1.05] text-center"
-            style={{ fontSize: "clamp(2rem, 6vw, 72px)" }}
+            style={{ fontSize: "clamp(2.2rem, 7vw, 72px)" }}
           >
             同じ品質。
             <br />
@@ -817,9 +817,9 @@ function InteractiveDemo() {
         >
           <h2
             className="font-light tracking-[-0.04em] text-white leading-[0.95] text-center"
-            style={{ fontSize: "clamp(1.5rem, 5vw, 56px)", textShadow: "0 4px 40px rgba(0,0,0,0.8)" }}
+            style={{ fontSize: "clamp(1.8rem, 6vw, 56px)", textShadow: "0 4px 40px rgba(0,0,0,0.8)" }}
           >
-            スクロールしてみてください。
+            スクロールして<br className="md:hidden" />みてください。
           </h2>
         </motion.div>
 
@@ -830,7 +830,7 @@ function InteractiveDemo() {
         >
           <h2
             className="font-light tracking-[-0.04em] text-white leading-[0.95] text-center"
-            style={{ fontSize: "clamp(1.4rem, 5vw, 56px)", textShadow: "0 4px 40px rgba(0,0,0,0.8)" }}
+            style={{ fontSize: "clamp(1.6rem, 5vw, 56px)", textShadow: "0 4px 40px rgba(0,0,0,0.8)" }}
           >
             このアニメーション、<br />あなたのサイトにも。
           </h2>
@@ -1405,7 +1405,7 @@ function TechStack() {
         <ScrollReveal delay={0.1}>
           <h2
             className="font-light tracking-[-0.04em] text-white leading-[1.05] text-center"
-            style={{ fontSize: "clamp(2rem, 6vw, 72px)" }}
+            style={{ fontSize: "clamp(2.2rem, 7vw, 72px)" }}
           >
             iPhoneの商品ページ、
             <br />
@@ -1476,14 +1476,14 @@ function CTAFinal() {
         <ScrollReveal>
           <motion.h2
             className="font-light tracking-[-0.04em] text-white leading-[1.05]"
-            style={{ fontSize: "clamp(2rem, 7vw, 80px)" }}
+            style={{ fontSize: "clamp(2.2rem, 7vw, 80px)" }}
             initial={{ filter: "blur(16px)", scale: 0.95 }}
             whileInView={{ filter: "blur(0px)", scale: 1 }}
             viewport={{ once: true }}
             transition={{ duration: 1.5 }}
           >
-            あなたのお店のサイト、
-            <br />
+            あなたのお店の<br className="md:hidden" />サイト、
+            <br className="hidden md:block" />
             一緒に作りませんか。
           </motion.h2>
         </ScrollReveal>
