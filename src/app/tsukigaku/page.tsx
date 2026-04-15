@@ -841,7 +841,7 @@ function InteractiveDemo() {
 
         {/* Heading 2 — below phone */}
         <motion.div
-          className="absolute inset-x-0 bottom-[8%] md:bottom-[6%] z-20 pointer-events-none px-6"
+          className="absolute inset-x-0 bottom-[15%] md:bottom-[12%] z-20 pointer-events-none px-6"
           style={{ opacity: heading2Op }}
         >
           <h2
