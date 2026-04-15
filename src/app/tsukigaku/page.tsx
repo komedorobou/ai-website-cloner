@@ -22,21 +22,32 @@ function multiLerp(bp: number[], vals: number[], v: number): number {
 
 /* ═══════════════════ SCROLL INDICATOR ═══════════════════ */
 function ScrollIndicator() {
-  const [visible, setVisible] = useState(true);
+  const ref = useRef<HTMLDivElement>(null);
+  const [show, setShow] = useState(false);
+  const [hide, setHide] = useState(false);
 
   useEffect(() => {
-    const t = setTimeout(() => setVisible(false), 3000);
-    return () => clearTimeout(t);
-  }, []);
+    const el = ref.current;
+    if (!el) return;
+    const observer = new IntersectionObserver(
+      ([entry]) => { if (entry.isIntersecting && !show) setShow(true); },
+      { threshold: 0.3 }
+    );
+    observer.observe(el);
+    return () => observer.disconnect();
+  }, [show]);
 
-  if (!visible) return null;
+  useEffect(() => {
+    if (!show) return;
+    const t = setTimeout(() => setHide(true), 3000);
+    return () => clearTimeout(t);
+  }, [show]);
 
   return (
     <motion.div
+      ref={ref}
       className="absolute bottom-20 md:bottom-10 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 z-20"
-      initial={{ opacity: 0 }}
-      animate={{ opacity: 1 }}
-      exit={{ opacity: 0 }}
+      animate={{ opacity: !show ? 0 : hide ? 0 : 1 }}
       transition={{ duration: 0.5 }}
     >
       <motion.svg
