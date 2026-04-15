@@ -377,59 +377,79 @@ function Cocktail360() {
 
 /* ═══════════════════ PROBLEM AGITATION — 3 Patterns ═══════════════════ */
 function ProblemAgitation() {
+  const sectionRef = useRef<HTMLDivElement>(null);
+  const { scrollYProgress } = useScroll({ target: sectionRef, offset: ["start start", "end start"] });
+
+  const headlineOp = useTransform(scrollYProgress, (v) => multiLerp([0, 0.08, 0.15, 0.22], [0, 1, 1, 0], v));
+  const subOp = useTransform(scrollYProgress, (v) => multiLerp([0.08, 0.15, 0.18, 0.25], [0, 1, 1, 0], v));
+  const p1Op = useTransform(scrollYProgress, (v) => multiLerp([0.2, 0.28, 0.35, 0.42], [0, 1, 1, 0], v));
+  const p2Op = useTransform(scrollYProgress, (v) => multiLerp([0.35, 0.43, 0.50, 0.57], [0, 1, 1, 0], v));
+  const p3Op = useTransform(scrollYProgress, (v) => multiLerp([0.50, 0.58, 0.65, 0.72], [0, 1, 1, 0], v));
+  const resolveOp = useTransform(scrollYProgress, (v) => multiLerp([0.68, 0.76, 0.90, 1], [0, 1, 1, 0], v));
+
+  const p1Blur = useTransform(scrollYProgress, [0.2, 0.28], [15, 0]);
+  const p2Blur = useTransform(scrollYProgress, [0.35, 0.43], [15, 0]);
+  const p3Blur = useTransform(scrollYProgress, [0.50, 0.58], [15, 0]);
+  const p1Filter = useTransform(p1Blur, (v) => `blur(${v}px)`);
+  const p2Filter = useTransform(p2Blur, (v) => `blur(${v}px)`);
+  const p3Filter = useTransform(p3Blur, (v) => `blur(${v}px)`);
+
   return (
-    <section className="py-[160px] md:py-[240px] bg-black px-6">
-      <div className="max-w-[800px] mx-auto text-center">
-        <ScrollReveal>
-          <h2
+    <section ref={sectionRef} className="relative h-[400vh]">
+      <div className="sticky top-0 h-[100svh] w-full overflow-hidden bg-black flex items-center justify-center px-6">
+        <div className="max-w-[800px] w-full text-center">
+          {/* Headline */}
+          <motion.h2
             className="font-light tracking-[-0.04em] text-white leading-[1.1]"
-            style={{ fontSize: "clamp(2rem, 6vw, 72px)" }}
+            style={{ fontSize: "clamp(2rem, 6vw, 72px)", opacity: headlineOp }}
           >
             ホームページで<br className="md:hidden" />損してる店は、<br />3パターンしかない。
-          </h2>
-        </ScrollReveal>
-        <ScrollReveal delay={0.2}>
-          <p
+          </motion.h2>
+
+          {/* Sub */}
+          <motion.p
             className="text-white/50 mt-8 font-light"
-            style={{ fontSize: "clamp(1.1rem, 2.5vw, 1.6rem)" }}
+            style={{ fontSize: "clamp(1.1rem, 2.5vw, 1.6rem)", opacity: subOp }}
           >
             あなたは、どれですか。
-          </p>
-        </ScrollReveal>
+          </motion.p>
 
-        <div className="mt-16 md:mt-24 space-y-8 md:space-y-10">
-          <ScrollReveal delay={0.1}>
-            <div className="border-l-2 border-white/20 pl-5 md:pl-8">
-              <p className="text-white text-[18px] md:text-[22px] font-medium mb-2">持っていない。</p>
-              <p className="text-white/50 text-[14px] md:text-[16px] font-light">Googleで見つからない店は、存在しないのと同じ。</p>
-            </div>
-          </ScrollReveal>
-          <ScrollReveal delay={0.2}>
-            <div className="border-l-2 border-white/20 pl-5 md:pl-8">
-              <p className="text-white text-[18px] md:text-[22px] font-medium mb-2">持ってるけど、古い。</p>
-              <p className="text-white/50 text-[14px] md:text-[16px] font-light">不安になるサイトは、ないほうがマシ。</p>
-            </div>
-          </ScrollReveal>
-          <ScrollReveal delay={0.3}>
-            <div className="border-l-2 border-white/20 pl-5 md:pl-8">
-              <p className="text-white text-[18px] md:text-[22px] font-medium mb-2">持ってるけど、高い。</p>
-              <p className="text-white/50 text-[14px] md:text-[16px] font-light">年間数十万払って、放置。</p>
-            </div>
-          </ScrollReveal>
-        </div>
+          {/* Pattern 1 */}
+          <motion.div
+            className="mt-16 text-left border-l-2 border-white/20 pl-5 md:pl-8"
+            style={{ opacity: p1Op, filter: p1Filter }}
+          >
+            <p className="text-white text-[20px] md:text-[28px] font-medium mb-2">持っていない。</p>
+            <p className="text-white/50 text-[15px] md:text-[18px] font-light">Googleで見つからない店は、<br className="md:hidden" />存在しないのと同じ。</p>
+          </motion.div>
 
-        <ScrollReveal delay={0.4}>
+          {/* Pattern 2 */}
+          <motion.div
+            className="mt-16 text-left border-l-2 border-white/20 pl-5 md:pl-8"
+            style={{ opacity: p2Op, filter: p2Filter }}
+          >
+            <p className="text-white text-[20px] md:text-[28px] font-medium mb-2">持ってるけど、古い。</p>
+            <p className="text-white/50 text-[15px] md:text-[18px] font-light">不安になるサイトは、<br className="md:hidden" />ないほうがマシ。</p>
+          </motion.div>
+
+          {/* Pattern 3 */}
+          <motion.div
+            className="mt-16 text-left border-l-2 border-white/20 pl-5 md:pl-8"
+            style={{ opacity: p3Op, filter: p3Filter }}
+          >
+            <p className="text-white text-[20px] md:text-[28px] font-medium mb-2">持ってるけど、高い。</p>
+            <p className="text-white/50 text-[15px] md:text-[18px] font-light">年間数十万払って、放置。</p>
+          </motion.div>
+
+          {/* Resolution */}
           <motion.p
-            className="mt-16 md:mt-20 font-medium text-blue-400"
-            style={{ fontSize: "clamp(1.3rem, 3vw, 1.8rem)" }}
-            initial={{ filter: "blur(20px)" }}
-            whileInView={{ filter: "blur(0px)" }}
-            viewport={{ once: true }}
-            transition={{ duration: 1.5 }}
+            className="mt-16 font-medium text-blue-400"
+            style={{ fontSize: "clamp(1.3rem, 3vw, 1.8rem)", opacity: resolveOp }}
           >
             全部、月9,800円で<br className="md:hidden" />解決できる。
           </motion.p>
-        </ScrollReveal>
+        </div>
+        <ScrollIndicator scrollProgress={scrollYProgress} />
       </div>
     </section>
   );
