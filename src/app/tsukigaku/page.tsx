@@ -739,10 +739,6 @@ function LighthouseGauge({ score, label }: { score: number; label: string }) {
 /* ═══════════════════ SELF PROOF — Dogfooding ═══════════════════ */
 function SelfProof() {
   const { count: speedCount, ref: speedRef } = useCountUp<HTMLParagraphElement>(8, 1500);
-  const parallaxRef = useRef<HTMLDivElement>(null);
-  const { scrollYProgress } = useScroll({ target: parallaxRef, offset: ["start end", "end start"] });
-  const parallaxY = useTransform(scrollYProgress, [0, 1], ["-20%", "20%"]);
-  const [hovered, setHovered] = useState(false);
 
   return (
     <section className="py-[120px] md:py-[180px] bg-black px-6 overflow-hidden">
@@ -804,78 +800,140 @@ function SelfProof() {
             </div>
           </ScrollReveal>
         </div>
+      </div>
+    </section>
+  );
+}
 
-        {/* Interactive Demos */}
-        <div className="mt-24 md:mt-32">
-          <ScrollReveal>
-            <h3 className="font-medium tracking-[-0.03em] text-white text-center" style={{ fontSize: "clamp(1.6rem, 4vw, 36px)" }}>
-              触ってみてください。
-            </h3>
-            <p className="text-white/40 text-[clamp(0.85rem,1.4vw,1rem)] mt-3 font-light text-center">
-              このアニメーション、あなたのサイトにも入ります。
-            </p>
-          </ScrollReveal>
+/* ═══════════════════ INTERACTIVE DEMO — Scroll-driven site assembly ═══════════════════ */
+function InteractiveDemo() {
+  const sectionRef = useRef<HTMLDivElement>(null);
+  const { scrollYProgress } = useScroll({ target: sectionRef, offset: ["start start", "end start"] });
 
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-5 mt-12">
-            {/* Demo 1: Parallax */}
-            <ScrollReveal delay={0.05}>
-              <div ref={parallaxRef} className="bg-white/[0.03] border border-white/[0.08] rounded-2xl overflow-hidden aspect-[4/3] relative">
-                <motion.div className="absolute inset-[-20%] w-[140%] h-[140%]" style={{ y: parallaxY }}>
-                  <Image src="/images/tsukigaku/ramen-hero.jpg" alt="パララックスデモ" fill className="object-cover" sizes="400px" />
-                </motion.div>
-                <div className="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent" />
-                <div className="absolute bottom-4 left-5 right-5">
-                  <p className="text-blue-400 text-[10px] font-semibold tracking-[0.2em] uppercase">パララックス効果</p>
-                  <p className="text-white/50 text-[12px] mt-1 font-light">スクロールで画像が動く</p>
-                </div>
-              </div>
-            </ScrollReveal>
+  // Phone frame
+  const phoneScale = useTransform(scrollYProgress, (v) => multiLerp([0, 0.15, 0.8, 1], [0.6, 1, 1, 0.9], v));
+  const phoneOpacity = useTransform(scrollYProgress, (v) => multiLerp([0, 0.1], [0, 1], v));
 
-            {/* Demo 2: Hover Reveal */}
-            <ScrollReveal delay={0.15}>
-              <motion.div
-                className="bg-white/[0.03] border border-white/[0.08] rounded-2xl overflow-hidden aspect-[4/3] relative cursor-pointer"
-                onHoverStart={() => setHovered(true)}
-                onHoverEnd={() => setHovered(false)}
-                onTapStart={() => setHovered(true)}
-                onTap={() => setHovered(false)}
-              >
-                <motion.div
-                  className="absolute inset-0"
-                  animate={{ scale: hovered ? 1.08 : 1 }}
-                  transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
-                >
-                  <Image src="/images/tsukigaku/salon-new.jpg" alt="ホバーデモ" fill className="object-cover" sizes="400px" />
-                </motion.div>
-                <div className="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent" />
-                <motion.div
-                  className="absolute bottom-4 left-5 right-5"
-                  animate={{ y: hovered ? 0 : 10, opacity: hovered ? 1 : 0.6 }}
-                  transition={{ duration: 0.4 }}
-                >
-                  <p className="text-blue-400 text-[10px] font-semibold tracking-[0.2em] uppercase">ホバーアニメーション</p>
-                  <p className="text-white/50 text-[12px] mt-1 font-light">タッチ/ホバーで拡大</p>
-                </motion.div>
-              </motion.div>
-            </ScrollReveal>
+  // Site elements appear sequentially
+  const headerOp = useTransform(scrollYProgress, (v) => multiLerp([0.12, 0.2], [0, 1], v));
+  const heroImgOp = useTransform(scrollYProgress, (v) => multiLerp([0.18, 0.28], [0, 1], v));
+  const heroImgScale = useTransform(scrollYProgress, [0.18, 0.28], [1.3, 1]);
+  const titleOp = useTransform(scrollYProgress, (v) => multiLerp([0.26, 0.34], [0, 1], v));
+  const titleY = useTransform(scrollYProgress, [0.26, 0.34], [30, 0]);
+  const cardsOp = useTransform(scrollYProgress, (v) => multiLerp([0.34, 0.44], [0, 1], v));
+  const cardsY = useTransform(scrollYProgress, [0.34, 0.44], [40, 0]);
+  const ctaBtnOp = useTransform(scrollYProgress, (v) => multiLerp([0.44, 0.52], [0, 1], v));
+  const ctaBtnScale = useTransform(scrollYProgress, [0.44, 0.52], [0.8, 1]);
 
-            {/* Demo 3: Scroll Counter */}
-            <ScrollReveal delay={0.25}>
-              <div className="bg-white/[0.03] border border-white/[0.08] rounded-2xl overflow-hidden aspect-[4/3] relative flex items-center justify-center">
-                <div className="text-center">
-                  <div className="text-white font-light tracking-tight" style={{ fontSize: "clamp(3rem, 8vw, 56px)" }}>
-                    ¥9,800
-                  </div>
-                  <p className="text-white/30 text-sm mt-1">/月</p>
-                </div>
-                <div className="absolute bottom-4 left-5 right-5">
-                  <p className="text-blue-400 text-[10px] font-semibold tracking-[0.2em] uppercase">スクロール連動</p>
-                  <p className="text-white/50 text-[12px] mt-1 font-light">数字が動き出す</p>
-                </div>
-              </div>
-            </ScrollReveal>
+  // Heading text
+  const headingOp = useTransform(scrollYProgress, (v) => multiLerp([0.05, 0.12, 0.55, 0.62], [0, 1, 1, 0], v));
+  const heading2Op = useTransform(scrollYProgress, (v) => multiLerp([0.55, 0.65, 0.85, 0.95], [0, 1, 1, 0], v));
+
+  // Glow effect behind phone
+  const glowOp = useTransform(scrollYProgress, (v) => multiLerp([0.3, 0.5, 0.8, 0.95], [0, 0.6, 0.6, 0], v));
+
+  return (
+    <section ref={sectionRef} className="relative h-[400vh]">
+      <div className="sticky top-0 h-[100svh] w-full overflow-hidden bg-black flex items-center justify-center">
+        {/* Glow */}
+        <motion.div
+          className="absolute w-[300px] h-[300px] md:w-[500px] md:h-[500px] rounded-full"
+          style={{
+            background: "radial-gradient(circle, rgba(59,130,246,0.3) 0%, transparent 70%)",
+            opacity: glowOp,
+            filter: "blur(60px)",
+          }}
+        />
+
+        {/* Heading 1 */}
+        <motion.div
+          className="absolute inset-0 z-20 flex items-center justify-center pointer-events-none px-6"
+          style={{ opacity: headingOp }}
+        >
+          <h2
+            className="font-light tracking-[-0.04em] text-white leading-[0.95] text-center"
+            style={{ fontSize: "clamp(2.5rem, 8vw, 72px)", textShadow: "0 4px 40px rgba(0,0,0,0.8)" }}
+          >
+            スクロールしてみてください。
+          </h2>
+        </motion.div>
+
+        {/* Heading 2 */}
+        <motion.div
+          className="absolute inset-0 z-20 flex items-center justify-center pointer-events-none px-6"
+          style={{ opacity: heading2Op }}
+        >
+          <h2
+            className="font-light tracking-[-0.04em] text-white leading-[0.95] text-center"
+            style={{ fontSize: "clamp(2rem, 7vw, 64px)", textShadow: "0 4px 40px rgba(0,0,0,0.8)" }}
+          >
+            このアニメーション、<br />あなたのサイトにも。
+          </h2>
+        </motion.div>
+
+        {/* Phone Frame */}
+        <motion.div
+          className="relative z-10 w-[260px] md:w-[320px] rounded-[36px] border-[6px] border-white/20 bg-[#111] overflow-hidden shadow-2xl shadow-blue-500/10"
+          style={{ scale: phoneScale, opacity: phoneOpacity, aspectRatio: "9/19.5" }}
+        >
+          {/* Status bar */}
+          <div className="h-8 bg-[#111] flex items-center justify-center">
+            <div className="w-20 h-5 rounded-full bg-black" />
           </div>
-        </div>
+
+          {/* Site content assembling */}
+          <div className="bg-[#0a0a0a] flex-1 overflow-hidden">
+            {/* Site header */}
+            <motion.div
+              className="h-10 bg-white/5 flex items-center justify-between px-3"
+              style={{ opacity: headerOp }}
+            >
+              <div className="w-16 h-2.5 rounded bg-white/30" />
+              <div className="flex gap-1.5">
+                <div className="w-8 h-2 rounded bg-white/15" />
+                <div className="w-8 h-2 rounded bg-white/15" />
+              </div>
+            </motion.div>
+
+            {/* Hero image */}
+            <motion.div
+              className="relative h-32 md:h-40 overflow-hidden"
+              style={{ opacity: heroImgOp }}
+            >
+              <motion.div className="absolute inset-0" style={{ scale: heroImgScale }}>
+                <Image src="/images/tsukigaku/ramen-hero.jpg" alt="" fill className="object-cover" sizes="320px" />
+              </motion.div>
+              <div className="absolute inset-0 bg-gradient-to-t from-[#0a0a0a] to-transparent" />
+            </motion.div>
+
+            {/* Title */}
+            <motion.div className="px-4 -mt-6 relative" style={{ opacity: titleOp, y: titleY }}>
+              <div className="w-24 h-1.5 rounded bg-blue-500/50 mb-2" />
+              <div className="w-full h-3 rounded bg-white/60 mb-1.5" />
+              <div className="w-3/4 h-3 rounded bg-white/40" />
+              <div className="w-full h-2 rounded bg-white/15 mt-3" />
+              <div className="w-5/6 h-2 rounded bg-white/15 mt-1" />
+            </motion.div>
+
+            {/* Feature cards */}
+            <motion.div className="px-4 mt-5 flex gap-2" style={{ opacity: cardsOp, y: cardsY }}>
+              {["#f97316", "#ec4899", "#06b6d4"].map((c) => (
+                <div key={c} className="flex-1 rounded-lg bg-white/[0.04] border border-white/[0.06] p-2">
+                  <div className="w-5 h-5 rounded-full mb-1.5" style={{ backgroundColor: c, opacity: 0.6 }} />
+                  <div className="w-full h-1.5 rounded bg-white/20 mb-1" />
+                  <div className="w-2/3 h-1.5 rounded bg-white/10" />
+                </div>
+              ))}
+            </motion.div>
+
+            {/* CTA button */}
+            <motion.div className="px-4 mt-5" style={{ opacity: ctaBtnOp, scale: ctaBtnScale }}>
+              <div className="w-full h-9 rounded-full bg-white flex items-center justify-center">
+                <div className="w-20 h-2 rounded bg-black/60" />
+              </div>
+            </motion.div>
+          </div>
+        </motion.div>
       </div>
     </section>
   );
@@ -1565,6 +1623,7 @@ export default function TsukigakuPage() {
       <Comparison />
       <InlineCTA text="無料で始める" micro="月額9,800円ですべてお任せ" variant="medium" />
       <SelfProof />
+      <InteractiveDemo />
       <TechStack />
       <InlineCTA text="今すぐ申し込む" micro="初期費用0円・いつでも解約OK" variant="hard" />
       <Pricing />
