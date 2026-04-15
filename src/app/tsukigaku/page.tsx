@@ -849,17 +849,28 @@ function InteractiveDemo() {
           }}
         />
 
-        {/* Heading 1 */}
+        {/* Scroll arrows instead of heading */}
         <motion.div
-          className="absolute inset-0 z-20 flex items-center justify-center pointer-events-none px-6"
+          className="absolute inset-0 z-20 flex items-center justify-center pointer-events-none"
           style={{ opacity: headingOp }}
         >
-          <h2
-            className="font-light tracking-[-0.04em] text-white leading-[0.95] text-center"
-            style={{ fontSize: "clamp(1.8rem, 6vw, 56px)", textShadow: "0 4px 40px rgba(0,0,0,0.8)" }}
-          >
-            スクロールして<br className="md:hidden" />みてください。
-          </h2>
+          <div className="flex flex-col items-center gap-3">
+            <motion.svg
+              width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="white" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"
+              animate={{ y: [0, -10, 0], opacity: [0, 0.7, 0] }}
+              transition={{ repeat: Infinity, duration: 3, ease: "easeInOut" }}
+            >
+              <polyline points="6 15 12 9 18 15" />
+            </motion.svg>
+            <span className="text-[13px] text-white/50 tracking-[0.3em] uppercase font-light">scroll</span>
+            <motion.svg
+              width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="white" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"
+              animate={{ y: [0, 10, 0], opacity: [0, 0.7, 0] }}
+              transition={{ repeat: Infinity, duration: 3, ease: "easeInOut" }}
+            >
+              <polyline points="6 9 12 15 18 9" />
+            </motion.svg>
+          </div>
         </motion.div>
 
         {/* Heading 2 */}
