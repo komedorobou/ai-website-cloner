@@ -347,6 +347,36 @@ function Cocktail360() {
 }
 
 /* ═══════════════════ PROBLEM AGITATION — 3 Patterns ═══════════════════ */
+const problemPatterns = [
+  {
+    icon: Smartphone,
+    label: "「持っていない」",
+    pain: "Googleで見つからない店は、存在しないのと同じです。",
+    voices: [
+      "新規のお客さんに「ホームページありますか？」って聞かれて、答えに詰まった。",
+      "SNSは頑張ってるのに、「ちゃんとしたHP」がないのが恥ずかしい。",
+    ],
+  },
+  {
+    icon: Monitor,
+    label: "「持ってるけど、古い」",
+    pain: "お客さんが見た瞬間、不安になるサイトは、ないほうがマシです。",
+    voices: [
+      "HP、5年前に作ったまま。更新したいけど制作会社に連絡するのも面倒。",
+      "「自分で作れる」ツールを試したけど、途中で止まった。",
+    ],
+  },
+  {
+    icon: CircleDollarSign,
+    label: "「持ってるけど、高い」",
+    pain: "高いお金を払って「古いサイト」を維持している矛盾。",
+    voices: [
+      "毎回の修正に1〜2万。年間でいくら払ってるか、考えたくもない。",
+      "初期費用30万、月の維持費2〜5万。それだけ払って、最後に更新したのはいつ？",
+    ],
+  },
+];
+
 function ProblemAgitation() {
   return (
     <section className="py-[120px] md:py-[180px] bg-black px-6">
@@ -368,36 +398,30 @@ function ProblemAgitation() {
           </p>
         </ScrollReveal>
 
-        <div className="mt-16 md:mt-24 space-y-10 md:space-y-14">
-          {/* Pattern 1: サイトなし */}
-          <ScrollReveal>
-            <div className="bg-white/[0.02] border border-white/[0.06] rounded-2xl p-7 md:p-10">
-              <p className="text-red-400 text-[13px] font-bold tracking-[0.15em] uppercase mb-4">「持っていない」</p>
-              <p className="text-white/60 text-[15px] md:text-[17px] font-light leading-relaxed">
-                「店名 + 地域名」で検索しても、あなたの店は出てきません。代わりに出てくるのは、近所のライバル店。<strong className="text-white/90">Googleで見つからない店は、存在しないのと同じです。</strong>
-              </p>
-            </div>
-          </ScrollReveal>
-
-          {/* Pattern 2: ダメサイト */}
-          <ScrollReveal delay={0.1}>
-            <div className="bg-white/[0.02] border border-white/[0.06] rounded-2xl p-7 md:p-10">
-              <p className="text-red-400 text-[13px] font-bold tracking-[0.15em] uppercase mb-4">「持ってるけど、古い」</p>
-              <p className="text-white/60 text-[15px] md:text-[17px] font-light leading-relaxed">
-                5年前のデザイン。スマホで崩れる。更新もしていない。お客さんが見た瞬間、不安になるサイトは、<strong className="text-white/90">ないほうがマシです。</strong>
-              </p>
-            </div>
-          </ScrollReveal>
-
-          {/* Pattern 3: 高額 */}
-          <ScrollReveal delay={0.2}>
-            <div className="bg-white/[0.02] border border-white/[0.06] rounded-2xl p-7 md:p-10">
-              <p className="text-red-400 text-[13px] font-bold tracking-[0.15em] uppercase mb-4">「持ってるけど、高い」</p>
-              <p className="text-white/60 text-[15px] md:text-[17px] font-light leading-relaxed">
-                初期費用30万。月の維持費2〜5万。年間トータル数十万円。結果、更新もせず放置。<strong className="text-white/90">高いお金を払って「古いサイト」を維持している矛盾。</strong>
-              </p>
-            </div>
-          </ScrollReveal>
+        <div className="mt-16 md:mt-24 space-y-6 md:space-y-8">
+          {problemPatterns.map((p, i) => {
+            const Icon = p.icon;
+            return (
+              <ScrollReveal key={i} delay={i * 0.1}>
+                <div className="bg-white/[0.02] border border-white/[0.06] rounded-2xl p-7 md:p-10">
+                  <div className="flex items-center gap-3 mb-5">
+                    <Icon className="w-6 h-6 text-red-400/80" strokeWidth={1.5} />
+                    <p className="text-red-400 text-[13px] font-bold tracking-[0.15em] uppercase">{p.label}</p>
+                  </div>
+                  <p className="text-white/80 text-[16px] md:text-[18px] font-medium leading-relaxed mb-5">
+                    {p.pain}
+                  </p>
+                  <div className="space-y-3 border-l-2 border-white/10 pl-4">
+                    {p.voices.map((v, j) => (
+                      <p key={j} className="text-white/40 text-[14px] font-light leading-relaxed">
+                        「{v}」
+                      </p>
+                    ))}
+                  </div>
+                </div>
+              </ScrollReveal>
+            );
+          })}
         </div>
 
         <ScrollReveal delay={0.3}>
@@ -412,45 +436,6 @@ function ProblemAgitation() {
             どのパターンでも、答えは同じ。<br />月9,800円、初期費用0円。
           </motion.p>
         </ScrollReveal>
-      </div>
-    </section>
-  );
-}
-
-/* ═══════════════════ SITUATION PERSONAS ═══════════════════ */
-const personas = [
-  { icon: Monitor, text: "HP、5年前に作ったまま。更新したいけど制作会社に連絡するのも面倒。" },
-  { icon: Wrench, text: "「自分で作れる」ツールを試したけど、途中で止まった。" },
-  { icon: CircleDollarSign, text: "毎回の修正に1〜2万。年間でいくら払ってるか、考えたくもない。" },
-  { icon: Frown, text: "SNSは頑張ってるのに、「ちゃんとしたHP」がないのが恥ずかしい。" },
-  { icon: Smartphone, text: "新規のお客さんに「ホームページありますか？」って聞かれて、答えに詰まった。" },
-];
-
-function SituationPersonas() {
-  return (
-    <section className="py-[100px] md:py-[140px] bg-black px-6">
-      <div className="max-w-[900px] mx-auto">
-        <ScrollReveal>
-          <p className="text-blue-400 text-[11px] font-semibold tracking-[0.25em] uppercase mb-5 text-center">
-            こんな状況、ありませんか？
-          </p>
-        </ScrollReveal>
-
-        <div className="mt-10 grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-5">
-          {personas.map((p, i) => {
-            const Icon = p.icon;
-            return (
-              <ScrollReveal key={i} delay={i * 0.08}>
-                <div className="bg-white/[0.03] border border-white/[0.08] rounded-2xl p-6 md:p-8 h-full">
-                  <Icon className="w-7 h-7 text-blue-400/70 mb-4" strokeWidth={1.5} />
-                  <p className="text-white/70 text-[15px] md:text-[16px] font-light leading-relaxed border-l-2 border-blue-500/30 pl-4">
-                    {p.text}
-                  </p>
-                </div>
-              </ScrollReveal>
-            );
-          })}
-        </div>
       </div>
     </section>
   );
@@ -1575,7 +1560,6 @@ export default function TsukigakuPage() {
       <Hero />
       <Cocktail360 />
       <ProblemAgitation />
-      <SituationPersonas />
       <InlineCTA text="サービス詳細を見る" micro="ホームページの悩みを解決" variant="soft" />
       <IndustryShowcase />
       <Comparison />
