@@ -1426,23 +1426,16 @@ function TechCarousel() {
 
       {/* Horizontal scroll indicator — bottom right */}
       <div className="flex justify-end px-[8vw] mt-4">
-        <div className="flex items-center gap-2">
-          <motion.svg
-            width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="white" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"
-            animate={{ x: [0, -10, 0], opacity: [0, 0.6, 0] }}
-            transition={{ repeat: Infinity, duration: 3, ease: "easeInOut" }}
-          >
-            <polyline points="15 6 9 12 15 18" />
-          </motion.svg>
+        <motion.div
+          className="flex items-center gap-1"
+          animate={{ x: [0, 8, 0], opacity: [0, 0.6, 0] }}
+          transition={{ repeat: Infinity, duration: 3, ease: "easeInOut" }}
+        >
           <span className="text-[12px] text-white/40 tracking-[0.3em] uppercase font-light">scroll</span>
-          <motion.svg
-            width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="white" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"
-            animate={{ x: [0, 10, 0], opacity: [0, 0.6, 0] }}
-            transition={{ repeat: Infinity, duration: 3, ease: "easeInOut" }}
-          >
+          <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="white" strokeOpacity="0.5" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
             <polyline points="9 6 15 12 9 18" />
-          </motion.svg>
-        </div>
+          </svg>
+        </motion.div>
       </div>
     </div>
   );
