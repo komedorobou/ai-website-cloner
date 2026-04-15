@@ -1610,6 +1610,26 @@ function StickyMobileCTA() {
   );
 }
 
+/* ═══════════════════ STORY BRIDGE ═══════════════════ */
+function StoryBridge({ text }: { text: string }) {
+  return (
+    <div className="py-16 md:py-24 bg-black px-6">
+      <ScrollReveal>
+        <motion.p
+          className="text-center font-light text-white/40 leading-relaxed max-w-[600px] mx-auto"
+          style={{ fontSize: "clamp(1.1rem, 2.5vw, 1.5rem)" }}
+          initial={{ filter: "blur(10px)" }}
+          whileInView={{ filter: "blur(0px)" }}
+          viewport={{ once: true }}
+          transition={{ duration: 1.2 }}
+        >
+          {text}
+        </motion.p>
+      </ScrollReveal>
+    </div>
+  );
+}
+
 /* ═══════════════════ PAGE ═══════════════════ */
 export default function TsukigakuPage() {
   return (
@@ -1618,11 +1638,14 @@ export default function TsukigakuPage() {
       <Hero />
       <Cocktail360 />
       <ProblemAgitation />
+      <StoryBridge text="じゃあ、どうすればいいのか。" />
       <InlineCTA text="サービス詳細を見る" micro="ホームページの悩みを解決" variant="soft" />
       <Comparison />
+      <StoryBridge text="本当にこの品質が、月9,800円で手に入るのか。あなたの業種で確かめてください。" />
       <IndustryShowcase />
       <InlineCTA text="無料で始める" micro="月額9,800円ですべてお任せ" variant="medium" />
       <InteractiveDemo />
+      <StoryBridge text="なぜ、ここまでできるのか。" />
       <TechStack />
       <InlineCTA text="今すぐ申し込む" micro="初期費用0円・いつでも解約OK" variant="hard" />
       <Pricing />
