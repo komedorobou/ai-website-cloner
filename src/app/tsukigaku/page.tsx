@@ -347,93 +347,58 @@ function Cocktail360() {
 }
 
 /* ═══════════════════ PROBLEM AGITATION — 3 Patterns ═══════════════════ */
-const problemPatterns = [
-  {
-    icon: Smartphone,
-    label: "「持っていない」",
-    pain: "Googleで見つからない店は、存在しないのと同じです。",
-    voices: [
-      "新規のお客さんに「ホームページありますか？」って聞かれて、答えに詰まった。",
-      "SNSは頑張ってるのに、「ちゃんとしたHP」がないのが恥ずかしい。",
-    ],
-  },
-  {
-    icon: Monitor,
-    label: "「持ってるけど、古い」",
-    pain: "お客さんが見た瞬間、不安になるサイトは、ないほうがマシです。",
-    voices: [
-      "HP、5年前に作ったまま。更新したいけど制作会社に連絡するのも面倒。",
-      "「自分で作れる」ツールを試したけど、途中で止まった。",
-    ],
-  },
-  {
-    icon: CircleDollarSign,
-    label: "「持ってるけど、高い」",
-    pain: "高いお金を払って「古いサイト」を維持している矛盾。",
-    voices: [
-      "毎回の修正に1〜2万。年間でいくら払ってるか、考えたくもない。",
-      "初期費用30万、月の維持費2〜5万。それだけ払って、最後に更新したのはいつ？",
-    ],
-  },
-];
-
 function ProblemAgitation() {
   return (
-    <section className="py-[120px] md:py-[180px] bg-black px-6">
-      <div className="max-w-[900px] mx-auto">
+    <section className="py-[160px] md:py-[240px] bg-black px-6">
+      <div className="max-w-[800px] mx-auto text-center">
         <ScrollReveal>
           <h2
-            className="font-light tracking-[-0.04em] text-white leading-[1.05] text-center"
+            className="font-light tracking-[-0.04em] text-white leading-[1.05]"
             style={{ fontSize: "clamp(2.5rem, 7vw, 72px)" }}
           >
             ホームページで損してる店は、<br />3パターンしかない。
           </h2>
         </ScrollReveal>
-        <ScrollReveal delay={0.15}>
+        <ScrollReveal delay={0.2}>
           <p
-            className="text-white/50 mt-8 font-light text-center"
+            className="text-white/50 mt-10 font-light"
             style={{ fontSize: "clamp(1.2rem, 3vw, 1.8rem)" }}
           >
             あなたは、どれですか。
           </p>
         </ScrollReveal>
 
-        <div className="mt-16 md:mt-24 space-y-6 md:space-y-8">
-          {problemPatterns.map((p, i) => {
-            const Icon = p.icon;
-            return (
-              <ScrollReveal key={i} delay={i * 0.1}>
-                <div className="bg-white/[0.02] border border-white/[0.06] rounded-2xl p-7 md:p-10">
-                  <div className="flex items-center gap-3 mb-5">
-                    <Icon className="w-6 h-6 text-red-400/80" strokeWidth={1.5} />
-                    <p className="text-red-400 text-[13px] font-bold tracking-[0.15em] uppercase">{p.label}</p>
-                  </div>
-                  <p className="text-white/80 text-[16px] md:text-[18px] font-medium leading-relaxed mb-5">
-                    {p.pain}
-                  </p>
-                  <div className="space-y-3 border-l-2 border-white/10 pl-4">
-                    {p.voices.map((v, j) => (
-                      <p key={j} className="text-white/40 text-[14px] font-light leading-relaxed">
-                        「{v}」
-                      </p>
-                    ))}
-                  </div>
-                </div>
-              </ScrollReveal>
-            );
-          })}
+        <div className="mt-20 md:mt-28 space-y-6">
+          <ScrollReveal delay={0.1}>
+            <p className="text-white/70 text-[17px] md:text-[20px] font-light leading-relaxed">
+              <strong className="text-white">持っていない。</strong><br className="md:hidden" />
+              <span className="md:ml-2">Googleで見つからない店は、存在しないのと同じ。</span>
+            </p>
+          </ScrollReveal>
+          <ScrollReveal delay={0.2}>
+            <p className="text-white/70 text-[17px] md:text-[20px] font-light leading-relaxed">
+              <strong className="text-white">持ってるけど、古い。</strong><br className="md:hidden" />
+              <span className="md:ml-2">不安になるサイトは、ないほうがマシ。</span>
+            </p>
+          </ScrollReveal>
+          <ScrollReveal delay={0.3}>
+            <p className="text-white/70 text-[17px] md:text-[20px] font-light leading-relaxed">
+              <strong className="text-white">持ってるけど、高い。</strong><br className="md:hidden" />
+              <span className="md:ml-2">年間数十万払って、放置。</span>
+            </p>
+          </ScrollReveal>
         </div>
 
-        <ScrollReveal delay={0.3}>
+        <ScrollReveal delay={0.4}>
           <motion.p
-            className="text-center mt-20 font-medium text-blue-400 leading-relaxed"
+            className="mt-20 font-medium text-blue-400"
             style={{ fontSize: "clamp(1.4rem, 3.5vw, 2rem)" }}
             initial={{ filter: "blur(20px)" }}
             whileInView={{ filter: "blur(0px)" }}
             viewport={{ once: true }}
             transition={{ duration: 1.5 }}
           >
-            どのパターンでも、答えは同じ。<br />月9,800円、初期費用0円。
+            全部、月9,800円で解決できる。
           </motion.p>
         </ScrollReveal>
       </div>
@@ -1638,14 +1603,10 @@ export default function TsukigakuPage() {
       <Hero />
       <Cocktail360 />
       <ProblemAgitation />
-      <StoryBridge text="じゃあ、どうすればいいのか。" />
-      <InlineCTA text="サービス詳細を見る" micro="ホームページの悩みを解決" variant="soft" />
       <Comparison />
-      <StoryBridge text="本当にこの品質が、月9,800円で手に入るのか。あなたの業種で確かめてください。" />
       <IndustryShowcase />
-      <InlineCTA text="無料で始める" micro="月額9,800円ですべてお任せ" variant="medium" />
+      <InlineCTA text="無料で相談する" micro="月額9,800円ですべてお任せ" variant="medium" />
       <InteractiveDemo />
-      <StoryBridge text="なぜ、ここまでできるのか。" />
       <TechStack />
       <InlineCTA text="今すぐ申し込む" micro="初期費用0円・いつでも解約OK" variant="hard" />
       <Pricing />
