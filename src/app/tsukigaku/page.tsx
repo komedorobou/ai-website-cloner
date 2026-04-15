@@ -852,68 +852,88 @@ function InteractiveDemo() {
           </h2>
         </motion.div>
 
-        {/* Phone Frame */}
+        {/* iPhone Frame — Realistic */}
         <motion.div
-          className="relative z-10 w-[260px] md:w-[320px] rounded-[36px] border-[6px] border-white/20 bg-[#111] overflow-hidden shadow-2xl shadow-blue-500/10"
+          className="relative z-10 w-[300px] md:w-[380px]"
           style={{ scale: phoneScale, opacity: phoneOpacity, aspectRatio: "9/19.5" }}
         >
-          {/* Status bar */}
-          <div className="h-8 bg-[#111] flex items-center justify-center">
-            <div className="w-20 h-5 rounded-full bg-black" />
-          </div>
+          {/* Outer frame — titanium/stainless look */}
+          <div
+            className="absolute inset-0 rounded-[48px] md:rounded-[56px]"
+            style={{
+              background: "linear-gradient(145deg, #4a4a4a 0%, #2a2a2a 30%, #1a1a1a 50%, #2a2a2a 70%, #3a3a3a 100%)",
+              boxShadow: "0 0 0 1px rgba(255,255,255,0.08), 0 20px 60px -10px rgba(0,0,0,0.8), 0 0 120px -20px rgba(59,130,246,0.15), inset 0 1px 0 rgba(255,255,255,0.1)",
+            }}
+          />
+          {/* Screen area */}
+          <div className="absolute inset-[4px] md:inset-[5px] rounded-[44px] md:rounded-[51px] overflow-hidden bg-black">
+            {/* Dynamic Island */}
+            <div className="relative h-10 md:h-12 flex items-center justify-center">
+              <div className="w-[90px] md:w-[110px] h-[28px] md:h-[32px] rounded-full bg-black border border-white/[0.03] mt-1" style={{ boxShadow: "inset 0 1px 3px rgba(0,0,0,0.8)" }} />
+            </div>
 
-          {/* Site content assembling */}
-          <div className="bg-[#0a0a0a] flex-1 overflow-hidden">
-            {/* Site header */}
-            <motion.div
-              className="h-10 bg-white/5 flex items-center justify-between px-3"
-              style={{ opacity: headerOp }}
-            >
-              <div className="w-16 h-2.5 rounded bg-white/30" />
-              <div className="flex gap-1.5">
-                <div className="w-8 h-2 rounded bg-white/15" />
-                <div className="w-8 h-2 rounded bg-white/15" />
-              </div>
-            </motion.div>
-
-            {/* Hero image */}
-            <motion.div
-              className="relative h-32 md:h-40 overflow-hidden"
-              style={{ opacity: heroImgOp }}
-            >
-              <motion.div className="absolute inset-0" style={{ scale: heroImgScale }}>
-                <Image src="/images/tsukigaku/ramen-hero.jpg" alt="" fill className="object-cover" sizes="320px" />
-              </motion.div>
-              <div className="absolute inset-0 bg-gradient-to-t from-[#0a0a0a] to-transparent" />
-            </motion.div>
-
-            {/* Title */}
-            <motion.div className="px-4 -mt-6 relative" style={{ opacity: titleOp, y: titleY }}>
-              <div className="w-24 h-1.5 rounded bg-blue-500/50 mb-2" />
-              <div className="w-full h-3 rounded bg-white/60 mb-1.5" />
-              <div className="w-3/4 h-3 rounded bg-white/40" />
-              <div className="w-full h-2 rounded bg-white/15 mt-3" />
-              <div className="w-5/6 h-2 rounded bg-white/15 mt-1" />
-            </motion.div>
-
-            {/* Feature cards */}
-            <motion.div className="px-4 mt-5 flex gap-2" style={{ opacity: cardsOp, y: cardsY }}>
-              {["#f97316", "#ec4899", "#06b6d4"].map((c) => (
-                <div key={c} className="flex-1 rounded-lg bg-white/[0.04] border border-white/[0.06] p-2">
-                  <div className="w-5 h-5 rounded-full mb-1.5" style={{ backgroundColor: c, opacity: 0.6 }} />
-                  <div className="w-full h-1.5 rounded bg-white/20 mb-1" />
-                  <div className="w-2/3 h-1.5 rounded bg-white/10" />
+            {/* Site content assembling */}
+            <div className="bg-[#0a0a0a] overflow-hidden mx-1 rounded-b-[6px]">
+              {/* Site header */}
+              <motion.div
+                className="h-10 md:h-12 bg-white/5 flex items-center justify-between px-3 md:px-4"
+                style={{ opacity: headerOp }}
+              >
+                <div className="w-16 md:w-20 h-2.5 md:h-3 rounded bg-white/30" />
+                <div className="flex gap-1.5 md:gap-2">
+                  <div className="w-8 md:w-10 h-2 md:h-2.5 rounded bg-white/15" />
+                  <div className="w-8 md:w-10 h-2 md:h-2.5 rounded bg-white/15" />
                 </div>
-              ))}
-            </motion.div>
+              </motion.div>
 
-            {/* CTA button */}
-            <motion.div className="px-4 mt-5" style={{ opacity: ctaBtnOp, scale: ctaBtnScale }}>
-              <div className="w-full h-9 rounded-full bg-white flex items-center justify-center">
-                <div className="w-20 h-2 rounded bg-black/60" />
-              </div>
-            </motion.div>
+              {/* Hero image */}
+              <motion.div
+                className="relative h-36 md:h-48 overflow-hidden"
+                style={{ opacity: heroImgOp }}
+              >
+                <motion.div className="absolute inset-0" style={{ scale: heroImgScale }}>
+                  <Image src="/images/tsukigaku/ramen-hero.jpg" alt="" fill className="object-cover" sizes="380px" />
+                </motion.div>
+                <div className="absolute inset-0 bg-gradient-to-t from-[#0a0a0a] to-transparent" />
+              </motion.div>
+
+              {/* Title */}
+              <motion.div className="px-4 md:px-5 -mt-6 relative" style={{ opacity: titleOp, y: titleY }}>
+                <div className="w-24 md:w-28 h-1.5 md:h-2 rounded bg-blue-500/50 mb-2" />
+                <div className="w-full h-3 md:h-3.5 rounded bg-white/60 mb-1.5" />
+                <div className="w-3/4 h-3 md:h-3.5 rounded bg-white/40" />
+                <div className="w-full h-2 md:h-2.5 rounded bg-white/15 mt-3" />
+                <div className="w-5/6 h-2 md:h-2.5 rounded bg-white/15 mt-1" />
+              </motion.div>
+
+              {/* Feature cards */}
+              <motion.div className="px-4 md:px-5 mt-5 md:mt-6 flex gap-2 md:gap-3" style={{ opacity: cardsOp, y: cardsY }}>
+                {["#f97316", "#ec4899", "#06b6d4"].map((c) => (
+                  <div key={c} className="flex-1 rounded-lg bg-white/[0.04] border border-white/[0.06] p-2 md:p-3">
+                    <div className="w-5 md:w-6 h-5 md:h-6 rounded-full mb-1.5 md:mb-2" style={{ backgroundColor: c, opacity: 0.6 }} />
+                    <div className="w-full h-1.5 md:h-2 rounded bg-white/20 mb-1" />
+                    <div className="w-2/3 h-1.5 md:h-2 rounded bg-white/10" />
+                  </div>
+                ))}
+              </motion.div>
+
+              {/* CTA button */}
+              <motion.div className="px-4 md:px-5 mt-5 md:mt-6 pb-4" style={{ opacity: ctaBtnOp, scale: ctaBtnScale }}>
+                <div className="w-full h-10 md:h-11 rounded-full bg-white flex items-center justify-center">
+                  <div className="w-20 md:w-24 h-2 md:h-2.5 rounded bg-black/60" />
+                </div>
+              </motion.div>
+            </div>
+
+            {/* Home indicator bar */}
+            <div className="absolute bottom-2 left-1/2 -translate-x-1/2 w-[100px] md:w-[120px] h-[4px] rounded-full bg-white/20" />
           </div>
+
+          {/* Side buttons */}
+          <div className="absolute -left-[2px] top-[25%] w-[3px] h-[30px] rounded-l-sm bg-[#333]" />
+          <div className="absolute -left-[2px] top-[35%] w-[3px] h-[50px] rounded-l-sm bg-[#333]" />
+          <div className="absolute -left-[2px] top-[45%] w-[3px] h-[50px] rounded-l-sm bg-[#333]" />
+          <div className="absolute -right-[2px] top-[30%] w-[3px] h-[60px] rounded-r-sm bg-[#333]" />
         </motion.div>
         <ScrollIndicator scrollProgress={scrollYProgress} />
       </div>
