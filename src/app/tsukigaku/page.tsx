@@ -382,52 +382,52 @@ function ProblemAgitation() {
       <div className="max-w-[800px] mx-auto text-center">
         <ScrollReveal>
           <h2
-            className="font-light tracking-[-0.04em] text-white leading-[1.05]"
-            style={{ fontSize: "clamp(2.2rem, 7vw, 72px)" }}
+            className="font-light tracking-[-0.04em] text-white leading-[1.1]"
+            style={{ fontSize: "clamp(2rem, 6vw, 72px)" }}
           >
-            ホームページで損してる店は、<br />3パターンしかない。
+            ホームページで<br className="md:hidden" />損してる店は、<br />3パターンしかない。
           </h2>
         </ScrollReveal>
         <ScrollReveal delay={0.2}>
           <p
-            className="text-white/50 mt-10 font-light"
-            style={{ fontSize: "clamp(1.2rem, 3vw, 1.8rem)" }}
+            className="text-white/50 mt-8 font-light"
+            style={{ fontSize: "clamp(1.1rem, 2.5vw, 1.6rem)" }}
           >
             あなたは、どれですか。
           </p>
         </ScrollReveal>
 
-        <div className="mt-20 md:mt-28 space-y-6">
+        <div className="mt-16 md:mt-24 space-y-8 md:space-y-10">
           <ScrollReveal delay={0.1}>
-            <p className="text-white/70 text-[17px] md:text-[20px] font-light leading-relaxed">
-              <strong className="text-white">持っていない。</strong><br className="md:hidden" />
-              <span className="md:ml-2">Googleで見つからない店は、存在しないのと同じ。</span>
-            </p>
+            <div className="border-l-2 border-white/20 pl-5 md:pl-8">
+              <p className="text-white text-[18px] md:text-[22px] font-medium mb-2">持っていない。</p>
+              <p className="text-white/50 text-[14px] md:text-[16px] font-light">Googleで見つからない店は、存在しないのと同じ。</p>
+            </div>
           </ScrollReveal>
           <ScrollReveal delay={0.2}>
-            <p className="text-white/70 text-[17px] md:text-[20px] font-light leading-relaxed">
-              <strong className="text-white">持ってるけど、古い。</strong><br className="md:hidden" />
-              <span className="md:ml-2">不安になるサイトは、ないほうがマシ。</span>
-            </p>
+            <div className="border-l-2 border-white/20 pl-5 md:pl-8">
+              <p className="text-white text-[18px] md:text-[22px] font-medium mb-2">持ってるけど、古い。</p>
+              <p className="text-white/50 text-[14px] md:text-[16px] font-light">不安になるサイトは、ないほうがマシ。</p>
+            </div>
           </ScrollReveal>
           <ScrollReveal delay={0.3}>
-            <p className="text-white/70 text-[17px] md:text-[20px] font-light leading-relaxed">
-              <strong className="text-white">持ってるけど、高い。</strong><br className="md:hidden" />
-              <span className="md:ml-2">年間数十万払って、放置。</span>
-            </p>
+            <div className="border-l-2 border-white/20 pl-5 md:pl-8">
+              <p className="text-white text-[18px] md:text-[22px] font-medium mb-2">持ってるけど、高い。</p>
+              <p className="text-white/50 text-[14px] md:text-[16px] font-light">年間数十万払って、放置。</p>
+            </div>
           </ScrollReveal>
         </div>
 
         <ScrollReveal delay={0.4}>
           <motion.p
-            className="mt-20 font-medium text-blue-400"
-            style={{ fontSize: "clamp(1.4rem, 3.5vw, 2rem)" }}
+            className="mt-16 md:mt-20 font-medium text-blue-400"
+            style={{ fontSize: "clamp(1.3rem, 3vw, 1.8rem)" }}
             initial={{ filter: "blur(20px)" }}
             whileInView={{ filter: "blur(0px)" }}
             viewport={{ once: true }}
             transition={{ duration: 1.5 }}
           >
-            全部、月9,800円で解決できる。
+            全部、月9,800円で<br className="md:hidden" />解決できる。
           </motion.p>
         </ScrollReveal>
       </div>
