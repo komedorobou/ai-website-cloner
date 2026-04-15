@@ -1619,11 +1619,11 @@ export default function TsukigakuPage() {
       <Cocktail360 />
       <ProblemAgitation />
       <InlineCTA text="サービス詳細を見る" micro="ホームページの悩みを解決" variant="soft" />
-      <IndustryShowcase />
       <Comparison />
+      <IndustryShowcase />
       <InlineCTA text="無料で始める" micro="月額9,800円ですべてお任せ" variant="medium" />
-      <SelfProof />
       <InteractiveDemo />
+      <SelfProof />
       <TechStack />
       <InlineCTA text="今すぐ申し込む" micro="初期費用0円・いつでも解約OK" variant="hard" />
       <Pricing />
