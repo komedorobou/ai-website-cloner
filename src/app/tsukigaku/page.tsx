@@ -380,12 +380,12 @@ function ProblemAgitation() {
   const sectionRef = useRef<HTMLDivElement>(null);
   const { scrollYProgress } = useScroll({ target: sectionRef, offset: ["start start", "end start"] });
 
-  const headlineOp = useTransform(scrollYProgress, (v) => multiLerp([0, 0.08, 0.15, 0.22], [0, 1, 1, 0], v));
-  const subOp = useTransform(scrollYProgress, (v) => multiLerp([0.08, 0.15, 0.18, 0.25], [0, 1, 1, 0], v));
-  const p1Op = useTransform(scrollYProgress, (v) => multiLerp([0.2, 0.28, 0.35, 0.42], [0, 1, 1, 0], v));
-  const p2Op = useTransform(scrollYProgress, (v) => multiLerp([0.35, 0.43, 0.50, 0.57], [0, 1, 1, 0], v));
-  const p3Op = useTransform(scrollYProgress, (v) => multiLerp([0.50, 0.58, 0.65, 0.72], [0, 1, 1, 0], v));
-  const resolveOp = useTransform(scrollYProgress, (v) => multiLerp([0.68, 0.76, 0.90, 1], [0, 1, 1, 0], v));
+  const headlineOp = useTransform(scrollYProgress, [0, 0.08], [0, 1]);
+  const subOp = useTransform(scrollYProgress, [0.08, 0.15], [0, 1]);
+  const p1Op = useTransform(scrollYProgress, [0.2, 0.3], [0, 1]);
+  const p2Op = useTransform(scrollYProgress, [0.38, 0.48], [0, 1]);
+  const p3Op = useTransform(scrollYProgress, [0.55, 0.65], [0, 1]);
+  const resolveOp = useTransform(scrollYProgress, [0.75, 0.85], [0, 1]);
 
   const p1Blur = useTransform(scrollYProgress, [0.2, 0.28], [15, 0]);
   const p2Blur = useTransform(scrollYProgress, [0.35, 0.43], [15, 0]);
