@@ -23,22 +23,22 @@ function multiLerp(bp: number[], vals: number[], v: number): number {
 /* ═══════════════════ SCROLL INDICATOR ═══════════════════ */
 function ScrollIndicator() {
   return (
-    <div className="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 z-20">
-      <span className="text-[10px] text-white/25 tracking-[0.3em] uppercase">scroll</span>
-      <motion.div className="flex flex-col items-center gap-1">
-        <motion.div
-          className="w-px h-8 bg-white/15"
-          animate={{ scaleY: [1, 0.3, 1], opacity: [0.4, 0.1, 0.4] }}
-          transition={{ repeat: Infinity, duration: 2.5 }}
-        />
-        <motion.svg
-          width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="white" strokeOpacity="0.2" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"
-          animate={{ y: [0, 4, 0], opacity: [0.3, 0.1, 0.3] }}
-          transition={{ repeat: Infinity, duration: 2.5 }}
-        >
-          <polyline points="6 9 12 15 18 9" />
-        </motion.svg>
-      </motion.div>
+    <div className="absolute bottom-20 md:bottom-10 left-1/2 -translate-x-1/2 flex flex-col items-center gap-3 z-20">
+      <motion.svg
+        width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="white" strokeOpacity="0.5" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"
+        animate={{ y: [0, -3, 0], opacity: [0.5, 0.2, 0.5] }}
+        transition={{ repeat: Infinity, duration: 2 }}
+      >
+        <polyline points="6 15 12 9 18 15" />
+      </motion.svg>
+      <span className="text-[11px] text-white/50 tracking-[0.25em] uppercase font-medium">scroll</span>
+      <motion.svg
+        width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="white" strokeOpacity="0.5" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"
+        animate={{ y: [0, 3, 0], opacity: [0.5, 0.2, 0.5] }}
+        transition={{ repeat: Infinity, duration: 2 }}
+      >
+        <polyline points="6 9 12 15 18 9" />
+      </motion.svg>
     </div>
   );
 }
