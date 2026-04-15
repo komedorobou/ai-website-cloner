@@ -1692,6 +1692,48 @@ function CTAFinal() {
   );
 }
 
+/* ═══════════════════ STICKY MOBILE CTA ═══════════════════ */
+function StickyMobileCTA() {
+  const [visible, setVisible] = useState(false);
+  const [dismissed, setDismissed] = useState(false);
+
+  useEffect(() => {
+    if (typeof window === "undefined") return;
+    if (sessionStorage.getItem("stickyDismissed")) {
+      setDismissed(true);
+      return;
+    }
+    const onScroll = () => setVisible(window.scrollY > window.innerHeight);
+    window.addEventListener("scroll", onScroll, { passive: true });
+    return () => window.removeEventListener("scroll", onScroll);
+  }, []);
+
+  if (dismissed || !visible) return null;
+
+  return (
+    <div className="fixed bottom-0 inset-x-0 z-50 md:hidden">
+      <div className="h-[60px] bg-black/90 backdrop-blur-xl border-t border-white/10 flex items-center justify-between px-4">
+        <span className="text-white/50 text-[11px]">初期費用0円</span>
+        <div className="flex items-center gap-2">
+          <a
+            href="#contact"
+            className="bg-white text-black font-semibold text-[13px] rounded-full px-5 py-2.5 hover:bg-white/90 transition-colors"
+          >
+            今すぐ相談する
+          </a>
+          <button
+            onClick={() => { setDismissed(true); sessionStorage.setItem("stickyDismissed", "1"); }}
+            className="text-white/30 text-[18px] px-1 hover:text-white/60"
+            aria-label="閉じる"
+          >
+            ✕
+          </button>
+        </div>
+      </div>
+    </div>
+  );
+}
+
 /* ═══════════════════ PAGE ═══════════════════ */
 export default function TsukigakuPage() {
   return (
