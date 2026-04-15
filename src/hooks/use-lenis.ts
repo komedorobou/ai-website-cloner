@@ -11,10 +11,11 @@ export function useLenis() {
     if (isMobile) return; // スマホはネイティブスクロール
 
     const lenis = new Lenis({
-      duration: 1.6,
-      easing: (t: number) => 1 - Math.pow(1 - t, 4),
+      duration: 1.2,
+      easing: (t: number) => 1 - Math.pow(1 - t, 3),
       smoothWheel: true,
       wheelMultiplier: 1.0,
+      autoRaf: false,
     });
 
     lenisRef.current = lenis;
