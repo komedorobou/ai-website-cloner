@@ -1575,17 +1575,15 @@ export default function TsukigakuPage() {
       <Nav />
       <Hero />
       <Cocktail360 />
+      <IndustryShowcase />
+      <InteractiveDemo />
       <ProblemAgitation />
       <Comparison />
-      <IndustryShowcase />
-      <InlineCTA text="無料で相談する" micro="月額9,800円ですべてお任せ" variant="medium" />
-      <InteractiveDemo />
       <TechStack />
-      <InlineCTA text="今すぐ申し込む" micro="初期費用0円・いつでも解約OK" variant="hard" />
       <Pricing />
       <Flow />
-      <FAQ />
       <Founder />
+      <FAQ />
       <CTAFinal />
       <footer id="contact" className="border-t border-white/5 bg-black py-20 px-6">
         <div className="max-w-[500px] mx-auto">
