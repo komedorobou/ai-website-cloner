@@ -21,10 +21,10 @@ function multiLerp(bp: number[], vals: number[], v: number): number {
 }
 
 /* ═══════════════════ COUNT-UP HOOK ═══════════════════ */
-function useCountUp(end: number, duration = 1500) {
+function useCountUp<T extends HTMLElement = HTMLDivElement>(end: number, duration = 1500) {
   const [count, setCount] = useState(0);
   const [started, setStarted] = useState(false);
-  const ref = useRef<HTMLDivElement>(null);
+  const ref = useRef<T>(null);
 
   useEffect(() => {
     const el = ref.current;
@@ -39,14 +39,20 @@ function useCountUp(end: number, duration = 1500) {
 
   useEffect(() => {
     if (!started) return;
+    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+      setCount(end);
+      return;
+    }
+    let raf: number;
     const start = performance.now();
     const tick = (now: number) => {
       const progress = Math.min((now - start) / duration, 1);
       const eased = 1 - Math.pow(1 - progress, 3);
       setCount(Math.round(eased * end));
-      if (progress < 1) requestAnimationFrame(tick);
+      if (progress < 1) raf = requestAnimationFrame(tick);
     };
-    requestAnimationFrame(tick);
+    raf = requestAnimationFrame(tick);
+    return () => cancelAnimationFrame(raf);
   }, [started, end, duration]);
 
   return { count, ref };
@@ -751,7 +757,7 @@ function LighthouseGauge({ score, label }: { score: number; label: string }) {
 
 /* ═══════════════════ SELF PROOF — Dogfooding ═══════════════════ */
 function SelfProof() {
-  const { count: speedCount, ref: speedRef } = useCountUp(8, 1500);
+  const { count: speedCount, ref: speedRef } = useCountUp<HTMLParagraphElement>(8, 1500);
   const parallaxRef = useRef<HTMLDivElement>(null);
   const { scrollYProgress } = useScroll({ target: parallaxRef, offset: ["start end", "end start"] });
   const parallaxY = useTransform(scrollYProgress, [0, 1], ["-20%", "20%"]);
