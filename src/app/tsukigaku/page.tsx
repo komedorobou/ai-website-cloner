@@ -380,75 +380,71 @@ function ProblemAgitation() {
   const sectionRef = useRef<HTMLDivElement>(null);
   const { scrollYProgress } = useScroll({ target: sectionRef, offset: ["start start", "end start"] });
 
-  const headlineOp = useTransform(scrollYProgress, [0, 0.08], [0, 1]);
-  const subOp = useTransform(scrollYProgress, [0.08, 0.15], [0, 1]);
-  const p1Op = useTransform(scrollYProgress, [0.2, 0.3], [0, 1]);
-  const p2Op = useTransform(scrollYProgress, [0.38, 0.48], [0, 1]);
-  const p3Op = useTransform(scrollYProgress, [0.55, 0.65], [0, 1]);
-  const resolveOp = useTransform(scrollYProgress, [0.75, 0.85], [0, 1]);
-
-  const p1Blur = useTransform(scrollYProgress, [0.2, 0.28], [15, 0]);
-  const p2Blur = useTransform(scrollYProgress, [0.35, 0.43], [15, 0]);
-  const p3Blur = useTransform(scrollYProgress, [0.50, 0.58], [15, 0]);
-  const p1Filter = useTransform(p1Blur, (v) => `blur(${v}px)`);
-  const p2Filter = useTransform(p2Blur, (v) => `blur(${v}px)`);
-  const p3Filter = useTransform(p3Blur, (v) => `blur(${v}px)`);
+  // Each step: fade in → hold → fade out, centered in viewport
+  const step1Op = useTransform(scrollYProgress, (v) => multiLerp([0, 0.06, 0.14, 0.18], [0, 1, 1, 0], v));
+  const step2Op = useTransform(scrollYProgress, (v) => multiLerp([0.16, 0.22, 0.30, 0.34], [0, 1, 1, 0], v));
+  const step3Op = useTransform(scrollYProgress, (v) => multiLerp([0.32, 0.38, 0.46, 0.50], [0, 1, 1, 0], v));
+  const step4Op = useTransform(scrollYProgress, (v) => multiLerp([0.48, 0.54, 0.62, 0.66], [0, 1, 1, 0], v));
+  const step5Op = useTransform(scrollYProgress, (v) => multiLerp([0.64, 0.70, 0.78, 0.82], [0, 1, 1, 0], v));
+  const step6Op = useTransform(scrollYProgress, (v) => multiLerp([0.80, 0.86, 0.95, 1], [0, 1, 1, 0], v));
 
   return (
-    <section ref={sectionRef} className="relative h-[400vh]">
+    <section ref={sectionRef} className="relative h-[500vh]">
       <div className="sticky top-0 h-[100svh] w-full overflow-hidden bg-black flex items-center justify-center px-6">
-        <div className="max-w-[800px] w-full text-center">
-          {/* Headline */}
-          <motion.h2
-            className="font-light tracking-[-0.04em] text-white leading-[1.1]"
-            style={{ fontSize: "clamp(2rem, 6vw, 72px)", opacity: headlineOp }}
+        {/* Step 1: Headline */}
+        <motion.div className="absolute inset-0 flex items-center justify-center px-6" style={{ opacity: step1Op }}>
+          <h2
+            className="font-light tracking-[-0.04em] text-white leading-[1.1] text-center"
+            style={{ fontSize: "clamp(2rem, 6vw, 72px)" }}
           >
             ホームページで<br className="md:hidden" />損してる店は、<br />3パターンしかない。
-          </motion.h2>
+          </h2>
+        </motion.div>
 
-          {/* Sub */}
-          <motion.p
-            className="text-white/50 mt-8 font-light"
-            style={{ fontSize: "clamp(1.1rem, 2.5vw, 1.6rem)", opacity: subOp }}
+        {/* Step 2: Sub */}
+        <motion.div className="absolute inset-0 flex items-center justify-center px-6" style={{ opacity: step2Op }}>
+          <p
+            className="text-white/60 font-light text-center"
+            style={{ fontSize: "clamp(1.4rem, 4vw, 2.4rem)" }}
           >
             あなたは、どれですか。
-          </motion.p>
+          </p>
+        </motion.div>
 
-          {/* Pattern 1 */}
-          <motion.div
-            className="mt-16 text-left border-l-2 border-white/20 pl-5 md:pl-8"
-            style={{ opacity: p1Op, filter: p1Filter }}
-          >
-            <p className="text-white text-[20px] md:text-[28px] font-medium mb-2">持っていない。</p>
-            <p className="text-white/50 text-[15px] md:text-[18px] font-light">Googleで見つからない店は、<br className="md:hidden" />存在しないのと同じ。</p>
-          </motion.div>
+        {/* Step 3: Pattern 1 */}
+        <motion.div className="absolute inset-0 flex items-center justify-center px-8" style={{ opacity: step3Op }}>
+          <div className="text-center">
+            <p className="text-white text-[24px] md:text-[36px] font-medium mb-4">持っていない。</p>
+            <p className="text-white/50 text-[16px] md:text-[20px] font-light">Googleで見つからない店は、<br />存在しないのと同じ。</p>
+          </div>
+        </motion.div>
 
-          {/* Pattern 2 */}
-          <motion.div
-            className="mt-16 text-left border-l-2 border-white/20 pl-5 md:pl-8"
-            style={{ opacity: p2Op, filter: p2Filter }}
-          >
-            <p className="text-white text-[20px] md:text-[28px] font-medium mb-2">持ってるけど、古い。</p>
-            <p className="text-white/50 text-[15px] md:text-[18px] font-light">不安になるサイトは、<br className="md:hidden" />ないほうがマシ。</p>
-          </motion.div>
+        {/* Step 4: Pattern 2 */}
+        <motion.div className="absolute inset-0 flex items-center justify-center px-8" style={{ opacity: step4Op }}>
+          <div className="text-center">
+            <p className="text-white text-[24px] md:text-[36px] font-medium mb-4">持ってるけど、古い。</p>
+            <p className="text-white/50 text-[16px] md:text-[20px] font-light">不安になるサイトは、<br />ないほうがマシ。</p>
+          </div>
+        </motion.div>
 
-          {/* Pattern 3 */}
-          <motion.div
-            className="mt-16 text-left border-l-2 border-white/20 pl-5 md:pl-8"
-            style={{ opacity: p3Op, filter: p3Filter }}
-          >
-            <p className="text-white text-[20px] md:text-[28px] font-medium mb-2">持ってるけど、高い。</p>
-            <p className="text-white/50 text-[15px] md:text-[18px] font-light">年間数十万払って、放置。</p>
-          </motion.div>
+        {/* Step 5: Pattern 3 */}
+        <motion.div className="absolute inset-0 flex items-center justify-center px-8" style={{ opacity: step5Op }}>
+          <div className="text-center">
+            <p className="text-white text-[24px] md:text-[36px] font-medium mb-4">持ってるけど、高い。</p>
+            <p className="text-white/50 text-[16px] md:text-[20px] font-light">年間数十万払って、放置。</p>
+          </div>
+        </motion.div>
 
-          {/* Resolution */}
-          <motion.p
-            className="mt-16 font-medium text-blue-400"
-            style={{ fontSize: "clamp(1.3rem, 3vw, 1.8rem)", opacity: resolveOp }}
+        {/* Step 6: Resolution */}
+        <motion.div className="absolute inset-0 flex items-center justify-center px-8" style={{ opacity: step6Op }}>
+          <p
+            className="font-medium text-blue-400 text-center"
+            style={{ fontSize: "clamp(1.6rem, 5vw, 2.5rem)" }}
           >
             全部、月9,800円で<br className="md:hidden" />解決できる。
-          </motion.p>
-        </div>
+          </p>
+        </motion.div>
+
         <ScrollIndicator scrollProgress={scrollYProgress} />
       </div>
     </section>
