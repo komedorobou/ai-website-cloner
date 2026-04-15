@@ -454,47 +454,6 @@ function SituationPersonas() {
   );
 }
 
-/* ═══════════════════ MOCKUP REVEAL ═══════════════════ */
-function MockupReveal() {
-  const ref = useRef<HTMLDivElement>(null);
-  const { scrollYProgress } = useScroll({ target: ref, offset: ["start end", "end start"] });
-  const scale = useTransform(scrollYProgress, [0, 0.4], [0.8, 1]);
-  const opacity = useTransform(scrollYProgress, [0, 0.3], [0, 1]);
-
-  return (
-    <section ref={ref} className="py-[120px] md:py-[180px] bg-black overflow-hidden">
-      <div className="mx-auto max-w-[1200px] px-6 text-center">
-        <ScrollReveal>
-          <p className="text-blue-400 text-[11px] font-semibold tracking-[0.25em] uppercase mb-5">
-            制作実績
-          </p>
-          <h2
-            className="font-light tracking-[-0.03em] text-white leading-[1.05]"
-            style={{ fontSize: "clamp(2rem, 5vw, 56px)" }}
-          >
-            この品質が、月9,800円。
-          </h2>
-        </ScrollReveal>
-        <ScrollReveal delay={0.15}>
-          <p className="text-white/50 text-[clamp(0.9rem,1.6vw,1.1rem)] mt-6 font-light max-w-[600px] mx-auto leading-relaxed">
-            完全オーダーメイドのデザイン。スマホ対応、アニメーション、ホスティング、SSL、すべて月額に含まれています。テンプレートではありません。
-          </p>
-        </ScrollReveal>
-        <motion.div className="mt-16" style={{ scale, opacity }}>
-          <div className="relative w-full aspect-[16/10] max-w-[900px] mx-auto rounded-[16px] overflow-hidden shadow-2xl shadow-blue-500/10">
-            <Image
-              src="/images/tsukigaku/macbook-mockup.png"
-              alt="MacBook モックアップ"
-              fill
-              className="object-cover"
-              sizes="900px"
-            />
-          </div>
-        </motion.div>
-      </div>
-    </section>
-  );
-}
 
 /* ═══════════════════ INDUSTRY SHOWCASE ═══════════════════ */
 const industries = [
@@ -935,111 +894,7 @@ function SelfProof() {
   );
 }
 
-/* ═══════════════════ BEFORE / AFTER ═══════════════════ */
-function BeforeAfter() {
-  return (
-    <section className="py-[160px] md:py-[200px] bg-[#0a0a0a] overflow-hidden">
-      <div className="mx-auto max-w-[1200px] px-6">
-        <ScrollReveal>
-          <h2
-            className="text-white font-light text-center leading-[1] tracking-[-0.04em] mb-20"
-            style={{ fontSize: "clamp(3rem, 9vw, 80px)" }}
-          >
-            放置したHP。<br />売れるHP。
-          </h2>
-        </ScrollReveal>
-        <ScrollReveal delay={0.15}>
-          <p className="text-white/40 text-[clamp(0.9rem,1.6vw,1.1rem)] mt-6 mb-16 font-light max-w-[600px] mx-auto leading-relaxed text-center">
-            作って終わりのHPは、誰にも見られません。ツキガクサイトは公開後も月2回の更新対応込み。常に最新の状態を維持します。
-          </p>
-        </ScrollReveal>
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-10">
-          {/* Before */}
-          <motion.div
-            className="rounded-[20px] overflow-hidden bg-[#1a1a1a] border border-white/5"
-            initial={{ opacity: 0, x: -40 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
-          >
-            <div className="px-5 pt-5 pb-3">
-              <span className="text-[#666] text-[10px] font-bold uppercase tracking-[0.25em]">
-                変更前
-              </span>
-            </div>
-            <div className="relative w-full aspect-[3/2] overflow-hidden">
-              <Image
-                src="/images/tsukigaku/before.png"
-                alt="Before"
-                fill
-                className="object-cover opacity-70 grayscale"
-              />
-            </div>
-          </motion.div>
 
-          {/* After */}
-          <motion.div
-            className="rounded-[20px] overflow-hidden bg-[#0d1b2a] border border-blue-500/20"
-            style={{ boxShadow: "0 0 80px -20px rgba(59,130,246,0.15)" }}
-            initial={{ opacity: 0, x: 40 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1], delay: 0.15 }}
-          >
-            <div className="px-5 pt-5 pb-3">
-              <span className="text-blue-400 text-[10px] font-bold uppercase tracking-[0.25em]">
-                変更後
-              </span>
-            </div>
-            <div className="relative w-full aspect-[3/2] overflow-hidden">
-              <Image
-                src="/images/tsukigaku/after.png"
-                alt="After"
-                fill
-                className="object-cover"
-              />
-            </div>
-          </motion.div>
-        </div>
-        <ScrollReveal delay={0.3}>
-          <p className="text-center text-white/30 text-sm mt-16 font-light">
-            初期費用0円 — サイト公開まで最短1週間
-          </p>
-        </ScrollReveal>
-      </div>
-    </section>
-  );
-}
-
-/* ═══════════════════ PHILOSOPHY ═══════════════════ */
-function Philosophy() {
-  return (
-    <section className="py-[160px] md:py-[240px] flex items-center justify-center bg-black text-center px-6">
-      <div className="max-w-[700px]">
-        <ScrollReveal>
-          <motion.h2
-            className="font-light tracking-[-0.04em] leading-[1.1] text-white"
-            style={{ fontSize: "clamp(2.5rem, 7vw, 72px)" }}
-            initial={{ filter: "blur(12px)" }}
-            whileInView={{ filter: "blur(0px)" }}
-            viewport={{ once: true }}
-            transition={{ duration: 1.5 }}
-          >
-            サイトは営業マン。<br />
-            24時間働く。
-          </motion.h2>
-        </ScrollReveal>
-        <ScrollReveal delay={0.2}>
-          <p className="text-white/50 text-[clamp(0.95rem,1.8vw,1.15rem)] leading-relaxed mt-10 font-light">
-            写真で惹きつけて、予約まで一直線。集客できるサイトだけを作ります。
-            <br className="hidden md:block" />
-            きれいなだけのHPは作りません。お客さんが「行きたい」「買いたい」と思う導線を設計します。
-          </p>
-        </ScrollReveal>
-      </div>
-    </section>
-  );
-}
 
 /* ═══════════════════ PRICING ═══════════════════ */
 function Pricing() {
@@ -1587,59 +1442,6 @@ function TechStack() {
   );
 }
 
-/* ═══════════════════ TECH CHALLENGE ═══════════════════ */
-function TechChallenge() {
-  return (
-    <section className="py-[160px] md:py-[220px] px-6 bg-black">
-      <div className="max-w-[900px] mx-auto text-center">
-        <ScrollReveal>
-          <h2
-            className="font-medium tracking-[-0.03em] text-white leading-[1.1]"
-            style={{ fontSize: "clamp(2.2rem, 6vw, 56px)" }}
-          >
-            他のHP業者に聞いてみてください。<br />
-            「何の技術で作ってますか？」と。
-          </h2>
-        </ScrollReveal>
-        <ScrollReveal delay={0.15}>
-          <p
-            className="text-white mt-16 font-medium leading-relaxed"
-            style={{ fontSize: "clamp(1.5rem, 4vw, 2.5rem)" }}
-          >
-            答えられないはずです。
-          </p>
-        </ScrollReveal>
-        <ScrollReveal delay={0.25}>
-          <p
-            className="text-white/60 mt-6 font-light leading-relaxed"
-            style={{ fontSize: "clamp(1.2rem, 3vw, 1.8rem)" }}
-          >
-            テンプレートを貼り替えてるだけだから。
-          </p>
-        </ScrollReveal>
-        <ScrollReveal delay={0.35}>
-          <div className="mt-20 pt-16 border-t border-white/10">
-            <p
-              className="text-white/80 font-medium leading-[1.4]"
-              style={{ fontSize: "clamp(1.2rem, 3vw, 1.6rem)" }}
-            >
-              ツキガクサイトは、使っている技術を<br className="hidden md:block" />
-              堂々と公開しています。
-            </p>
-            <p
-              className="text-white mt-4 font-bold leading-[1.4]"
-              style={{ fontSize: "clamp(1.4rem, 3.5vw, 2rem)" }}
-            >
-              同じ月額9,800円。中身が違います。
-            </p>
-          </div>
-        </ScrollReveal>
-      </div>
-    </section>
-  );
-}
-
-/* ═══════════════════ CTA FINAL ═══════════════════ */
 /* ═══════════════════ FOUNDER ═══════════════════ */
 function Founder() {
   return (
@@ -1709,11 +1511,12 @@ function CTAFinal() {
         </ScrollReveal>
         <ScrollReveal delay={0.25}>
           <a
-            href="#"
+            href="#contact"
             className="inline-block mt-12 px-10 py-4 bg-white text-black font-semibold rounded-full hover:scale-105 transition-transform text-[15px]"
           >
             今すぐ無料相談する
           </a>
+          <p className="text-white/30 text-[12px] mt-4">初期費用0円・クレジットカード不要</p>
         </ScrollReveal>
       </div>
     </section>
@@ -1769,12 +1572,15 @@ export default function TsukigakuPage() {
       <Nav />
       <Hero />
       <Cocktail360 />
+      <ProblemAgitation />
+      <SituationPersonas />
+      <InlineCTA text="サービス詳細を見る" micro="ホームページの悩みを解決" variant="soft" />
       <IndustryShowcase />
       <Comparison />
-      {/* BeforeAfter removed */}
-      <Philosophy />
+      <InlineCTA text="無料で始める" micro="月額9,800円ですべてお任せ" variant="medium" />
+      <SelfProof />
       <TechStack />
-      <TechChallenge />
+      <InlineCTA text="今すぐ申し込む" micro="初期費用0円・いつでも解約OK" variant="hard" />
       <Pricing />
       <Flow />
       <FAQ />
@@ -1791,66 +1597,33 @@ export default function TsukigakuPage() {
           >
             <div>
               <label htmlFor="name" className="block text-white/60 text-[13px] mb-2">お名前</label>
-              <input
-                type="text"
-                id="name"
-                name="name"
-                required
-                className="w-full px-4 py-3.5 rounded-xl bg-white/[0.06] border border-white/10 text-white text-[15px] placeholder-white/30 focus:outline-none focus:border-blue-500/50 transition-colors"
-                placeholder="山田 太郎"
-              />
+              <input type="text" id="name" name="name" required className="w-full px-4 py-3.5 rounded-xl bg-white/[0.06] border border-white/10 text-white text-[15px] placeholder-white/30 focus:outline-none focus:border-blue-500/50 transition-colors" placeholder="山田 太郎" />
             </div>
             <div>
               <label htmlFor="business" className="block text-white/60 text-[13px] mb-2">業種・店舗名</label>
-              <input
-                type="text"
-                id="business"
-                name="business"
-                className="w-full px-4 py-3.5 rounded-xl bg-white/[0.06] border border-white/10 text-white text-[15px] placeholder-white/30 focus:outline-none focus:border-blue-500/50 transition-colors"
-                placeholder="飲食店「〇〇」"
-              />
+              <input type="text" id="business" name="business" className="w-full px-4 py-3.5 rounded-xl bg-white/[0.06] border border-white/10 text-white text-[15px] placeholder-white/30 focus:outline-none focus:border-blue-500/50 transition-colors" placeholder="飲食店「〇〇」" />
             </div>
             <div>
               <label htmlFor="email" className="block text-white/60 text-[13px] mb-2">メールアドレス</label>
-              <input
-                type="email"
-                id="email"
-                name="email"
-                required
-                className="w-full px-4 py-3.5 rounded-xl bg-white/[0.06] border border-white/10 text-white text-[15px] placeholder-white/30 focus:outline-none focus:border-blue-500/50 transition-colors"
-                placeholder="info@example.com"
-              />
+              <input type="email" id="email" name="email" required className="w-full px-4 py-3.5 rounded-xl bg-white/[0.06] border border-white/10 text-white text-[15px] placeholder-white/30 focus:outline-none focus:border-blue-500/50 transition-colors" placeholder="info@example.com" />
             </div>
             <div>
               <label htmlFor="message" className="block text-white/60 text-[13px] mb-2">ご相談内容（任意）</label>
-              <textarea
-                id="message"
-                name="message"
-                rows={4}
-                className="w-full px-4 py-3.5 rounded-xl bg-white/[0.06] border border-white/10 text-white text-[15px] placeholder-white/30 focus:outline-none focus:border-blue-500/50 transition-colors resize-none"
-                placeholder="どんなサイトにしたいか、お気軽にお書きください"
-              />
+              <textarea id="message" name="message" rows={4} className="w-full px-4 py-3.5 rounded-xl bg-white/[0.06] border border-white/10 text-white text-[15px] placeholder-white/30 focus:outline-none focus:border-blue-500/50 transition-colors resize-none" placeholder="どんなサイトにしたいか、お気軽にお書きください" />
             </div>
-            <button
-              type="submit"
-              className="w-full py-4 bg-white text-black font-semibold rounded-full hover:scale-[1.02] transition-transform text-[16px]"
-            >
+            <button type="submit" className="w-full py-4 bg-white text-black font-semibold rounded-full hover:scale-[1.02] transition-transform text-[16px]">
               送信する
             </button>
           </form>
           <div className="mt-10 text-center">
-            <a
-              href="https://line.me/R/"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="inline-block px-8 py-3 rounded-full bg-[#06C755] text-white font-medium text-[15px] hover:bg-[#05b34c] transition-colors"
-            >
+            <a href="https://line.me/R/" target="_blank" rel="noopener noreferrer" className="inline-block px-8 py-3 rounded-full bg-[#06C755] text-white font-medium text-[15px] hover:bg-[#05b34c] transition-colors">
               LINEで相談する
             </a>
           </div>
           <p className="text-[11px] text-white/20 mt-12 text-center">&copy; 2026 ツキガクサイト</p>
         </div>
       </footer>
+      <StickyMobileCTA />
     </main>
   );
 }
