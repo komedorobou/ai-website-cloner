@@ -20,6 +20,29 @@ function multiLerp(bp: number[], vals: number[], v: number): number {
   return vals[vals.length - 1];
 }
 
+/* ═══════════════════ SCROLL INDICATOR ═══════════════════ */
+function ScrollIndicator() {
+  return (
+    <div className="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 z-20">
+      <span className="text-[10px] text-white/25 tracking-[0.3em] uppercase">scroll</span>
+      <motion.div className="flex flex-col items-center gap-1">
+        <motion.div
+          className="w-px h-8 bg-white/15"
+          animate={{ scaleY: [1, 0.3, 1], opacity: [0.4, 0.1, 0.4] }}
+          transition={{ repeat: Infinity, duration: 2.5 }}
+        />
+        <motion.svg
+          width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="white" strokeOpacity="0.2" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"
+          animate={{ y: [0, 4, 0], opacity: [0.3, 0.1, 0.3] }}
+          transition={{ repeat: Infinity, duration: 2.5 }}
+        >
+          <polyline points="6 9 12 15 18 9" />
+        </motion.svg>
+      </motion.div>
+    </div>
+  );
+}
+
 /* ═══════════════════ COUNT-UP HOOK ═══════════════════ */
 function useCountUp<T extends HTMLElement = HTMLDivElement>(end: number, duration = 1500) {
   const [count, setCount] = useState(0);
@@ -341,6 +364,7 @@ function Cocktail360() {
             あなたのお客様も同じ。<br />この動き、月額に全部込み。
           </p>
         </motion.div>
+        <ScrollIndicator />
       </div>
     </section>
   );
@@ -899,6 +923,7 @@ function InteractiveDemo() {
             </motion.div>
           </div>
         </motion.div>
+        <ScrollIndicator />
       </div>
     </section>
   );
