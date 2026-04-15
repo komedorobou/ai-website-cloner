@@ -22,7 +22,7 @@ function multiLerp(bp: number[], vals: number[], v: number): number {
 
 /* ═══════════════════ SCROLL INDICATOR ═══════════════════ */
 function ScrollIndicator({ scrollProgress }: { scrollProgress: ReturnType<typeof useScroll>["scrollYProgress"] }) {
-  const opacity = useTransform(scrollProgress, [0.01, 0.08], [1, 0]);
+  const opacity = useTransform(scrollProgress, [0, 0.02], [1, 0]);
 
   return (
     <motion.div
