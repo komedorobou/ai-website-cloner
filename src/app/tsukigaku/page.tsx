@@ -602,116 +602,97 @@ const companyCards = [
   },
 ];
 
-function ComparisonCard({ card }: { card: typeof companyCards[number] }) {
-  const cardRef = useRef<HTMLDivElement>(null);
-  const [isVisible, setIsVisible] = useState(false);
-
-  useEffect(() => {
-    const el = cardRef.current;
-    if (!el) return;
-    const observer = new IntersectionObserver(
-      ([entry]) => setIsVisible(entry.isIntersecting && entry.intersectionRatio > 0.5),
-      { threshold: 0.5 }
-    );
-    observer.observe(el);
-    return () => observer.disconnect();
-  }, []);
-
-  return (
-    <div
-      ref={cardRef}
-      className={`relative w-[85vw] md:w-full max-w-[400px] shrink-0 md:shrink md:flex-1 rounded-3xl bg-gradient-to-b ${card.gradient} overflow-hidden ${card.winner ? "border-2 border-blue-500/30 shadow-[0_0_60px_-10px_rgba(59,130,246,0.25)]" : "border border-white/[0.08]"}`}
-      style={{ scrollSnapAlign: "center" }}
-    >
-      {/* Image */}
-      <div className="relative w-full aspect-[3/2] overflow-hidden">
-        <Image
-          src={card.image}
-          alt={card.label}
-          fill
-          className={`object-cover ${!card.winner ? "opacity-70 saturate-[0.6]" : ""}`}
-          sizes="400px"
-        />
-        <div className={`absolute inset-0 ${card.winner ? "bg-gradient-to-t from-[#0a0a1a] via-transparent to-transparent" : "bg-gradient-to-t from-black/80 via-black/20 to-transparent"}`} />
-      </div>
-
-      {/* Content */}
-      <div className="p-7 md:p-9">
-        <p className={`${card.accent} text-[11px] font-semibold tracking-[0.15em] uppercase mb-4 transition-all duration-700 ${isVisible ? "opacity-100" : "opacity-0"}`}>
-          {card.label}
-        </p>
-
-        {/* Big headline */}
-        <h3
-          className={`text-white font-semibold tracking-[-0.03em] leading-tight whitespace-pre-line transition-all duration-700 delay-100 ${isVisible ? "opacity-100 translate-y-0 blur-0" : "opacity-0 translate-y-6 blur-sm"}`}
-          style={{ fontSize: "clamp(1.6rem, 5vw, 2rem)" }}
-        >
-          {card.headline}
-        </h3>
-
-        {/* Price */}
-        <p className={`mt-5 text-[14px] font-medium transition-all duration-700 delay-200 ${card.winner ? "text-blue-400" : "text-white/50"} ${isVisible ? "opacity-100" : "opacity-0"}`}>
-          {card.price}
-        </p>
-
-        {/* Specs as simple list */}
-        <div className={`mt-5 space-y-2 transition-all duration-700 delay-300 ${isVisible ? "opacity-100" : "opacity-0"}`}>
-          {card.specs.map((spec) => (
-            <p key={spec} className="text-white/35 text-[13px] font-light">
-              {spec}
-            </p>
-          ))}
-        </div>
-      </div>
-    </div>
-  );
-}
-
 function Comparison() {
+  const sectionRef = useRef<HTMLDivElement>(null);
+  const { scrollYProgress } = useScroll({ target: sectionRef, offset: ["start start", "end start"] });
+
+  const headOp = useTransform(scrollYProgress, (v) => multiLerp([0, 0.05, 0.12, 0.16], [0, 1, 1, 0], v));
+  const card1Op = useTransform(scrollYProgress, (v) => multiLerp([0.14, 0.2, 0.32, 0.36], [0, 1, 1, 0], v));
+  const card2Op = useTransform(scrollYProgress, (v) => multiLerp([0.34, 0.4, 0.52, 0.56], [0, 1, 1, 0], v));
+  const card3Op = useTransform(scrollYProgress, (v) => multiLerp([0.54, 0.6, 0.85, 0.95], [0, 1, 1, 0], v));
+  const card3Scale = useTransform(scrollYProgress, [0.54, 0.65], [0.9, 1]);
+
   return (
-    <section className="relative py-[120px] md:py-[180px] overflow-hidden bg-black">
-      <div className="px-6 mb-14 md:mb-20">
-        <ScrollReveal>
-          <p className="text-blue-400 text-[11px] font-semibold tracking-[0.25em] uppercase mb-5 text-center">
-            他社比較
-          </p>
-        </ScrollReveal>
-        <ScrollReveal delay={0.1}>
+    <section ref={sectionRef} className="relative h-[500vh]">
+      <div className="sticky top-0 h-[100svh] w-full overflow-hidden bg-black flex items-center justify-center px-6">
+        {/* Headline */}
+        <motion.div className="absolute inset-0 flex flex-col items-center justify-center px-6" style={{ opacity: headOp }}>
+          <p className="text-blue-400 text-[11px] font-semibold tracking-[0.25em] uppercase mb-5">他社比較</p>
           <h2
             className="font-light tracking-[-0.04em] text-white leading-[1.05] text-center"
             style={{ fontSize: "clamp(2.2rem, 7vw, 72px)" }}
           >
-            同じ品質。
-            <br />
-            50分の1の値段。
+            同じ品質。<br />50分の1の値段。
           </h2>
-        </ScrollReveal>
-        <ScrollReveal delay={0.15}>
-          <p className="text-white/50 text-[clamp(0.9rem,1.6vw,1.1rem)] mt-6 font-light max-w-[600px] mx-auto leading-relaxed text-center">
-            大手制作会社と同じ技術スタック（Next.js、GSAP、Vercel）を使用。違うのは中間マージンがないこと。だから初期費用0円、月額9,800円で提供できます。
-          </p>
-        </ScrollReveal>
-      </div>
+        </motion.div>
 
-      {/* Mobile: horizontal scroll / PC: flex row */}
-      <div
-        className="flex gap-4 overflow-x-scroll px-[8vw] pb-6 md:hidden"
-        style={{
-          scrollSnapType: "x mandatory",
-          WebkitOverflowScrolling: "touch",
-          scrollbarWidth: "none",
-          msOverflowStyle: "none",
-        }}
-      >
-        {companyCards.map((card) => (
-          <ComparisonCard key={card.label} card={card} />
-        ))}
-        <div className="shrink-0 w-[8vw]" />
-      </div>
-      <div className="hidden md:flex gap-6 justify-center max-w-[1200px] mx-auto px-8">
-        {companyCards.map((card) => (
-          <ComparisonCard key={card.label} card={card} />
-        ))}
+        {/* Card 1: A社 */}
+        <motion.div className="absolute inset-0 flex items-center justify-center px-8" style={{ opacity: card1Op }}>
+          <div className="max-w-[500px] w-full rounded-3xl bg-gradient-to-b from-[#111] to-[#000] border border-white/[0.08] overflow-hidden">
+            <div className="relative w-full aspect-[3/2] overflow-hidden">
+              <Image src="/images/tsukigaku/comparison-a.png" alt="A社" fill className="object-cover opacity-70 saturate-[0.6]" sizes="500px" />
+              <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent" />
+            </div>
+            <div className="p-8 md:p-10">
+              <p className="text-white/50 text-[12px] font-semibold tracking-[0.15em] uppercase mb-4">A社</p>
+              <h3 className="text-white font-semibold tracking-[-0.03em] leading-tight" style={{ fontSize: "clamp(1.8rem, 5vw, 2.4rem)" }}>
+                最高のクオリティ。<br />最高の価格。
+              </h3>
+              <p className="mt-5 text-[15px] font-medium text-white/50">初期 500万円〜 / 月額 10万円〜</p>
+              <div className="mt-5 space-y-2">
+                {["完全オーダーメイド", "アニメーション対応", "制作期間 2〜3ヶ月"].map((s) => (
+                  <p key={s} className="text-white/30 text-[14px] font-light">{s}</p>
+                ))}
+              </div>
+            </div>
+          </div>
+        </motion.div>
+
+        {/* Card 2: B社 */}
+        <motion.div className="absolute inset-0 flex items-center justify-center px-8" style={{ opacity: card2Op }}>
+          <div className="max-w-[500px] w-full rounded-3xl bg-gradient-to-b from-[#1a120a] to-[#000] border border-white/[0.08] overflow-hidden">
+            <div className="relative w-full aspect-[3/2] overflow-hidden">
+              <Image src="/images/tsukigaku/comparison-b.png" alt="B社" fill className="object-cover opacity-70 saturate-[0.6]" sizes="500px" />
+              <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent" />
+            </div>
+            <div className="p-8 md:p-10">
+              <p className="text-orange-400/70 text-[12px] font-semibold tracking-[0.15em] uppercase mb-4">B社</p>
+              <h3 className="text-white font-semibold tracking-[-0.03em] leading-tight" style={{ fontSize: "clamp(1.8rem, 5vw, 2.4rem)" }}>
+                安い。<br />でも、テンプレート。
+              </h3>
+              <p className="mt-5 text-[15px] font-medium text-white/50">初期 0円 / 月額 9,800円</p>
+              <div className="mt-5 space-y-2">
+                {["WordPressテンプレ", "アニメーション ✗", "制作期間 1〜2週間"].map((s) => (
+                  <p key={s} className="text-white/30 text-[14px] font-light">{s}</p>
+                ))}
+              </div>
+            </div>
+          </div>
+        </motion.div>
+
+        {/* Card 3: ツキガクサイト — winner */}
+        <motion.div className="absolute inset-0 flex items-center justify-center px-8" style={{ opacity: card3Op, scale: card3Scale }}>
+          <div className="max-w-[500px] w-full rounded-3xl bg-gradient-to-b from-[#0a0a1a] to-[#000] border-2 border-blue-500/30 overflow-hidden" style={{ boxShadow: "0 0 80px -10px rgba(59,130,246,0.3)" }}>
+            <div className="relative w-full aspect-[3/2] overflow-hidden">
+              <Image src="/images/tsukigaku/comparison-tsukigaku.png" alt="ツキガクサイト" fill className="object-cover" sizes="500px" />
+              <div className="absolute inset-0 bg-gradient-to-t from-[#0a0a1a] via-transparent to-transparent" />
+            </div>
+            <div className="p-8 md:p-10">
+              <p className="text-blue-400 text-[12px] font-semibold tracking-[0.15em] uppercase mb-4">ツキガクサイト</p>
+              <h3 className="text-white font-semibold tracking-[-0.03em] leading-tight" style={{ fontSize: "clamp(1.8rem, 5vw, 2.4rem)" }}>
+                A社の品質を。<br />B社の価格で。
+              </h3>
+              <p className="mt-5 text-[15px] font-medium text-blue-400">初期 0円 / 月額 9,800円</p>
+              <div className="mt-5 space-y-2">
+                {["完全オーダーメイド", "アニメーション標準搭載 ✓", "最短1週間"].map((s) => (
+                  <p key={s} className="text-white/50 text-[14px] font-light">{s}</p>
+                ))}
+              </div>
+            </div>
+          </div>
+        </motion.div>
+
+        <ScrollIndicator scrollProgress={scrollYProgress} />
       </div>
     </section>
   );
