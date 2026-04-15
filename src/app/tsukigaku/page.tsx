@@ -6,6 +6,19 @@ import { motion, useScroll, useTransform, AnimatePresence } from "motion/react";
 import { ScrollReveal } from "@/components/animation/scroll-reveal";
 /* ParallaxLayer removed — unused */
 
+/* Motion v12 multi-keyframe useTransform workaround */
+function multiLerp(bp: number[], vals: number[], v: number): number {
+  if (v <= bp[0]) return vals[0];
+  if (v >= bp[bp.length - 1]) return vals[vals.length - 1];
+  for (let i = 0; i < bp.length - 1; i++) {
+    if (v <= bp[i + 1]) {
+      const t = (v - bp[i]) / (bp[i + 1] - bp[i]);
+      return vals[i] + t * (vals[i + 1] - vals[i]);
+    }
+  }
+  return vals[vals.length - 1];
+}
+
 /* ═══════════════════ NAV ═══════════════════ */
 function Nav() {
   return (
@@ -67,7 +80,7 @@ function Hero() {
   const t1Opacity = useTransform(scrollYProgress, [0.02, 0.2], [1, 0]);
   const t1Blur = useTransform(scrollYProgress, [0.02, 0.2], [0, 30]);
   const t1Filter = useTransform(t1Blur, (v) => `blur(${v}px)`);
-  const ctaOpacity = useTransform(scrollYProgress, [0.4, 0.5, 0.65, 0.8], [0, 1, 1, 0]);
+  const ctaOpacity = useTransform(scrollYProgress, (v) => multiLerp([0.4, 0.5, 0.65, 0.8], [0, 1, 1, 0], v));
   const ctaY = useTransform(scrollYProgress, [0.4, 0.5], [30, 0]);
   const scrollIndOp = useTransform(scrollYProgress, [0, 0.05], [1, 0]);
 
@@ -234,10 +247,10 @@ function Cocktail360() {
   }, [loaded, scrollYProgress]);
 
   // Text animations tied to scroll — heading appears after some rotation
-  const headingOpacity = useTransform(scrollYProgress, [0.25, 0.35, 0.50, 0.58], [0, 1, 1, 0]);
+  const headingOpacity = useTransform(scrollYProgress, (v) => multiLerp([0.25, 0.35, 0.50, 0.58], [0, 1, 1, 0], v));
   const headingBlur = useTransform(scrollYProgress, [0.25, 0.35], [20, 0]);
   const headingFilter = useTransform(headingBlur, (v) => `blur(${v}px)`);
-  const subOpacity = useTransform(scrollYProgress, [0.56, 0.64, 0.82, 0.92], [0, 1, 1, 0]);
+  const subOpacity = useTransform(scrollYProgress, (v) => multiLerp([0.56, 0.64, 0.82, 0.92], [0, 1, 1, 0], v));
   const subBlur = useTransform(scrollYProgress, [0.56, 0.64], [20, 0]);
   const subFilter = useTransform(subBlur, (v) => `blur(${v}px)`);
 
@@ -357,7 +370,7 @@ function IndustryCard({ item, index }: { item: typeof industries[number]; index:
   const { scrollYProgress } = useScroll({ target: ref, offset: ["start end", "end start"] });
 
   // Image: Ken Burns zoom + parallax
-  const imgScale = useTransform(scrollYProgress, [0, 0.5, 1], [1.3, 1, 1.1]);
+  const imgScale = useTransform(scrollYProgress, (v) => multiLerp([0, 0.5, 1], [1.3, 1, 1.1], v));
   const imgY = useTransform(scrollYProgress, [0, 1], ["-15%", "15%"]);
 
   // Circular clip-path reveal from center
@@ -380,7 +393,7 @@ function IndustryCard({ item, index }: { item: typeof industries[number]; index:
   const labelLineWidth = useTransform(scrollYProgress, [0.25, 0.4], [0, 40]);
   const headingFilter = useTransform(headingBlur, (v) => `blur(${v}px)`);
   const glowWidth = useTransform(scrollYProgress, [0.4, 0.6], ["0%", "30%"]);
-  const glowOpacity = useTransform(scrollYProgress, [0.4, 0.55, 0.75, 0.9], [0, 0.8, 0.8, 0]);
+  const glowOpacity = useTransform(scrollYProgress, (v) => multiLerp([0.4, 0.55, 0.75, 0.9], [0, 0.8, 0.8, 0], v));
 
   return (
     <section ref={ref} className="relative h-[150vh]">
