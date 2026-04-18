@@ -172,7 +172,7 @@ function Hero() {
 
   return (
     <section ref={ref} className="relative h-[300vh]">
-      <div className="sticky top-0 h-[100svh] w-full overflow-hidden bg-black">
+      <div className="sticky top-0 h-[100dvh] w-full overflow-hidden bg-black">
         {/* Video */}
         <video
           ref={videoRef}
@@ -342,7 +342,7 @@ function Cocktail360() {
 
   return (
     <section ref={sectionRef} className="relative h-[300vh]">
-      <div className="sticky top-0 h-[100svh] w-full overflow-hidden bg-black flex items-center justify-center">
+      <div className="sticky top-0 h-[100dvh] w-full overflow-hidden bg-black flex items-center justify-center">
         <canvas
           ref={canvasRef}
           className="absolute inset-0 w-full h-full"
@@ -390,7 +390,7 @@ function ProblemAgitation() {
 
   return (
     <section ref={sectionRef} className="relative h-[500vh]">
-      <div className="sticky top-0 h-[100svh] w-full overflow-hidden bg-black flex items-center justify-center px-6">
+      <div className="sticky top-0 h-[100dvh] w-full overflow-hidden bg-black flex items-center justify-center px-6">
         {/* Step 1: Headline */}
         <motion.div className="absolute inset-0 flex items-center justify-center px-6" style={{ opacity: step1Op }}>
           <h2
@@ -517,7 +517,7 @@ function IndustryCard({ item, index }: { item: typeof industries[number]; index:
 
   return (
     <section ref={ref} className="relative h-[150vh]">
-      <div className="sticky top-0 h-[100svh] w-full overflow-hidden bg-black">
+      <div className="sticky top-0 h-[100dvh] w-full overflow-hidden bg-black">
         <motion.div
           className="absolute inset-0"
           style={{ opacity: exitOpacity, clipPath, willChange: "clip-path, opacity", transform: "translateZ(0)" }}
@@ -614,7 +614,7 @@ function Comparison() {
 
   return (
     <section ref={sectionRef} className="relative h-[500vh]">
-      <div className="sticky top-0 h-[100svh] w-full overflow-hidden bg-black flex items-center justify-center px-6">
+      <div className="sticky top-0 h-[100dvh] w-full overflow-hidden bg-black flex items-center justify-center px-6">
         {/* Headline */}
         <motion.div className="absolute inset-0 flex flex-col items-center justify-center px-6" style={{ opacity: headOp }}>
           <p className="text-blue-400 text-[11px] font-semibold tracking-[0.25em] uppercase mb-5">他社比較</p>
@@ -824,7 +824,7 @@ function InteractiveDemo() {
 
   return (
     <section ref={sectionRef} className="relative h-[400vh]">
-      <div className="sticky top-0 h-[100svh] w-full overflow-hidden bg-black flex items-center justify-center">
+      <div className="sticky top-0 h-[100dvh] w-full overflow-hidden bg-black flex items-center justify-center">
         {/* Glow */}
         <motion.div
           className="absolute w-[300px] h-[300px] md:w-[500px] md:h-[500px] rounded-full"
