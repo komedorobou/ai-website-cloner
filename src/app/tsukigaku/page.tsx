@@ -953,7 +953,7 @@ function InteractiveDemo() {
 function Pricing() {
   const features = [
     "あなたのお店専用デザイン",
-    "完全オーダーメイド",
+    "完全オーダーメイド 5ページまで",
     "アニメーション標準搭載",
     "スマホ完全対応",
     "独自ドメイン込み",
