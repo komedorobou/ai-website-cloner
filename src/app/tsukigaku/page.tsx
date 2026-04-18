@@ -318,18 +318,27 @@ function Cocktail360() {
     return () => { mounted = false; };
   }, []);
 
-  // Draw frame on scroll
+  // Draw frame on scroll — only when index actually changes + throttled via rAF
+  // so iOS keeps native scroll momentum (canvas redraws don't block main thread per event)
   useEffect(() => {
     if (!loaded) return;
+    let lastIdx = -1;
+    let rafId = 0;
     const unsubscribe = scrollYProgress.on("change", (v) => {
       const idx = Math.min(COCKTAIL_FRAMES - 1, Math.floor(v * COCKTAIL_FRAMES));
-      const canvas = canvasRef.current;
-      const img = imagesRef.current[idx];
-      if (canvas && img) {
-        drawCover(canvas, img);
-      }
+      if (idx === lastIdx) return;
+      lastIdx = idx;
+      if (rafId) cancelAnimationFrame(rafId);
+      rafId = requestAnimationFrame(() => {
+        const canvas = canvasRef.current;
+        const img = imagesRef.current[idx];
+        if (canvas && img) drawCover(canvas, img);
+      });
     });
-    return unsubscribe;
+    return () => {
+      unsubscribe();
+      if (rafId) cancelAnimationFrame(rafId);
+    };
   }, [loaded, scrollYProgress]);
 
   // Text animations tied to scroll — heading appears after some rotation
@@ -944,18 +953,14 @@ function InteractiveDemo() {
 function Pricing() {
   const features = [
     "あなたのお店専用デザイン",
-    "完全オーダーメイド 5P",
+    "完全オーダーメイド",
     "アニメーション標準搭載",
     "スマホ完全対応",
+    "独自ドメイン込み",
     "月2回修正込み",
     "ホスティング・SSL込み",
     "初期費用0円",
-  ];
-  const options = [
-    { p: "+500", l: "独自ドメイン" },
-    { p: "+500", l: "ページ追加" },
-    { p: "+500", l: "アニメーション" },
-    { p: "+100", l: "挿絵" },
+    "追加料金一切なし",
   ];
 
   return (
@@ -977,6 +982,9 @@ function Pricing() {
           >
             料金
           </h2>
+          <p className="text-white/50 text-[14px] md:text-[15px] mt-5 font-light">
+            ぜんぶ込み。追加料金なし。
+          </p>
         </ScrollReveal>
 
         <ScrollReveal delay={0.15}>
@@ -1025,20 +1033,6 @@ function Pricing() {
               </a>
             </div>
           </motion.div>
-        </ScrollReveal>
-
-        <ScrollReveal delay={0.25}>
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-3 max-w-[500px] mx-auto mt-12">
-            {options.map((o) => (
-              <div
-                key={o.l}
-                className="bg-white/[0.03] border border-white/5 rounded-xl p-4 text-center"
-              >
-                <p className="font-light text-lg text-white">+{o.p}</p>
-                <p className="text-white/30 text-xs mt-1">{o.l}</p>
-              </div>
-            ))}
-          </div>
         </ScrollReveal>
 
         {/* Discount line chart — full width, big */}

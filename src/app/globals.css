@@ -8,6 +8,23 @@
 body::-webkit-scrollbar { display: none; }
 body { scrollbar-width: none; }
 
+/* iOS Safari scroll momentum — preserve native inertia through pin sections */
+html {
+  -webkit-text-size-adjust: 100%;
+}
+body {
+  overscroll-behavior-y: none;
+  touch-action: pan-y;
+}
+/* Force GPU compositing on sticky pin containers so iOS keeps scroll momentum
+   instead of recomputing layout on every frame */
+.sticky {
+  will-change: transform;
+  transform: translate3d(0, 0, 0);
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
+}
+
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
