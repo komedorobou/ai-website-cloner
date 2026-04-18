@@ -109,7 +109,7 @@ function InlineCTA({ text, micro, variant = "medium" }: { text: string; micro: s
 function Nav() {
   return (
     <nav className="fixed top-0 left-0 right-0 z-50 h-[48px] flex items-center justify-between px-8 md:px-16 bg-black/60 backdrop-blur-2xl border-b border-white/5">
-      <span className="font-light text-[14px] tracking-[0.02em] text-white/90">ツキガクサイト</span>
+      <span className="font-light text-[14px] tracking-[0.02em] text-white/90">ツキガク×サイト</span>
       <div className="flex items-center gap-3">
         <a
           href="#contact"
@@ -118,7 +118,7 @@ function Nav() {
           まずは相談する
         </a>
         <a
-          href="https://line.me/R/"
+          href="https://line.me/R/ti/p/@569rxqzb"
           target="_blank"
           rel="noopener noreferrer"
           className="text-[12px] font-medium px-4 py-1.5 rounded-full bg-[#06C755] text-white hover:bg-[#05b34c] transition-colors"
@@ -591,7 +591,7 @@ const companyCards = [
     winner: false,
   },
   {
-    label: "ツキガクサイト",
+    label: "ツキガク×サイト",
     headline: "A社の品質を。\nB社の価格で。",
     price: "初期 0円 / 月額 9,800円",
     specs: ["完全オーダーメイド", "アニメーション標準搭載 ✓", "最短1週間"],
@@ -670,15 +670,15 @@ function Comparison() {
           </div>
         </motion.div>
 
-        {/* Card 3: ツキガクサイト — winner */}
+        {/* Card 3: ツキガク×サイト — winner */}
         <motion.div className="absolute inset-0 flex items-center justify-center px-8" style={{ opacity: card3Op, scale: card3Scale }}>
           <div className="max-w-[500px] w-full rounded-3xl bg-gradient-to-b from-[#0a0a1a] to-[#000] border-2 border-blue-500/30 overflow-hidden" style={{ boxShadow: "0 0 80px -10px rgba(59,130,246,0.3)" }}>
             <div className="relative w-full aspect-[3/2] overflow-hidden">
-              <Image src="/images/tsukigaku/comparison-tsukigaku.png" alt="ツキガクサイト" fill className="object-cover" sizes="500px" />
+              <Image src="/images/tsukigaku/comparison-tsukigaku.png" alt="ツキガク×サイト" fill className="object-cover" sizes="500px" />
               <div className="absolute inset-0 bg-gradient-to-t from-[#0a0a1a] via-transparent to-transparent" />
             </div>
             <div className="p-8 md:p-10">
-              <p className="text-blue-400 text-[12px] font-semibold tracking-[0.15em] uppercase mb-4">ツキガクサイト</p>
+              <p className="text-blue-400 text-[12px] font-semibold tracking-[0.15em] uppercase mb-4">ツキガク×サイト</p>
               <h3 className="text-white font-semibold tracking-[-0.03em] leading-tight" style={{ fontSize: "clamp(1.8rem, 5vw, 2.4rem)" }}>
                 A社の品質を。<br />B社の価格で。
               </h3>
@@ -783,7 +783,7 @@ function SelfProof() {
           <ScrollReveal delay={0.35}>
             <div className="mt-14 pt-12 border-t border-white/10">
               <p className="text-white/80 font-medium leading-[1.4]" style={{ fontSize: "clamp(1rem, 2.5vw, 1.4rem)" }}>
-                ツキガクサイトは、使っている技術を<br className="hidden md:block" />堂々と公開しています。
+                ツキガク×サイトは、使っている技術を<br className="hidden md:block" />堂々と公開しています。
               </p>
               <p className="text-white mt-3 font-bold" style={{ fontSize: "clamp(1.2rem, 3vw, 1.8rem)" }}>
                 同じ月額9,800円。中身が違います。
@@ -1500,32 +1500,113 @@ function TechStack() {
 function Founder() {
   return (
     <section className="py-[120px] md:py-[160px] px-6 bg-[#0a0a0a]">
-      <div className="max-w-[700px] mx-auto text-center">
+      <div className="max-w-[720px] mx-auto">
         <ScrollReveal>
-          <p className="text-blue-400 text-[11px] font-semibold tracking-[0.25em] uppercase mb-5">
+          <p className="text-blue-400 text-[11px] font-semibold tracking-[0.25em] uppercase mb-5 text-center">
             代表より
           </p>
           <h2
-            className="font-light tracking-[-0.03em] text-white leading-[1.2]"
+            className="font-light tracking-[-0.03em] text-white leading-[1.2] text-center"
             style={{ fontSize: "clamp(1.8rem, 4vw, 36px)" }}
           >
-            なぜ、月額9,800円で<br />
-            できるのか。
+            なぜ、月額9,800円なのか。
           </h2>
         </ScrollReveal>
+
         <ScrollReveal delay={0.15}>
-          <div className="mt-12 text-white/60 text-[15px] md:text-[16px] font-light leading-[2] text-left space-y-6">
+          <div className="mt-16 text-white/70 text-[15px] md:text-[16px] font-light leading-[2] space-y-6">
+            <p>HP制作会社にいた頃の話です。</p>
             <p>
-              HP制作会社に勤めていた頃、いつも疑問でした。なぜ50万円もかかるのか。なぜ営業マンと下請けの中間マージンがこんなに高いのか。
+              ある日、町の小さなケーキ屋さんが、相談に来ました。<br />
+              「HPを作りたい。でも、50万円は無理です」<br />
+              丁寧に頭を下げて、帰っていきました。
             </p>
             <p>
-              お客さんが本当に欲しいのは「おしゃれなHP」じゃない。お客さんが来ること。予約が入ること。それだけなんです。
+              同じ週、大企業から800万円の発注が来ました。<br />
+              同じ制作会社が、同じ工程で作ります。<br />
+              払える人と、払えない人。ただ、それだけの違いでした。
             </p>
             <p>
-              AIと最新技術を使えば、大手と同じ品質のサイトを、中間マージンなしで作れる。だから月額9,800円。
+              あのケーキ屋さんのことが、頭から離れませんでした。<br />
+              毎朝4時に起きて、一つひとつ丁寧にケーキを焼いている人。<br />
+              お客さんに来てほしくて、マーケティングが必要なのは、<br />
+              大企業ではなく、あの人のはずでした。
             </p>
             <p>
-              「安かろう悪かろう」ではありません。使っている技術は全て公開しています。品質は、このサイト自体が証明です。
+              でも、あの人は、見積書を見て諦めました。<br />
+              理由は、品質じゃありません。<span className="text-white font-medium">中間マージン</span>です。<br />
+              営業、ディレクター、デザイナー、エンジニア、コピーライター──<br />
+              間に人が増えるほど、値段は膨らむ。<br />
+              その人たちの人件費が、あなたの見積書の正体です。
+            </p>
+          </div>
+        </ScrollReveal>
+
+        <ScrollReveal delay={0.2}>
+          <div className="mt-12 text-center">
+            <p
+              className="text-white font-light"
+              style={{ fontSize: "clamp(1.6rem, 3.8vw, 32px)", letterSpacing: "-0.02em" }}
+            >
+              ツキガクは、その構造を壊しました。
+            </p>
+          </div>
+        </ScrollReveal>
+
+        <ScrollReveal delay={0.15}>
+          <div className="mt-12 text-white/70 text-[15px] md:text-[16px] font-light leading-[2] space-y-6">
+            <p>
+              ひとつのチーム。ひとつの責任。中間マージンなし。<br />
+              大手と同じ技術。大手と同じ品質。<br />
+              本来なら、数百万円する品質のHP。<br />
+              それを、町のお店でも払える値段まで削り落としました。
+            </p>
+          </div>
+        </ScrollReveal>
+
+        <ScrollReveal delay={0.2}>
+          <div className="mt-16 text-center">
+            <p
+              className="text-white font-light"
+              style={{ fontSize: "clamp(2.4rem, 6vw, 56px)", letterSpacing: "-0.03em" }}
+            >
+              月9,800円。
+            </p>
+            <p className="mt-6 text-white/50 text-[14px] md:text-[15px] tracking-[0.1em]">
+              店の電気代より、安い。
+            </p>
+          </div>
+        </ScrollReveal>
+
+        <ScrollReveal delay={0.15}>
+          <div className="mt-16 text-white/70 text-[15px] md:text-[16px] font-light leading-[2] space-y-6">
+            <p>
+              大手と同じサイトが、この値段で手に入る。<br />
+              同じアニメーション、同じ表現力、同じ検索対策。<br />
+              違いは、値札だけです。
+            </p>
+            <p>
+              あのケーキ屋さんには、もう間に合いませんでした。<br />
+              店じまいしてしまったからです。
+            </p>
+            <p>
+              でも、今この瞬間にも、<br />
+              同じように悩んでいる店主がいます。<br />
+              「HPがあれば、もう少しお客さんが来るかもしれない」<br />
+              「でも、50万円は出せない」
+            </p>
+            <p>その人に、届けたくて、作りました。</p>
+          </div>
+        </ScrollReveal>
+
+        <ScrollReveal delay={0.25}>
+          <div className="mt-16 text-center">
+            <p
+              className="text-white font-light leading-[1.5]"
+              style={{ fontSize: "clamp(1.6rem, 4vw, 36px)", letterSpacing: "-0.02em" }}
+            >
+              大企業と同じ武器を、<br />
+              町のあなたに。
             </p>
           </div>
         </ScrollReveal>
@@ -1639,6 +1720,98 @@ function StoryBridge({ text }: { text: string }) {
   );
 }
 
+/* ═══════════════════ CONTACT FORM ═══════════════════ */
+type ContactStatus = "idle" | "submitting" | "success" | "error";
+
+function ContactForm() {
+  const [status, setStatus] = useState<ContactStatus>("idle");
+  const [errorMsg, setErrorMsg] = useState<string>("");
+
+  async function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
+    e.preventDefault();
+    setStatus("submitting");
+    setErrorMsg("");
+
+    const form = e.currentTarget;
+    const data = new FormData(form);
+    const payload = {
+      name: String(data.get("name") ?? "").trim(),
+      business: String(data.get("business") ?? "").trim(),
+      email: String(data.get("email") ?? "").trim(),
+      message: String(data.get("message") ?? "").trim(),
+    };
+
+    try {
+      const res = await fetch("/api/contact", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(payload),
+      });
+      const json = (await res.json().catch(() => ({}))) as {
+        ok?: boolean;
+        error?: string;
+      };
+      if (!res.ok || !json.ok) {
+        setErrorMsg(json.error ?? "送信に失敗しました。");
+        setStatus("error");
+        return;
+      }
+      setStatus("success");
+      form.reset();
+    } catch {
+      setErrorMsg("通信エラーが発生しました。");
+      setStatus("error");
+    }
+  }
+
+  if (status === "success") {
+    return (
+      <div className="text-center py-12 px-6 rounded-2xl bg-white/[0.04] border border-white/10">
+        <div className="text-white text-[20px] font-medium mb-3">送信ありがとうございました</div>
+        <p className="text-white/60 text-[14px] leading-relaxed">
+          内容を確認のうえ、追ってご連絡いたします。
+        </p>
+        <button
+          type="button"
+          onClick={() => setStatus("idle")}
+          className="mt-8 text-white/40 text-[13px] underline hover:text-white/70 transition-colors"
+        >
+          もう一度送信する
+        </button>
+      </div>
+    );
+  }
+
+  const submitting = status === "submitting";
+
+  return (
+    <form onSubmit={handleSubmit} className="space-y-5">
+      <div>
+        <label htmlFor="name" className="block text-white/60 text-[13px] mb-2">お名前</label>
+        <input type="text" id="name" name="name" required disabled={submitting} className="w-full px-4 py-3.5 rounded-xl bg-white/[0.06] border border-white/10 text-white text-[15px] placeholder-white/30 focus:outline-none focus:border-blue-500/50 transition-colors disabled:opacity-50" placeholder="山田 太郎" />
+      </div>
+      <div>
+        <label htmlFor="business" className="block text-white/60 text-[13px] mb-2">業種・店舗名</label>
+        <input type="text" id="business" name="business" disabled={submitting} className="w-full px-4 py-3.5 rounded-xl bg-white/[0.06] border border-white/10 text-white text-[15px] placeholder-white/30 focus:outline-none focus:border-blue-500/50 transition-colors disabled:opacity-50" placeholder="飲食店「〇〇」" />
+      </div>
+      <div>
+        <label htmlFor="email" className="block text-white/60 text-[13px] mb-2">メールアドレス</label>
+        <input type="email" id="email" name="email" required disabled={submitting} className="w-full px-4 py-3.5 rounded-xl bg-white/[0.06] border border-white/10 text-white text-[15px] placeholder-white/30 focus:outline-none focus:border-blue-500/50 transition-colors disabled:opacity-50" placeholder="info@example.com" />
+      </div>
+      <div>
+        <label htmlFor="message" className="block text-white/60 text-[13px] mb-2">ご相談内容（任意）</label>
+        <textarea id="message" name="message" rows={4} disabled={submitting} className="w-full px-4 py-3.5 rounded-xl bg-white/[0.06] border border-white/10 text-white text-[15px] placeholder-white/30 focus:outline-none focus:border-blue-500/50 transition-colors resize-none disabled:opacity-50" placeholder="どんなサイトにしたいか、お気軽にお書きください" />
+      </div>
+      {status === "error" && (
+        <p className="text-red-400 text-[13px] text-center" role="alert">{errorMsg}</p>
+      )}
+      <button type="submit" disabled={submitting} className="w-full py-4 bg-white text-black font-semibold rounded-full hover:scale-[1.02] transition-transform text-[16px] disabled:opacity-60 disabled:cursor-not-allowed disabled:hover:scale-100">
+        {submitting ? "送信中..." : "送信する"}
+      </button>
+    </form>
+  );
+}
+
 /* ═══════════════════ PAGE ═══════════════════ */
 export default function TsukigakuPage() {
   return (
@@ -1660,37 +1833,13 @@ export default function TsukigakuPage() {
         <div className="max-w-[500px] mx-auto">
           <h3 className="text-white text-center text-[24px] md:text-[28px] font-medium mb-3">無料相談フォーム</h3>
           <p className="text-white/40 text-sm text-center mb-10">お気軽にお問い合わせください。</p>
-          <form
-            action="https://formspree.io/f/placeholder"
-            method="POST"
-            className="space-y-5"
-          >
-            <div>
-              <label htmlFor="name" className="block text-white/60 text-[13px] mb-2">お名前</label>
-              <input type="text" id="name" name="name" required className="w-full px-4 py-3.5 rounded-xl bg-white/[0.06] border border-white/10 text-white text-[15px] placeholder-white/30 focus:outline-none focus:border-blue-500/50 transition-colors" placeholder="山田 太郎" />
-            </div>
-            <div>
-              <label htmlFor="business" className="block text-white/60 text-[13px] mb-2">業種・店舗名</label>
-              <input type="text" id="business" name="business" className="w-full px-4 py-3.5 rounded-xl bg-white/[0.06] border border-white/10 text-white text-[15px] placeholder-white/30 focus:outline-none focus:border-blue-500/50 transition-colors" placeholder="飲食店「〇〇」" />
-            </div>
-            <div>
-              <label htmlFor="email" className="block text-white/60 text-[13px] mb-2">メールアドレス</label>
-              <input type="email" id="email" name="email" required className="w-full px-4 py-3.5 rounded-xl bg-white/[0.06] border border-white/10 text-white text-[15px] placeholder-white/30 focus:outline-none focus:border-blue-500/50 transition-colors" placeholder="info@example.com" />
-            </div>
-            <div>
-              <label htmlFor="message" className="block text-white/60 text-[13px] mb-2">ご相談内容（任意）</label>
-              <textarea id="message" name="message" rows={4} className="w-full px-4 py-3.5 rounded-xl bg-white/[0.06] border border-white/10 text-white text-[15px] placeholder-white/30 focus:outline-none focus:border-blue-500/50 transition-colors resize-none" placeholder="どんなサイトにしたいか、お気軽にお書きください" />
-            </div>
-            <button type="submit" className="w-full py-4 bg-white text-black font-semibold rounded-full hover:scale-[1.02] transition-transform text-[16px]">
-              送信する
-            </button>
-          </form>
+          <ContactForm />
           <div className="mt-10 text-center">
-            <a href="https://line.me/R/" target="_blank" rel="noopener noreferrer" className="inline-block px-8 py-3 rounded-full bg-[#06C755] text-white font-medium text-[15px] hover:bg-[#05b34c] transition-colors">
+            <a href="https://line.me/R/ti/p/@569rxqzb" target="_blank" rel="noopener noreferrer" className="inline-block px-8 py-3 rounded-full bg-[#06C755] text-white font-medium text-[15px] hover:bg-[#05b34c] transition-colors">
               LINEで相談する
             </a>
           </div>
-          <p className="text-[11px] text-white/20 mt-12 text-center">&copy; 2026 ツキガクサイト</p>
+          <p className="text-[11px] text-white/20 mt-12 text-center">&copy; 2026 ツキガク×サイト</p>
         </div>
       </footer>
       <StickyMobileCTA />
